@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -52,43 +52,13 @@
 
     .nav-logo {
       display: flex;
-      align-items: baseline;
-      gap: 6px;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
     }
-    .nav-logo-word {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--ink);
-    }
-    .nav-logo-word .vial-i {
-      display: inline-block;
-      position: relative;
-      color: var(--ink);
-    }
-    .nav-logo-word .vial-i::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 7px;
-      height: 10px;
-      background: var(--blue);
-      border-radius: 1px 1px 0 0;
-    }
-    .nav-logo-word .vial-i::after {
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 9px;
-      height: 16px;
-      background: rgba(74,127,191,0.25);
-      border: 1.5px solid var(--blue-light);
-      border-radius: 0 0 2px 2px;
+    .nav-logo img {
+      height: 36px;
+      width: auto;
     }
 
     .nav-badge {
@@ -232,6 +202,14 @@
       text-transform: uppercase;
       margin-bottom: 40px;
       margin-top: 8px;
+    }
+
+    .hero-logo {
+      margin-bottom: 32px;
+    }
+    .hero-logo img {
+      height: clamp(60px, 8vw, 100px);
+      width: auto;
     }
 
     .hero-desc {
@@ -837,7 +815,7 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#" class="nav-logo">
-      <span class="nav-logo-word">V<span class="vial-i">i</span>ALES</span>
+      <img src="Viales_logo.png" alt="VIALES" />
       <span class="nav-badge">B2B</span>
     </a>
     <div class="nav-right">
@@ -853,16 +831,9 @@
     <div class="hero-left">
       <div class="hero-eyebrow">Portal B2B · AGS Analítica · Argentina</div>
 
-      <div class="hero-title">
-        V<span class="i-wrap">
-          <span class="vial-graphic" aria-hidden="true">
-            <span class="vial-cap"></span>
-            <span class="vial-body"><span class="vial-liquid"></span></span>
-          </span>
-        </span>ALES
+      <div class="hero-logo">
+        <img src="Viales_logo.png" alt="VIALES + Consumibles para Cromatografía" />
       </div>
-
-      <div class="hero-subtitle-line">+ Consumibles para cromatografía</div>
 
       <p class="hero-desc">
         Viales, filtros, columnas y accesorios para laboratorios analíticos. 
@@ -1160,7 +1131,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">V<span>i</span>ALES</div>
+    <img src="Viales_logo_oscuro.png" alt="VIALES" style="height:32px;width:auto;" />
     <div class="footer-meta">por AGS Analítica S.A. · Argentina · viales.com.ar</div>
   </footer>
 
