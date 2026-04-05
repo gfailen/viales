@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -106,7 +106,7 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       align-items: center;
       padding: 120px 48px 80px;
       position: relative;
@@ -264,6 +264,20 @@
       transition: color 0.2s, border-color 0.2s;
     }
     .btn-secondary:hover { color: var(--blue); border-color: var(--blue); }
+
+    .hero-video-wrap {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,46,74,0.18);
+      margin: 0 auto;
+    }
+    .hero-video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
     /* ── HERO RIGHT — decorativo ── */
     .hero-right {
@@ -797,7 +811,7 @@
       .nav-right { gap: 16px; }
       .nav-link { display: none; }
       .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; min-height: auto; }
-      .hero-right { display: none; }
+      .hero-right { display: flex; justify-content: center; margin-top: 40px; }
       .trust-bar { padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
       .section { padding: 64px 24px; }
       .categories-grid { grid-template-columns: 1fr; }
@@ -816,13 +830,12 @@
   <nav id="nav">
     <a href="#" class="nav-logo">
       <img src="Viales_logo.png" alt="VIALES" />
-      <span class="nav-badge">B2B</span>
     </a>
     <div class="nav-right">
-      <a href="#categorias" class="nav-link">Catálogo</a>
+      <a href="#consumibles" class="nav-link">Consumibles</a>
       <a href="#guia" class="nav-link">Guía de selección</a>
       <a href="#contacto" class="nav-link">Contacto</a>
-      <a href="#contacto" class="nav-cta">Registrarse</a>
+      <a href="#contacto" class="nav-cta">Cotizar</a>
     </div>
   </nav>
 
@@ -837,49 +850,27 @@
 
       <p class="hero-desc">
         Viales, filtros, columnas y accesorios para laboratorios analíticos. 
-        Marcas originales y compatibles. Atención técnica especializada 
-        y precios acordados para cada cliente.
+        Marcas originales y compatibles. Respaldo técnico especializado de AGS Analítica.
       </p>
 
       <div class="hero-actions">
         <a href="#contacto" class="btn-primary">
-          Solicitar acceso
+          Solicitar cotización
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#categorias" class="btn-secondary">
-          Ver catálogo
+        <a href="#consumibles" class="btn-secondary">
+          Ver consumibles
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
         </a>
       </div>
     </div>
 
     <div class="hero-right">
-      <div class="hero-vials-scene">
-        <div class="scene-grid"></div>
-        <div class="scene-vial sv1">
-          <div class="scene-vial-cap"></div>
-          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
-        </div>
-        <div class="scene-vial sv2">
-          <div class="scene-vial-cap"></div>
-          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
-        </div>
-        <div class="scene-vial sv3">
-          <div class="scene-vial-cap"></div>
-          <div class="scene-vial-body"><div class="scene-vial-fill"></div></div>
-        </div>
-        <div class="scene-vial sv4">
-          <div class="scene-vial-cap"></div>
-          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
-        </div>
-        <div class="scene-vial sv5">
-          <div class="scene-vial-cap"></div>
-          <div class="scene-vial-body"><div class="scene-vial-fill"></div></div>
-        </div>
-        <div class="scene-vial sv6">
-          <div class="scene-vial-cap"></div>
-          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
-        </div>
+      <div style="text-align:center;margin-bottom:16px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#3A6DB5;text-transform:uppercase;">— Vial cromatográfico —</div>
+      <div class="hero-video-wrap">
+        <video autoplay loop muted playsinline>
+          <source src="vial.mp4" type="video/mp4" />
+        </video>
       </div>
     </div>
   </section>
@@ -898,7 +889,7 @@
   </div>
 
   <!-- CATEGORÍAS -->
-  <section class="section" id="categorias">
+  <section class="section" id="consumibles">
     <div class="section-header">
       <div>
         <div class="section-eyebrow">Catálogo</div>
@@ -1087,28 +1078,33 @@
     </div>
 
     <div class="contact-form">
-      <div class="form-title">Solicitar acceso al portal</div>
-      <div class="form-sub">Te contactamos dentro de las 24 hs hábiles</div>
+      <div class="form-title">Solicitar cotización</div>
+      <div class="form-sub">Te respondemos dentro de las 24 hs hábiles</div>
 
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label">Nombre</label>
-          <input type="text" class="form-input" placeholder="Tu nombre" />
+          <label class="form-label">Nombre *</label>
+          <input type="text" class="form-input" placeholder="Tu nombre" required />
         </div>
         <div class="form-group">
-          <label class="form-label">Empresa</label>
-          <input type="text" class="form-input" placeholder="Razón social" />
+          <label class="form-label">Empresa *</label>
+          <input type="text" class="form-input" placeholder="Razón social" required />
         </div>
       </div>
 
       <div class="form-group">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-input" placeholder="email@laboratorio.com" />
+        <label class="form-label">Email *</label>
+        <input type="email" class="form-input" placeholder="email@laboratorio.com" required />
       </div>
 
       <div class="form-group">
-        <label class="form-label">Rubro</label>
-        <select class="form-select">
+        <label class="form-label">Teléfono / WhatsApp</label>
+        <input type="text" class="form-input" placeholder="+54 9 11 ..." />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Rubro *</label>
+        <select class="form-select" required>
           <option value="" disabled selected>Seleccioná tu sector</option>
           <option>Farmacéutico</option>
           <option>Agroquímico</option>
@@ -1121,11 +1117,11 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label">Mensaje (opcional)</label>
-        <textarea class="form-textarea" placeholder="Productos de interés, equipos que utilizás..."></textarea>
+        <label class="form-label">¿Qué necesitás cotizar? *</label>
+        <textarea class="form-textarea" placeholder="Ej: viales 2 mL rosca para Agilent 1260, filtros PVDF 0.22 µm..." required></textarea>
       </div>
 
-      <button class="btn-form">Enviar solicitud</button>
+      <button class="btn-form">Enviar solicitud de cotización</button>
     </div>
   </section>
 
