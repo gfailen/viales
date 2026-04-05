@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VIALES — Consumibles para Cromatografía</title>
+  <meta name="description" content="Viales y consumibles para cromatografía. Por AGS Analítica, Argentina. Portal B2B para laboratorios farmacéuticos, agroquímicos y de alimentos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1A2E4A;
+      --blue: #3A6DB5;
+      --blue-light: #4A7FBF;
+      --blue-mist: #EDF3FB;
+      --ink: #0F1923;
+      --ink-soft: #4A5568;
+      --ink-muted: #8A97A8;
+      --white: #FFFFFF;
+      --off-white: #F7F9FC;
+      --border: #DDE4EE;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      text-decoration: none;
+    }
+    .nav-logo-word {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+    }
+    .nav-logo-word .vial-i {
+      display: inline-block;
+      position: relative;
+      color: var(--ink);
+    }
+    .nav-logo-word .vial-i::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 7px;
+      height: 10px;
+      background: var(--blue);
+      border-radius: 1px 1px 0 0;
+    }
+    .nav-logo-word .vial-i::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 9px;
+      height: 16px;
+      background: rgba(74,127,191,0.25);
+      border: 1.5px solid var(--blue-light);
+      border-radius: 0 0 2px 2px;
+    }
+
+    .nav-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      text-transform: uppercase;
+      border: 1px solid var(--blue);
+      padding: 3px 8px;
+      border-radius: 2px;
+      opacity: 0.8;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--ink); }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      background: var(--navy);
+      text-decoration: none;
+      padding: 9px 20px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(58,109,181,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      max-width: 560px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--blue);
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 6vw, 88px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 0.95;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .hero-title .i-wrap {
+      display: inline-block;
+      position: relative;
+      width: 0.42em;
+    }
+    .hero-title .i-wrap .vial-graphic {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .vial-cap {
+      width: 0.22em;
+      height: 0.18em;
+      background: var(--navy);
+      border-radius: 1px 1px 0 0;
+    }
+    .vial-body {
+      width: 0.28em;
+      height: 0.62em;
+      background: linear-gradient(180deg, rgba(74,127,191,0.35) 0%, rgba(74,127,191,0.15) 100%);
+      border: 2px solid var(--blue-light);
+      border-top: none;
+      border-radius: 0 0 3px 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .vial-liquid {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
+      background: rgba(58,109,181,0.4);
+      border-radius: 0 0 2px 2px;
+      animation: liquidShift 4s ease-in-out infinite;
+    }
+
+    .hero-subtitle-line {
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      margin-top: 8px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin-bottom: 48px;
+      max-width: 440px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--navy);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(58,109,181,0.25);
+    }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 14px 4px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: 0.02em;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* ── HERO RIGHT — decorativo ── */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+
+    .hero-vials-scene {
+      position: relative;
+      width: 340px;
+      height: 420px;
+    }
+
+    .scene-vial {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: floatVial var(--dur, 6s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .scene-vial-cap {
+      width: var(--w, 28px);
+      height: 14px;
+      background: var(--navy);
+      border-radius: 2px 2px 0 0;
+    }
+    .scene-vial-body {
+      width: var(--w, 28px);
+      height: var(--h, 80px);
+      background: linear-gradient(180deg, rgba(74,127,191,0.2) 0%, rgba(74,127,191,0.08) 100%);
+      border: 1.5px solid rgba(58,109,181,0.4);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .scene-vial-fill {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: var(--fill, 50%);
+      background: rgba(58,109,181,var(--opacity, 0.35));
+      border-radius: 0 0 3px 3px;
+    }
+    .scene-vial-label {
+      position: absolute;
+      top: 30%;
+      left: 2px; right: 2px;
+      height: 20px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 1px;
+    }
+
+    /* posiciones */
+    .sv1 { --w:22px; --h:68px; --fill:40%; --opacity:0.3; --dur:7s; --delay:0s; top:60px; left:40px; opacity:0.6; }
+    .sv2 { --w:32px; --h:100px; --fill:65%; --opacity:0.45; --dur:6s; --delay:0.8s; top:30px; left:120px; opacity:0.85; }
+    .sv3 { --w:28px; --h:88px; --fill:30%; --opacity:0.25; --dur:8s; --delay:1.5s; top:80px; left:210px; opacity:0.7; }
+    .sv4 { --w:40px; --h:120px; --fill:75%; --opacity:0.5; --dur:6.5s; --delay:0.4s; top:20px; left:280px; opacity:0.9; }
+    .sv5 { --w:20px; --h:58px; --fill:50%; --opacity:0.3; --dur:7.5s; --delay:2s; top:140px; left:70px; opacity:0.5; }
+    .sv6 { --w:30px; --h:92px; --fill:55%; --opacity:0.4; --dur:5.5s; --delay:1s; top:160px; left:180px; opacity:0.75; }
+
+    .scene-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(58,109,181,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58,109,181,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 80% at center, black 0%, transparent 70%);
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      overflow: hidden;
+    }
+
+    .trust-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .trust-items {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .trust-dot {
+      width: 5px; height: 5px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── CATEGORIES ── */
+    .section {
+      padding: 100px 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      gap: 32px;
+    }
+
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .section-note {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      max-width: 280px;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .cat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: border-color 0.3s, transform 0.3s;
+      animation: fadeUp 0.7s ease both;
+    }
+    .cat-card:nth-child(1) { animation-delay: 0.05s; }
+    .cat-card:nth-child(2) { animation-delay: 0.1s; }
+    .cat-card:nth-child(3) { animation-delay: 0.15s; }
+    .cat-card:nth-child(4) { animation-delay: 0.2s; }
+    .cat-card:nth-child(5) { animation-delay: 0.25s; }
+
+    .cat-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-3px);
+      z-index: 1;
+    }
+
+    .cat-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .cat-card:hover::after { transform: scaleX(1); }
+
+    .cat-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .cat-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+      color: var(--blue);
+    }
+
+    .cat-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .cat-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+
+    .cat-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+    }
+
+    .cat-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      background: var(--blue-mist);
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    /* ── GUIDE CTA ── */
+    .guide-section {
+      background: var(--navy);
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guide-section::before {
+      content: '';
+      position: absolute;
+      top: -150px; right: -150px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(74,127,191,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .guide-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(74,127,191,0.8);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .guide-title {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .guide-title span { color: var(--blue-light); }
+
+    .guide-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-white:hover {
+      background: var(--blue-mist);
+      transform: translateY(-2px);
+    }
+
+    .guide-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .guide-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .guide-step:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+    .step-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--blue-light);
+      letter-spacing: 0.1em;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content {}
+    .step-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.55;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 100px 48px;
+      background: var(--off-white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left {}
+    .contact-title {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .contact-title span { color: var(--blue); }
+    .contact-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item:hover { color: var(--blue); }
+    .contact-icon {
+      width: 36px; height: 36px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue);
+      flex-shrink: 0;
+    }
+
+    /* ── FORM ── */
+    .contact-form {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 4px;
+    }
+
+    .form-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .form-sub {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--ink-muted);
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--blue);
+      background: var(--white);
+    }
+    .form-textarea { resize: vertical; min-height: 90px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .btn-form {
+      width: 100%;
+      padding: 13px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      transition: background 0.2s;
+      margin-top: 8px;
+    }
+    .btn-form:hover { background: var(--blue); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--blue-light); }
+
+    .footer-meta {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatVial {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+    }
+
+    @keyframes liquidShift {
+      0%, 100% { height: 55%; }
+      50% { height: 45%; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-right { gap: 16px; }
+      .nav-link { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; min-height: auto; }
+      .hero-right { display: none; }
+      .trust-bar { padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
+      .section { padding: 64px 24px; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .guide-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .contact-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .section-note { text-align: left; }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-word">V<span class="vial-i">i</span>ALES</span>
+      <span class="nav-badge">B2B</span>
+    </a>
+    <div class="nav-right">
+      <a href="#categorias" class="nav-link">Catálogo</a>
+      <a href="#guia" class="nav-link">Guía de selección</a>
+      <a href="#contacto" class="nav-link">Contacto</a>
+      <a href="#contacto" class="nav-cta">Registrarse</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Portal B2B · AGS Analítica · Argentina</div>
+
+      <div class="hero-title">
+        V<span class="i-wrap">
+          <span class="vial-graphic" aria-hidden="true">
+            <span class="vial-cap"></span>
+            <span class="vial-body"><span class="vial-liquid"></span></span>
+          </span>
+        </span>ALES
+      </div>
+
+      <div class="hero-subtitle-line">+ Consumibles para cromatografía</div>
+
+      <p class="hero-desc">
+        Viales, filtros, columnas y accesorios para laboratorios analíticos. 
+        Marcas originales y compatibles. Atención técnica especializada 
+        y precios acordados para cada cliente.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">
+          Solicitar acceso
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#categorias" class="btn-secondary">
+          Ver catálogo
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-vials-scene">
+        <div class="scene-grid"></div>
+        <div class="scene-vial sv1">
+          <div class="scene-vial-cap"></div>
+          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
+        </div>
+        <div class="scene-vial sv2">
+          <div class="scene-vial-cap"></div>
+          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
+        </div>
+        <div class="scene-vial sv3">
+          <div class="scene-vial-cap"></div>
+          <div class="scene-vial-body"><div class="scene-vial-fill"></div></div>
+        </div>
+        <div class="scene-vial sv4">
+          <div class="scene-vial-cap"></div>
+          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
+        </div>
+        <div class="scene-vial sv5">
+          <div class="scene-vial-cap"></div>
+          <div class="scene-vial-body"><div class="scene-vial-fill"></div></div>
+        </div>
+        <div class="scene-vial sv6">
+          <div class="scene-vial-cap"></div>
+          <div class="scene-vial-body"><div class="scene-vial-fill"></div><div class="scene-vial-label"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <span class="trust-label">Compatible con</span>
+    <div class="trust-items">
+      <span class="trust-item"><span class="trust-dot"></span>Agilent Technologies</span>
+      <span class="trust-item"><span class="trust-dot"></span>Waters</span>
+      <span class="trust-item"><span class="trust-dot"></span>Shimadzu</span>
+      <span class="trust-item"><span class="trust-dot"></span>Thermo Fisher</span>
+      <span class="trust-item"><span class="trust-dot"></span>PerkinElmer</span>
+      <span class="trust-item"><span class="trust-dot"></span>Bruker</span>
+    </div>
+  </div>
+
+  <!-- CATEGORÍAS -->
+  <section class="section" id="categorias">
+    <div class="section-header">
+      <div>
+        <div class="section-eyebrow">Catálogo</div>
+        <div class="section-title">Consumibles para<br>cada técnica analítica</div>
+      </div>
+      <div class="section-note">Precios disponibles para clientes registrados. Consultanos para acceso.</div>
+    </div>
+
+    <div class="categories-grid">
+
+      <div class="cat-card">
+        <div class="cat-number">01</div>
+        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="14" y="4" width="10" height="6" rx="1"/>
+          <rect x="13" y="10" width="12" height="28" rx="2"/>
+          <rect x="15" y="22" width="8" height="14" rx="1" fill="currentColor" opacity="0.15"/>
+          <line x1="15" y1="18" x2="23" y2="18" stroke-width="1"/>
+          <rect x="28" y="6" width="7" height="4" rx="1"/>
+          <rect x="27" y="10" width="9" height="22" rx="2"/>
+        </svg>
+        <div class="cat-name">Viales y tapas</div>
+        <div class="cat-desc">Viales de vidrio clase 1 y 2 para HPLC y GC. Tapas de rosca, crimpeado y snap-cap. Septas PTFE/silicona.</div>
+        <div class="cat-tags">
+          <span class="cat-tag">Agilent</span>
+          <span class="cat-tag">AGS compatible</span>
+          <span class="cat-tag">Thermo</span>
+          <span class="cat-tag">2 mL · 1.5 mL · 4 mL</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-number">02</div>
+        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="22" cy="22" r="14"/>
+          <circle cx="22" cy="22" r="8"/>
+          <circle cx="22" cy="22" r="2" fill="currentColor" opacity="0.3"/>
+          <line x1="8" y1="22" x2="14" y2="22"/>
+          <line x1="30" y1="22" x2="36" y2="22"/>
+        </svg>
+        <div class="cat-name">Filtros y membranas</div>
+        <div class="cat-desc">Filtros de jeringa en PVDF, nylon, PTFE y celulosa regenerada. Tamaños 0.22 µm y 0.45 µm.</div>
+        <div class="cat-tags">
+          <span class="cat-tag">0.22 µm</span>
+          <span class="cat-tag">0.45 µm</span>
+          <span class="cat-tag">13 mm · 25 mm</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-number">03</div>
+        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="10" width="28" height="6" rx="2"/>
+          <rect x="10" y="16" width="24" height="18" rx="2"/>
+          <line x1="16" y1="22" x2="28" y2="22"/>
+          <line x1="16" y1="27" x2="28" y2="27"/>
+        </svg>
+        <div class="cat-name">Columnas cromatográficas</div>
+        <div class="cat-desc">Columnas HPLC y GC. Fases C18, C8, fenilo, HILIC. Columnas de guarda y cartuchos SPE.</div>
+        <div class="cat-tags">
+          <span class="cat-tag">HPLC</span>
+          <span class="cat-tag">GC</span>
+          <span class="cat-tag">C18 · C8 · HILIC</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-number">04</div>
+        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="16" cy="22" r="6"/>
+          <circle cx="28" cy="22" r="6"/>
+          <line x1="22" y1="22" x2="26" y2="22" stroke-width="2"/>
+          <line x1="6" y1="22" x2="10" y2="22"/>
+          <line x1="34" y1="22" x2="38" y2="22"/>
+          <path d="M16 16 L16 10 L28 10 L28 16" stroke-dasharray="2 2"/>
+        </svg>
+        <div class="cat-name">Loops y válvulas</div>
+        <div class="cat-desc">Loops de inyección para HPLC, válvulas de conmutación, ferrules, fittings y tubing PEEK e inoxidable.</div>
+        <div class="cat-tags">
+          <span class="cat-tag">PEEK</span>
+          <span class="cat-tag">SS</span>
+          <span class="cat-tag">6 · 10 puertos</span>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <div class="cat-number">05</div>
+        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="22" y1="8" x2="22" y2="36"/>
+          <path d="M18 8 L26 8 L25 14 L19 14 Z"/>
+          <path d="M19 30 Q22 36 25 30" fill="none"/>
+          <circle cx="22" cy="26" r="1.5" fill="currentColor" opacity="0.4"/>
+        </svg>
+        <div class="cat-name">Agujas y jeringas</div>
+        <div class="cat-desc">Agujas para automuestreadores Agilent GC y HPLC. Jeringas Hamilton y equivalentes. Agujas para inyección manual.</div>
+        <div class="cat-tags">
+          <span class="cat-tag">GC</span>
+          <span class="cat-tag">HPLC</span>
+          <span class="cat-tag">Hamilton</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GUIDE CTA -->
+  <section class="guide-section" id="guia">
+    <div>
+      <div class="guide-eyebrow">Recurso técnico</div>
+      <h2 class="guide-title">¿Qué vial<br>necesitás para<br><span>tu aplicación?</span></h2>
+      <p class="guide-desc">Guía de selección de viales desarrollada por nuestro equipo técnico. Técnica, material de vidrio, tipo de cierre, septa y compatibilidad con el automuestreador.</p>
+      <a href="#contacto" class="btn-white">
+        Consultá a nuestro equipo
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="guide-steps">
+      <div class="guide-step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <div class="step-title">¿Para qué técnica?</div>
+          <div class="step-desc">HPLC, GC, GC-MS o headspace. Cada técnica define el perfil del vial.</div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <div class="step-title">¿Qué automuestreador usás?</div>
+          <div class="step-desc">Agilent, Waters, Shimadzu u otro. El fabricante condiciona la geometría del vial.</div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <div class="step-title">Tipo de vidrio y septa</div>
+          <div class="step-desc">Borosilicato clase 1 para trazas. Vidrio ámbar para fotosensibles. PTFE/silicona como estándar.</div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <span class="step-num">04</span>
+        <div class="step-content">
+          <div class="step-title">Tipo de cierre</div>
+          <div class="step-desc">Rosca para HPLC general. Crimpeado para GC headspace. Snap-cap para alta velocidad.</div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <span class="step-num">05</span>
+        <div class="step-content">
+          <div class="step-title">Original o compatible</div>
+          <div class="step-desc">Los viales AGS son dimensionalmente equivalentes a Agilent. Para métodos validados, recomendamos verificar el cambio.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contacto">
+    <div class="contact-left">
+      <div class="section-eyebrow">Acceso B2B</div>
+      <h2 class="contact-title">Especialistas<br>técnicos a<br><span>tu disposición</span></h2>
+      <p class="contact-desc">
+        Más de 20 años de experiencia en instrumentación analítica. 
+        Registrate para acceder a precios acordados, catálogo completo 
+        y soporte técnico especializado.
+      </p>
+      <div class="contact-items">
+        <a href="mailto:consumibles@agsanalitica.com.ar" class="contact-item">
+          <span class="contact-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          consumibles@agsanalitica.com.ar
+        </a>
+        <a href="https://wa.me/5491100000000" class="contact-item">
+          <span class="contact-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </span>
+          WhatsApp disponible para clientes
+        </a>
+        <span class="contact-item">
+          <span class="contact-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
+          Argentina · Cobertura nacional
+        </span>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-title">Solicitar acceso al portal</div>
+      <div class="form-sub">Te contactamos dentro de las 24 hs hábiles</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-input" placeholder="Tu nombre" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Empresa</label>
+          <input type="text" class="form-input" placeholder="Razón social" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="email@laboratorio.com" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Rubro</label>
+        <select class="form-select">
+          <option value="" disabled selected>Seleccioná tu sector</option>
+          <option>Farmacéutico</option>
+          <option>Agroquímico</option>
+          <option>Alimentos y bebidas</option>
+          <option>Laboratorio tercerista</option>
+          <option>Universidad / Investigación</option>
+          <option>Petróleo y gas</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Mensaje (opcional)</label>
+        <textarea class="form-textarea" placeholder="Productos de interés, equipos que utilizás..."></textarea>
+      </div>
+
+      <button class="btn-form">Enviar solicitud</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">V<span>i</span>ALES</div>
+    <div class="footer-meta">por AGS Analítica S.A. · Argentina · viales.com.ar</div>
+  </footer>
+
+  <script>
+    // Nav scroll effect
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+</body>
+</html>
