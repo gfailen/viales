@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -34,7 +35,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -59,19 +59,6 @@
     .nav-logo img {
       height: 36px;
       width: auto;
-    }
-
-    .nav-badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      color: var(--blue);
-      text-transform: uppercase;
-      border: 1px solid var(--blue);
-      padding: 3px 8px;
-      border-radius: 2px;
-      opacity: 0.8;
     }
 
     .nav-right {
@@ -102,11 +89,10 @@
     }
     .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
 
-    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.05fr 0.95fr;
       align-items: center;
       padding: 120px 48px 80px;
       position: relative;
@@ -123,7 +109,7 @@
     }
 
     .hero-left {
-      max-width: 560px;
+      max-width: 640px;
       animation: fadeUp 0.9s ease both;
     }
 
@@ -147,78 +133,31 @@
       background: var(--blue);
     }
 
-    .hero-title {
-      font-size: clamp(52px, 6vw, 88px);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      line-height: 0.95;
+    .hero-main-title {
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 600;
+      line-height: 1.12;
       color: var(--ink);
-      margin-bottom: 12px;
-    }
-
-    .hero-title .i-wrap {
-      display: inline-block;
-      position: relative;
-      width: 0.42em;
-    }
-    .hero-title .i-wrap .vial-graphic {
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .vial-cap {
-      width: 0.22em;
-      height: 0.18em;
-      background: var(--navy);
-      border-radius: 1px 1px 0 0;
-    }
-    .vial-body {
-      width: 0.28em;
-      height: 0.62em;
-      background: linear-gradient(180deg, rgba(74,127,191,0.35) 0%, rgba(74,127,191,0.15) 100%);
-      border: 2px solid var(--blue-light);
-      border-top: none;
-      border-radius: 0 0 3px 3px;
-      position: relative;
-      overflow: hidden;
-    }
-    .vial-liquid {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 55%;
-      background: rgba(58,109,181,0.4);
-      border-radius: 0 0 2px 2px;
-      animation: liquidShift 4s ease-in-out infinite;
-    }
-
-    .hero-subtitle-line {
-      font-size: clamp(13px, 1.4vw, 16px);
-      font-weight: 400;
-      letter-spacing: 0.25em;
-      color: var(--blue);
-      text-transform: uppercase;
-      margin-bottom: 40px;
-      margin-top: 8px;
-    }
-
-    .hero-logo {
-      margin-bottom: 32px;
-    }
-    .hero-logo img {
-      height: clamp(60px, 8vw, 100px);
-      width: auto;
+      margin-bottom: 24px;
+      max-width: 620px;
+      letter-spacing: -0.025em;
     }
 
     .hero-desc {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 300;
       line-height: 1.75;
       color: var(--ink-soft);
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+
+    .hero-note {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--ink-muted);
       margin-bottom: 48px;
-      max-width: 440px;
+      max-width: 520px;
     }
 
     .hero-actions {
@@ -265,20 +204,6 @@
     }
     .btn-secondary:hover { color: var(--blue); border-color: var(--blue); }
 
-    .hero-video-wrap {
-      width: 100%;
-      max-width: 420px;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 24px 64px rgba(26,46,74,0.15);
-    }
-    .hero-video-wrap video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ── HERO RIGHT — decorativo ── */
     .hero-right {
       display: flex;
       justify-content: center;
@@ -286,72 +211,21 @@
       animation: fadeUp 0.9s 0.2s ease both;
     }
 
-    .hero-vials-scene {
-      position: relative;
-      width: 340px;
-      height: 420px;
-    }
-
-    .scene-vial {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: floatVial var(--dur, 6s) ease-in-out infinite;
-      animation-delay: var(--delay, 0s);
-    }
-
-    .scene-vial-cap {
-      width: var(--w, 28px);
-      height: 14px;
-      background: var(--navy);
-      border-radius: 2px 2px 0 0;
-    }
-    .scene-vial-body {
-      width: var(--w, 28px);
-      height: var(--h, 80px);
-      background: linear-gradient(180deg, rgba(74,127,191,0.2) 0%, rgba(74,127,191,0.08) 100%);
-      border: 1.5px solid rgba(58,109,181,0.4);
-      border-top: none;
-      border-radius: 0 0 4px 4px;
-      position: relative;
+    .hero-video-wrap {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,46,74,0.12);
+      background: #fff;
     }
-    .scene-vial-fill {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: var(--fill, 50%);
-      background: rgba(58,109,181,var(--opacity, 0.35));
-      border-radius: 0 0 3px 3px;
-    }
-    .scene-vial-label {
-      position: absolute;
-      top: 30%;
-      left: 2px; right: 2px;
-      height: 20px;
-      background: rgba(255,255,255,0.6);
-      border-radius: 1px;
+    .hero-video-wrap video,
+    .hero-video-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    /* posiciones */
-    .sv1 { --w:22px; --h:68px; --fill:40%; --opacity:0.3; --dur:7s; --delay:0s; top:60px; left:40px; opacity:0.6; }
-    .sv2 { --w:32px; --h:100px; --fill:65%; --opacity:0.45; --dur:6s; --delay:0.8s; top:30px; left:120px; opacity:0.85; }
-    .sv3 { --w:28px; --h:88px; --fill:30%; --opacity:0.25; --dur:8s; --delay:1.5s; top:80px; left:210px; opacity:0.7; }
-    .sv4 { --w:40px; --h:120px; --fill:75%; --opacity:0.5; --dur:6.5s; --delay:0.4s; top:20px; left:280px; opacity:0.9; }
-    .sv5 { --w:20px; --h:58px; --fill:50%; --opacity:0.3; --dur:7.5s; --delay:2s; top:140px; left:70px; opacity:0.5; }
-    .sv6 { --w:30px; --h:92px; --fill:55%; --opacity:0.4; --dur:5.5s; --delay:1s; top:160px; left:180px; opacity:0.75; }
-
-    .scene-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(58,109,181,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(58,109,181,0.04) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: radial-gradient(ellipse 80% 80% at center, black 0%, transparent 70%);
-    }
-
-    /* ── TRUST BAR ── */
     .trust-bar {
       background: var(--off-white);
       border-top: 1px solid var(--border);
@@ -397,7 +271,6 @@
       flex-shrink: 0;
     }
 
-    /* ── CATEGORIES ── */
     .section {
       padding: 100px 48px;
     }
@@ -432,7 +305,7 @@
       font-size: 14px;
       font-weight: 300;
       color: var(--ink-muted);
-      max-width: 280px;
+      max-width: 320px;
       text-align: right;
       line-height: 1.6;
     }
@@ -453,12 +326,6 @@
       transition: border-color 0.3s, transform 0.3s;
       animation: fadeUp 0.7s ease both;
     }
-    .cat-card:nth-child(1) { animation-delay: 0.05s; }
-    .cat-card:nth-child(2) { animation-delay: 0.1s; }
-    .cat-card:nth-child(3) { animation-delay: 0.15s; }
-    .cat-card:nth-child(4) { animation-delay: 0.2s; }
-    .cat-card:nth-child(5) { animation-delay: 0.25s; }
-
     .cat-card:hover {
       border-color: var(--blue);
       transform: translateY(-3px);
@@ -526,7 +393,6 @@
       border-radius: 2px;
     }
 
-    /* ── GUIDE CTA ── */
     .guide-section {
       background: var(--navy);
       padding: 80px 48px;
@@ -571,9 +437,10 @@
     .guide-desc {
       font-size: 15px;
       font-weight: 300;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.64);
       line-height: 1.75;
       margin-bottom: 36px;
+      max-width: 540px;
     }
 
     .btn-white {
@@ -597,7 +464,6 @@
     .guide-steps {
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
 
     .guide-step {
@@ -619,7 +485,6 @@
       margin-top: 2px;
     }
 
-    .step-content {}
     .step-title {
       font-size: 14px;
       font-weight: 500;
@@ -629,11 +494,10 @@
     .step-desc {
       font-size: 13px;
       font-weight: 300;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.56);
       line-height: 1.55;
     }
 
-    /* ── CONTACT ── */
     .contact-section {
       padding: 100px 48px;
       background: var(--off-white);
@@ -643,7 +507,6 @@
       align-items: start;
     }
 
-    .contact-left {}
     .contact-title {
       font-size: clamp(28px, 3vw, 40px);
       font-weight: 600;
@@ -653,12 +516,14 @@
       margin-bottom: 20px;
     }
     .contact-title span { color: var(--blue); }
+
     .contact-desc {
       font-size: 15px;
       font-weight: 300;
       color: var(--ink-soft);
       line-height: 1.75;
       margin-bottom: 40px;
+      max-width: 520px;
     }
 
     .contact-items {
@@ -666,6 +531,7 @@
       flex-direction: column;
       gap: 16px;
     }
+
     .contact-item {
       display: flex;
       align-items: center;
@@ -677,6 +543,7 @@
       transition: color 0.2s;
     }
     .contact-item:hover { color: var(--blue); }
+
     .contact-icon {
       width: 36px; height: 36px;
       background: var(--white);
@@ -689,7 +556,6 @@
       flex-shrink: 0;
     }
 
-    /* ── FORM ── */
     .contact-form {
       background: var(--white);
       border: 1px solid var(--border);
@@ -713,6 +579,7 @@
     .form-group {
       margin-bottom: 20px;
     }
+
     .form-label {
       display: block;
       font-size: 12px;
@@ -722,6 +589,7 @@
       margin-bottom: 8px;
       text-transform: uppercase;
     }
+
     .form-input, .form-select, .form-textarea {
       width: 100%;
       padding: 11px 14px;
@@ -736,13 +604,22 @@
       transition: border-color 0.2s, background 0.2s;
       appearance: none;
     }
+
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--blue);
       background: var(--white);
     }
-    .form-textarea { resize: vertical; min-height: 90px; }
 
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
 
     .btn-form {
       width: 100%;
@@ -761,7 +638,6 @@
     }
     .btn-form:hover { background: var(--blue); }
 
-    /* ── FOOTER ── */
     footer {
       background: var(--ink);
       padding: 40px 48px;
@@ -772,14 +648,6 @@
       gap: 20px;
     }
 
-    .footer-brand {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--white);
-    }
-    .footer-brand span { color: var(--blue-light); }
-
     .footer-meta {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
@@ -788,44 +656,54 @@
       color: rgba(255,255,255,0.35);
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes floatVial {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-14px); }
-    }
-
-    @keyframes liquidShift {
-      0%, 100% { height: 55%; }
-      50% { height: 45%; }
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
       .nav-right { gap: 16px; }
       .nav-link { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; min-height: auto; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 100px 24px 60px;
+        min-height: auto;
+      }
       .hero-right { display: none; }
-      .trust-bar { padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
+      .trust-bar {
+        padding: 16px 24px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
       .section { padding: 64px 24px; }
       .categories-grid { grid-template-columns: 1fr; }
-      .guide-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
-      .contact-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
-      .section-header { flex-direction: column; align-items: flex-start; }
+      .guide-section {
+        grid-template-columns: 1fr;
+        padding: 60px 24px;
+        gap: 40px;
+      }
+      .contact-section {
+        grid-template-columns: 1fr;
+        padding: 60px 24px;
+        gap: 40px;
+      }
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .section-note { text-align: left; }
-      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
     <a href="#" class="nav-logo">
       <img src="Viales_logo.png" alt="VIALES" />
@@ -837,27 +715,34 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <div class="hero-eyebrow">Portal B2B · AGS Analítica · Argentina</div>
 
-<div class="hero-desc">
-  <strong>Consumibles y accesorios para cromatografía y laboratorio analítico</strong><br><br>
-  Viales, tapas, filtros, membranas, columnas y accesorios para laboratorios.<br><br>
-  <span style="color: var(--ink-muted); font-size: 14px;">
-    Una iniciativa de AGS Analítica
-  </span>
-</div>
+      <h1 class="hero-main-title">
+        Consumibles y accesorios para cromatografía y laboratorio analítico
+      </h1>
+
+      <p class="hero-desc">
+        Viales, tapas, filtros, membranas, columnas y accesorios para laboratorios.
+      </p>
+
+      <p class="hero-note">
+        Una iniciativa de AGS Analítica
+      </p>
 
       <div class="hero-actions">
         <a href="#contacto" class="btn-primary">
           Solicitar cotización
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
         </a>
         <a href="#consumibles" class="btn-secondary">
           Ver consumibles
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 9l-7 7-7-7"/>
+          </svg>
         </a>
       </div>
     </div>
@@ -871,7 +756,6 @@
     </div>
   </section>
 
-  <!-- TRUST BAR -->
   <div class="trust-bar">
     <span class="trust-label">Compatible con</span>
     <div class="trust-items">
@@ -884,18 +768,18 @@
     </div>
   </div>
 
-  <!-- CATEGORÍAS -->
   <section class="section" id="consumibles">
     <div class="section-header">
       <div>
         <div class="section-eyebrow">Catálogo</div>
         <div class="section-title">Consumibles para<br>cada técnica analítica</div>
       </div>
-      <div class="section-note">Precios disponibles para clientes registrados. Consultanos para acceso.</div>
+      <div class="section-note">
+        Precios disponibles para clientes registrados. Consultanos para acceso.
+      </div>
     </div>
 
     <div class="categories-grid">
-
       <div class="cat-card">
         <div class="cat-number">01</div>
         <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -907,12 +791,14 @@
           <rect x="27" y="10" width="9" height="22" rx="2"/>
         </svg>
         <div class="cat-name">Viales y tapas</div>
-        <div class="cat-desc">Viales de vidrio clase 1 y 2 para HPLC y GC. Tapas de rosca, crimpeado y snap-cap. Septas PTFE/silicona.</div>
+        <div class="cat-desc">
+          Viales de vidrio para HPLC y GC. Tapas de rosca, crimpeado y snap-cap. Septas PTFE/silicona y formatos habituales de laboratorio.
+        </div>
         <div class="cat-tags">
-          <span class="cat-tag">Agilent</span>
-          <span class="cat-tag">AGS compatible</span>
-          <span class="cat-tag">Thermo</span>
-          <span class="cat-tag">2 mL · 1.5 mL · 4 mL</span>
+          <span class="cat-tag">2 mL</span>
+          <span class="cat-tag">1.5 mL</span>
+          <span class="cat-tag">4 mL</span>
+          <span class="cat-tag">Compatibles</span>
         </div>
       </div>
 
@@ -926,209 +812,213 @@
           <line x1="30" y1="22" x2="36" y2="22"/>
         </svg>
         <div class="cat-name">Filtros y membranas</div>
-        <div class="cat-desc">Filtros de jeringa en PVDF, nylon, PTFE y celulosa regenerada. Tamaños 0.22 µm y 0.45 µm.</div>
+        <div class="cat-desc">
+          Filtros de jeringa y membranas para preparación de muestras en PVDF, nylon, PTFE y otras configuraciones usuales.
+        </div>
         <div class="cat-tags">
           <span class="cat-tag">0.22 µm</span>
           <span class="cat-tag">0.45 µm</span>
-          <span class="cat-tag">13 mm · 25 mm</span>
+          <span class="cat-tag">13 mm</span>
+          <span class="cat-tag">25 mm</span>
         </div>
       </div>
 
       <div class="cat-card">
         <div class="cat-number">03</div>
         <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="8" y="10" width="28" height="6" rx="2"/>
-          <rect x="10" y="16" width="24" height="18" rx="2"/>
-          <line x1="16" y1="22" x2="28" y2="22"/>
-          <line x1="16" y1="27" x2="28" y2="27"/>
+          <rect x="8" y="12" width="28" height="6" rx="2"/>
+          <rect x="11" y="20" width="22" height="12" rx="2"/>
+          <line x1="15" y1="24" x2="29" y2="24"/>
+          <line x1="15" y1="28" x2="25" y2="28"/>
         </svg>
         <div class="cat-name">Columnas cromatográficas</div>
-        <div class="cat-desc">Columnas HPLC y GC. Fases C18, C8, fenilo, HILIC. Columnas de guarda y cartuchos SPE.</div>
+        <div class="cat-desc">
+          Columnas para distintas aplicaciones analíticas, con alternativas compatibles y selección orientada según método y matriz.
+        </div>
         <div class="cat-tags">
           <span class="cat-tag">HPLC</span>
           <span class="cat-tag">GC</span>
-          <span class="cat-tag">C18 · C8 · HILIC</span>
+          <span class="cat-tag">Compatibilidad</span>
         </div>
       </div>
 
       <div class="cat-card">
         <div class="cat-number">04</div>
         <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="16" cy="22" r="6"/>
-          <circle cx="28" cy="22" r="6"/>
-          <line x1="22" y1="22" x2="26" y2="22" stroke-width="2"/>
-          <line x1="6" y1="22" x2="10" y2="22"/>
-          <line x1="34" y1="22" x2="38" y2="22"/>
-          <path d="M16 16 L16 10 L28 10 L28 16" stroke-dasharray="2 2"/>
+          <circle cx="13" cy="22" r="5"/>
+          <circle cx="31" cy="22" r="5"/>
+          <path d="M18 22h8"/>
+          <path d="M13 17v-5M13 27v5M31 17v-5M31 27v5"/>
         </svg>
         <div class="cat-name">Loops y válvulas</div>
-        <div class="cat-desc">Loops de inyección para HPLC, válvulas de conmutación, ferrules, fittings y tubing PEEK e inoxidable.</div>
+        <div class="cat-desc">
+          Componentes para sistemas cromatográficos, con foco en reposición ágil, compatibilidad y continuidad operativa del laboratorio.
+        </div>
         <div class="cat-tags">
-          <span class="cat-tag">PEEK</span>
-          <span class="cat-tag">SS</span>
-          <span class="cat-tag">6 · 10 puertos</span>
+          <span class="cat-tag">HPLC</span>
+          <span class="cat-tag">Accesorios</span>
+          <span class="cat-tag">Repuestos</span>
         </div>
       </div>
 
       <div class="cat-card">
         <div class="cat-number">05</div>
         <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <line x1="22" y1="8" x2="22" y2="36"/>
-          <path d="M18 8 L26 8 L25 14 L19 14 Z"/>
-          <path d="M19 30 Q22 36 25 30" fill="none"/>
-          <circle cx="22" cy="26" r="1.5" fill="currentColor" opacity="0.4"/>
+          <path d="M10 30l12-12 6 6-12 12H10z"/>
+          <path d="M24 16l4-4 6 6-4 4"/>
+          <line x1="14" y1="30" x2="20" y2="24"/>
         </svg>
         <div class="cat-name">Agujas y jeringas</div>
-        <div class="cat-desc">Agujas para automuestreadores Agilent GC y HPLC. Jeringas Hamilton y equivalentes. Agujas para inyección manual.</div>
+        <div class="cat-desc">
+          Agujas, jeringas y accesorios relacionados para muestreo, inyección y tareas habituales de laboratorio analítico.
+        </div>
         <div class="cat-tags">
-          <span class="cat-tag">GC</span>
-          <span class="cat-tag">HPLC</span>
-          <span class="cat-tag">Hamilton</span>
+          <span class="cat-tag">Muestreo</span>
+          <span class="cat-tag">Inyección</span>
+          <span class="cat-tag">Laboratorio</span>
         </div>
       </div>
 
+      <div class="cat-card">
+        <div class="cat-number">06</div>
+        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="10" y="10" width="24" height="24" rx="3"/>
+          <path d="M16 22h12"/>
+          <path d="M22 16v12"/>
+        </svg>
+        <div class="cat-name">Más accesorios</div>
+        <div class="cat-desc">
+          Soluciones complementarias para cromatografía y preparación de muestras, según la necesidad específica de cada laboratorio.
+        </div>
+        <div class="cat-tags">
+          <span class="cat-tag">Consulta</span>
+          <span class="cat-tag">Selección</span>
+          <span class="cat-tag">Soporte</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- GUIDE CTA -->
   <section class="guide-section" id="guia">
     <div>
-      <div class="guide-eyebrow">Recurso técnico</div>
-      <h2 class="guide-title">¿Qué vial<br>necesitás para<br><span>tu aplicación?</span></h2>
-      <p class="guide-desc">Guía de selección de viales desarrollada por nuestro equipo técnico. Técnica, material de vidrio, tipo de cierre, septa y compatibilidad con el automuestreador.</p>
-      <a href="#contacto" class="btn-white">
-        Consultá a nuestro equipo
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="guide-eyebrow">Guía de selección</div>
+      <h2 class="guide-title">
+        Elegí mejor, cotizá más rápido y evitá errores de <span>compatibilidad</span>
+      </h2>
+      <p class="guide-desc">
+        Si no tenés claro qué vial, tapa, filtro o accesorio corresponde a tu equipo o aplicación, podés enviarnos la información de tu sistema y te orientamos para identificar una opción adecuada.
+      </p>
+      <a href="#contacto" class="btn-white">Quiero ayuda para seleccionar</a>
     </div>
 
     <div class="guide-steps">
       <div class="guide-step">
-        <span class="step-num">01</span>
-        <div class="step-content">
-          <div class="step-title">¿Para qué técnica?</div>
-          <div class="step-desc">HPLC, GC, GC-MS o headspace. Cada técnica define el perfil del vial.</div>
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Contanos qué equipo usás</div>
+          <div class="step-desc">Marca, modelo, técnica o referencia del producto actual.</div>
         </div>
       </div>
+
       <div class="guide-step">
-        <span class="step-num">02</span>
-        <div class="step-content">
-          <div class="step-title">¿Qué automuestreador usás?</div>
-          <div class="step-desc">Agilent, Waters, Shimadzu u otro. El fabricante condiciona la geometría del vial.</div>
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Indicá tu necesidad</div>
+          <div class="step-desc">Tipo de consumible, cantidad, aplicación o condición especial.</div>
         </div>
       </div>
+
       <div class="guide-step">
-        <span class="step-num">03</span>
-        <div class="step-content">
-          <div class="step-title">Tipo de vidrio y septa</div>
-          <div class="step-desc">Borosilicato clase 1 para trazas. Vidrio ámbar para fotosensibles. PTFE/silicona como estándar.</div>
-        </div>
-      </div>
-      <div class="guide-step">
-        <span class="step-num">04</span>
-        <div class="step-content">
-          <div class="step-title">Tipo de cierre</div>
-          <div class="step-desc">Rosca para HPLC general. Crimpeado para GC headspace. Snap-cap para alta velocidad.</div>
-        </div>
-      </div>
-      <div class="guide-step">
-        <span class="step-num">05</span>
-        <div class="step-content">
-          <div class="step-title">Original o compatible</div>
-          <div class="step-desc">Los viales AGS son dimensionalmente equivalentes a Agilent. Para métodos validados, recomendamos verificar el cambio.</div>
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Recibí orientación y cotización</div>
+          <div class="step-desc">Te respondemos con una alternativa para evaluar con tu laboratorio.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section class="contact-section" id="contacto">
     <div class="contact-left">
-      <div class="section-eyebrow">Acceso B2B</div>
-      <h2 class="contact-title">Especialistas<br>técnicos a<br><span>tu disposición</span></h2>
+      <h2 class="contact-title">
+        Solicitar <span>cotización</span>
+      </h2>
+
       <p class="contact-desc">
-        Más de 20 años de experiencia en instrumentación analítica. 
-        Registrate para acceder a precios acordados, catálogo completo 
-        y soporte técnico especializado.
+        Completá el formulario y enviános tu consulta. Podés incluir equipo, marca, código, cantidad estimada o cualquier dato que ayude a identificar el consumible.
       </p>
+
       <div class="contact-items">
-        <a href="mailto:consumibles@agsanalitica.com.ar" class="contact-item">
-          <span class="contact-icon">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </span>
-          consumibles@agsanalitica.com.ar
+        <a href="mailto:info@agsanalitica.com" class="contact-item">
+          <span class="contact-icon">✉</span>
+          info@agsanalitica.com
         </a>
-        <a href="https://wa.me/5491100000000" class="contact-item">
-          <span class="contact-icon">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-          </span>
-          WhatsApp disponible para clientes
+        <a href="https://www.agsanalitica.com" class="contact-item" target="_blank" rel="noopener noreferrer">
+          <span class="contact-icon">↗</span>
+          AGS Analítica
         </a>
-        <span class="contact-item">
-          <span class="contact-icon">
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </span>
-          Argentina · Cobertura nacional
-        </span>
       </div>
     </div>
 
     <div class="contact-form">
-      <div class="form-title">Solicitar cotización</div>
-      <div class="form-sub">Te respondemos dentro de las 24 hs hábiles</div>
+      <div class="form-title">Formulario de consulta</div>
+      <div class="form-sub">Te responderemos a la brevedad.</div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Nombre *</label>
-          <input type="text" class="form-input" placeholder="Tu nombre" required />
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Nombre *</label>
+            <input type="text" class="form-input" placeholder="Tu nombre" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Empresa *</label>
+            <input type="text" class="form-input" placeholder="Nombre del laboratorio o empresa" required />
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Empresa *</label>
-          <input type="text" class="form-input" placeholder="Razón social" required />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email *</label>
+            <input type="email" class="form-input" placeholder="email@laboratorio.com" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Teléfono / WhatsApp</label>
+            <input type="text" class="form-input" placeholder="+54 9 11 ..." />
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label class="form-label">Email *</label>
-        <input type="email" class="form-input" placeholder="email@laboratorio.com" required />
-      </div>
+        <div class="form-group">
+          <label class="form-label">Rubro *</label>
+          <select class="form-select" required>
+            <option value="" disabled selected>Seleccioná tu sector</option>
+            <option>Farmacéutico</option>
+            <option>Agroquímico</option>
+            <option>Alimentos y bebidas</option>
+            <option>Laboratorio tercerista</option>
+            <option>Universidad / Investigación</option>
+            <option>Petróleo y gas</option>
+            <option>Otro</option>
+          </select>
+        </div>
 
-      <div class="form-group">
-        <label class="form-label">Teléfono / WhatsApp</label>
-        <input type="text" class="form-input" placeholder="+54 9 11 ..." />
-      </div>
+        <div class="form-group">
+          <label class="form-label">¿Qué necesitás cotizar? *</label>
+          <textarea class="form-textarea" placeholder="Ej: viales 2 mL rosca para Agilent 1260, filtros PVDF 0.22 µm, tapas crimpeables, etc." required></textarea>
+        </div>
 
-      <div class="form-group">
-        <label class="form-label">Rubro *</label>
-        <select class="form-select" required>
-          <option value="" disabled selected>Seleccioná tu sector</option>
-          <option>Farmacéutico</option>
-          <option>Agroquímico</option>
-          <option>Alimentos y bebidas</option>
-          <option>Laboratorio tercerista</option>
-          <option>Universidad / Investigación</option>
-          <option>Petróleo y gas</option>
-          <option>Otro</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">¿Qué necesitás cotizar? *</label>
-        <textarea class="form-textarea" placeholder="Ej: viales 2 mL rosca para Agilent 1260, filtros PVDF 0.22 µm..." required></textarea>
-      </div>
-
-      <button class="btn-form">Enviar solicitud de cotización</button>
+        <button class="btn-form" type="submit">Enviar solicitud de cotización</button>
+      </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <img src="Viales_logo_oscuro.png" alt="VIALES" style="height:32px;width:auto;" />
     <div class="footer-meta">por AGS Analítica S.A. · Argentina · viales.com.ar</div>
   </footer>
 
   <script>
-    // Nav scroll effect
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
