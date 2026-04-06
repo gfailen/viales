@@ -707,6 +707,7 @@
       .section-note { text-align: left; }
       footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
+      .quienes-section { padding: 60px 24px; }
     }
 
     .footer-top {
@@ -760,6 +761,45 @@
       line-height: 1.6;
     }
 
+
+    .quienes-section {
+      padding: 80px 48px;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+    }
+
+    .quienes-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .quienes-text {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .quienes-text p {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
+
+    .quienes-text p:first-child {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .quienes-text p:last-child {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--navy);
+      font-style: italic;
+    }
+
   </style>
 </head>
 <body>
@@ -767,12 +807,12 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#" class="nav-logo">
-      <img src="Viales_transp.svg" alt="VIALES" />
+      <img src="Viales-com-ar_transp.svg" alt="VIALES" />
     </a>
     <div class="nav-right">
       <a href="#consumibles" class="nav-link">Consumibles</a>
       <a href="#guia" class="nav-link">Guía de selección</a>
-      <a href="https://www.agsanalitica.com/" class="nav-link" target="_blank" rel="noopener noreferrer">Quiénes somos</a>
+      <a href="#quienes" class="nav-link">Quiénes somos</a>
       <a href="#contacto" class="nav-cta">Cotizar</a>
     </div>
   </nav>
@@ -962,6 +1002,18 @@
     </div>
   </section>
 
+  <!-- QUIÉNES SOMOS -->
+  <section class="quienes-section" id="quienes">
+    <div class="quienes-inner">
+      <div class="section-eyebrow" style="margin-bottom:20px;">Quiénes somos</div>
+      <div class="quienes-text">
+        <p>Llevamos décadas reparando cromatógrafos, entrenando analistas y conociendo de cerca qué falla y qué no.</p>
+        <p>Somos el equipo técnico detrás de AGS Analítica — una empresa con más de 20 años de servicio en laboratorios de toda la Argentina.</p>
+        <p>viales.com.ar nació para eso: consumibles con respaldo técnico real detrás.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- GUIDE -->
   <section class="guide-section" id="guia">
     <div>
@@ -1026,60 +1078,18 @@
     <div class="contact-form">
       <div class="form-title">Formulario de consulta</div>
       <div class="form-sub">Te responderemos a la brevedad.</div>
-
-      <form>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Nombre *</label>
-            <input type="text" class="form-input" placeholder="Tu nombre" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Empresa *</label>
-            <input type="text" class="form-input" placeholder="Nombre del laboratorio" required />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Email *</label>
-            <input type="email" class="form-input" placeholder="email@laboratorio.com" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Teléfono / WhatsApp</label>
-            <input type="text" class="form-input" placeholder="+54 9 11 ..." />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Rubro *</label>
-          <select class="form-select" required>
-            <option value="" disabled selected>Seleccioná tu sector</option>
-            <option>Farmacéutico</option>
-            <option>Agroquímico</option>
-            <option>Alimentos y bebidas</option>
-            <option>Laboratorio tercerista</option>
-            <option>Universidad / Investigación</option>
-            <option>Petróleo y gas</option>
-            <option>Otro</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">¿Qué necesitás cotizar? *</label>
-          <textarea class="form-textarea" placeholder="Ej: viales 2 mL rosca para Agilent 1260, filtros PVDF 0.22 µm, tapas crimpeables, etc." required></textarea>
-        </div>
-
-        <button class="btn-form" type="submit">Enviar solicitud de cotización</button>
-      </form>
+      <!-- Elfsight Contact Form | Untitled Contact Form -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-860eb25c-e6e8-45ed-b212-facfc74407ac" data-elfsight-app-lazy></div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
-      <img src="Viales_transp.svg" alt="VIALES" style="height:32px;width:auto;" />
+      <img src="Viales-com-ar_transp.svg" alt="VIALES" style="height:32px;width:auto;" />
       <div class="footer-links">
-        <a href="https://www.agsanalitica.com/" class="footer-link" target="_blank" rel="noopener noreferrer">AGS Analítica S.A.</a>
+        <a href="https://www.agsanalitica.com/" class="footer-link" target="_blank" rel="noopener noreferrer">↗ AGS Analítica S.A.</a>
         <span class="footer-sep">·</span>
         <a href="mailto:info@agsanalitica.com" class="footer-link">info@agsanalitica.com</a>
         <span class="footer-sep">·</span>
@@ -1087,7 +1097,7 @@
       </div>
     </div>
     <div class="footer-legal">
-      <p>AGILENT®, SHIMADZU®, WATERS®, PERKIN ELMER® y THERMO® son marcas registradas de sus respectivos propietarios. AGS ANALÍTICA S.A. no es representante ni tiene vinculación comercial alguna con dichas empresas. Los nombres de marcas se mencionan únicamente a los efectos de indicar compatibilidad de productos.</p>
+      <p>AGILENT®, SHIMADZU®, WATERS®, PERKIN ELMER® y THERMO FISHER® son marcas registradas de sus respectivos propietarios. AGS ANALÍTICA S.A. no es representante ni tiene vinculación comercial alguna con dichas empresas. Los nombres de marcas se mencionan únicamente a los efectos de indicar compatibilidad de productos.</p>
       <p>AGS ANALÍTICA S.A. cumple con la Ley Nacional de Protección de Datos Personales N° 25.326.</p>
     </div>
   </footer>
