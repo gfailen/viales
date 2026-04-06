@@ -13,7 +13,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #1A2E4A;
+      --navy: #0B2440;
       --blue: #3A6DB5;
       --blue-light: #4A7FBF;
       --blue-mist: #EDF3FB;
@@ -41,7 +41,7 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 0 48px;
-      height: 64px;
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -57,7 +57,7 @@
       text-decoration: none;
     }
     .nav-logo img {
-      height: 52px;
+      height: 44px;
       width: auto;
       display: block;
     }
@@ -96,7 +96,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       padding: 120px 48px 80px;
       background: var(--navy);
       position: relative;
@@ -122,10 +122,11 @@
     }
 
     .hero-inner {
-      max-width: 720px;
+      max-width: 760px;
       animation: fadeUp 0.9s ease both;
       position: relative;
       z-index: 1;
+      text-align: center;
     }
 
     .hero-eyebrow {
@@ -138,6 +139,7 @@
       margin-bottom: 32px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
     }
     .hero-eyebrow::before {
@@ -163,7 +165,9 @@
       line-height: 1.7;
       color: rgba(255,255,255,0.65);
       margin-bottom: 16px;
-      max-width: 520px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-note {
@@ -181,6 +185,7 @@
       gap: 16px;
       align-items: center;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn-primary {
@@ -668,10 +673,9 @@
       background: var(--ink);
       padding: 40px 48px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
     }
 
     .footer-meta {
@@ -704,6 +708,58 @@
       footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      width: 100%;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--white); }
+
+    .footer-sep {
+      color: rgba(255,255,255,0.2);
+      font-size: 11px;
+    }
+
+    .footer-legal {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-legal p {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.6;
+    }
+
   </style>
 </head>
 <body>
@@ -711,11 +767,12 @@
   <!-- NAV -->
   <nav id="nav">
     <a href="#" class="nav-logo">
-      <img src="Viales_logo_oscuro.png" alt="VIALES" />
+      <img src="Viales_dark.svg" alt="VIALES" />
     </a>
     <div class="nav-right">
       <a href="#consumibles" class="nav-link">Consumibles</a>
       <a href="#guia" class="nav-link">Guía de selección</a>
+      <a href="https://www.agsanalitica.com/" class="nav-link" target="_blank" rel="noopener noreferrer">Quiénes somos</a>
       <a href="#contacto" class="nav-cta">Cotizar</a>
     </div>
   </nav>
@@ -1019,8 +1076,20 @@
 
   <!-- FOOTER -->
   <footer>
-    <img src="Viales_logo_oscuro.png" alt="VIALES" style="height:32px;width:auto;" />
-    <div class="footer-meta">por AGS Analítica S.A. · Argentina · viales.com.ar</div>
+    <div class="footer-top">
+      <img src="Viales_dark.svg" alt="VIALES" style="height:32px;width:auto;" />
+      <div class="footer-links">
+        <a href="https://www.agsanalitica.com/" class="footer-link" target="_blank" rel="noopener noreferrer">AGS Analítica S.A.</a>
+        <span class="footer-sep">·</span>
+        <a href="mailto:info@agsanalitica.com" class="footer-link">info@agsanalitica.com</a>
+        <span class="footer-sep">·</span>
+        <span class="footer-meta">Argentina · viales.com.ar</span>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>AGILENT®, SHIMADZU®, WATERS®, PERKIN ELMER® y THERMO® son marcas registradas de sus respectivos propietarios. AGS ANALÍTICA S.A. no es representante ni tiene vinculación comercial alguna con dichas empresas. Los nombres de marcas se mencionan únicamente a los efectos de indicar compatibilidad de productos.</p>
+      <p>AGS ANALÍTICA S.A. cumple con la Ley Nacional de Protección de Datos Personales N° 25.326.</p>
+    </div>
   </footer>
 
   <script>
