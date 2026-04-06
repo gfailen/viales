@@ -35,89 +35,107 @@
       overflow-x: hidden;
     }
 
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 16px 32px; /* antes 24/48 → más compacto */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-}
-    nav.scrolled { border-bottom-color: var(--border); }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.3s;
+    }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.nav-logo img {
-  height: 68px;  /* clave: subir bastante */
-  width: auto;
-  display: block;
-}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* antes 32 → roba espacio al logo */
-}
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
     .nav-link {
       font-size: 13px;
       font-weight: 400;
-      color: var(--ink-soft);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       letter-spacing: 0.02em;
       transition: color 0.2s;
     }
-    .nav-link:hover { color: var(--ink); }
+    .nav-link:hover { color: var(--white); }
 
     .nav-cta {
       font-size: 13px;
-      font-weight: 500;
-      color: var(--white);
-      background: var(--navy);
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--white);
       text-decoration: none;
-      padding: 9px 20px;
+      padding: 8px 20px;
       border-radius: 4px;
       letter-spacing: 0.02em;
       transition: background 0.2s, transform 0.15s;
     }
-    .nav-cta:hover { background: var(--blue); transform: translateY(-1px); }
+    .nav-cta:hover { background: var(--blue-mist); transform: translateY(-1px); }
 
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* le damos más espacio al texto */
-  align-items: center;
-  padding: 110px 32px 60px; /* menos padding lateral */
-}
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 120px 48px 80px;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
 
     .hero::before {
       content: '';
       position: absolute;
       top: -200px; right: -200px;
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(58,109,181,0.06) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(74,127,191,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
 
-    .hero-left {
-      max-width: 640px;
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(58,109,181,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 720px;
       animation: fadeUp 0.9s ease both;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-eyebrow {
       font-family: 'DM Mono', monospace;
       font-size: 11px;
       font-weight: 300;
-      letter-spacing: 0.2em;
-      color: var(--blue);
+      letter-spacing: 0.22em;
+      color: rgba(74,127,191,0.9);
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 32px;
       display: flex;
       align-items: center;
       gap: 12px;
@@ -127,34 +145,36 @@ nav {
       display: block;
       width: 32px;
       height: 1px;
-      background: var(--blue);
+      background: rgba(74,127,191,0.7);
     }
 
-.hero-main-title {
-  font-size: clamp(42px, 5.5vw, 72px);
-  font-weight: 700;
-  line-height: 1.02;
-  color: var(--ink);
-  margin-bottom: 28px;
-  max-width: 520px;
-  letter-spacing: -0.035em;
-}
+    .hero-main-title {
+      font-size: clamp(40px, 5.5vw, 76px);
+      font-weight: 700;
+      line-height: 1.02;
+      color: var(--white);
+      margin-bottom: 28px;
+      letter-spacing: -0.03em;
+    }
 
-.hero-desc {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.7;
-  color: var(--ink-soft);
-  margin-bottom: 20px;
-  max-width: 480px;
-}
+    .hero-desc {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 16px;
+      max-width: 520px;
+    }
 
-
-.hero-note {
-  font-size: 13px;
-  color: var(--ink-muted);
-  margin-bottom: 36px;
-}
+    .hero-note {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 48px;
+      text-transform: uppercase;
+    }
 
     .hero-actions {
       display: flex;
@@ -167,20 +187,20 @@ nav {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--navy);
-      color: var(--white);
+      background: var(--white);
+      color: var(--navy);
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       padding: 14px 28px;
       border-radius: 4px;
       letter-spacing: 0.02em;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
     .btn-primary:hover {
-      background: var(--blue);
+      background: var(--blue-mist);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(58,109,181,0.25);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     }
     .btn-primary svg { transition: transform 0.2s; }
     .btn-primary:hover svg { transform: translateX(3px); }
@@ -189,39 +209,18 @@ nav {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: var(--ink-soft);
+      color: rgba(255,255,255,0.6);
       text-decoration: none;
       font-size: 14px;
       font-weight: 400;
       padding: 14px 4px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
       letter-spacing: 0.02em;
       transition: color 0.2s, border-color 0.2s;
     }
-    .btn-secondary:hover { color: var(--blue); border-color: var(--blue); }
+    .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
 
-    .hero-right {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      animation: fadeUp 0.9s 0.2s ease both;
-    }
-
-    .hero-video-wrap {
-      width: 100%;
-      max-width: 480px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 24px 64px rgba(26,46,74,0.12);
-      background: #fff;
-    }
-    .hero-video-wrap video,
-    .hero-video-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
+    /* ── TRUST BAR ── */
     .trust-bar {
       background: var(--off-white);
       border-top: 1px solid var(--border);
@@ -267,6 +266,54 @@ nav {
       flex-shrink: 0;
     }
 
+    /* ── PRODUCT VIDEO SECTION ── */
+    .product-section {
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .product-text {}
+    .product-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .product-title {
+      font-size: clamp(24px, 2.5vw, 34px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .product-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .product-video-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(26,46,74,0.12);
+      background: #f0f4f8;
+    }
+    .product-video-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── CATEGORIES ── */
     .section {
       padding: 100px 48px;
     }
@@ -301,7 +348,7 @@ nav {
       font-size: 14px;
       font-weight: 300;
       color: var(--ink-muted);
-      max-width: 320px;
+      max-width: 280px;
       text-align: right;
       line-height: 1.6;
     }
@@ -320,14 +367,12 @@ nav {
       overflow: hidden;
       cursor: default;
       transition: border-color 0.3s, transform 0.3s;
-      animation: fadeUp 0.7s ease both;
     }
     .cat-card:hover {
       border-color: var(--blue);
       transform: translateY(-3px);
       z-index: 1;
     }
-
     .cat-card::after {
       content: '';
       position: absolute;
@@ -389,6 +434,7 @@ nav {
       border-radius: 2px;
     }
 
+    /* ── GUIDE ── */
     .guide-section {
       background: var(--navy);
       padding: 80px 48px;
@@ -427,7 +473,6 @@ nav {
       margin-bottom: 24px;
       letter-spacing: -0.01em;
     }
-
     .guide-title span { color: var(--blue-light); }
 
     .guide-desc {
@@ -452,15 +497,9 @@ nav {
       border-radius: 4px;
       transition: background 0.2s, transform 0.15s;
     }
-    .btn-white:hover {
-      background: var(--blue-mist);
-      transform: translateY(-2px);
-    }
+    .btn-white:hover { background: var(--blue-mist); transform: translateY(-2px); }
 
-    .guide-steps {
-      display: flex;
-      flex-direction: column;
-    }
+    .guide-steps { display: flex; flex-direction: column; }
 
     .guide-step {
       display: flex;
@@ -494,6 +533,7 @@ nav {
       line-height: 1.55;
     }
 
+    /* ── CONTACT ── */
     .contact-section {
       padding: 100px 48px;
       background: var(--off-white);
@@ -550,6 +590,7 @@ nav {
       justify-content: center;
       color: var(--blue);
       flex-shrink: 0;
+      font-style: normal;
     }
 
     .contact-form {
@@ -572,9 +613,7 @@ nav {
       margin-bottom: 28px;
     }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+    .form-group { margin-bottom: 20px; }
 
     .form-label {
       display: block;
@@ -600,22 +639,12 @@ nav {
       transition: border-color 0.2s, background 0.2s;
       appearance: none;
     }
-
     .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--blue);
       background: var(--white);
     }
-
-    .form-textarea {
-      resize: vertical;
-      min-height: 90px;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
     .btn-form {
       width: 100%;
@@ -634,6 +663,7 @@ nav {
     }
     .btn-form:hover { background: var(--blue); }
 
+    /* ── FOOTER ── */
     footer {
       background: var(--ink);
       padding: 40px 48px;
@@ -652,57 +682,36 @@ nav {
       color: rgba(255,255,255,0.35);
     }
 
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 24px 48px; }
-      .nav-right { gap: 16px; }
+      nav { padding: 0 24px; }
       .nav-link { display: none; }
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 100px 24px 60px;
-        min-height: auto;
-      }
-      .hero-right { display: none; }
-      .trust-bar {
-        padding: 16px 24px;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
+      .hero { padding: 100px 24px 60px; min-height: auto; }
+      .trust-bar { padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
+      .product-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
       .section { padding: 64px 24px; }
       .categories-grid { grid-template-columns: 1fr; }
-      .guide-section {
-        grid-template-columns: 1fr;
-        padding: 60px 24px;
-        gap: 40px;
-      }
-      .contact-section {
-        grid-template-columns: 1fr;
-        padding: 60px 24px;
-        gap: 40px;
-      }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .guide-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .contact-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .section-header { flex-direction: column; align-items: flex-start; }
       .section-note { text-align: left; }
-      footer {
-        padding: 32px 24px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
       .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav id="nav">
     <a href="#" class="nav-logo">
-      <img src="Viales_logo.png" alt="VIALES" />
+      <img src="Viales_logo_oscuro.png" alt="VIALES" />
     </a>
     <div class="nav-right">
       <a href="#consumibles" class="nav-link">Consumibles</a>
@@ -711,21 +720,20 @@ nav {
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-left">
-      <div class="hero-eyebrow">Portal B2B · AGS Analítica · Argentina</div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">AGS Analítica · Argentina</div>
 
       <h1 class="hero-main-title">
-        Consumibles y accesorios para cromatografía y laboratorio analítico
+        Consumibles y accesorios para cromatografía.
       </h1>
 
       <p class="hero-desc">
         Viales, tapas, filtros, membranas, columnas y accesorios para laboratorios.
       </p>
 
-      <p class="hero-note">
-        Una iniciativa de AGS Analítica
-      </p>
+      <p class="hero-note">Una iniciativa de AGS Analítica</p>
 
       <div class="hero-actions">
         <a href="#contacto" class="btn-primary">
@@ -742,16 +750,9 @@ nav {
         </a>
       </div>
     </div>
-
-    <div class="hero-right">
-      <div class="hero-video-wrap">
-        <video autoplay loop muted playsinline>
-          <source src="vial.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </div>
   </section>
 
+  <!-- TRUST BAR -->
   <div class="trust-bar">
     <span class="trust-label">Compatible con</span>
     <div class="trust-items">
@@ -764,15 +765,36 @@ nav {
     </div>
   </div>
 
+  <!-- PRODUCT VIDEO -->
+  <div class="product-section">
+    <div class="product-text">
+      <div class="product-eyebrow">Nuestro producto principal</div>
+      <h2 class="product-title">Viales de vidrio para cromatografía</h2>
+      <p class="product-desc">
+        Viales clase 1 y 2 compatibles con los principales automuestreadores del mercado. Disponibles en múltiples formatos, cierres y septas. Marcas originales y alternativas compatibles con respaldo técnico de AGS Analítica.
+      </p>
+      <a href="#contacto" class="btn-primary" style="width:fit-content;">
+        Cotizar viales
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+    <div class="product-video-wrap">
+      <video autoplay loop muted playsinline>
+        <source src="vial.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+
+  <!-- CONSUMIBLES -->
   <section class="section" id="consumibles">
     <div class="section-header">
       <div>
         <div class="section-eyebrow">Catálogo</div>
         <div class="section-title">Consumibles para<br>cada técnica analítica</div>
       </div>
-      <div class="section-note">
-        Precios disponibles para clientes registrados. Consultanos para acceso.
-      </div>
+      <div class="section-note">Consultanos para precios y disponibilidad.</div>
     </div>
 
     <div class="categories-grid">
@@ -787,9 +809,7 @@ nav {
           <rect x="27" y="10" width="9" height="22" rx="2"/>
         </svg>
         <div class="cat-name">Viales y tapas</div>
-        <div class="cat-desc">
-          Viales de vidrio para HPLC y GC. Tapas de rosca, crimpeado y snap-cap. Septas PTFE/silicona y formatos habituales de laboratorio.
-        </div>
+        <div class="cat-desc">Viales de vidrio para HPLC y GC. Tapas de rosca, crimpeado y snap-cap. Septas PTFE/silicona y formatos habituales de laboratorio.</div>
         <div class="cat-tags">
           <span class="cat-tag">2 mL</span>
           <span class="cat-tag">1.5 mL</span>
@@ -808,9 +828,7 @@ nav {
           <line x1="30" y1="22" x2="36" y2="22"/>
         </svg>
         <div class="cat-name">Filtros y membranas</div>
-        <div class="cat-desc">
-          Filtros de jeringa y membranas para preparación de muestras en PVDF, nylon, PTFE y otras configuraciones usuales.
-        </div>
+        <div class="cat-desc">Filtros de jeringa y membranas para preparación de muestras en PVDF, nylon, PTFE y otras configuraciones usuales.</div>
         <div class="cat-tags">
           <span class="cat-tag">0.22 µm</span>
           <span class="cat-tag">0.45 µm</span>
@@ -828,9 +846,7 @@ nav {
           <line x1="15" y1="28" x2="25" y2="28"/>
         </svg>
         <div class="cat-name">Columnas cromatográficas</div>
-        <div class="cat-desc">
-          Columnas para distintas aplicaciones analíticas, con alternativas compatibles y selección orientada según método y matriz.
-        </div>
+        <div class="cat-desc">Columnas para distintas aplicaciones analíticas, con alternativas compatibles y selección orientada según método y matriz.</div>
         <div class="cat-tags">
           <span class="cat-tag">HPLC</span>
           <span class="cat-tag">GC</span>
@@ -847,9 +863,7 @@ nav {
           <path d="M13 17v-5M13 27v5M31 17v-5M31 27v5"/>
         </svg>
         <div class="cat-name">Loops y válvulas</div>
-        <div class="cat-desc">
-          Componentes para sistemas cromatográficos, con foco en reposición ágil, compatibilidad y continuidad operativa del laboratorio.
-        </div>
+        <div class="cat-desc">Componentes para sistemas cromatográficos, con foco en reposición ágil, compatibilidad y continuidad operativa del laboratorio.</div>
         <div class="cat-tags">
           <span class="cat-tag">HPLC</span>
           <span class="cat-tag">Accesorios</span>
@@ -865,9 +879,7 @@ nav {
           <line x1="14" y1="30" x2="20" y2="24"/>
         </svg>
         <div class="cat-name">Agujas y jeringas</div>
-        <div class="cat-desc">
-          Agujas, jeringas y accesorios relacionados para muestreo, inyección y tareas habituales de laboratorio analítico.
-        </div>
+        <div class="cat-desc">Agujas, jeringas y accesorios relacionados para muestreo, inyección y tareas habituales de laboratorio analítico.</div>
         <div class="cat-tags">
           <span class="cat-tag">Muestreo</span>
           <span class="cat-tag">Inyección</span>
@@ -883,9 +895,7 @@ nav {
           <path d="M22 16v12"/>
         </svg>
         <div class="cat-name">Más accesorios</div>
-        <div class="cat-desc">
-          Soluciones complementarias para cromatografía y preparación de muestras, según la necesidad específica de cada laboratorio.
-        </div>
+        <div class="cat-desc">Soluciones complementarias para cromatografía y preparación de muestras, según la necesidad específica de cada laboratorio.</div>
         <div class="cat-tags">
           <span class="cat-tag">Consulta</span>
           <span class="cat-tag">Selección</span>
@@ -895,6 +905,7 @@ nav {
     </div>
   </section>
 
+  <!-- GUIDE -->
   <section class="guide-section" id="guia">
     <div>
       <div class="guide-eyebrow">Guía de selección</div>
@@ -915,7 +926,6 @@ nav {
           <div class="step-desc">Marca, modelo, técnica o referencia del producto actual.</div>
         </div>
       </div>
-
       <div class="guide-step">
         <div class="step-num">02</div>
         <div>
@@ -923,34 +933,34 @@ nav {
           <div class="step-desc">Tipo de consumible, cantidad, aplicación o condición especial.</div>
         </div>
       </div>
-
       <div class="guide-step">
         <div class="step-num">03</div>
         <div>
-          <div class="step-title">Recibí orientación y cotización</div>
+          <div class="step-title">Recibís orientación y cotización</div>
           <div class="step-desc">Te respondemos con una alternativa para evaluar con tu laboratorio.</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="contact-section" id="contacto">
     <div class="contact-left">
-      <h2 class="contact-title">
-        Solicitar <span>cotización</span>
-      </h2>
-
+      <h2 class="contact-title">Solicitar <span>cotización</span></h2>
       <p class="contact-desc">
-        Completá el formulario y enviános tu consulta. Podés incluir equipo, marca, código, cantidad estimada o cualquier dato que ayude a identificar el consumible.
+        Completá el formulario y envianos tu consulta. Podés incluir equipo, marca, código, cantidad estimada o cualquier dato que ayude a identificar el consumible.
       </p>
-
       <div class="contact-items">
         <a href="mailto:info@agsanalitica.com" class="contact-item">
-          <span class="contact-icon">✉</span>
+          <span class="contact-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
           info@agsanalitica.com
         </a>
         <a href="https://www.agsanalitica.com" class="contact-item" target="_blank" rel="noopener noreferrer">
-          <span class="contact-icon">↗</span>
+          <span class="contact-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
           AGS Analítica
         </a>
       </div>
@@ -966,10 +976,9 @@ nav {
             <label class="form-label">Nombre *</label>
             <input type="text" class="form-input" placeholder="Tu nombre" required />
           </div>
-
           <div class="form-group">
             <label class="form-label">Empresa *</label>
-            <input type="text" class="form-input" placeholder="Nombre del laboratorio o empresa" required />
+            <input type="text" class="form-input" placeholder="Nombre del laboratorio" required />
           </div>
         </div>
 
@@ -978,7 +987,6 @@ nav {
             <label class="form-label">Email *</label>
             <input type="email" class="form-input" placeholder="email@laboratorio.com" required />
           </div>
-
           <div class="form-group">
             <label class="form-label">Teléfono / WhatsApp</label>
             <input type="text" class="form-input" placeholder="+54 9 11 ..." />
@@ -1009,6 +1017,7 @@ nav {
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
     <img src="Viales_logo_oscuro.png" alt="VIALES" style="height:32px;width:auto;" />
     <div class="footer-meta">por AGS Analítica S.A. · Argentina · viales.com.ar</div>
