@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VIALES — Consumibles para Cromatografía</title>
   <meta name="description" content="Viales y consumibles para cromatografía. Por AGS Analítica, Argentina. Portal B2B para laboratorios farmacéuticos, agroquímicos y de alimentos." />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -695,7 +696,6 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
-      .nav-link { display: none; }
       .hero { padding: 100px 24px 60px; min-height: auto; }
       .trust-bar { padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
       .product-section { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
@@ -800,6 +800,78 @@
       font-style: italic;
     }
 
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 200;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 900px) {
+      .nav-hamburger { display: flex; }
+
+      .nav-right {
+        display: none;
+        position: fixed;
+        top: 64px;
+        left: 0; right: 0;
+        background: var(--navy);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 32px;
+        gap: 0;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        z-index: 150;
+      }
+
+      .nav-right.open {
+        display: flex;
+      }
+
+      .nav-link {
+        display: block;
+        width: 100%;
+        padding: 16px 0;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        color: rgba(255,255,255,0.8);
+      }
+
+      .nav-cta {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 15px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -809,7 +881,12 @@
     <a href="#" class="nav-logo">
       <img src="Viales-com-ar_transp.svg" alt="VIALES" />
     </a>
-    <div class="nav-right">
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-right" id="navRight">
       <a href="#consumibles" class="nav-link">Consumibles</a>
       <a href="#guia" class="nav-link">Guía de selección</a>
       <a href="#quienes" class="nav-link">Quiénes somos</a>
@@ -1106,6 +1183,24 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+
+  <script>
+    const hamburger = document.getElementById('navHamburger');
+    const navRight = document.getElementById('navRight');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navRight.classList.toggle('open');
+    });
+
+    // Close menu when a link is clicked
+    navRight.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navRight.classList.remove('open');
+      });
     });
   </script>
 </body>
