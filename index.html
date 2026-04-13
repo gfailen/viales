@@ -14,19 +14,20 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #0B2440;
-      --card-bg: #0f2e56;
-      --card-border: #1e3d66;
-      --blue: #3A6DB5;
+      --navy:       #0B2440;
+      --navy-mid:   #0b2240;
+      --navy-light: #0e2d52;
+      --card-bg:    #0f2e56;
+      --card-border:#1e3d66;
+      --blue:       #3A6DB5;
       --blue-light: #4A7FBF;
-      --blue-mist: #EDF3FB;
-      --ink: #0F1923;
-      --ink-soft: #4A5568;
-      --ink-muted: #8A97A8;
-      --white: #FFFFFF;
-      --off-white: #F7F9FC;
-      --border: #DDE4EE;
-      /* badge colors */
+      --blue-mist:  #EDF3FB;
+      --ink:        #0F1923;
+      --ink-soft:   #4A5568;
+      --ink-muted:  #8A97A8;
+      --white:      #FFFFFF;
+      --off-white:  #F7F9FC;
+      --border:     #DDE4EE;
       --gc:   #f5a623;
       --hplc: #4a90d9;
       --lcms: #34c97a;
@@ -173,64 +174,67 @@
     }
     .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
 
-    /* ── PRODUCT VIDEO SECTION ── */
-    .product-section {
-      padding: 80px 48px;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
+    /* ── CONSUMIBLES: SECCIÓN INTRO (S1) ── */
+    .cons-s1 {
+      background: #071830;
+      padding: 80px 48px 100px;
     }
+    .cons-s1-inner { max-width: 1100px; margin: 0 auto; }
 
-    .product-eyebrow {
+    .cons-eyebrow {
       font-family: 'DM Mono', monospace;
       font-size: 10px; font-weight: 300;
-      letter-spacing: 0.2em; color: var(--blue);
-      text-transform: uppercase; margin-bottom: 16px;
-    }
-    .product-title {
-      font-size: clamp(22px, 2.5vw, 34px); font-weight: 600;
-      color: var(--ink); line-height: 1.15;
-      letter-spacing: -0.02em; margin-bottom: 20px;
-    }
-    .product-desc {
-      font-size: 15px; font-weight: 300;
-      color: var(--ink-soft); line-height: 1.75; margin-bottom: 28px;
+      letter-spacing: 0.2em; color: #5a8faf;
+      text-transform: uppercase; margin-bottom: 14px;
     }
 
-    .product-video-wrap {
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 16px 48px rgba(26,46,74,0.12);
-      background: #f0f4f8; width: 100%;
-    }
-    .product-video-wrap video { width: 100%; height: auto; display: block; }
-
-    /* ── CONSUMIBLES SECTION (nueva) ── */
-    .consumibles-section {
-      padding: 80px 48px;
-      background: var(--navy);
+    .cons-s1-title {
+      font-size: clamp(26px, 3.5vw, 42px); font-weight: 700;
+      color: #eaf2fb; line-height: 1.12;
+      letter-spacing: -0.02em; margin-bottom: 18px;
     }
 
-    .consumibles-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+    .cons-s1-desc {
+      font-size: 16px; font-weight: 300;
+      color: #8bbdd8; line-height: 1.65;
+      max-width: 540px; margin-bottom: 28px;
     }
 
-    .consumibles-header {
-      margin-bottom: 40px;
+    .cons-techs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cons-tech {
+      font-size: 12px; font-weight: 500;
+      padding: 5px 12px; border-radius: 20px; letter-spacing: .3px;
     }
+    .cons-tech.gc   { background: #2a1f06; color: #f5a623; border: 1px solid #3d2d08; }
+    .cons-tech.hplc { background: #071d3a; color: #4a90d9; border: 1px solid #0e3060; }
+    .cons-tech.lcms { background: #062418; color: #34c97a; border: 1px solid #0d3d28; }
+    .cons-tech.gcms { background: #2a0f0f; color: #e05454; border: 1px solid #3d1616; }
 
-    .consumibles-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px; font-weight: 300;
-      letter-spacing: 0.2em; color: rgba(74,127,191,0.85);
+    /* ── CONSUMIBLES: SECCIÓN GRILLA (S2) ── */
+    .cons-s2 {
+      background: #0b2240;
+      padding: 72px 48px 80px;
+      position: relative;
+      margin-top: -40px;
+      clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+    }
+    .cons-s2-inner { max-width: 1100px; margin: 0 auto; }
+
+    .cons-s2-subtitle {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 1.4px; color: #5a8faf;
       text-transform: uppercase; margin-bottom: 10px;
     }
-
-    .consumibles-title {
-      font-size: clamp(24px, 3.5vw, 36px); font-weight: 700;
-      color: #e8f0f8; line-height: 1.15; letter-spacing: -0.01em;
+    .cons-s2-title {
+      font-size: clamp(20px, 2.5vw, 28px); font-weight: 500;
+      color: #daeaf6; margin-bottom: 10px;
+    }
+    .cons-s2-desc {
+      font-size: 14px; color: #7aadcc;
+      line-height: 1.6; max-width: 520px; margin-bottom: 32px;
     }
 
-    /* grid 2+2 */
+    /* grid cards */
     .cons-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -238,24 +242,20 @@
       margin-bottom: 14px;
     }
 
-    /* cards base */
     .cons-card {
       position: relative;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
+      background: #0a2040;
+      border: 1px solid #1a3554;
+      border-radius: 12px;
       padding: 24px;
-      cursor: default;
+      cursor: pointer;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       transition: border-color 0.2s ease, background 0.2s ease;
     }
-
-    .cons-card:hover {
-      border-color: #2a5080;
-      background: #102f5a;
-    }
-
-    /* línea top animada */
+    .cons-card:hover { border-color: #264d72; background: #0c2545; }
     .cons-card::before {
       content: '';
       position: absolute;
@@ -263,18 +263,16 @@
       height: 3px;
       opacity: 0;
       transition: opacity 0.25s ease;
-      border-radius: 10px 10px 0 0;
+      border-radius: 12px 12px 0 0;
     }
     .cons-card:hover::before { opacity: 1; }
 
-    /* colores de línea top por tipo */
-    .cons-card-viales::before    { background: linear-gradient(90deg, var(--gc), var(--hplc), var(--lcms)); }
-    .cons-card-filtros::before   { background: linear-gradient(90deg, var(--hplc), var(--lcms)); }
-    .cons-card-columnas::before  { background: linear-gradient(90deg, var(--hplc), var(--gc), var(--lcms)); }
-    .cons-card-gc::before        { background: linear-gradient(90deg, var(--gc), var(--gcms)); }
-    .cons-card-mas::before       { background: linear-gradient(90deg, var(--gc), var(--hplc), var(--lcms), var(--gcms)); }
+    .cons-card-viales::before  { background: linear-gradient(90deg, var(--gc), var(--hplc), var(--lcms)); }
+    .cons-card-filtros::before { background: linear-gradient(90deg, var(--hplc), var(--lcms)); }
+    .cons-card-columnas::before{ background: linear-gradient(90deg, var(--hplc), var(--gc), var(--lcms)); }
+    .cons-card-gc::before      { background: linear-gradient(90deg, var(--gc), var(--gcms)); }
+    .cons-card-mas::before     { background: linear-gradient(90deg, var(--gc), var(--hplc), var(--lcms), var(--gcms)); }
 
-    /* card ancha (última fila) */
     .cons-card-wide {
       display: flex;
       align-items: center;
@@ -283,41 +281,31 @@
       flex-wrap: wrap;
       padding: 24px 28px;
     }
-
-    .cons-wide-left { flex: 1 1 280px; min-width: 0; }
-
+    .cons-wide-left  { flex: 1 1 280px; min-width: 0; }
     .cons-wide-right {
       flex: 0 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      max-width: 340px;
-      justify-content: flex-end;
+      display: flex; flex-wrap: wrap; gap: 8px;
+      max-width: 340px; justify-content: flex-end;
     }
 
-    /* badges */
-    .cons-badges {
-      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
-    }
-
+    .cons-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
     .cons-badge {
       display: inline-block;
       padding: 2px 8px; border-radius: 4px;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.04em; line-height: 1.6;
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.04em; line-height: 1.6;
     }
-
     .badge-gc   { background: rgba(245,166,35,0.18);  color: var(--gc);   border: 1px solid rgba(245,166,35,0.3); }
     .badge-hplc { background: rgba(74,144,217,0.18);  color: var(--hplc); border: 1px solid rgba(74,144,217,0.3); }
     .badge-lcms { background: rgba(52,201,122,0.18);  color: var(--lcms); border: 1px solid rgba(52,201,122,0.3); }
     .badge-gcms { background: rgba(224,84,84,0.18);   color: var(--gcms); border: 1px solid rgba(224,84,84,0.3); }
 
-    /* texto cards */
     .cons-card-title {
       font-size: 16px; font-weight: 600;
-      color: #e8f0f8; margin-bottom: 8px; line-height: 1.3;
+      color: #cee0f0; margin-bottom: 8px; line-height: 1.3;
     }
     .cons-card-desc {
-      font-size: 13px; color: #7898b8;
+      font-size: 13px; color: #7aadcc;
       line-height: 1.65; margin-bottom: 16px;
     }
 
@@ -326,22 +314,65 @@
       font-size: 13px; font-weight: 600; color: var(--hplc);
       text-decoration: none;
     }
-
-    .cons-arrow {
-      display: inline-block; transition: transform 0.2s ease;
-    }
+    .cons-arrow { display: inline-block; transition: transform 0.2s ease; }
     .cons-card:hover .cons-arrow { transform: translateX(4px); }
 
-    /* tags lado derecho card ancha */
     .cons-tag {
       display: inline-block;
       padding: 4px 10px; border-radius: 4px;
       font-size: 12px; font-weight: 500;
       background: rgba(255,255,255,0.06);
-      color: #94afc8;
+      color: #7aadcc;
       border: 1px solid rgba(255,255,255,0.1);
       white-space: nowrap;
     }
+
+    /* ── CONSUMIBLES: SECCIÓN CTA (S3) ── */
+    .cons-s3 {
+      background: #0e2d52;
+      padding: 72px 48px 80px;
+      position: relative;
+      margin-top: -40px;
+      clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+    }
+    .cons-s3-inner { max-width: 1100px; margin: 0 auto; }
+
+    .cons-s3-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.2em; color: #5a8faf;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+    .cons-s3-title {
+      font-size: clamp(20px, 2.5vw, 28px); font-weight: 500;
+      color: #daeaf6; margin-bottom: 10px;
+    }
+    .cons-s3-desc {
+      font-size: 15px; color: #7aadcc;
+      line-height: 1.6; max-width: 520px;
+    }
+
+    .cons-cta-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; align-items: center; }
+
+    .btn-cons-p {
+      font-size: 14px; font-weight: 500;
+      padding: 11px 24px; border-radius: 6px;
+      background: #4da3e8; color: #03162e;
+      border: none; cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center;
+      transition: background 0.2s;
+    }
+    .btn-cons-p:hover { background: #6ab8f0; }
+
+    .btn-cons-s {
+      font-size: 14px; font-weight: 500;
+      padding: 11px 24px; border-radius: 6px;
+      background: transparent; color: #8ec8ee;
+      border: 1.5px solid #3a6a96; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-cons-s:hover { border-color: #5a90bc; color: #b0dcf4; }
 
     /* ── QUIÉNES SOMOS ── */
     .quienes-section {
@@ -349,7 +380,6 @@
       background: var(--white);
       border-top: 1px solid var(--border);
     }
-
     .quienes-inner { max-width: 680px; margin: 0 auto; text-align: center; }
 
     .section-eyebrow {
@@ -371,7 +401,6 @@
       gap: 80px; align-items: center;
       position: relative; overflow: hidden;
     }
-
     .guide-section::before {
       content: ''; position: absolute;
       top: -150px; right: -150px;
@@ -386,14 +415,12 @@
       letter-spacing: 0.2em; color: rgba(74,127,191,0.8);
       text-transform: uppercase; margin-bottom: 20px;
     }
-
     .guide-title {
       font-size: clamp(24px, 3vw, 42px); font-weight: 600;
       color: var(--white); line-height: 1.15;
       margin-bottom: 24px; letter-spacing: -0.01em;
     }
     .guide-title span { color: var(--blue-light); }
-
     .guide-desc {
       font-size: 15px; font-weight: 300;
       color: rgba(255,255,255,0.64); line-height: 1.75; margin-bottom: 36px;
@@ -409,7 +436,6 @@
     .btn-white:hover { background: var(--blue-mist); transform: translateY(-2px); }
 
     .guide-steps { display: flex; flex-direction: column; }
-
     .guide-step {
       display: flex; gap: 20px; align-items: flex-start;
       padding: 24px 0;
@@ -423,9 +449,8 @@
       color: var(--blue-light); letter-spacing: 0.1em;
       flex-shrink: 0; margin-top: 2px;
     }
-
     .step-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
-    .step-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.56); line-height: 1.55; }
+    .step-desc  { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.56); line-height: 1.55; }
 
     /* ── CONTACT ── */
     .contact-section {
@@ -433,49 +458,41 @@
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: start;
     }
-
     .contact-title {
       font-size: clamp(26px, 3vw, 40px); font-weight: 600;
       color: var(--ink); line-height: 1.15;
       letter-spacing: -0.01em; margin-bottom: 20px;
     }
     .contact-title span { color: var(--blue); }
-
     .contact-desc {
       font-size: 15px; font-weight: 300;
       color: var(--ink-soft); line-height: 1.75; margin-bottom: 40px;
     }
-
     .contact-items { display: flex; flex-direction: column; gap: 16px; }
-
     .contact-item {
       display: flex; align-items: center; gap: 14px;
       font-size: 14px; font-weight: 400;
       color: var(--ink-soft); text-decoration: none; transition: color 0.2s;
     }
     .contact-item:hover { color: var(--blue); }
-
     .contact-icon {
       width: 36px; height: 36px;
       background: var(--white); border: 1px solid var(--border);
       border-radius: 4px; display: flex; align-items: center;
       justify-content: center; color: var(--blue); flex-shrink: 0;
     }
-
     .contact-form {
       background: var(--white); border: 1px solid var(--border);
       padding: 40px; border-radius: 4px;
     }
-
     .form-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-    .form-sub { font-size: 13px; font-weight: 300; color: var(--ink-muted); margin-bottom: 28px; }
+    .form-sub   { font-size: 13px; font-weight: 300; color: var(--ink-muted); margin-bottom: 28px; }
 
     /* ── FOOTER ── */
     footer {
       background: var(--ink); padding: 40px 48px;
       display: flex; flex-direction: column; align-items: flex-start; gap: 0;
     }
-
     .footer-top {
       display: flex; align-items: center; justify-content: space-between;
       flex-wrap: wrap; gap: 20px; width: 100%;
@@ -483,9 +500,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.1);
       margin-bottom: 20px;
     }
-
     .footer-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-
     .footer-link {
       font-family: 'DM Mono', monospace;
       font-size: 11px; font-weight: 300;
@@ -493,17 +508,9 @@
       text-decoration: none; transition: color 0.2s;
     }
     .footer-link:hover { color: var(--white); }
-
-    .footer-sep { color: rgba(255,255,255,0.2); font-size: 11px; }
-
-    .footer-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; font-weight: 300;
-      letter-spacing: 0.1em; color: rgba(255,255,255,0.65);
-    }
-
+    .footer-sep   { color: rgba(255,255,255,0.2); font-size: 11px; }
+    .footer-meta  { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 300; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); }
     .footer-legal { width: 100%; display: flex; flex-direction: column; gap: 8px; }
-
     .footer-legal p {
       font-family: 'DM Mono', monospace;
       font-size: 10px; font-weight: 300;
@@ -538,7 +545,6 @@
       nav { padding: 0 20px; }
       .nav-logo img { height: 30px; }
       .nav-hamburger { display: flex; }
-
       .nav-right {
         display: none; position: fixed;
         top: 68px; left: 0; right: 0;
@@ -549,25 +555,20 @@
         z-index: 150;
       }
       .nav-right.open { display: flex; }
-
       .nav-link {
         display: block; width: 100%; padding: 16px 0;
         font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.07);
         color: rgba(255,255,255,0.8);
       }
-
-      .nav-cta {
-        margin-top: 20px; width: 100%;
-        text-align: center; padding: 14px 20px; font-size: 15px;
-      }
+      .nav-cta { margin-top: 20px; width: 100%; text-align: center; padding: 14px 20px; font-size: 15px; }
 
       .hero { padding: 90px 20px 60px; min-height: 100svh; }
       .hero-eyebrow { font-size: 10px; letter-spacing: 0.15em; }
 
-      .product-section { grid-template-columns: 1fr; padding: 48px 20px; gap: 32px; }
+      .cons-s1 { padding: 56px 20px 80px; }
+      .cons-s2 { padding: 72px 20px 56px; }
+      .cons-s3 { padding: 72px 20px 56px; }
 
-      /* consumibles responsive */
-      .consumibles-section { padding: 56px 20px; }
       .cons-grid { grid-template-columns: 1fr; }
       .cons-card-wide { flex-direction: column; align-items: flex-start; }
       .cons-wide-right { justify-content: flex-start; max-width: 100%; }
@@ -622,19 +623,30 @@
     </div>
   </section>
 
-  <!-- CONSUMIBLES -->
-  <section class="consumibles-section" id="consumibles">
-    <div class="consumibles-inner">
-
-      <div class="consumibles-header">
-        <p class="consumibles-eyebrow">Catálogo</p>
-        <h2 class="consumibles-title">Consumibles para<br>cada técnica analítica</h2>
+  <!-- CONSUMIBLES S1: INTRO -->
+  <section class="cons-s1" id="consumibles">
+    <div class="cons-s1-inner">
+      <p class="cons-eyebrow">Catálogo</p>
+      <h2 class="cons-s1-title">Consumibles para<br>cada técnica analítica</h2>
+      <p class="cons-s1-desc">Todo lo que necesitás para mantener tus equipos funcionando. Compatibles con los principales fabricantes, con stock local.</p>
+      <div class="cons-techs">
+        <span class="cons-tech gc">GC</span>
+        <span class="cons-tech hplc">HPLC</span>
+        <span class="cons-tech lcms">LC-MS</span>
+        <span class="cons-tech gcms">GC-MS</span>
       </div>
+    </div>
+  </section>
 
-      <!-- Grid 2+2 -->
+  <!-- CONSUMIBLES S2: GRILLA -->
+  <section class="cons-s2">
+    <div class="cons-s2-inner">
+      <p class="cons-s2-subtitle">Categorías disponibles</p>
+      <h3 class="cons-s2-title">Encontrá lo que buscás</h3>
+      <p class="cons-s2-desc">Seleccioná una categoría para ver el catálogo completo, o consultanos si no encontrás lo que necesitás.</p>
+
       <div class="cons-grid">
 
-        <!-- 01 Viales y tapas -->
         <div class="cons-card cons-card-viales">
           <div class="cons-badges">
             <span class="cons-badge badge-gc">GC</span>
@@ -646,7 +658,6 @@
           <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
         </div>
 
-        <!-- 02 Filtros de jeringa -->
         <div class="cons-card cons-card-filtros">
           <div class="cons-badges">
             <span class="cons-badge badge-hplc">HPLC</span>
@@ -657,7 +668,6 @@
           <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
         </div>
 
-        <!-- 03 Columnas -->
         <div class="cons-card cons-card-columnas">
           <div class="cons-badges">
             <span class="cons-badge badge-hplc">HPLC</span>
@@ -669,7 +679,6 @@
           <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
         </div>
 
-        <!-- 04 Consumibles GC -->
         <div class="cons-card cons-card-gc">
           <div class="cons-badges">
             <span class="cons-badge badge-gc">GC</span>
@@ -682,7 +691,6 @@
 
       </div>
 
-      <!-- Card ancha -->
       <div class="cons-card cons-card-mas cons-card-wide">
         <div class="cons-wide-left">
           <div class="cons-badges">
@@ -705,6 +713,19 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- CONSUMIBLES S3: CTA -->
+  <section class="cons-s3">
+    <div class="cons-s3-inner">
+      <p class="cons-s3-label">¿No encontrás lo que buscás?</p>
+      <h3 class="cons-s3-title">Consultanos directamente</h3>
+      <p class="cons-s3-desc">Trabajamos con múltiples proveedores internacionales. Si el consumible no está en el catálogo, lo conseguimos.</p>
+      <div class="cons-cta-row">
+        <a href="#contacto" class="btn-cons-p">Solicitar cotización</a>
+        <a href="#guia" class="btn-cons-s">Ver guía de selección</a>
+      </div>
     </div>
   </section>
 
@@ -806,7 +827,7 @@
     });
 
     const hamburger = document.getElementById('navHamburger');
-    const navRight = document.getElementById('navRight');
+    const navRight  = document.getElementById('navRight');
 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
@@ -820,5 +841,6 @@
       });
     });
   </script>
+
 </body>
 </html>
