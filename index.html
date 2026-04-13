@@ -15,6 +15,8 @@
 
     :root {
       --navy: #0B2440;
+      --card-bg: #0f2e56;
+      --card-border: #1e3d66;
       --blue: #3A6DB5;
       --blue-light: #4A7FBF;
       --blue-mist: #EDF3FB;
@@ -24,12 +26,14 @@
       --white: #FFFFFF;
       --off-white: #F7F9FC;
       --border: #DDE4EE;
+      /* badge colors */
+      --gc:   #f5a623;
+      --hplc: #4a90d9;
+      --lcms: #34c97a;
+      --gcms: #e05454;
     }
 
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -41,10 +45,7 @@
       max-width: 100vw;
     }
 
-    /* Prevent any element from causing horizontal scroll */
-    section, div, footer, nav {
-      max-width: 100%;
-    }
+    section, div, footer, nav { max-width: 100%; }
 
     /* ── NAV ── */
     nav {
@@ -61,42 +62,23 @@
       transition: border-color 0.3s;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      text-decoration: none;
-    }
-    .nav-logo img {
-      height: 44px;
-      width: auto;
-      display: block;
-    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; display: block; }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
+    .nav-right { display: flex; align-items: center; gap: 32px; }
     .nav-link {
-      font-size: 13px;
-      font-weight: 400;
+      font-size: 13px; font-weight: 400;
       color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      letter-spacing: 0.02em;
+      text-decoration: none; letter-spacing: 0.02em;
       transition: color 0.2s;
     }
     .nav-link:hover { color: var(--white); }
 
     .nav-cta {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--navy);
-      background: var(--white);
-      text-decoration: none;
-      padding: 8px 20px;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
+      font-size: 13px; font-weight: 600;
+      color: var(--navy); background: var(--white);
+      text-decoration: none; padding: 8px 20px;
+      border-radius: 4px; letter-spacing: 0.02em;
       transition: background 0.2s, transform 0.15s;
     }
     .nav-cta:hover { background: var(--blue-mist); transform: translateY(-1px); }
@@ -104,19 +86,15 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
       padding: 120px 48px 80px;
       background: var(--navy);
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
 
     .hero::before {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       top: -200px; right: -200px;
       width: 700px; height: 700px;
       background: radial-gradient(circle, rgba(74,127,191,0.10) 0%, transparent 70%);
@@ -124,8 +102,7 @@
     }
 
     .hero::after {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       bottom: -100px; left: -100px;
       width: 500px; height: 500px;
       background: radial-gradient(circle, rgba(58,109,181,0.07) 0%, transparent 70%);
@@ -133,107 +110,65 @@
     }
 
     .hero-inner {
-      max-width: 760px;
-      width: 100%;
+      max-width: 760px; width: 100%;
       animation: fadeUp 0.9s ease both;
-      position: relative;
-      z-index: 1;
-      text-align: center;
+      position: relative; z-index: 1; text-align: center;
     }
 
     .hero-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.22em;
-      color: rgba(74,127,191,0.9);
-      text-transform: uppercase;
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.22em; color: rgba(74,127,191,0.9);
+      text-transform: uppercase; margin-bottom: 32px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
     }
     .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: rgba(74,127,191,0.7);
-      flex-shrink: 0;
+      content: ''; display: block;
+      width: 32px; height: 1px;
+      background: rgba(74,127,191,0.7); flex-shrink: 0;
     }
 
     .hero-main-title {
-      font-size: clamp(36px, 5.5vw, 76px);
-      font-weight: 700;
-      line-height: 1.02;
-      color: var(--white);
-      margin-bottom: 28px;
-      letter-spacing: -0.03em;
+      font-size: clamp(36px, 5.5vw, 76px); font-weight: 700;
+      line-height: 1.02; color: var(--white);
+      margin-bottom: 28px; letter-spacing: -0.03em;
     }
 
     .hero-desc {
-      font-size: clamp(15px, 2vw, 18px);
-      font-weight: 300;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 16px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: clamp(15px, 2vw, 18px); font-weight: 300;
+      line-height: 1.7; color: rgba(255,255,255,0.65);
+      margin-bottom: 16px; max-width: 600px;
+      margin-left: auto; margin-right: auto;
     }
 
     .hero-note {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 48px;
-      text-transform: uppercase;
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.12em; color: rgba(255,255,255,0.35);
+      margin-bottom: 48px; text-transform: uppercase;
     }
 
     .hero-actions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: flex; gap: 16px;
+      align-items: center; flex-wrap: wrap; justify-content: center;
     }
 
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--navy);
+      text-decoration: none; font-size: 14px; font-weight: 600;
+      padding: 14px 28px; border-radius: 4px; letter-spacing: 0.02em;
       transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
     }
-    .btn-primary:hover {
-      background: var(--blue-mist);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
+    .btn-primary:hover { background: var(--blue-mist); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
     .btn-primary svg { transition: transform 0.2s; }
     .btn-primary:hover svg { transform: translateX(3px); }
 
     .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 14px 4px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      letter-spacing: 0.02em;
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 14px; font-weight: 400; padding: 14px 4px;
+      border-bottom: 1px solid rgba(255,255,255,0.2); letter-spacing: 0.02em;
       transition: color 0.2s, border-color 0.2s;
     }
     .btn-secondary:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
@@ -241,183 +176,171 @@
     /* ── PRODUCT VIDEO SECTION ── */
     .product-section {
       padding: 80px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
     }
 
     .product-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      color: var(--blue);
-      text-transform: uppercase;
-      margin-bottom: 16px;
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.2em; color: var(--blue);
+      text-transform: uppercase; margin-bottom: 16px;
     }
     .product-title {
-      font-size: clamp(22px, 2.5vw, 34px);
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      font-size: clamp(22px, 2.5vw, 34px); font-weight: 600;
+      color: var(--ink); line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 20px;
     }
     .product-desc {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.75;
-      margin-bottom: 28px;
+      font-size: 15px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.75; margin-bottom: 28px;
     }
 
     .product-video-wrap {
-      border-radius: 12px;
-      overflow: hidden;
+      border-radius: 12px; overflow: hidden;
       box-shadow: 0 16px 48px rgba(26,46,74,0.12);
-      background: #f0f4f8;
-      width: 100%;
+      background: #f0f4f8; width: 100%;
     }
-    .product-video-wrap video {
-      width: 100%;
-      height: auto;
-      display: block;
+    .product-video-wrap video { width: 100%; height: auto; display: block; }
+
+    /* ── CONSUMIBLES SECTION (nueva) ── */
+    .consumibles-section {
+      padding: 80px 48px;
+      background: var(--navy);
     }
 
-    /* ── CATEGORIES ── */
-    .section {
-      padding: 100px 48px;
+    .consumibles-inner {
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 56px;
-      gap: 32px;
+    .consumibles-header {
+      margin-bottom: 40px;
     }
 
-    .section-eyebrow {
+    .consumibles-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      color: var(--blue);
-      text-transform: uppercase;
-      margin-bottom: 12px;
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.2em; color: rgba(74,127,191,0.85);
+      text-transform: uppercase; margin-bottom: 10px;
     }
 
-    .section-title {
-      font-size: clamp(26px, 3vw, 40px);
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      line-height: 1.1;
-      color: var(--ink);
+    .consumibles-title {
+      font-size: clamp(24px, 3.5vw, 36px); font-weight: 700;
+      color: #e8f0f8; line-height: 1.15; letter-spacing: -0.01em;
     }
 
-    .section-note {
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--ink-muted);
-      max-width: 280px;
-      text-align: right;
-      line-height: 1.6;
+    /* grid 2+2 */
+    .cons-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 14px;
     }
 
-.categories-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-.cat-card-wide {
-  grid-column: span 2;
-}
-
-@media (max-width: 900px) {
-  .categories-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cat-card-wide {
-    grid-column: span 1;
-  }
-}
-
-    .cat-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 40px 36px;
+    /* cards base */
+    .cons-card {
       position: relative;
-      overflow: hidden;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 24px;
       cursor: default;
-      transition: border-color 0.3s, transform 0.3s;
+      overflow: hidden;
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
-    .cat-card:hover {
-      border-color: var(--blue);
-      transform: translateY(-3px);
-      z-index: 1;
+
+    .cons-card:hover {
+      border-color: #2a5080;
+      background: #102f5a;
     }
-    .cat-card::after {
+
+    /* línea top animada */
+    .cons-card::before {
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--blue);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      border-radius: 10px 10px 0 0;
     }
-    .cat-card:hover::after { transform: scaleX(1); }
+    .cons-card:hover::before { opacity: 1; }
 
-    .cat-number {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--ink-muted);
-      letter-spacing: 0.1em;
-      margin-bottom: 24px;
-    }
+    /* colores de línea top por tipo */
+    .cons-card-viales::before    { background: linear-gradient(90deg, var(--gc), var(--hplc), var(--lcms)); }
+    .cons-card-filtros::before   { background: linear-gradient(90deg, var(--hplc), var(--lcms)); }
+    .cons-card-columnas::before  { background: linear-gradient(90deg, var(--hplc), var(--gc), var(--lcms)); }
+    .cons-card-gc::before        { background: linear-gradient(90deg, var(--gc), var(--gcms)); }
+    .cons-card-mas::before       { background: linear-gradient(90deg, var(--gc), var(--hplc), var(--lcms), var(--gcms)); }
 
-    .cat-icon {
-      width: 44px;
-      height: 44px;
-      margin-bottom: 20px;
-      color: var(--blue);
-    }
-
-    .cat-name {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
+    /* card ancha (última fila) */
+    .cons-card-wide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 24px 28px;
     }
 
-    .cat-desc {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.65;
-    }
+    .cons-wide-left { flex: 1 1 280px; min-width: 0; }
 
-    .cat-tags {
+    .cons-wide-right {
+      flex: 0 0 auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 20px;
+      gap: 8px;
+      max-width: 340px;
+      justify-content: flex-end;
     }
 
-    .cat-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: var(--blue);
-      background: var(--blue-mist);
-      padding: 4px 10px;
-      border-radius: 2px;
+    /* badges */
+    .cons-badges {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;
+    }
+
+    .cons-badge {
+      display: inline-block;
+      padding: 2px 8px; border-radius: 4px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em; line-height: 1.6;
+    }
+
+    .badge-gc   { background: rgba(245,166,35,0.18);  color: var(--gc);   border: 1px solid rgba(245,166,35,0.3); }
+    .badge-hplc { background: rgba(74,144,217,0.18);  color: var(--hplc); border: 1px solid rgba(74,144,217,0.3); }
+    .badge-lcms { background: rgba(52,201,122,0.18);  color: var(--lcms); border: 1px solid rgba(52,201,122,0.3); }
+    .badge-gcms { background: rgba(224,84,84,0.18);   color: var(--gcms); border: 1px solid rgba(224,84,84,0.3); }
+
+    /* texto cards */
+    .cons-card-title {
+      font-size: 16px; font-weight: 600;
+      color: #e8f0f8; margin-bottom: 8px; line-height: 1.3;
+    }
+    .cons-card-desc {
+      font-size: 13px; color: #7898b8;
+      line-height: 1.65; margin-bottom: 16px;
+    }
+
+    .cons-cta {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 13px; font-weight: 600; color: var(--hplc);
+      text-decoration: none;
+    }
+
+    .cons-arrow {
+      display: inline-block; transition: transform 0.2s ease;
+    }
+    .cons-card:hover .cons-arrow { transform: translateX(4px); }
+
+    /* tags lado derecho card ancha */
+    .cons-tag {
+      display: inline-block;
+      padding: 4px 10px; border-radius: 4px;
+      font-size: 12px; font-weight: 500;
+      background: rgba(255,255,255,0.06);
+      color: #94afc8;
+      border: 1px solid rgba(255,255,255,0.1);
+      white-space: nowrap;
     }
 
     /* ── QUIÉNES SOMOS ── */
@@ -427,53 +350,30 @@
       border-top: 1px solid var(--border);
     }
 
-    .quienes-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
+    .quienes-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+
+    .section-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.2em; color: var(--blue);
+      text-transform: uppercase; margin-bottom: 12px;
     }
 
-    .quienes-text {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .quienes-text p {
-      font-size: 18px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--ink-soft);
-    }
-
-    .quienes-text p:first-child {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--ink);
-    }
-
-    .quienes-text p:last-child {
-      font-size: 17px;
-      font-weight: 500;
-      color: var(--navy);
-      font-style: italic;
-    }
+    .quienes-text { display: flex; flex-direction: column; gap: 20px; }
+    .quienes-text p { font-size: 18px; font-weight: 300; line-height: 1.75; color: var(--ink-soft); }
+    .quienes-text p:first-child { font-size: 20px; font-weight: 400; color: var(--ink); }
+    .quienes-text p:last-child { font-size: 17px; font-weight: 500; color: var(--navy); font-style: italic; }
 
     /* ── GUIDE ── */
     .guide-section {
-      background: var(--navy);
-      padding: 80px 48px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+      background: var(--navy); padding: 80px 48px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      position: relative; overflow: hidden;
     }
 
     .guide-section::before {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       top: -150px; right: -150px;
       width: 500px; height: 500px;
       background: radial-gradient(circle, rgba(74,127,191,0.12) 0%, transparent 70%);
@@ -482,43 +382,28 @@
 
     .guide-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      color: rgba(74,127,191,0.8);
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.2em; color: rgba(74,127,191,0.8);
+      text-transform: uppercase; margin-bottom: 20px;
     }
 
     .guide-title {
-      font-size: clamp(24px, 3vw, 42px);
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.15;
-      margin-bottom: 24px;
-      letter-spacing: -0.01em;
+      font-size: clamp(24px, 3vw, 42px); font-weight: 600;
+      color: var(--white); line-height: 1.15;
+      margin-bottom: 24px; letter-spacing: -0.01em;
     }
     .guide-title span { color: var(--blue-light); }
 
     .guide-desc {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.64);
-      line-height: 1.75;
-      margin-bottom: 36px;
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,0.64); line-height: 1.75; margin-bottom: 36px;
     }
 
     .btn-white {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      padding: 14px 28px;
-      border-radius: 4px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--navy);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 14px 28px; border-radius: 4px;
       transition: background 0.2s, transform 0.15s;
     }
     .btn-white:hover { background: var(--blue-mist); transform: translateY(-2px); }
@@ -526,9 +411,7 @@
     .guide-steps { display: flex; flex-direction: column; }
 
     .guide-step {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
+      display: flex; gap: 20px; align-items: flex-start;
       padding: 24px 0;
       border-bottom: 1px solid rgba(255,255,255,0.07);
     }
@@ -536,197 +419,109 @@
 
     .step-num {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--blue-light);
-      letter-spacing: 0.1em;
-      flex-shrink: 0;
-      margin-top: 2px;
+      font-size: 11px; font-weight: 300;
+      color: var(--blue-light); letter-spacing: 0.1em;
+      flex-shrink: 0; margin-top: 2px;
     }
 
-    .step-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .step-desc {
-      font-size: 13px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.56);
-      line-height: 1.55;
-    }
+    .step-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+    .step-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.56); line-height: 1.55; }
 
     /* ── CONTACT ── */
     .contact-section {
-      padding: 100px 48px;
-      background: var(--off-white);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
+      padding: 100px 48px; background: var(--off-white);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
     }
 
     .contact-title {
-      font-size: clamp(26px, 3vw, 40px);
-      font-weight: 600;
-      color: var(--ink);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 20px;
+      font-size: clamp(26px, 3vw, 40px); font-weight: 600;
+      color: var(--ink); line-height: 1.15;
+      letter-spacing: -0.01em; margin-bottom: 20px;
     }
     .contact-title span { color: var(--blue); }
 
     .contact-desc {
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--ink-soft);
-      line-height: 1.75;
-      margin-bottom: 40px;
+      font-size: 15px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.75; margin-bottom: 40px;
     }
 
-    .contact-items {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+    .contact-items { display: flex; flex-direction: column; gap: 16px; }
 
     .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--ink-soft);
-      text-decoration: none;
-      transition: color 0.2s;
+      display: flex; align-items: center; gap: 14px;
+      font-size: 14px; font-weight: 400;
+      color: var(--ink-soft); text-decoration: none; transition: color 0.2s;
     }
     .contact-item:hover { color: var(--blue); }
 
     .contact-icon {
       width: 36px; height: 36px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--blue);
-      flex-shrink: 0;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 4px; display: flex; align-items: center;
+      justify-content: center; color: var(--blue); flex-shrink: 0;
     }
 
     .contact-form {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: 4px;
+      background: var(--white); border: 1px solid var(--border);
+      padding: 40px; border-radius: 4px;
     }
 
-    .form-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 6px;
-    }
-    .form-sub {
-      font-size: 13px;
-      font-weight: 300;
-      color: var(--ink-muted);
-      margin-bottom: 28px;
-    }
+    .form-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .form-sub { font-size: 13px; font-weight: 300; color: var(--ink-muted); margin-bottom: 28px; }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--ink);
-      padding: 40px 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
+      background: var(--ink); padding: 40px 48px;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 0;
     }
 
     .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      width: 100%;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px; width: 100%;
       padding-bottom: 24px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
       margin-bottom: 20px;
     }
 
-    .footer-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .footer-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 
     .footer-link {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.65);
-      text-decoration: none;
-      transition: color 0.2s;
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.65);
+      text-decoration: none; transition: color 0.2s;
     }
     .footer-link:hover { color: var(--white); }
 
-    .footer-sep {
-      color: rgba(255,255,255,0.2);
-      font-size: 11px;
-    }
+    .footer-sep { color: rgba(255,255,255,0.2); font-size: 11px; }
 
     .footer-meta {
       font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.65);
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.1em; color: rgba(255,255,255,0.65);
     }
 
-    .footer-legal {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .footer-legal { width: 100%; display: flex; flex-direction: column; gap: 8px; }
 
     .footer-legal p {
       font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.6;
+      font-size: 10px; font-weight: 300;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.65); line-height: 1.6;
     }
 
     /* ── HAMBURGER ── */
     .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 36px;
-      height: 36px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 200;
-      flex-shrink: 0;
+      display: none; flex-direction: column;
+      justify-content: center; gap: 5px;
+      width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; z-index: 200; flex-shrink: 0;
     }
     .nav-hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.25s ease;
-      transform-origin: center;
+      display: block; width: 22px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: all 0.25s ease; transform-origin: center;
     }
     .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
@@ -735,7 +530,7 @@
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
@@ -745,54 +540,48 @@
       .nav-hamburger { display: flex; }
 
       .nav-right {
-        display: none;
-        position: fixed;
-        top: 68px;
-        left: 0; right: 0;
+        display: none; position: fixed;
+        top: 68px; left: 0; right: 0;
         background: var(--navy);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 24px 24px;
-        gap: 0;
+        flex-direction: column; align-items: flex-start;
+        padding: 24px; gap: 0;
         border-top: 1px solid rgba(255,255,255,0.08);
         z-index: 150;
       }
       .nav-right.open { display: flex; }
 
       .nav-link {
-        display: block;
-        width: 100%;
-        padding: 16px 0;
-        font-size: 16px;
-        border-bottom: 1px solid rgba(255,255,255,0.07);
+        display: block; width: 100%; padding: 16px 0;
+        font-size: 16px; border-bottom: 1px solid rgba(255,255,255,0.07);
         color: rgba(255,255,255,0.8);
       }
 
       .nav-cta {
-        margin-top: 20px;
-        width: 100%;
-        text-align: center;
-        padding: 14px 20px;
-        font-size: 15px;
+        margin-top: 20px; width: 100%;
+        text-align: center; padding: 14px 20px; font-size: 15px;
       }
 
       .hero { padding: 90px 20px 60px; min-height: 100svh; }
       .hero-eyebrow { font-size: 10px; letter-spacing: 0.15em; }
 
       .product-section { grid-template-columns: 1fr; padding: 48px 20px; gap: 32px; }
-      .section { padding: 56px 20px; }
-      .categories-grid { grid-template-columns: 1fr; }
-      .guide-section { grid-template-columns: 1fr; padding: 56px 20px; gap: 40px; }
-      .contact-section { grid-template-columns: 1fr; padding: 56px 20px; gap: 40px; }
-      .contact-form { padding: 24px 20px; }
-      .section-header { flex-direction: column; align-items: flex-start; }
-      .section-note { text-align: left; max-width: 100%; }
-      footer { padding: 32px 20px; }
-      .footer-top { flex-direction: column; align-items: flex-start; }
+
+      /* consumibles responsive */
+      .consumibles-section { padding: 56px 20px; }
+      .cons-grid { grid-template-columns: 1fr; }
+      .cons-card-wide { flex-direction: column; align-items: flex-start; }
+      .cons-wide-right { justify-content: flex-start; max-width: 100%; }
+
       .quienes-section { padding: 56px 20px; }
       .quienes-inner { text-align: left; }
       .quienes-text p { font-size: 16px; }
       .quienes-text p:first-child { font-size: 18px; }
+
+      .guide-section { grid-template-columns: 1fr; padding: 56px 20px; gap: 40px; }
+      .contact-section { grid-template-columns: 1fr; padding: 56px 20px; gap: 40px; }
+      .contact-form { padding: 24px 20px; }
+      footer { padding: 32px 20px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -818,7 +607,7 @@
   <section class="hero">
     <div class="hero-inner">
       <h1 class="hero-main-title">Consumibles para cromatografía.</h1>
-      <p class="hero-desc">Viales, lámparas, liners, columnas, filtros y más,</br> con el respaldo técnico de quien repara tus equipos.</p>  
+      <p class="hero-desc">Viales, lámparas, liners, columnas, filtros y más,<br> con el respaldo técnico de quien repara tus equipos.</p>
       <p class="hero-note">Una iniciativa de AGS Analítica</p>
       <div class="hero-actions">
         <a href="#contacto" class="btn-primary">
@@ -834,147 +623,88 @@
   </section>
 
   <!-- CONSUMIBLES -->
-  <section class="section" id="consumibles">
-    <div class="section-header">
-      <div>
-        <div class="section-eyebrow">Catálogo</div>
-        <div class="section-title">Consumibles para<br>cada técnica analítica</div>
+  <section class="consumibles-section" id="consumibles">
+    <div class="consumibles-inner">
+
+      <div class="consumibles-header">
+        <p class="consumibles-eyebrow">Catálogo</p>
+        <h2 class="consumibles-title">Consumibles para<br>cada técnica analítica</h2>
       </div>
-      <div class="section-note">Consultanos por precios y disponibilidad.</div>
-    </div>
 
-<div class="categories-grid">
-  <div class="cat-card">
-    <div class="cat-number">01</div>
-    <div class="cat-name">Viales y tapas</div>
-    <div class="cat-desc">Crimp, rosca y snap-cap. Vidrio transparente y ámbar. Septas de diferentes materiales.</div>
-    <div class="cat-tags">
-      <span class="cat-tag">2 mL</span>
-      <span class="cat-tag">1.5 mL</span>
-      <span class="cat-tag">0.3 mL insert</span>
-      <span class="cat-tag">Septas</span>
-    </div>
-  </div>
+      <!-- Grid 2+2 -->
+      <div class="cons-grid">
 
-  <div class="cat-card">
-    <div class="cat-number">02</div>
-    <div class="cat-name">Filtros de jeringa</div>
-    <div class="cat-desc">PVDF, nylon, PTFE y PES. Preparación de muestra pre-inyección para proteger columnas.</div>
-    <div class="cat-tags">
-      <span class="cat-tag">0.22 µm</span>
-      <span class="cat-tag">0.45 µm</span>
-      <span class="cat-tag">13 mm</span>
-      <span class="cat-tag">25 mm</span>
-    </div>
-  </div>
+        <!-- 01 Viales y tapas -->
+        <div class="cons-card cons-card-viales">
+          <div class="cons-badges">
+            <span class="cons-badge badge-gc">GC</span>
+            <span class="cons-badge badge-hplc">HPLC</span>
+            <span class="cons-badge badge-lcms">LC-MS</span>
+          </div>
+          <div class="cons-card-title">Viales y tapas</div>
+          <div class="cons-card-desc">Crimp, rosca y snap-cap. Vidrio transparente y ámbar, insertos y accesorios para muestreo automático. Septas de diferentes materiales.</div>
+          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
+        </div>
 
-  <div class="cat-card">
-    <div class="cat-number">03</div>
-    <div class="cat-name">Columnas</div>
-    <div class="cat-desc">Columnas para HPLC y GC.</div>
-    <div class="cat-tags">
-      <span class="cat-tag">C18 / C8</span>
-      <span class="cat-tag">DB-5</span>
-      <span class="cat-tag">HP-INNOWAX</span>
-      <span class="cat-tag">100–250 mm</span>
-    </div>
-  </div>
+        <!-- 02 Filtros de jeringa -->
+        <div class="cons-card cons-card-filtros">
+          <div class="cons-badges">
+            <span class="cons-badge badge-hplc">HPLC</span>
+            <span class="cons-badge badge-lcms">LC-MS</span>
+          </div>
+          <div class="cons-card-title">Filtros de jeringa</div>
+          <div class="cons-card-desc">Membranas PTFE, Nylon, PES, PVDF y RC. Diámetros 4, 13, 17 y 25 mm. Para filtración de muestras previo a inyección.</div>
+          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
+        </div>
 
-  <div class="cat-card">
-    <div class="cat-number">04</div>
-    <div class="cat-name">Consumibles GC</div>
-    <div class="cat-desc">Liners, septas, o-rings, ferrules y sellos de oro. Filamentos.</div>
-    <div class="cat-tags">
-      <span class="cat-tag">Liners split/splitless</span>
-      <span class="cat-tag">Ferrules grafito</span>
-      <span class="cat-tag">Filamentos MSD</span>
-      <span class="cat-tag">Sellos oro</span>
-    </div>
-  </div>
+        <!-- 03 Columnas -->
+        <div class="cons-card cons-card-columnas">
+          <div class="cons-badges">
+            <span class="cons-badge badge-hplc">HPLC</span>
+            <span class="cons-badge badge-gc">GC</span>
+            <span class="cons-badge badge-lcms">LC-MS</span>
+          </div>
+          <div class="cons-card-title">Columnas</div>
+          <div class="cons-card-desc">Columnas capilares para GC (DB-5, HP-INNOWAX y otras fases), columnas de relleno para HPLC y LC-MS. C18, C8, 100–250 mm.</div>
+          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
+        </div>
 
-  <div class="cat-card cat-card-wide">
-    <div class="cat-number">05</div>
-    <div class="cat-name">Más consumibles</div>
-    <div class="cat-desc">Filtros para gases, capilares, loops, válvulas, conectores PEEK, lámparas de HPLC y mucho más. Si no lo ves listado, consultanos.</div>
-    <div class="cat-tags">
-      <span class="cat-tag">Filtros gas</span>
-      <span class="cat-tag">Loops</span>
-      <span class="cat-tag">Válvulas</span>
-      <span class="cat-tag">Conectores PEEK</span>
-      <span class="cat-tag">Lámparas HPLC</span>
-      <span class="cat-tag">Capilares</span>
-    </div>
-  </div>
-</div>
+        <!-- 04 Consumibles GC -->
+        <div class="cons-card cons-card-gc">
+          <div class="cons-badges">
+            <span class="cons-badge badge-gc">GC</span>
+            <span class="cons-badge badge-gcms">GC-MS</span>
+          </div>
+          <div class="cons-card-title">Consumibles GC</div>
+          <div class="cons-card-desc">Liners split/splitless, septums, trampas de humedad, ferrules de grafito y SS, tapas de columna, filamentos MSD y sellos de oro.</div>
+          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
+        </div>
 
-      <div class="cat-card">
-        <div class="cat-number">02</div>
-        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="22" cy="22" r="14"/><circle cx="22" cy="22" r="8"/>
-          <circle cx="22" cy="22" r="2" fill="currentColor" opacity="0.3"/>
-          <line x1="8" y1="22" x2="14" y2="22"/><line x1="30" y1="22" x2="36" y2="22"/>
-        </svg>
-        <div class="cat-name">Filtros y membranas</div>
-        <div class="cat-desc">Filtros de jeringa y membranas para preparación de muestras en PVDF, nylon, PTFE y otras configuraciones usuales.</div>
-        <div class="cat-tags">
-          <span class="cat-tag">0.22 µm</span><span class="cat-tag">0.45 µm</span><span class="cat-tag">13 mm</span><span class="cat-tag">25 mm</span>
+      </div>
+
+      <!-- Card ancha -->
+      <div class="cons-card cons-card-mas cons-card-wide">
+        <div class="cons-wide-left">
+          <div class="cons-badges">
+            <span class="cons-badge badge-gc">GC</span>
+            <span class="cons-badge badge-hplc">HPLC</span>
+            <span class="cons-badge badge-lcms">LC-MS</span>
+            <span class="cons-badge badge-gcms">GC-MS</span>
+          </div>
+          <div class="cons-card-title">Más consumibles</div>
+          <div class="cons-card-desc">Filtros para gases, capilares, loops, válvulas, conectores PEEK, lámparas HPLC y mucho más. Si no lo ves listado, consultanos.</div>
+          <a href="#contacto" class="cons-cta">Consultar disponibilidad <span class="cons-arrow">→</span></a>
+        </div>
+        <div class="cons-wide-right">
+          <span class="cons-tag">Filtros para gases</span>
+          <span class="cons-tag">Capilares</span>
+          <span class="cons-tag">Loops</span>
+          <span class="cons-tag">Válvulas</span>
+          <span class="cons-tag">Conectores PEEK</span>
+          <span class="cons-tag">Lámparas HPLC</span>
         </div>
       </div>
 
-      <div class="cat-card">
-        <div class="cat-number">03</div>
-        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="8" y="12" width="28" height="6" rx="2"/>
-          <rect x="11" y="20" width="22" height="12" rx="2"/>
-          <line x1="15" y1="24" x2="29" y2="24"/><line x1="15" y1="28" x2="25" y2="28"/>
-        </svg>
-        <div class="cat-name">Columnas cromatográficas</div>
-        <div class="cat-desc">Columnas para distintas aplicaciones analíticas.</div>
-        <div class="cat-tags">
-          <span class="cat-tag">HPLC</span><span class="cat-tag">GC</span><span class="cat-tag">Compatibilidad</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-number">04</div>
-        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="13" cy="22" r="5"/><circle cx="31" cy="22" r="5"/>
-          <path d="M18 22h8"/>
-          <path d="M13 17v-5M13 27v5M31 17v-5M31 27v5"/>
-        </svg>
-        <div class="cat-name">Loops y válvulas</div>
-        <div class="cat-desc">Componentes para sistemas cromatográficos, con foco en reposición ágil, compatibilidad y continuidad operativa del laboratorio.</div>
-        <div class="cat-tags">
-          <span class="cat-tag">HPLC</span><span class="cat-tag">Accesorios</span><span class="cat-tag">Repuestos</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-number">05</div>
-        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M10 30l12-12 6 6-12 12H10z"/>
-          <path d="M24 16l4-4 6 6-4 4"/>
-          <line x1="14" y1="30" x2="20" y2="24"/>
-        </svg>
-        <div class="cat-name">Agujas y jeringas</div>
-        <div class="cat-desc">Agujas, jeringas y accesorios relacionados para muestreo, inyección y tareas habituales de laboratorio analítico.</div>
-        <div class="cat-tags">
-          <span class="cat-tag">Muestreo</span><span class="cat-tag">Inyección</span><span class="cat-tag">Laboratorio</span>
-        </div>
-      </div>
-
-      <div class="cat-card">
-        <div class="cat-number">06</div>
-        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="10" y="10" width="24" height="24" rx="3"/>
-          <path d="M16 22h12"/><path d="M22 16v12"/>
-        </svg>
-        <div class="cat-name">Más accesorios</div>
-        <div class="cat-desc">Soluciones complementarias para cromatografía y preparación de muestras, según la necesidad específica de cada laboratorio.</div>
-        <div class="cat-tags">
-          <span class="cat-tag">Consulta</span><span class="cat-tag">Selección</span><span class="cat-tag">Soporte</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1001,15 +731,24 @@
     <div class="guide-steps">
       <div class="guide-step">
         <div class="step-num">01</div>
-        <div><div class="step-title">Contanos qué equipo usás</div><div class="step-desc">Marca, modelo, técnica o referencia del producto actual.</div></div>
+        <div>
+          <div class="step-title">Contanos qué equipo usás</div>
+          <div class="step-desc">Marca, modelo, técnica o referencia del producto actual.</div>
+        </div>
       </div>
       <div class="guide-step">
         <div class="step-num">02</div>
-        <div><div class="step-title">Indicá tu necesidad</div><div class="step-desc">Tipo de consumible, cantidad, aplicación o condición especial.</div></div>
+        <div>
+          <div class="step-title">Indicá tu necesidad</div>
+          <div class="step-desc">Tipo de consumible, cantidad, aplicación o condición especial.</div>
+        </div>
       </div>
       <div class="guide-step">
         <div class="step-num">03</div>
-        <div><div class="step-title">Recibís orientación y cotización</div><div class="step-desc">Te respondemos con una alternativa para evaluar con tu laboratorio.</div></div>
+        <div>
+          <div class="step-title">Recibís orientación y cotización</div>
+          <div class="step-desc">Te respondemos con una alternativa para evaluar con tu laboratorio.</div>
+        </div>
       </div>
     </div>
   </section>
