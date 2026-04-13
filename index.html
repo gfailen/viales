@@ -325,11 +325,25 @@
       line-height: 1.6;
     }
 
-    .categories-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-    }
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.cat-card-wide {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-card-wide {
+    grid-column: span 1;
+  }
+}
 
     .cat-card {
       background: var(--white);
@@ -829,23 +843,69 @@
       <div class="section-note">Consultanos por precios y disponibilidad.</div>
     </div>
 
-    <div class="categories-grid">
-      <div class="cat-card">
-        <div class="cat-number">01</div>
-        <svg class="cat-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5">
-          <rect x="14" y="4" width="10" height="6" rx="1"/>
-          <rect x="13" y="10" width="12" height="28" rx="2"/>
-          <rect x="15" y="22" width="8" height="14" rx="1" fill="currentColor" opacity="0.15"/>
-          <line x1="15" y1="18" x2="23" y2="18" stroke-width="1"/>
-          <rect x="28" y="6" width="7" height="4" rx="1"/>
-          <rect x="27" y="10" width="9" height="22" rx="2"/>
-        </svg>
-        <div class="cat-name">Viales y tapas</div>
-        <div class="cat-desc">Viales de vidrio para HPLC y GC. Tapas de rosca, crimpeado y snap-cap. Septas PTFE/silicona y formatos habituales de laboratorio.</div>
-        <div class="cat-tags">
-          <span class="cat-tag">2 mL</span><span class="cat-tag">1.5 mL</span><span class="cat-tag">4 mL</span><span class="cat-tag">Compatibles</span>
-        </div>
-      </div>
+<div class="categories-grid">
+  <div class="cat-card">
+    <div class="cat-number">01</div>
+    <div class="cat-name">Viales y tapas</div>
+    <div class="cat-desc">Crimp, rosca y snap-cap. Vidrio transparente y ámbar. Septas de diferentes materiales.</div>
+    <div class="cat-tags">
+      <span class="cat-tag">2 mL</span>
+      <span class="cat-tag">1.5 mL</span>
+      <span class="cat-tag">0.3 mL insert</span>
+      <span class="cat-tag">Septas</span>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-number">02</div>
+    <div class="cat-name">Filtros de jeringa</div>
+    <div class="cat-desc">PVDF, nylon, PTFE y PES. Preparación de muestra pre-inyección para proteger columnas.</div>
+    <div class="cat-tags">
+      <span class="cat-tag">0.22 µm</span>
+      <span class="cat-tag">0.45 µm</span>
+      <span class="cat-tag">13 mm</span>
+      <span class="cat-tag">25 mm</span>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-number">03</div>
+    <div class="cat-name">Columnas</div>
+    <div class="cat-desc">HPLC en acero inoxidable y capilares GC cobrizos. Fases estacionarias C18, C8 y polares.</div>
+    <div class="cat-tags">
+      <span class="cat-tag">C18 / C8</span>
+      <span class="cat-tag">DB-5</span>
+      <span class="cat-tag">HP-INNOWAX</span>
+      <span class="cat-tag">100–250 mm</span>
+    </div>
+  </div>
+
+  <div class="cat-card">
+    <div class="cat-number">04</div>
+    <div class="cat-name">Consumibles GC</div>
+    <div class="cat-desc">Liners, septas de inlet, ferrules y sellos de oro. Filamentos para detectores MSD y FID.</div>
+    <div class="cat-tags">
+      <span class="cat-tag">Liners split/splitless</span>
+      <span class="cat-tag">Ferrules grafito</span>
+      <span class="cat-tag">Filamentos MSD</span>
+      <span class="cat-tag">Sellos oro</span>
+    </div>
+  </div>
+
+  <div class="cat-card cat-card-wide">
+    <div class="cat-number">05</div>
+    <div class="cat-name">Más consumibles</div>
+    <div class="cat-desc">Filtros para gases, capilares, loops, válvulas, conectores PEEK, lámparas HPLC y mucho más. Si no lo ves listado, consúltanos.</div>
+    <div class="cat-tags">
+      <span class="cat-tag">Filtros gas</span>
+      <span class="cat-tag">Loops</span>
+      <span class="cat-tag">Válvulas</span>
+      <span class="cat-tag">Conectores PEEK</span>
+      <span class="cat-tag">Lámparas HPLC</span>
+      <span class="cat-tag">Capilares</span>
+    </div>
+  </div>
+</div>
 
       <div class="cat-card">
         <div class="cat-number">02</div>
