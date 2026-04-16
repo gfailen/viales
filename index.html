@@ -77,9 +77,9 @@
     .cons-card-columnas::before{ background:linear-gradient(90deg,var(--hplc),var(--gc),var(--lcms)); }
     .cons-card-gc::before      { background:linear-gradient(90deg,var(--gc),var(--gcms)); }
     .cons-card-mas::before     { background:linear-gradient(90deg,var(--gc),var(--hplc),var(--lcms),var(--gcms)); }
-    .cons-card-wide { display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; padding:24px 28px; }
-    .cons-wide-left  { flex:1 1 280px; min-width:0; }
-    .cons-wide-right { flex:0 0 auto; display:flex; flex-wrap:wrap; gap:8px; max-width:340px; justify-content:flex-end; }
+    .cons-card-wide { display:flex; flex-direction:column; gap:12px; padding:24px; }
+    .cons-wide-left  { min-width:0; }
+    .cons-wide-right { display:flex; flex-wrap:wrap; gap:6px; }
     .cons-badges { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
     .cons-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; letter-spacing:.04em; line-height:1.6; }
     .badge-gc   { background:rgba(245,166,35,.18); color:var(--gc);   border:1px solid rgba(245,166,35,.3); }
@@ -130,11 +130,17 @@
 
     /* DRAWER TABS */
     .d-tabs { display:flex; border-bottom:1px solid var(--color-border-tertiary); background:#fff; position:sticky; top:0; z-index:10; }
-    .d-tab { flex:1; padding:14px 8px; font-size:13px; font-weight:400; color:var(--color-text-secondary); background:none; border:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; font-family:'DM Sans',sans-serif; transition:color .15s; }
-    .d-tab.active { color:#185FA5; border-bottom-color:#185FA5; font-weight:500; }
+    .d-tab { flex:1; padding:14px 8px; font-size:13px; font-weight:400; color:var(--color-text-secondary); background:none; border:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; font-family:'DM Sans',sans-serif; transition:color .15s,background .15s; }
     .d-tab:hover { color:var(--color-text-primary); }
+    .d-tab.active { font-weight:500; }
+    .d-tab.tab-viales.active { color:#185FA5; border-bottom-color:#185FA5; background:#f0f6fd; }
+    .d-tab.tab-tapas.active  { color:#0F6E56; border-bottom-color:#1D9E75; background:#edfaf4; }
+    .d-tab.tab-septas.active { color:#7a3060; border-bottom-color:#c060a0; background:#fdf0f8; }
     .d-section { display:none; padding:20px 24px; }
     .d-section.active { display:block; }
+    #d-viales.active { background:#f7fbff; }
+    #d-tapas.active  { background:#f5fdf9; }
+    #d-septas.active { background:#fdf5fb; }
 
     /* SELECTOR BASE STYLES */
     .s-layout { display:grid; grid-template-columns:240px minmax(0,1fr); gap:18px; align-items:start; }
@@ -539,7 +545,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <div>
           <div class="drawer-title">Selector de viales, tapas y septas</div>
-          <div class="drawer-subtitle">Encontrá el consumible compatible con tu equipo</div>
+          <div class="drawer-subtitle">Encontrá el consumible Agilent compatible con tu equipo</div>
         </div>
       </div>
       <button class="drawer-close" onclick="closeDrawer()" aria-label="Cerrar">×</button>
@@ -571,9 +577,9 @@
     function buildSelector(){
       document.getElementById('drawerBody').innerHTML=`
 <div class="d-tabs">
-  <button class="d-tab active" onclick="dTab('viales',this)">Viales</button>
-  <button class="d-tab" onclick="dTab('tapas',this)">Tapas</button>
-  <button class="d-tab" onclick="dTab('septas',this)">Septas sueltas</button>
+  <button class="d-tab tab-viales active" onclick="dTab('viales',this)">Viales</button>
+  <button class="d-tab tab-tapas" onclick="dTab('tapas',this)">Tapas</button>
+  <button class="d-tab tab-septas" onclick="dTab('septas',this)">Septas sueltas</button>
 </div>
 
 <!-- ══ VIALES ══ -->
