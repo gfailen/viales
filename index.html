@@ -566,6 +566,12 @@
     function closeDrawer(){ document.getElementById('drawerOverlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); document.body.style.overflow=''; }
     document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDrawer(); });
 
+      window.addEventListener('DOMContentLoaded', () => {
+    if (new URLSearchParams(window.location.search).get('selector') === 'open') {
+      openDrawer();
+    }
+  });
+    
     /* ── TOGGLE ⓘ ── */
     function toggleInfo(id){
       const p=document.getElementById('info-'+id);
