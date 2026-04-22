@@ -4,339 +4,427 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VIALES — Consumibles para Cromatografía</title>
-  <meta name="description" content="Viales y consumibles para cromatografía. Por AGS Analítica, Argentina. Portal B2B para laboratorios farmacéuticos, agroquímicos y de alimentos." />
+  <meta name="description" content="Viales y consumibles para cromatografía. División de consumibles de AGS Analítica, Argentina. Portal B2B para laboratorios farmacéuticos, agroquímicos y de alimentos." />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --navy:#0B2440; --card-bg:#0f2e56; --card-border:#1e3d66;
-      --blue:#3A6DB5; --blue-light:#4A7FBF; --blue-mist:#EDF3FB;
-      --ink:#0F1923; --ink-soft:#4A5568; --ink-muted:#8A97A8;
-      --white:#FFFFFF; --off-white:#F7F9FC; --border:#DDE4EE;
-      --gc:#f5a623; --hplc:#4a90d9; --lcms:#34c97a; --gcms:#e05454;
-    }
-    html { scroll-behavior:smooth; overflow-x:hidden; }
-    body { font-family:'DM Sans',sans-serif; background:var(--white); color:var(--ink); -webkit-font-smoothing:antialiased; overflow-x:hidden; width:100%; max-width:100vw; }
-    section,div,footer,nav { max-width:100%; }
+      --cream:      #F8F7F4;
+      --white:      #FFFFFF;
+      --ink:        #111111;
+      --ink-soft:   #555555;
+      --ink-muted:  #999999;
+      --ink-faint:  #BBBBBB;
+      --blue:       #2E5FA3;
+      --border:     rgba(0,0,0,0.08);
+      --border-mid: rgba(0,0,0,0.12);
 
-    /* NAV */
-    nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:0 48px; height:68px; display:flex; align-items:center; justify-content:space-between; background:var(--navy); border-bottom:1px solid rgba(255,255,255,0.08); transition:border-color .3s; }
-    .nav-logo { display:flex; align-items:center; flex-shrink:0; text-decoration:none; }
-    .nav-logo img { height:44px; width:auto; display:block; }
-    .nav-right { display:flex; align-items:center; gap:32px; }
-    .nav-link { font-size:13px; font-weight:400; color:rgba(255,255,255,0.75); text-decoration:none; letter-spacing:.02em; transition:color .2s; }
-    .nav-link:hover { color:var(--white); }
-    .nav-cta { font-size:13px; font-weight:600; color:var(--navy); background:var(--white); text-decoration:none; padding:8px 20px; border-radius:4px; letter-spacing:.02em; transition:background .2s,transform .15s; }
-    .nav-cta:hover { background:var(--blue-mist); transform:translateY(-1px); }
-
-    /* HERO */
-    .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:120px 48px 80px; background:var(--navy); position:relative; overflow:hidden; }
-    .hero::before { content:''; position:absolute; top:-200px; right:-200px; width:700px; height:700px; background:radial-gradient(circle,rgba(74,127,191,.10) 0%,transparent 70%); pointer-events:none; }
-    .hero::after  { content:''; position:absolute; bottom:-100px; left:-100px; width:500px; height:500px; background:radial-gradient(circle,rgba(58,109,181,.07) 0%,transparent 70%); pointer-events:none; }
-    .hero-inner { max-width:760px; width:100%; animation:fadeUp .9s ease both; position:relative; z-index:1; text-align:center; }
-    .hero-main-title { font-size:clamp(36px,5.5vw,76px); font-weight:700; line-height:1.02; color:var(--white); margin-bottom:28px; letter-spacing:-.03em; }
-    .hero-desc { font-size:clamp(15px,2vw,18px); font-weight:300; line-height:1.7; color:rgba(255,255,255,.65); margin-bottom:16px; max-width:600px; margin-left:auto; margin-right:auto; }
-    .hero-note { font-family:'DM Mono',monospace; font-size:11px; font-weight:300; letter-spacing:.12em; color:rgba(255,255,255,.35); margin-bottom:48px; text-transform:uppercase; }
-    .hero-actions { display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:center; }
-    .btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--white); color:var(--navy); text-decoration:none; font-size:14px; font-weight:600; padding:14px 28px; border-radius:4px; letter-spacing:.02em; transition:background .2s,transform .15s,box-shadow .2s; }
-    .btn-primary:hover { background:var(--blue-mist); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.2); }
-    .btn-primary svg { transition:transform .2s; }
-    .btn-primary:hover svg { transform:translateX(3px); }
-    .btn-secondary { display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,.6); text-decoration:none; font-size:14px; font-weight:400; padding:14px 4px; border-bottom:1px solid rgba(255,255,255,.2); letter-spacing:.02em; transition:color .2s,border-color .2s; }
-    .btn-secondary:hover { color:var(--white); border-color:rgba(255,255,255,.5); }
-
-    /* CONSUMIBLES S1 */
-    .cons-s1 { background:#071830; padding:80px 48px 100px; }
-    .cons-s1-inner { max-width:1100px; margin:0 auto; }
-    .cons-eyebrow { font-family:'DM Mono',monospace; font-size:10px; font-weight:300; letter-spacing:.2em; color:#5a8faf; text-transform:uppercase; margin-bottom:14px; }
-    .cons-s1-title { font-size:clamp(26px,3.5vw,42px); font-weight:700; color:#eaf2fb; line-height:1.12; letter-spacing:-.02em; margin-bottom:18px; }
-    .cons-s1-desc { font-size:16px; font-weight:300; color:#8bbdd8; line-height:1.65; max-width:540px; margin-bottom:28px; }
-    .cons-techs { display:flex; gap:8px; flex-wrap:wrap; }
-    .cons-tech { font-size:12px; font-weight:500; padding:5px 12px; border-radius:20px; letter-spacing:.3px; }
-    .cons-tech.gc   { background:#2a1f06; color:#f5a623; border:1px solid #3d2d08; }
-    .cons-tech.hplc { background:#071d3a; color:#4a90d9; border:1px solid #0e3060; }
-    .cons-tech.lcms { background:#062418; color:#34c97a; border:1px solid #0d3d28; }
-    .cons-tech.gcms { background:#2a0f0f; color:#e05454; border:1px solid #3d1616; }
-
-    /* CONSUMIBLES S2 */
-    .cons-s2 { background:#0b2240; padding:72px 48px 80px; position:relative; margin-top:-40px; clip-path:polygon(0 40px,100% 0,100% 100%,0 100%); }
-    .cons-s2-inner { max-width:1100px; margin:0 auto; }
-    .cons-s2-subtitle { font-size:11px; font-weight:500; letter-spacing:1.4px; color:#5a8faf; text-transform:uppercase; margin-bottom:10px; }
-    .cons-s2-title { font-size:clamp(20px,2.5vw,28px); font-weight:500; color:#daeaf6; margin-bottom:10px; }
-    .cons-s2-desc { font-size:14px; color:#7aadcc; line-height:1.6; max-width:520px; margin-bottom:32px; }
-    .cons-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:14px; }
-    .cons-card { position:relative; background:#0a2040; border:1px solid #1a3554; border-radius:12px; padding:24px; cursor:pointer; overflow:hidden; display:flex; flex-direction:column; gap:0; transition:border-color .2s,background .2s; }
-    .cons-card:hover { border-color:#264d72; background:#0c2545; }
-    .cons-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; opacity:0; transition:opacity .25s; border-radius:12px 12px 0 0; }
-    .cons-card:hover::before { opacity:1; }
-    .cons-card-viales::before  { background:linear-gradient(90deg,var(--gc),var(--hplc),var(--lcms)); }
-    .cons-card-filtros::before { background:linear-gradient(90deg,var(--hplc),var(--lcms)); }
-    .cons-card-columnas::before{ background:linear-gradient(90deg,var(--hplc),var(--gc),var(--lcms)); }
-    .cons-card-gc::before      { background:linear-gradient(90deg,var(--gc),var(--gcms)); }
-    .cons-card-mas::before     { background:linear-gradient(90deg,var(--gc),var(--hplc),var(--lcms),var(--gcms)); }
-    .cons-card-wide { display:flex; flex-direction:column; gap:12px; padding:24px; }
-    .cons-wide-left  { min-width:0; }
-    .cons-wide-right { display:flex; flex-wrap:wrap; gap:6px; }
-    .cons-badges { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
-    .cons-badge { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; letter-spacing:.04em; line-height:1.6; }
-    .badge-gc   { background:rgba(245,166,35,.18); color:var(--gc);   border:1px solid rgba(245,166,35,.3); }
-    .badge-hplc { background:rgba(74,144,217,.18); color:var(--hplc); border:1px solid rgba(74,144,217,.3); }
-    .badge-lcms { background:rgba(52,201,122,.18); color:var(--lcms); border:1px solid rgba(52,201,122,.3); }
-    .badge-gcms { background:rgba(224,84,84,.18);  color:var(--gcms); border:1px solid rgba(224,84,84,.3); }
-    .cons-card-title { font-size:16px; font-weight:600; color:#cee0f0; margin-bottom:8px; line-height:1.3; }
-    .cons-card-desc  { font-size:13px; color:#7aadcc; line-height:1.65; margin-bottom:16px; }
-    .cons-cta { display:inline-flex; align-items:center; gap:4px; font-size:13px; font-weight:600; color:var(--hplc); text-decoration:none; }
-    .cons-arrow { display:inline-block; transition:transform .2s; }
-    .cons-card:hover .cons-arrow { transform:translateX(4px); }
-    .cons-tag { display:inline-block; padding:4px 10px; border-radius:4px; font-size:12px; font-weight:500; background:rgba(255,255,255,.06); color:#7aadcc; border:1px solid rgba(255,255,255,.1); white-space:nowrap; }
-    .viales-selector-btn { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:auto; background:rgba(74,144,217,.12); border:1px solid rgba(74,144,217,.3); border-radius:8px; padding:10px 14px; color:#7ec8f0; font-size:13px; font-weight:500; transition:background .2s,border-color .2s; }
-    .cons-card-viales:hover .viales-selector-btn { background:rgba(74,144,217,.22); border-color:rgba(74,144,217,.5); color:#a8dcf8; }
-
-    /* CONSUMIBLES S3 */
-    .cons-s3 { background:#0e2d52; padding:72px 48px 80px; position:relative; margin-top:-40px; clip-path:polygon(0 40px,100% 0,100% 100%,0 100%); }
-    .cons-s3-inner { max-width:1100px; margin:0 auto; }
-    .cons-s3-label { font-family:'DM Mono',monospace; font-size:10px; font-weight:300; letter-spacing:.2em; color:#5a8faf; text-transform:uppercase; margin-bottom:12px; }
-    .cons-s3-title { font-size:clamp(20px,2.5vw,28px); font-weight:500; color:#daeaf6; margin-bottom:10px; }
-    .cons-s3-desc  { font-size:15px; color:#7aadcc; line-height:1.6; max-width:520px; }
-    .cons-cta-row  { display:flex; gap:12px; margin-top:28px; flex-wrap:wrap; align-items:center; }
-    .btn-cons-p { font-size:14px; font-weight:500; padding:11px 24px; border-radius:6px; background:#4da3e8; color:#03162e; border:none; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; transition:background .2s; }
-    .btn-cons-p:hover { background:#6ab8f0; }
-    .btn-cons-s { font-size:14px; font-weight:500; padding:11px 24px; border-radius:6px; background:transparent; color:#8ec8ee; border:1.5px solid #3a6a96; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; transition:border-color .2s,color .2s; }
-    .btn-cons-s:hover { border-color:#5a90bc; color:#b0dcf4; }
-
-    /* DRAWER */
-    .drawer-overlay { position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:500; opacity:0; pointer-events:none; transition:opacity .3s; }
-    .drawer-overlay.open { opacity:1; pointer-events:all; }
-    .drawer { position:fixed; top:0; right:0; bottom:0; width:min(820px,96vw); background:#fff; z-index:501; transform:translateX(100%); transition:transform .35s cubic-bezier(.4,0,.2,1); display:flex; flex-direction:column; box-shadow:-8px 0 40px rgba(0,0,0,.25); }
-    .drawer.open { transform:translateX(0); }
-    .drawer-header { display:flex; align-items:center; justify-content:space-between; padding:18px 24px; border-bottom:1px solid #1e3d66; flex-shrink:0; background:#0B2440; }
-    .drawer-header-left { display:flex; align-items:center; gap:10px; }
-    .drawer-title    { font-size:15px; font-weight:600; color:#eaf2fb; }
-    .drawer-subtitle { font-size:13px; color:#5a8faf; margin-top:2px; }
-    .drawer-close { width:32px; height:32px; border-radius:6px; background:rgba(255,255,255,.1); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.7); font-size:20px; line-height:1; transition:background .2s; }
-    .drawer-close:hover { background:rgba(255,255,255,.2); color:#fff; }
-    .drawer-body { flex:1; overflow-y:auto; padding:0;
-      --font-sans:'DM Sans',system-ui,sans-serif; --font-mono:'DM Mono',monospace;
-      --color-text-primary:#0F1923; --color-text-secondary:#4A5568; --color-text-tertiary:#8A97A8;
-      --color-text-info:#185FA5; --color-text-success:#085041; --color-text-warning:#633806;
-      --color-background-primary:#FFFFFF; --color-background-secondary:#F7F9FC;
-      --color-background-info:#E6F1FB; --color-background-success:#E1F5EE; --color-background-warning:#FAEEDA;
-      --color-border-tertiary:rgba(15,25,35,.12); --color-border-secondary:rgba(15,25,35,.22); --color-border-primary:rgba(15,25,35,.35);
-      --border-radius-md:8px; --border-radius-lg:12px;
+      --gc-bg:   #FAECE7; --gc-text:   #993C1D;
+      --gcms-bg: #FAECE7; --gcms-text: #993C1D;
+      --hplc-bg: #E6F1FB; --hplc-text: #185FA5;
+      --lcms-bg: #E1F5EE; --lcms-text: #0F6E56;
     }
 
-    /* DRAWER TABS */
-    .d-tabs { display:flex; border-bottom:1px solid var(--color-border-tertiary); background:#fff; position:sticky; top:0; z-index:10; }
-    .d-tab { flex:1; padding:14px 8px; font-size:13px; font-weight:400; color:var(--color-text-secondary); background:none; border:none; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; font-family:'DM Sans',sans-serif; transition:color .15s,background .15s; }
-    .d-tab:hover { color:var(--color-text-primary); }
-    .d-tab.active { font-weight:500; }
-    .d-tab.tab-viales.active { color:#185FA5; border-bottom-color:#185FA5; background:#f0f6fd; }
-    .d-tab.tab-tapas.active  { color:#0F6E56; border-bottom-color:#1D9E75; background:#edfaf4; }
-    .d-tab.tab-septas.active { color:#7a3060; border-bottom-color:#c060a0; background:#fdf0f8; }
-    .d-section { display:none; padding:20px 24px; }
-    .d-section.active { display:block; }
-    #d-viales.active { background:#f7fbff; }
-    #d-tapas.active  { background:#f5fdf9; }
-    #d-septas.active { background:#fdf5fb; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
-    /* SELECTOR BASE STYLES */
-    .s-layout { display:grid; grid-template-columns:240px minmax(0,1fr); gap:18px; align-items:start; }
-    .s-panel { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:1rem; }
-    .s-panel-title { font-size:11px; font-weight:500; color:var(--color-text-secondary); letter-spacing:.05em; text-transform:uppercase; margin-bottom:10px; }
-    .s-eq-chips { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; min-height:16px; }
-    .s-echip { background:var(--color-background-info); border-radius:var(--border-radius-md); padding:5px 10px; font-size:13px; color:var(--color-text-info); }
-    .s-echip-top { display:flex; align-items:center; justify-content:space-between; }
-    .s-echip-top button { background:none; border:none; cursor:pointer; font-size:14px; color:var(--color-text-info); padding:0; line-height:1; }
-    .s-echip-models { font-size:11px; color:var(--color-text-info); opacity:.7; margin-top:2px; line-height:1.4; }
-    .s-select { width:100%; margin-bottom:8px; font-size:13px; }
-    .s-add-btn { width:100%; font-size:13px; padding:6px; cursor:pointer; }
-    .s-divider { border:none; border-top:0.5px solid var(--color-border-tertiary); margin:12px 0; }
-    .s-filter-group { margin-bottom:12px; }
-    .s-filter-label { font-size:13px; color:var(--color-text-secondary); margin-bottom:5px; display:block; }
-    .s-pills { display:flex; flex-wrap:wrap; gap:5px; }
-    .s-pill { padding:4px 10px; border-radius:20px; font-size:13px; border:0.5px solid var(--color-border-secondary); background:var(--color-background-primary); color:var(--color-text-secondary); cursor:pointer; }
-    .s-pill:hover { background:var(--color-background-secondary); }
-    .s-pill.active { background:#E6F1FB; border-color:#378ADD; color:#0C447C; font-weight:500; }
-    .s-reset { font-size:13px; color:var(--color-text-secondary); background:none; border:none; cursor:pointer; text-decoration:underline; margin-top:4px; }
-    .s-sep-rec { font-size:13px; background:var(--color-background-success); color:var(--color-text-success); border-radius:var(--border-radius-md); padding:8px 12px; margin-bottom:12px; display:none; line-height:1.5; }
-    .s-sep-badge { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; background:#E1F5EE; color:#085041; margin-left:4px; }
-    .s-note { font-size:13px; background:var(--color-background-warning); color:var(--color-text-warning); border-radius:var(--border-radius-md); padding:6px 10px; margin-bottom:10px; display:none; }
-    .s-cat-tabs { display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap; }
-    .s-cat-pill { padding:5px 14px; border-radius:20px; font-size:13px; border:0.5px solid var(--color-border-secondary); background:var(--color-background-primary); color:var(--color-text-secondary); cursor:pointer; font-weight:500; }
-    .s-cat-pill:hover { background:var(--color-background-secondary); }
-    .s-cat-pill.active { background:#1D9E75; border-color:#1D9E75; color:#fff; }
-    .s-results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
-    .s-results-header span { font-size:13px; color:var(--color-text-secondary); }
-    .s-results-header strong { color:var(--color-text-primary); }
-    .s-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(175px,1fr)); gap:10px; }
-    .s-cat-label { font-size:11px; font-weight:500; color:var(--color-text-tertiary); letter-spacing:.04em; text-transform:uppercase; margin:14px 0 8px; grid-column:1/-1; }
-    .s-empty { padding:2rem; text-align:center; color:var(--color-text-secondary); font-size:13px; grid-column:1/-1; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
 
-    /* PRODUCT CARD */
-    .vcard { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-lg); padding:12px; display:flex; flex-direction:column; gap:6px; }
-    .vcard:hover { border-color:var(--color-border-primary); }
-    .vcard.added { border-color:#1D9E75; border-width:1.5px; }
-    .vcard-top { display:flex; align-items:flex-start; justify-content:space-between; gap:6px; }
-    .vcard-icon-wrap { display:flex; align-items:center; gap:8px; flex:1; min-width:0; }
-    .vial-icon { width:22px; height:34px; border-radius:3px 3px 2px 2px; border:1.5px solid #888; flex-shrink:0; position:relative; overflow:hidden; }
-    .vial-icon.clear { background:#e8f4fb; border-color:#7ab; }
-    .vial-icon.amber { background:#f5d080; border-color:#b8860b; }
-    .vial-icon .ls { position:absolute; bottom:5px; left:0; right:0; height:7px; background:rgba(255,255,255,.6); }
-    .vial-icon .sl { position:absolute; right:2px; top:3px; display:flex; flex-direction:column; gap:3px; }
-    .vial-icon .sl span { display:block; width:3px; height:0.5px; background:rgba(0,0,0,.3); }
-    .cap-icon { width:26px; height:16px; border-radius:3px 3px 0 0; border:1.5px solid #888; flex-shrink:0; background:var(--color-background-secondary); }
-    .cap-icon.blue   { background:#B5D4F4; border-color:#378ADD; }
-    .cap-icon.silver { background:#D3D1C7; border-color:#888780; }
-    .sep-icon { width:26px; height:9px; border-radius:5px; border:1.5px solid #888; flex-shrink:0; background:#f5f5f0; }
-    .vcard-name { font-size:13px; font-weight:500; line-height:1.3; color:var(--color-text-primary); flex:1; }
-    .vcard-tags { display:flex; flex-wrap:wrap; gap:3px; }
-    .vtag { font-size:10px; padding:1px 5px; border-radius:3px; }
-    .vtag.rosca { background:#EAF3DE; color:#27500A; }
-    .vtag.crimp { background:#EEEDFE; color:#3C3489; }
-    .vtag.amber { background:#FAEEDA; color:#633806; }
-    .vtag.clear { background:#E6F1FB; color:#0C447C; }
-    .vtag.label { background:#F1EFE8; color:#444441; }
-    .vtag.sil   { background:#FBEAF0; color:#72243E; }
-    .vtag.kit   { background:#E1F5EE; color:#085041; }
-    .vtag.n9  { background:#EAF3DE; color:#27500A; }
-    .vtag.n11 { background:#EEEDFE; color:#3C3489; }
-    .vtag.sep { background:#FAEEDA; color:#633806; }
-    .vcard-pn { font-size:11px; color:var(--color-text-tertiary); font-family:'DM Mono',monospace; }
-    .pack-select { font-size:13px; width:100%; margin-top:2px; }
-    .qty-row { display:flex; align-items:center; gap:5px; margin-top:2px; }
-    .qty-btn { width:26px; height:26px; border-radius:var(--border-radius-md); border:0.5px solid var(--color-border-secondary); background:var(--color-background-secondary); cursor:pointer; font-size:15px; color:var(--color-text-primary); display:flex; align-items:center; justify-content:center; }
-    .qty-btn:hover { background:var(--color-background-primary); }
-    .qty-display { font-size:13px; font-weight:500; min-width:44px; text-align:center; color:var(--color-text-primary); }
-    .qty-unit { font-size:10px; color:var(--color-text-tertiary); }
-    .add-btn { width:100%; padding:5px; font-size:13px; cursor:pointer; border-radius:var(--border-radius-md); background:#1D9E75; border:none; color:#fff; font-weight:500; margin-top:2px; }
-    .add-btn:hover { background:#0F6E56; }
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 48px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(248,247,244,0.95);
+      border-bottom: 0.5px solid var(--border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
 
-    /* INFO BUTTON ⓘ */
-    .info-btn { background:none; border:none; cursor:pointer; color:var(--color-text-tertiary); padding:0; line-height:1; font-size:14px; flex-shrink:0; transition:color .15s; }
-    .info-btn:hover { color:var(--color-text-info); }
-    .info-panel { display:none; background:var(--color-background-info); border:0.5px solid rgba(55,138,221,.25); border-radius:var(--border-radius-md); padding:10px 12px; font-size:13px; line-height:1.6; color:#185FA5; margin-top:4px; }
-    .info-panel.open { display:block; }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
 
-    /* PEDIDO */
-    .s-pedido { margin-top:2rem; border-top:0.5px solid var(--color-border-tertiary); padding-top:1.5rem; }
-    .s-pedido-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-    .s-pedido-header h2 { font-size:15px; font-weight:500; color:var(--color-text-primary); }
-    .s-pedido-clear { font-size:13px; color:var(--color-text-secondary); background:none; border:none; cursor:pointer; text-decoration:underline; }
-    .s-pedido-empty { font-size:13px; color:var(--color-text-tertiary); padding:1rem 0; }
-    .s-ped-count { display:inline-block; background:#1D9E75; color:#fff; border-radius:20px; font-size:10px; padding:1px 7px; margin-left:6px; font-weight:500; }
-    .s-pedido-table { width:100%; border-collapse:collapse; font-size:13px; }
-    .s-pedido-table th { font-weight:500; font-size:13px; color:var(--color-text-secondary); text-align:left; padding:6px 10px; border-bottom:0.5px solid var(--color-border-tertiary); background:var(--color-background-secondary); }
-    .s-pedido-table td { padding:7px 10px; border-bottom:0.5px solid var(--color-border-tertiary); vertical-align:middle; color:var(--color-text-primary); }
-    .s-pedido-table tr:last-child td { border-bottom:none; }
-    .s-pedido-remove { background:none; border:none; cursor:pointer; font-size:13px; color:var(--color-text-tertiary); padding:0; }
-    .s-pedido-total { display:flex; justify-content:flex-end; margin-top:10px; font-size:13px; color:var(--color-text-secondary); }
-    .s-pedido-total strong { color:var(--color-text-primary); margin-left:6px; }
+    .nav-right { display: flex; align-items: center; gap: 32px; }
+    .nav-link {
+      font-size: 13px; font-weight: 400;
+      color: var(--ink-soft); text-decoration: none;
+      letter-spacing: 0.01em; transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--ink); }
 
-    /* SEPTAS — intro educativo */
-    .sep-intro { background:var(--color-background-secondary); border-radius:var(--border-radius-lg); padding:16px 18px; margin-bottom:20px; border:0.5px solid var(--color-border-tertiary); }
-    .sep-intro-title { font-size:12px; font-weight:600; color:var(--color-text-primary); margin-bottom:8px; letter-spacing:.02em; }
-    .sep-intro p { font-size:14px; color:var(--color-text-secondary); line-height:1.65; margin-bottom:8px; }
-    .sep-intro p:last-child { margin-bottom:0; }
-    .sep-intro strong { color:var(--color-text-primary); font-weight:600; }
-    .sep-concepts { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
-    .sep-concept { background:var(--color-background-primary); border:0.5px solid var(--color-border-tertiary); border-radius:var(--border-radius-md); padding:10px 12px; }
-    .sep-concept-title { font-size:13px; font-weight:600; color:var(--color-text-primary); margin-bottom:4px; }
-    .sep-concept p { font-size:13px; color:var(--color-text-secondary); line-height:1.55; }
+    .nav-cta {
+      font-size: 13px; font-weight: 500;
+      color: var(--cream); background: var(--ink);
+      text-decoration: none; padding: 8px 20px;
+      border-radius: 100px; letter-spacing: 0.01em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #333; }
 
-    /* RAPID SEARCH */
-    .s-search-wrap { position:relative; margin-bottom:1rem; }
-    .s-search-wrap input { width:100%; padding:8px 32px 8px 12px; font-size:13px; border:0.5px solid var(--color-border-secondary); border-radius:var(--border-radius-md); background:var(--color-background-secondary); color:var(--color-text-primary); }
-    .s-search-wrap input:focus { outline:none; border-color:#378ADD; }
-    .s-search-clear { position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:14px; color:var(--color-text-tertiary); display:none; padding:0; }
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 48px 96px;
+      max-width: 720px;
+      animation: fadeUp 0.8s ease both;
+    }
 
-    /* QUIÉNES SOMOS */
-    .quienes-section { padding:80px 48px; background:var(--white); border-top:1px solid var(--border); }
-    .quienes-inner { max-width:680px; margin:0 auto; text-align:center; }
-    .section-eyebrow { font-family:'DM Mono',monospace; font-size:10px; font-weight:300; letter-spacing:.2em; color:var(--blue); text-transform:uppercase; margin-bottom:12px; }
-    .quienes-text { display:flex; flex-direction:column; gap:20px; }
-    .quienes-text p { font-size:18px; font-weight:300; line-height:1.75; color:var(--ink-soft); }
-    .quienes-text p:first-child { font-size:20px; font-weight:400; color:var(--ink); }
-    .quienes-text p:last-child { font-size:17px; font-weight:500; color:var(--navy); font-style:italic; }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-muted); margin-bottom: 24px;
+    }
 
-    /* GUIDE */
-    .guide-section { background:var(--navy); padding:80px 48px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; position:relative; overflow:hidden; }
-    .guide-section::before { content:''; position:absolute; top:-150px; right:-150px; width:500px; height:500px; background:radial-gradient(circle,rgba(74,127,191,.12) 0%,transparent 70%); pointer-events:none; }
-    .guide-eyebrow { font-family:'DM Mono',monospace; font-size:10px; font-weight:300; letter-spacing:.2em; color:rgba(74,127,191,.8); text-transform:uppercase; margin-bottom:20px; }
-    .guide-title { font-size:clamp(24px,3vw,42px); font-weight:600; color:var(--white); line-height:1.15; margin-bottom:24px; letter-spacing:-.01em; }
-    .guide-title span { color:var(--blue-light); }
-    .guide-desc { font-size:15px; font-weight:300; color:rgba(255,255,255,.64); line-height:1.75; margin-bottom:36px; }
-    .btn-white { display:inline-flex; align-items:center; gap:8px; background:var(--white); color:var(--navy); text-decoration:none; font-size:14px; font-weight:500; padding:14px 28px; border-radius:4px; transition:background .2s,transform .15s; }
-    .btn-white:hover { background:var(--blue-mist); transform:translateY(-2px); }
-    .guide-steps { display:flex; flex-direction:column; }
-    .guide-step { display:flex; gap:20px; align-items:flex-start; padding:24px 0; border-bottom:1px solid rgba(255,255,255,.07); }
-    .guide-step:first-child { border-top:1px solid rgba(255,255,255,.07); }
-    .step-num { font-family:'DM Mono',monospace; font-size:11px; font-weight:300; color:var(--blue-light); letter-spacing:.1em; flex-shrink:0; margin-top:2px; }
-    .step-title { font-size:14px; font-weight:500; color:var(--white); margin-bottom:4px; }
-    .step-desc  { font-size:13px; font-weight:300; color:rgba(255,255,255,.56); line-height:1.55; }
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 400; line-height: 1.13;
+      color: var(--ink); margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+    .hero-title em { font-style: italic; color: var(--blue); }
 
-    /* CONTACT */
-    .contact-section { padding:100px 48px; background:var(--off-white); display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
-    .contact-title { font-size:clamp(26px,3vw,40px); font-weight:600; color:var(--ink); line-height:1.15; letter-spacing:-.01em; margin-bottom:20px; }
-    .contact-title span { color:var(--blue); }
-    .contact-desc { font-size:15px; font-weight:300; color:var(--ink-soft); line-height:1.75; margin-bottom:40px; }
-    .contact-items { display:flex; flex-direction:column; gap:16px; }
-    .contact-item { display:flex; align-items:center; gap:14px; font-size:14px; font-weight:400; color:var(--ink-soft); text-decoration:none; transition:color .2s; }
-    .contact-item:hover { color:var(--blue); }
-    .contact-icon { width:36px; height:36px; background:var(--white); border:1px solid var(--border); border-radius:4px; display:flex; align-items:center; justify-content:center; color:var(--blue); flex-shrink:0; }
-    .contact-form { background:var(--white); border:1px solid var(--border); padding:40px; border-radius:4px; }
-    .form-title { font-size:16px; font-weight:600; color:var(--ink); margin-bottom:6px; }
-    .form-sub   { font-size:13px; font-weight:300; color:var(--ink-muted); margin-bottom:28px; }
+    .hero-subtitle {
+      font-size: 16px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.7;
+      margin-bottom: 40px; max-width: 480px;
+    }
 
-    /* FOOTER */
-    footer { background:var(--ink); padding:40px 48px; display:flex; flex-direction:column; align-items:flex-start; gap:0; }
-    .footer-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; width:100%; padding-bottom:24px; border-bottom:1px solid rgba(255,255,255,.1); margin-bottom:20px; }
-    .footer-links { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-    .footer-link { font-family:'DM Mono',monospace; font-size:11px; font-weight:300; letter-spacing:.1em; color:rgba(255,255,255,.65); text-decoration:none; transition:color .2s; }
-    .footer-link:hover { color:var(--white); }
-    .footer-sep  { color:rgba(255,255,255,.2); font-size:11px; }
-    .footer-meta { font-family:'DM Mono',monospace; font-size:11px; font-weight:300; letter-spacing:.1em; color:rgba(255,255,255,.65); }
-    .footer-legal { width:100%; display:flex; flex-direction:column; gap:8px; }
-    .footer-legal p { font-family:'DM Mono',monospace; font-size:10px; font-weight:300; letter-spacing:.05em; color:rgba(255,255,255,.65); line-height:1.6; }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 
-    /* HAMBURGER */
-    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:36px; height:36px; background:none; border:none; cursor:pointer; padding:4px; z-index:200; flex-shrink:0; }
-    .nav-hamburger span { display:block; width:22px; height:2px; background:var(--white); border-radius:2px; transition:all .25s; transform-origin:center; }
-    .nav-hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity:0; }
-    .nav-hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--ink); color: var(--cream);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 13px 26px; border-radius: 100px;
+      letter-spacing: 0.01em; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #333; transform: translateY(-1px); }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--ink-soft); text-decoration: none;
+      font-size: 14px; font-weight: 400; transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--ink); }
 
-    @media(max-width:900px){
-      nav{padding:0 20px}
-      .nav-logo img{height:30px}
-      .nav-hamburger{display:flex}
-      .nav-right{display:none;position:fixed;top:68px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:flex-start;padding:24px;gap:0;border-top:1px solid rgba(255,255,255,.08);z-index:150}
-      .nav-right.open{display:flex}
-      .nav-link{display:block;width:100%;padding:16px 0;font-size:16px;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.8)}
-      .nav-cta{margin-top:20px;width:100%;text-align:center;padding:14px 20px;font-size:15px}
-      .hero{padding:90px 20px 60px;min-height:100svh}
-      .cons-s1{padding:56px 20px 80px}
-      .cons-s2{padding:72px 20px 56px}
-      .cons-s3{padding:72px 20px 56px}
-      .cons-grid{grid-template-columns:1fr}
-      .cons-card-wide{flex-direction:column;align-items:flex-start}
-      .cons-wide-right{justify-content:flex-start;max-width:100%}
-      .quienes-section{padding:56px 20px}
-      .quienes-inner{text-align:left}
-      .quienes-text p{font-size:16px}
-      .quienes-text p:first-child{font-size:18px}
-      .guide-section{grid-template-columns:1fr;padding:56px 20px;gap:40px}
-      .contact-section{grid-template-columns:1fr;padding:56px 20px;gap:40px}
-      .contact-form{padding:24px 20px}
-      footer{padding:32px 20px}
-      .footer-top{flex-direction:column;align-items:flex-start}
-      .drawer{width:100vw}
-      .s-layout{grid-template-columns:1fr}
-      .sep-concepts{grid-template-columns:1fr}
+    /* ── TRUST STRIP ── */
+    .trust {
+      background: var(--white);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      padding: 32px 48px;
+      display: flex; gap: 56px; align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .trust-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 400;
+      color: var(--ink); line-height: 1; margin-bottom: 4px;
+    }
+    .trust-number.small { font-size: 17px; padding-top: 5px; }
+    .trust-label { font-size: 11px; color: var(--ink-muted); font-weight: 400; }
+    .trust-domain {
+      margin-left: auto; font-size: 11px;
+      color: var(--ink-faint); line-height: 1.7;
+      text-align: right; align-self: center;
+    }
+
+    /* ── CATALOG ── */
+    .catalog { padding: 64px 48px; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-faint); margin-bottom: 28px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .cat-card {
+      background: var(--cream);
+      padding: 26px 22px 24px;
+      transition: background 0.15s;
+    }
+    .cat-card:hover { background: var(--white); }
+
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+    .tag {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 100px;
+    }
+    .tag-gc   { background: var(--gc-bg);   color: var(--gc-text); }
+    .tag-gcms { background: var(--gcms-bg); color: var(--gcms-text); }
+    .tag-hplc { background: var(--hplc-bg); color: var(--hplc-text); }
+    .tag-lcms { background: var(--lcms-bg); color: var(--lcms-text); }
+
+    .cat-name {
+      font-size: 15px; font-weight: 500;
+      color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+    }
+    .cat-desc {
+      font-size: 12px; color: var(--ink-muted);
+      line-height: 1.6; font-weight: 300;
+    }
+
+    .cat-card-consult {
+      background: var(--cream);
+      padding: 26px 22px 24px;
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 8px;
+    }
+    .consult-title { font-size: 15px; font-weight: 500; color: var(--ink-soft); }
+    .consult-examples { font-size: 11px; color: var(--ink-faint); line-height: 1.75; font-weight: 300; }
+    .consult-link {
+      font-size: 13px; color: var(--blue);
+      font-weight: 500; text-decoration: none;
+      margin-top: 4px; display: inline-block;
+      transition: opacity 0.2s;
+    }
+    .consult-link:hover { opacity: 0.75; }
+
+    /* ── DIVIDER ── */
+    .section-divider { border: none; border-top: 0.5px solid var(--border); margin: 0 48px; }
+
+    /* ── QUIÉNES SOMOS ── */
+    .quienes-section { padding: 72px 48px 80px; }
+    .quienes-inner { max-width: 520px; }
+
+    .section-pre {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--ink-faint); margin-bottom: 20px;
+    }
+
+    .quienes-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 400; color: var(--ink);
+      line-height: 1.3; margin-bottom: 16px;
+    }
+
+    .quienes-body {
+      font-size: 15px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.75;
+    }
+    .quienes-body strong { color: var(--ink); font-weight: 500; }
+
+    /* ── GUIDE ── */
+    .guide-section {
+      background: var(--ink);
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .guide-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 20px;
+    }
+
+    .guide-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 400; color: var(--white);
+      line-height: 1.2; margin-bottom: 20px;
+    }
+    .guide-title em { font-style: italic; color: rgba(255,255,255,0.5); }
+
+    .guide-desc {
+      font-size: 15px; font-weight: 300;
+      color: rgba(255,255,255,0.55); line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .btn-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--ink);
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      padding: 13px 26px; border-radius: 100px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-white:hover { background: var(--cream); transform: translateY(-1px); }
+
+    .guide-steps { display: flex; flex-direction: column; }
+    .guide-step {
+      display: flex; gap: 20px; align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    }
+    .guide-step:first-child { border-top: 0.5px solid rgba(255,255,255,0.08); }
+
+    .step-num {
+      font-size: 11px; font-weight: 400;
+      color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+      flex-shrink: 0; margin-top: 2px; min-width: 24px;
+    }
+    .step-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+    .step-desc  { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 96px 48px;
+      background: var(--white);
+      border-top: 0.5px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 400; color: var(--ink);
+      line-height: 1.2; margin-bottom: 16px;
+    }
+    .contact-title em { font-style: italic; color: var(--blue); }
+
+    .contact-desc {
+      font-size: 15px; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.75; margin-bottom: 36px;
+    }
+
+    .contact-items { display: flex; flex-direction: column; gap: 14px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; font-weight: 400;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item:hover { color: var(--blue); }
+    .contact-icon {
+      width: 34px; height: 34px;
+      background: var(--cream);
+      border: 0.5px solid var(--border-mid);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue); flex-shrink: 0;
+    }
+
+    .contact-form {
+      background: var(--cream);
+      border: 0.5px solid var(--border-mid);
+      padding: 36px; border-radius: 14px;
+    }
+    .form-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .form-sub   { font-size: 13px; font-weight: 300; color: var(--ink-muted); margin-bottom: 24px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 40px 48px;
+    }
+    .footer-top {
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap;
+      gap: 20px; padding-bottom: 24px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.1);
+      margin-bottom: 20px;
+    }
+    .footer-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .footer-link {
+      font-size: 12px; font-weight: 300;
+      letter-spacing: 0.04em; color: rgba(255,255,255,0.55);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-link:hover { color: var(--white); }
+    .footer-sep  { color: rgba(255,255,255,0.2); font-size: 12px; }
+    .footer-meta { font-size: 12px; font-weight: 300; letter-spacing: 0.04em; color: rgba(255,255,255,0.4); }
+    .footer-legal { display: flex; flex-direction: column; gap: 8px; }
+    .footer-legal p {
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 0.03em; color: rgba(255,255,255,0.35); line-height: 1.65;
+    }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none; flex-direction: column;
+      justify-content: center; gap: 5px;
+      width: 36px; height: 36px;
+      background: none; border: none; cursor: pointer;
+      padding: 4px; z-index: 200; flex-shrink: 0;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--ink); border-radius: 2px;
+      transition: all 0.25s ease; transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-logo img { height: 30px; }
+      .nav-hamburger { display: flex; }
+      .nav-right {
+        display: none; position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: var(--cream);
+        flex-direction: column; align-items: flex-start;
+        padding: 24px; gap: 0;
+        border-top: 0.5px solid var(--border);
+        z-index: 150;
+      }
+      .nav-right.open { display: flex; }
+      .nav-link {
+        display: block; width: 100%; padding: 16px 0;
+        font-size: 16px; border-bottom: 0.5px solid var(--border);
+        color: var(--ink-soft);
+      }
+      .nav-cta { margin-top: 20px; width: 100%; text-align: center; padding: 14px 20px; font-size: 15px; border-radius: 100px; }
+
+      .hero { padding: 100px 20px 64px; }
+      .trust { padding: 28px 20px; gap: 32px; }
+      .trust-domain { display: none; }
+      .catalog { padding: 48px 20px; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+      .section-divider { margin: 0 20px; }
+      .quienes-section { padding: 56px 20px 64px; }
+      .guide-section { grid-template-columns: 1fr; padding: 64px 20px; gap: 48px; }
+      .contact-section { grid-template-columns: 1fr; padding: 64px 20px; gap: 40px; }
+      .contact-form { padding: 28px 20px; }
+      footer { padding: 32px 20px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .category-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -344,8 +432,12 @@
 
   <!-- NAV -->
   <nav id="nav">
-    <a href="#" class="nav-logo"><img src="Viales-com-ar_transp.svg" alt="VIALES" /></a>
-    <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+    <a href="#" class="nav-logo">
+      <img src="Viales-com-ar_transp.svg" alt="VIALES" />
+    </a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
     <div class="nav-right" id="navRight">
       <a href="#consumibles" class="nav-link">Consumibles</a>
       <a href="#guia" class="nav-link">Guía de selección</a>
@@ -356,157 +448,165 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-inner">
-      <h1 class="hero-main-title">Consumibles para cromatografía.</h1>
-      <p class="hero-desc">Viales, lámparas, liners, columnas, filtros y más,<br> con el respaldo técnico de quien repara tus equipos.</p>
-      <p class="hero-note">Una iniciativa de AGS Analítica</p>
-      <div class="hero-actions">
-        <a href="#contacto" class="btn-primary">
-          Solicitar cotización
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#consumibles" class="btn-secondary">
-          Ver consumibles
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"/></svg>
-        </a>
-      </div>
+    <p class="hero-eyebrow">División de consumibles · AGS Analítica</p>
+    <h1 class="hero-title">
+      Tus consumibles,<br>
+      con el respaldo de<br>
+      <em>quienes reparan</em><br>
+      tus equipos.
+    </h1>
+    <p class="hero-subtitle">Viales, liners, filtros, columnas y más — con más de 20 años de servicio técnico en laboratorios de toda la Argentina.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        Solicitar cotización
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#consumibles" class="btn-ghost">Ver consumibles →</a>
     </div>
   </section>
 
-  <!-- CONSUMIBLES S1 -->
-  <section class="cons-s1" id="consumibles">
-    <div class="cons-s1-inner">
-      <p class="cons-eyebrow">Catálogo</p>
-      <h2 class="cons-s1-title">Consumibles para<br>cada técnica analítica</h2>
-      <p class="cons-s1-desc">Todo lo que necesitás para mantener tus equipos funcionando. Compatibles con los principales fabricantes, con stock local.</p>
-      <div class="cons-techs">
-        <span class="cons-tech gc">GC</span>
-        <span class="cons-tech hplc">HPLC</span>
-        <span class="cons-tech lcms">LC-MS</span>
-        <span class="cons-tech gcms">GC-MS</span>
+  <!-- TRUST STRIP -->
+  <div class="trust">
+    <div class="trust-item">
+      <div class="trust-number">+20</div>
+      <div class="trust-label">años de servicio técnico</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number">Todas</div>
+      <div class="trust-label">las marcas</div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-number small">GC · HPLC · GC-MS · LC-MS</div>
+      <div class="trust-label">técnicas cubiertas</div>
+    </div>
+    <div class="trust-domain">viales.com.ar<br>Buenos Aires, Argentina</div>
+  </div>
+
+  <!-- CATALOG -->
+  <section class="catalog" id="consumibles">
+    <p class="section-label">Catálogo</p>
+    <div class="category-grid">
+
+      <div class="cat-card">
+        <div class="tech-tags">
+          <span class="tag tag-gc">GC</span>
+          <span class="tag tag-gcms">GC-MS</span>
+          <span class="tag tag-hplc">HPLC</span>
+          <span class="tag tag-lcms">LC-MS</span>
+        </div>
+        <div class="cat-name">Viales y tapas</div>
+        <div class="cat-desc">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
       </div>
+
+      <div class="cat-card">
+        <div class="tech-tags">
+          <span class="tag tag-hplc">HPLC</span>
+          <span class="tag tag-lcms">LC-MS</span>
+        </div>
+        <div class="cat-name">Filtros de jeringa</div>
+        <div class="cat-desc">PTFE, Nylon, PES, PVDF, RC. Diámetros 4–25 mm para filtración previa a inyección.</div>
+      </div>
+
+      <div class="cat-card">
+        <div class="tech-tags">
+          <span class="tag tag-gc">GC</span>
+          <span class="tag tag-gcms">GC-MS</span>
+        </div>
+        <div class="cat-name">Consumibles GC</div>
+        <div class="cat-desc">Liners split/splitless, septas, ferrules, filamentos MSD, columnas capilares, filtros para gases.</div>
+      </div>
+
+      <div class="cat-card">
+        <div class="tech-tags">
+          <span class="tag tag-hplc">HPLC</span>
+          <span class="tag tag-lcms">LC-MS</span>
+        </div>
+        <div class="cat-name">Accesorios HPLC y LC-MS</div>
+        <div class="cat-desc">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
+      </div>
+
+      <div class="cat-card">
+        <div class="tech-tags">
+          <span class="tag tag-gc">GC</span>
+          <span class="tag tag-gcms">GC-MS</span>
+          <span class="tag tag-hplc">HPLC</span>
+          <span class="tag tag-lcms">LC-MS</span>
+        </div>
+        <div class="cat-name">Otros consumibles</div>
+        <div class="cat-desc">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
+      </div>
+
+      <div class="cat-card-consult">
+        <div class="consult-title">¿No lo ves?</div>
+        <div class="consult-examples">Trabajamos con múltiples<br>proveedores internacionales.<br>Si no está, lo conseguimos.</div>
+        <a href="#contacto" class="consult-link">Consultanos →</a>
+      </div>
+
     </div>
   </section>
 
-  <!-- CONSUMIBLES S2 -->
-  <section class="cons-s2">
-    <div class="cons-s2-inner">
-      <p class="cons-s2-subtitle">Categorías disponibles</p>
-      <h3 class="cons-s2-title">Encontrá lo que buscás</h3>
-      <p class="cons-s2-desc">Seleccioná una categoría para ver el catálogo completo, o consultanos si no encontrás lo que necesitás.</p>
-
-      <div class="cons-grid">
-
-        <div class="cons-card cons-card-viales" onclick="openDrawer()" role="button" tabindex="0" aria-label="Abrir selector de viales y tapas" onkeydown="if(event.key==='Enter')openDrawer()">
-          <div class="cons-badges">
-            <span class="cons-badge badge-gc">GC</span>
-            <span class="cons-badge badge-hplc">HPLC</span>
-            <span class="cons-badge badge-lcms">LC-MS</span>
-          </div>
-          <div class="cons-card-title">Viales y tapas</div>
-          <div class="cons-card-desc">Crimp, rosca y snap-cap. Vidrio transparente y ámbar, insertos y accesorios para muestreo automático. Septas de diferentes materiales.</div>
-          <div class="viales-selector-btn">
-            <span>
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:-2px;margin-right:5px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              Selector de viales, tapas y septas
-            </span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 6l6 6-6 6"/></svg>
-          </div>
-        </div>
-
-        <div class="cons-card cons-card-filtros">
-          <div class="cons-badges"><span class="cons-badge badge-hplc">HPLC</span><span class="cons-badge badge-lcms">LC-MS</span></div>
-          <div class="cons-card-title">Filtros de jeringa</div>
-          <div class="cons-card-desc">Membranas PTFE, Nylon, PES, PVDF y RC. Diámetros 4, 13, 17 y 25 mm. Para filtración de muestras previo a inyección.</div>
-          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
-        </div>
-
-        <div class="cons-card cons-card-columnas">
-          <div class="cons-badges"><span class="cons-badge badge-hplc">HPLC</span><span class="cons-badge badge-gc">GC</span><span class="cons-badge badge-lcms">LC-MS</span></div>
-          <div class="cons-card-title">Columnas</div>
-          <div class="cons-card-desc">Columnas capilares para GC (DB-5, HP-INNOWAX y otras fases), columnas de relleno para HPLC y LC-MS. C18, C8, 100–250 mm.</div>
-          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
-        </div>
-
-        <div class="cons-card cons-card-gc">
-          <div class="cons-badges"><span class="cons-badge badge-gc">GC</span><span class="cons-badge badge-gcms">GC-MS</span></div>
-          <div class="cons-card-title">Consumibles GC</div>
-          <div class="cons-card-desc">Liners split/splitless, septums, trampas de humedad, ferrules de grafito y SS, tapas de columna, filamentos MSD y sellos de oro.</div>
-          <a href="#contacto" class="cons-cta">Ver productos <span class="cons-arrow">→</span></a>
-        </div>
-
-      </div>
-
-      <div class="cons-card cons-card-mas cons-card-wide">
-        <div class="cons-wide-left">
-          <div class="cons-badges">
-            <span class="cons-badge badge-gc">GC</span><span class="cons-badge badge-hplc">HPLC</span><span class="cons-badge badge-lcms">LC-MS</span><span class="cons-badge badge-gcms">GC-MS</span>
-          </div>
-          <div class="cons-card-title">Más consumibles</div>
-          <div class="cons-card-desc">Filtros para gases, capilares, loops, válvulas, conectores PEEK, lámparas HPLC y mucho más. Si no lo ves listado, consultanos.</div>
-          <a href="#contacto" class="cons-cta">Consultar disponibilidad <span class="cons-arrow">→</span></a>
-        </div>
-        <div class="cons-wide-right">
-          <span class="cons-tag">Filtros para gases</span><span class="cons-tag">Capilares</span><span class="cons-tag">Loops</span>
-          <span class="cons-tag">Válvulas</span><span class="cons-tag">Conectores PEEK</span><span class="cons-tag">Lámparas HPLC</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONSUMIBLES S3 -->
-  <section class="cons-s3">
-    <div class="cons-s3-inner">
-      <p class="cons-s3-label">¿No encontrás lo que buscás?</p>
-      <h3 class="cons-s3-title">Consultanos directamente</h3>
-      <p class="cons-s3-desc">Trabajamos con múltiples proveedores internacionales. Si el consumible no está en el catálogo, lo conseguimos.</p>
-      <div class="cons-cta-row">
-        <a href="#contacto" class="btn-cons-p">Solicitar cotización</a>
-        <a href="#guia" class="btn-cons-s">Ver guía de selección</a>
-      </div>
-    </div>
-  </section>
+  <hr class="section-divider" />
 
   <!-- QUIÉNES SOMOS -->
   <section class="quienes-section" id="quienes">
     <div class="quienes-inner">
-      <div class="section-eyebrow" style="margin-bottom:20px;">Quiénes somos</div>
-      <div class="quienes-text">
-        <p>Somos el equipo técnico detrás de AGS Analítica — una empresa con más de 20 años de servicio en laboratorios de toda la Argentina.</p>
-        <p>Sabemos qué falla, cuándo falla, y por qué.</p>
-        <p>viales.com.ar nació para eso: consumibles con respaldo técnico real detrás.</p>
-      </div>
+      <p class="section-pre">Quiénes somos</p>
+      <h2 class="quienes-headline">Sabemos qué falla,<br>cuándo falla, y por qué.</h2>
+      <p class="quienes-body">
+        viales.com.ar es la <strong>división de consumibles de AGS Analítica S.A.</strong> — empresa con más de 20 años de servicio técnico en GC, GC-MS, HPLC y LC-MS en toda la Argentina. Los mismos que reparan tus equipos son los que te recomiendan los consumibles.
+      </p>
     </div>
   </section>
 
   <!-- GUIDE -->
   <section class="guide-section" id="guia">
     <div>
-      <div class="guide-eyebrow">Guía de selección</div>
-      <h2 class="guide-title">Elegí mejor, cotizá más rápido y evitá errores de <span>compatibilidad</span></h2>
-      <p class="guide-desc">Si no tenés claro qué vial, tapa, filtro o accesorio corresponde a tu equipo o aplicación, podés enviarnos la información de tu sistema y te orientamos para identificar una opción adecuada.</p>
+      <p class="guide-eyebrow">Guía de selección</p>
+      <h2 class="guide-title">Elegí mejor, cotizá más rápido y evitá errores de <em>compatibilidad.</em></h2>
+      <p class="guide-desc">Si no tenés claro qué vial, tapa, filtro o accesorio corresponde a tu equipo o aplicación, envianos la información de tu sistema y te orientamos.</p>
       <a href="#contacto" class="btn-white">Quiero ayuda para seleccionar</a>
     </div>
     <div class="guide-steps">
-      <div class="guide-step"><div class="step-num">01</div><div><div class="step-title">Contanos qué equipo usás</div><div class="step-desc">Marca, modelo, técnica o referencia del producto actual.</div></div></div>
-      <div class="guide-step"><div class="step-num">02</div><div><div class="step-title">Indicá tu necesidad</div><div class="step-desc">Tipo de consumible, cantidad, aplicación o condición especial.</div></div></div>
-      <div class="guide-step"><div class="step-num">03</div><div><div class="step-title">Recibís orientación y cotización</div><div class="step-desc">Te respondemos con una alternativa para evaluar con tu laboratorio.</div></div></div>
+      <div class="guide-step">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-title">Contanos qué equipo usás</div>
+          <div class="step-desc">Marca, modelo, técnica o referencia del producto actual.</div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-title">Indicá tu necesidad</div>
+          <div class="step-desc">Tipo de consumible, cantidad, aplicación o condición especial.</div>
+        </div>
+      </div>
+      <div class="guide-step">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-title">Recibís orientación y cotización</div>
+          <div class="step-desc">Te respondemos con una alternativa para evaluar con tu laboratorio.</div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section class="contact-section" id="contacto">
-    <div class="contact-left">
-      <h2 class="contact-title">Solicitar <span>cotización</span></h2>
+    <div>
+      <h2 class="contact-title">Solicitar <em>cotización</em></h2>
       <p class="contact-desc">Completá el formulario y envianos tu consulta. Podés incluir equipo, marca, código, cantidad estimada o cualquier dato que ayude a identificar el consumible.</p>
       <div class="contact-items">
         <a href="mailto:consumibles@agsanalitica.com" class="contact-item">
-          <span class="contact-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+          <span class="contact-icon">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
           consumibles@agsanalitica.com
         </a>
         <a href="https://www.agsanalitica.com" class="contact-item" target="_blank" rel="noopener noreferrer">
-          <span class="contact-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+          <span class="contact-icon">
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </span>
           AGS Analítica
         </a>
       </div>
@@ -522,7 +622,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
-      <img src="Viales-com-ar_transp.svg" alt="VIALES" style="height:32px;width:auto;" />
+      <img src="Viales-com-ar_transp.svg" alt="VIALES" style="height:30px;width:auto;" />
       <div class="footer-links">
         <a href="https://www.agsanalitica.com/" class="footer-link" target="_blank" rel="noopener noreferrer">↗ AGS Analítica S.A.</a>
         <span class="footer-sep">·</span>
@@ -537,378 +637,21 @@
     </div>
   </footer>
 
-  <!-- DRAWER -->
-  <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Selector de viales, tapas y septas">
-    <div class="drawer-header">
-      <div class="drawer-header-left">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <div>
-          <div class="drawer-title">Selector de viales, tapas y septas</div>
-          <div class="drawer-subtitle">Encontrá el consumible Agilent compatible con tu equipo</div>
-        </div>
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()" aria-label="Cerrar">×</button>
-    </div>
-    <div class="drawer-body" id="drawerBody"></div>
-  </div>
-
   <script>
-    /* NAV */
-    window.addEventListener('scroll',()=>{ document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20); });
-    const hamburger=document.getElementById('navHamburger'), navRight=document.getElementById('navRight');
-    hamburger.addEventListener('click',()=>{ hamburger.classList.toggle('open'); navRight.classList.toggle('open'); });
-    navRight.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{ hamburger.classList.remove('open'); navRight.classList.remove('open'); }));
+    const hamburger = document.getElementById('navHamburger');
+    const navRight  = document.getElementById('navRight');
 
-    /* DRAWER */
-    let selectorReady=false;
-    function openDrawer(){ document.getElementById('drawerOverlay').classList.add('open'); document.getElementById('drawer').classList.add('open'); document.body.style.overflow='hidden'; if(!selectorReady){ buildSelector(); selectorReady=true; } }
-    function closeDrawer(){ document.getElementById('drawerOverlay').classList.remove('open'); document.getElementById('drawer').classList.remove('open'); document.body.style.overflow=''; }
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeDrawer(); });
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navRight.classList.toggle('open');
+    });
 
-      window.addEventListener('DOMContentLoaded', () => {
-    if (new URLSearchParams(window.location.search).get('selector') === 'open') {
-      openDrawer();
-    }
-  });
-    
-    /* ── TOGGLE ⓘ ── */
-    function toggleInfo(id){
-      const p=document.getElementById('info-'+id);
-      if(!p) return;
-      p.classList.toggle('open');
-    }
-
-    /* ── BUILD SELECTOR ── */
-    function buildSelector(){
-      document.getElementById('drawerBody').innerHTML=`
-<div class="d-tabs">
-  <button class="d-tab tab-viales active" onclick="dTab('viales',this)">Viales</button>
-  <button class="d-tab tab-tapas" onclick="dTab('tapas',this)">Tapas</button>
-  <button class="d-tab tab-septas" onclick="dTab('septas',this)">Septas sueltas</button>
-</div>
-
-<!-- ══ VIALES ══ -->
-<div id="d-viales" class="d-section active">
-  <div class="s-layout">
-    <div class="s-panel">
-      <div class="s-panel-title">Mis equipos</div>
-      <div class="s-eq-chips" id="vEqChips"></div>
-      <select class="s-select" id="vEqSel">${eqOptions()}</select>
-      <button class="s-add-btn" onclick="vAddEq()">+ Agregar equipo</button>
-      <hr class="s-divider">
-      <div class="s-panel-title">Filtros</div>
-      <div class="s-filter-group"><span class="s-filter-label">Tipo de cierre</span><div class="s-pills"><button class="s-pill" data-f="cierre" data-v="rosca" onclick="vTF(this)">Rosca N 9</button><button class="s-pill" data-f="cierre" data-v="crimp" onclick="vTF(this)">Crimp N 11</button></div></div>
-      <div class="s-filter-group"><span class="s-filter-label">Color</span><div class="s-pills"><button class="s-pill" data-f="color" data-v="transparente" onclick="vTF(this)">Transparente</button><button class="s-pill" data-f="color" data-v="ambar" onclick="vTF(this)">Ámbar</button></div></div>
-      <div class="s-filter-group"><span class="s-filter-label">Inscripción</span><div class="s-pills"><button class="s-pill" data-f="inscripcion" data-v="liso" onclick="vTF(this)">Sin inscripción</button><button class="s-pill" data-f="inscripcion" data-v="label" onclick="vTF(this)">Con escala</button></div></div>
-      <div class="s-filter-group"><span class="s-filter-label">Superficie</span><div class="s-pills"><button class="s-pill" data-f="superficie" data-v="normal" onclick="vTF(this)">Estándar</button><button class="s-pill" data-f="superficie" data-v="silanizado" onclick="vTF(this)">Silanizado</button></div></div>
-      <button class="s-reset" onclick="vReset()">Limpiar filtros</button>
-    </div>
-    <div>
-      <div class="s-sep-rec" id="vSepRec"></div>
-      <div class="s-note" id="vNote"></div>
-      <div class="s-results-header"><span><strong id="vCount">—</strong> productos</span></div>
-      <div class="s-cat-tabs">
-        <button class="s-cat-pill active" onclick="vCat(this,'all')">Todos</button>
-        <button class="s-cat-pill" onclick="vCat(this,'vial')">Viales</button>
-        <button class="s-cat-pill" onclick="vCat(this,'tapa')">Tapas</button>
-        <button class="s-cat-pill" onclick="vCat(this,'septa')">Septas</button>
-        <button class="s-cat-pill" onclick="vCat(this,'kit')">Kits</button>
-      </div>
-      <div class="s-grid" id="vGrid"></div>
-      <div class="s-pedido" id="vPedidoSection">
-        <div class="s-pedido-header"><h2>Pedido <span class="s-ped-count" id="vPedCount">0</span></h2><button class="s-pedido-clear" onclick="vClearPed()">Limpiar</button></div>
-        <div id="vPedBody"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ TAPAS ══ -->
-<div id="d-tapas" class="d-section">
-  <div class="s-layout">
-    <div class="s-panel">
-      <div class="s-panel-title">Mis equipos</div>
-      <div class="s-eq-chips" id="tEqChips"></div>
-      <select class="s-select" id="tEqSel">${eqOptions()}</select>
-      <button class="s-add-btn" onclick="tAddEq()">+ Agregar equipo</button>
-      <hr class="s-divider">
-      <div class="s-panel-title">Filtros</div>
-      <div class="s-filter-group"><span class="s-filter-label">Tipo de cierre</span><div class="s-pills"><button class="s-pill" data-f="cierre" data-v="rosca" onclick="tTF(this)">Rosca N 9</button><button class="s-pill" data-f="cierre" data-v="crimp" onclick="tTF(this)">Crimp N 11</button></div></div>
-      <div class="s-filter-group"><span class="s-filter-label">Tipo de septum</span><div class="s-pills"><button class="s-pill" data-f="septum" data-v="universal" onclick="tTF(this)">Universal Sil/PTFE</button><button class="s-pill" data-f="septum" data-v="sandwich" onclick="tTF(this)">Sándwich GC-MS</button><button class="s-pill" data-f="septum" data-v="preslit" onclick="tTF(this)">Preslit HPLC</button><button class="s-pill" data-f="septum" data-v="economica" onclick="tTF(this)">Económica</button></div></div>
-      <button class="s-reset" onclick="tReset()">Limpiar filtros</button>
-    </div>
-    <div>
-      <div class="s-note" id="tNote"></div>
-      <div class="s-results-header"><span><strong id="tCount">—</strong> productos</span></div>
-      <div class="s-grid" id="tGrid"></div>
-      <div class="s-pedido" id="tPedidoSection">
-        <div class="s-pedido-header"><h2>Pedido <span class="s-ped-count" id="tPedCount">0</span></h2><button class="s-pedido-clear" onclick="tClearPed()">Limpiar</button></div>
-        <div id="tPedBody"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ SEPTAS ══ -->
-<div id="d-septas" class="d-section">
-  <div class="sep-intro">
-    <div class="sep-intro-title">¿Qué es una septa y por qué importa elegirla bien?</div>
-    <p>La septa es el disco elastomérico que perfora la aguja del autosampler para acceder a la muestra. Tiene que sellar herméticamente, recuperar su forma tras cada perforación, y no contaminar lo que medís. El material equivocado puede generar ruido de fondo en el cromatograma, contaminar la muestra o deteriorarse antes de tiempo.</p>
-    <div class="sep-concepts">
-      <div class="sep-concept">
-        <div class="sep-concept-title">La cara que importa</div>
-        <p>En toda septa bicapa Sil/PTFE (Teflón), el PTFE mira siempre hacia adentro del vial — es la barrera química entre la silicona y tu muestra. Instalada al revés, la silicona queda expuesta a los solventes y puede contaminar.</p>
-      </div>
-      <div class="sep-concept">
-        <div class="sep-concept-title">El sándwich PTFE/Sil/PTFE</div>
-        <p>Agrega PTFE en ambas caras. Protege la silicona incluso después de la primera perforación. Recomendado para GC-MS (donde el bleed de silicona aparece en el espectro) y cuando se trabaja con solventes agresivos como tolueno, hexano o diclorometano.</p>
-      </div>
-      <div class="sep-concept">
-        <div class="sep-concept-title">Preslit (prerranurada)</div>
-        <p>Tiene una ranura preformada que guía la aguja. Reduce la fuerza de penetración y el vacío que se genera al retirar la aguja. Muy recomendada para HPLC con agujas romas y volúmenes de inyección altos.</p>
-      </div>
-      <div class="sep-concept">
-        <div class="sep-concept-title">Solventes agresivos</div>
-        <p>Tolueno, hexano, diclorometano e hidrocarburos clorados atacan la silicona expuesta. Si trabajás con estos solventes y necesitás múltiples inyecciones, usá sándwich o consultanos por opciones específicas.</p>
-      </div>
-    </div>
-  </div>
-  <div class="s-results-header"><span><strong>3</strong> septas sueltas N 9 (Agilent)</span></div>
-  <div class="s-grid" id="sGrid"></div>
-  <div class="s-pedido" id="sPedidoSection">
-    <div class="s-pedido-header"><h2>Pedido <span class="s-ped-count" id="sPedCount">0</span></h2><button class="s-pedido-clear" onclick="sClearPed()">Limpiar</button></div>
-    <div id="sPedBody"></div>
-  </div>
-</div>`;
-
-      /* ── DATOS ── */
-      const EQ={
-        'ag-gc':{label:'GC Agilent',modelos:'5890, 6890, 7890A/B, 8860, 8890',cierres:['rosca','crimp'],gcms:false,hplc:false},
-        'ag-gcms':{label:'GC-MS Agilent',modelos:'5973, 5975, 5977',cierres:['rosca','crimp'],gcms:true,hplc:false},
-        'ag-hplc':{label:'HPLC Agilent',modelos:'Series 1100, 1200, 1260, 1290',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'ag-lcms':{label:'LC-MS Agilent',modelos:'Series 6100, 6200, 6400, 6500',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'sh-gc':{label:'GC Shimadzu',modelos:'GC-2010, GC-2014, GC-2030',cierres:['rosca','crimp'],gcms:false,hplc:false},
-        'sh-gcms':{label:'GC-MS Shimadzu',modelos:'GCMS-QP2010, QP2020, QP2050',cierres:['rosca','crimp'],gcms:true,hplc:false},
-        'sh-hplc':{label:'HPLC Shimadzu',modelos:'LC-2010, Prominence LC-20, Nexera',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'sh-lcms':{label:'LC-MS Shimadzu',modelos:'LCMS-2020, LCMS-8030/8040/8050',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'th-gc':{label:'GC Thermo',modelos:'Trace GC Ultra, Trace 1300/1310, 1600',cierres:['rosca','crimp'],gcms:false,hplc:false},
-        'th-gcms':{label:'GC-MS Thermo',modelos:'DSQ II, ISQ, TSQ Duo/8000/9000',cierres:['rosca','crimp'],gcms:true,hplc:false},
-        'th-hplc':{label:'HPLC Thermo',modelos:'Surveyor, Ultimate 3000, Vanquish',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'th-lcms':{label:'LC-MS Thermo',modelos:'TSQ Quantum, Q Exactive, Orbitrap',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'wa-hplc':{label:'HPLC Waters',modelos:'Alliance, ACQUITY UPLC, Arc',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'wa-lcms':{label:'LC-MS Waters',modelos:'Xevo TQ/TQ-S/TQ-XS, Xevo G2',cierres:['rosca','crimp'],gcms:false,hplc:true},
-        'kn-hplc':{label:'HPLC Knauer',modelos:'Smartline, Azura',cierres:['rosca'],gcms:false,hplc:true},
-      };
-
-      const VIALES=[
-        {id:'v-n9-cl-s',cat:'vial',nombre:'Vial N 9 transparente liso',cierre:'rosca',color:'transparente',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'5182-0714'},{l:'1000pk',pn:'5183-2067'}]},
-        {id:'v-n9-cl-l',cat:'vial',nombre:'Vial N 9 transparente con escala',cierre:'rosca',color:'transparente',inscripcion:'label',superficie:'normal',packs:[{l:'100pk',pn:'5182-0715'},{l:'1000pk',pn:'5183-2068'}]},
-        {id:'v-n9-am-s',cat:'vial',nombre:'Vial N 9 ámbar liso',cierre:'rosca',color:'ambar',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'5188-6535'},{l:'1000pk',pn:'5188-6536'}]},
-        {id:'v-n9-am-l',cat:'vial',nombre:'Vial N 9 ámbar con escala',cierre:'rosca',color:'ambar',inscripcion:'label',superficie:'normal',packs:[{l:'100pk',pn:'5182-0716'},{l:'1000pk',pn:'5183-2069'}]},
-        {id:'v-n9-cl-sil',cat:'vial',nombre:'Vial N 9 transparente silanizado',cierre:'rosca',color:'transparente',inscripcion:'liso',superficie:'silanizado',packs:[{l:'100pk',pn:'5183-2071'}]},
-        {id:'v-n9-am-sil',cat:'vial',nombre:'Vial N 9 ámbar silanizado',cierre:'rosca',color:'ambar',inscripcion:'liso',superficie:'silanizado',packs:[{l:'100pk',pn:'5183-2072'}]},
-        {id:'v-n11-cl-s',cat:'vial',nombre:'Vial N 11 transparente liso',cierre:'crimp',color:'transparente',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'5181-3375'},{l:'1000pk',pn:'5183-4491'}]},
-        {id:'v-n11-cl-l',cat:'vial',nombre:'Vial N 11 transparente con escala',cierre:'crimp',color:'transparente',inscripcion:'label',superficie:'normal',packs:[{l:'100pk',pn:'5182-0543'},{l:'1000pk',pn:'5183-4492'}]},
-        {id:'v-n11-am-s',cat:'vial',nombre:'Vial N 11 ámbar liso',cierre:'crimp',color:'ambar',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'5181-3376'}]},
-        {id:'v-n11-am-l',cat:'vial',nombre:'Vial N 11 ámbar con escala',cierre:'crimp',color:'ambar',inscripcion:'label',superficie:'normal',packs:[{l:'100pk',pn:'5181-3376'},{l:'1000pk',pn:'5183-4493'}]},
-        {id:'v-n11-cl-sil',cat:'vial',nombre:'Vial N 11 transparente silanizado',cierre:'crimp',color:'transparente',inscripcion:'liso',superficie:'silanizado',packs:[{l:'100pk',pn:'5183-4495'}]},
-        {id:'v-n11-am-sil',cat:'vial',nombre:'Vial N 11 ámbar silanizado',cierre:'crimp',color:'ambar',inscripcion:'liso',superficie:'silanizado',packs:[{l:'100pk',pn:'5183-4496'}]},
-        {id:'k-cr-cl',cat:'kit',nombre:'Kit crimp transparente + tapa PTFE/sil',cierre:'crimp',color:'transparente',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'8010-0195'}]},
-        {id:'k-cr-am',cat:'kit',nombre:'Kit crimp ámbar + tapa PTFE/sil',cierre:'crimp',color:'ambar',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'8010-0196'}]},
-        {id:'k-sc-cl-l',cat:'kit',nombre:'Kit rosca transparente write-on + tapa',cierre:'rosca',color:'transparente',inscripcion:'label',superficie:'normal',packs:[{l:'100pk',pn:'5182-0864'}]},
-        {id:'k-sc-cl-s',cat:'kit',nombre:'Kit rosca transparente + tapa PTFE/sil',cierre:'rosca',color:'transparente',inscripcion:'liso',superficie:'normal',packs:[{l:'100pk',pn:'5182-0553'}]},
-        {id:'t-n9-uni',cat:'tapa',nombre:'Tapa N 9 Sil/PTFE rojo — universal GC/HPLC',cierre:'rosca',septum:'universal',packs:[{l:'100pk',pn:'5182-0717'},{l:'500pk',pn:'5185-5820'}]},
-        {id:'t-n9-sand',cat:'tapa',nombre:'Tapa N 9 PTFE/Sil/PTFE — sándwich GC-MS',cierre:'rosca',septum:'sandwich',packs:[{l:'100pk',pn:'5182-0723'},{l:'500pk',pn:'5185-5862'}]},
-        {id:'t-n9-rr',cat:'tapa',nombre:'Tapa N 9 Red Rubber/PTFE — económica',cierre:'rosca',septum:'economica',packs:[{l:'100pk',pn:'5182-0718'},{l:'500pk',pn:'5185-5829'}]},
-        {id:'t-n9-slit',cat:'tapa',nombre:'Tapa N 9 Sil/PTFE azul preslit — HPLC',cierre:'rosca',septum:'preslit',packs:[{l:'100pk',pn:'5182-0720'},{l:'500pk',pn:'5185-5862'}]},
-        {id:'t-n9-bond',cat:'tapa',nombre:'Tapa N 9 bonded preslit — HPLC alta presión',cierre:'rosca',septum:'preslit',packs:[{l:'100pk',pn:'5185-5824'},{l:'500pk',pn:'5040-4649'}]},
-        {id:'t-n11-uni',cat:'tapa',nombre:'Tapa N 11 PTFE/goma rojo — universal GC/HPLC',cierre:'crimp',septum:'universal',packs:[{l:'100pk',pn:'5181-1210'},{l:'500pk',pn:'5061-3370'}]},
-        {id:'t-n11-sand',cat:'tapa',nombre:'Tapa N 11 PTFE/Sil/PTFE — sándwich GC-MS',cierre:'crimp',septum:'sandwich',packs:[{l:'100pk',pn:'5181-1211'},{l:'1000pk',pn:'5183-4499'}]},
-        {id:'t-n11-sil',cat:'tapa',nombre:'Tapa N 11 PTFE/silicona — GC/HPLC cert.',cierre:'crimp',septum:'universal',packs:[{l:'100pk',pn:'5182-0552'},{l:'1000pk',pn:'5183-4500'}]},
-        {id:'t-n11-slit',cat:'tapa',nombre:'Tapa N 11 Sil/PTFE cross-slit — HPLC',cierre:'crimp',septum:'preslit',packs:[{l:'100pk',pn:'5190-9044'}]},
-        {id:'t-n11-fc',cat:'tapa',nombre:'Tapa N 11 fluorocarbono negro — alta temp.',cierre:'crimp',septum:'universal',packs:[{l:'100pk',pn:'5181-1212'}]},
-      ];
-
-      /* INFO TEXTOS ⓘ para septas sueltas */
-      const SEP_INFO={
-        's-n9-uni':'La cara de PTFE mira hacia adentro del vial — barrera entre la silicona y tu muestra. Excelente resellado para múltiples inyecciones. Recomendada para GC rutinario (FID, TCD) y HPLC con mezclas acuosas y MeOH/ACN. Evitar con solventes apolares en ciclos muy largos.',
-        's-n9-sand':'PTFE en ambas caras. Protege la silicona incluso después de la primera perforación. Ideal para GC-MS donde el bleed de silicona aparece directamente en el espectro. También recomendada para análisis de trazas con intervalos largos entre inyecciones, o cuando se trabaja con diclorometano, tolueno o hexano.',
-        's-n9-slit':'Ranura preformada que guía la aguja y reduce la fuerza de penetración. El PTFE azul mira hacia adentro. Diseñada específicamente para HPLC con aguja roma. Evita la formación de vacío al inyectar volúmenes altos. No recomendada para GC donde la estanqueidad es crítica.',
-      };
-
-      /* INFO TEXTOS ⓘ para tapas */
-      const TAPA_INFO={
-        't-n9-uni':'Tapa azul PP con septum Sil/PTFE rojo. PTFE hacia adentro. Equilibrio ideal entre sellado, resellado y precio. Para GC rutinario y HPLC estándar con solventes acuosos y mezclas orgánicas moderadas. La más utilizada en laboratorio de rutina.',
-        't-n9-sand':'Septum sándwich: PTFE en ambas caras de la silicona. Mínimo bleed — recomendada para GC-MS donde cualquier compuesto de la silicona aparece en el espectro. También para análisis de trazas y aplicaciones muy sensibles.',
-        't-n9-rr':'Red Rubber/PTFE (FEP — etileno propileno fluorado). Opción económica para GC de rutina con FID. Buen resellado y fácil penetración por la baja dureza del caucho. No recomendada para aplicaciones sensibles ni solventes agresivos.',
-        't-n9-slit':'Septum Sil/PTFE azul con ranura preformada. PTFE hacia adentro. Reduce la fuerza de penetración de la aguja roma del HPLC. Muy recomendada para sistemas de alta presión y volúmenes de inyección elevados.',
-        't-n9-bond':'Septum pegado (bonded) al tapón — no se puede separar. Preslit para HPLC de alta presión. Mayor consistencia y sin riesgo de que el septum se desplace dentro del vial al retirar la aguja.',
-        't-n11-uni':'Tapa de aluminio plateado con septum PTFE/goma rojo. Cierre por crimping. Universal para GC y HPLC. El más utilizado para viales crimp de 2 mL en laboratorios de rutina.',
-        't-n11-sand':'Tapa aluminio con septum sándwich PTFE/Sil/PTFE. Para GC-MS y análisis de trazas. Mínimo bleed. Requiere aguja compatible — mayor resistencia a la penetración que la tapa universal.',
-        't-n11-sil':'Tapa aluminio con septum PTFE/silicona certificada. Alta pureza y bajo bleed. Certificada por Agilent para aplicaciones que requieren trazabilidad. Buena opción para laboratorios con exigencia regulatoria.',
-        't-n11-slit':'Cross-slit: ranura en cruz para facilitar la penetración de agujas romas de HPLC en viales crimp. Equivalente funcional de la preslit N9 pero para sistemas de encapsulado.',
-        't-n11-fc':'Septum de fluorocarbono negro. Máxima resistencia química y térmica. Para aplicaciones con solventes que atacan la silicona o temperaturas elevadas. Mayor resistencia a la penetración.',
-      };
-
-      const SEPTAS=[
-        {id:'s-n9-uni',nombre:'Septa N 9 Sil/PTFE rojo — universal',cierre:'rosca',packs:[{l:'100pk',pn:'5182-0717'}]},
-        {id:'s-n9-sand',nombre:'Septa N 9 PTFE/Sil/PTFE — sándwich',cierre:'rosca',packs:[{l:'100pk',pn:'5183-4437'}]},
-        {id:'s-n9-slit',nombre:'Septa N 9 Sil/PTFE azul preslit',cierre:'rosca',packs:[{l:'100pk',pn:'5190-4050'},{l:'5000pk',pn:'5190-4050'}]},
-      ];
-
-      const SEP_RECS={gcms:{texto:'Para GC-MS: septum sándwich PTFE/Sil/PTFE — mínima contaminación de fuente',badge:'GC-MS'},hplc:{texto:'Para HPLC: septum Sil/PTFE azul preslit — penetración suave con aguja roma',badge:'HPLC'},gc:{texto:'Para GC: septum universal Sil/PTFE rojo',badge:'GC'}};
-
-      const VM=Object.fromEntries([...VIALES,...SEPTAS].map(p=>[p.id,p]));
-      const TM=Object.fromEntries(VIALES.filter(p=>p.cat==='tapa').map(p=>[p.id,p]));
-
-      /* pedidos independientes por pestaña */
-      let vPed={}, tPed={}, sPed={};
-      /* equipos y filtros independientes */
-      let vEq=[],vAF={},vACat='all';
-      let tEq=[],tAF={};
-
-      /* ── HELPERS ── */
-      function eqOptions(){ return '<option value="">— Seleccionar equipo —</option><optgroup label="Agilent"><option value="ag-gc">GC Agilent</option><option value="ag-gcms">GC-MS Agilent</option><option value="ag-hplc">HPLC Agilent</option><option value="ag-lcms">LC-MS Agilent</option></optgroup><optgroup label="Shimadzu"><option value="sh-gc">GC Shimadzu</option><option value="sh-gcms">GC-MS Shimadzu</option><option value="sh-hplc">HPLC Shimadzu</option><option value="sh-lcms">LC-MS Shimadzu</option></optgroup><optgroup label="Thermo Scientific"><option value="th-gc">GC Thermo</option><option value="th-gcms">GC-MS Thermo</option><option value="th-hplc">HPLC Thermo</option><option value="th-lcms">LC-MS Thermo</option></optgroup><optgroup label="Waters"><option value="wa-hplc">HPLC Waters</option><option value="wa-lcms">LC-MS Waters</option></optgroup><optgroup label="Knauer"><option value="kn-hplc">HPLC Knauer</option></optgroup>'; }
-
-      function rEqChips(id,arr){ const c=document.getElementById(id); if(!arr.length){c.innerHTML='<span style="font-size:13px;color:var(--color-text-tertiary)">Ningún equipo — se muestran todos</span>';return;} c.innerHTML=arr.map(v=>`<div class="s-echip"><div class="s-echip-top"><span style="font-weight:500">${EQ[v].label}</span><button onclick="window['${id==='vEqChips'?'vRemEq':'tRemEq'}']('${v}')">×</button></div><div class="s-echip-models">${EQ[v].modelos}</div></div>`).join(''); }
-
-      function getCierres(arr){ if(!arr.length)return null; let c=null; arr.forEach(id=>{const ec=EQ[id].cierres; c=c===null?[...ec]:c.filter(x=>ec.includes(x));}); return c; }
-
-      function cardVial(p,infoMap){
-        const iV=p.cat==='vial'||p.cat==='kit', iT=p.cat==='tapa', iS=p.cat==='septa';
-        const iA=p.color==='ambar', hL=p.inscripcion==='label', iSil=p.superficie==='silanizado', iC=p.cierre==='crimp';
-        const pn0=p.packs[0].pn;
-        const ico=iV?`<div class="vial-icon ${iA?'amber':'clear'}">${hL?'<div class="ls"></div>':''}<div class="sl"><span></span><span></span><span></span></div></div>`:iT?`<div class="cap-icon ${iC?'silver':'blue'}"></div>`:`<div class="sep-icon"></div>`;
-        const ps=p.packs.length>1?`<select class="pack-select" id="pk-${p.id}">${p.packs.map(x=>`<option value="${x.pn}">${x.l} — ${x.pn}</option>`).join('')}</select>`:`<div class="vcard-pn">${pn0}</div>`;
-        const hasInfo=infoMap&&infoMap[p.id];
-        const infoBtn=hasInfo?`<button class="info-btn" onclick="toggleInfo('${p.id}')" title="Más información">ⓘ</button>`:'';
-        const infoPanel=hasInfo?`<div class="info-panel" id="info-${p.id}">${infoMap[p.id]}</div>`:'';
-        const tags=[];
-        if(iV){tags.push(`<span class="vtag ${iC?'n11':'n9'}">${iC?'N 11':'N 9'}</span>`);if(p.color)tags.push(`<span class="vtag ${iA?'amber':'clear'}">${iA?'Ámbar':'Transparente'}</span>`);if(hL)tags.push('<span class="vtag label">Con escala</span>');if(iSil)tags.push('<span class="vtag sil">Silanizado</span>');if(p.cat==='kit')tags.push('<span class="vtag kit">Kit</span>');}
-        else if(iT){tags.push(`<span class="vtag ${iC?'n11':'n9'}">${iC?'Crimp N 11':'Rosca N 9'}</span>`);if(p.septum==='sandwich')tags.push('<span class="vtag sep">Sándwich</span>');if(p.septum==='preslit')tags.push('<span class="vtag label">Preslit</span>');if(p.septum==='economica')tags.push('<span class="vtag rosca">Económica</span>');}
-        else{tags.push(`<span class="vtag n9">N 9</span>`);if(p.id.includes('sand'))tags.push('<span class="vtag sep">Sándwich</span>');if(p.id.includes('slit'))tags.push('<span class="vtag label">Preslit</span>');}
-        return`<div class="vcard" id="vc-${p.id}"><div class="vcard-top"><div class="vcard-icon-wrap">${ico}<div class="vcard-name">${p.nombre}</div></div>${infoBtn}</div>${infoPanel}<div class="vcard-tags">${tags.join('')}</div>${ps}<div class="qty-row"><button class="qty-btn" onclick="chQ('${p.id}',-1)">−</button><span class="qty-display" id="qty-${p.id}">100</span><span class="qty-unit">u.</span><button class="qty-btn" onclick="chQ('${p.id}',1)">+</button></div><button class="add-btn" onclick="addP('${p.id}')">Agregar al pedido</button></div>`;
-      }
-
-      function chQ(id,d){let q=(parseInt(document.getElementById('qty-'+id)?.textContent)||100)+d*100;if(q<100)q=100;const el=document.getElementById('qty-'+id);if(el)el.textContent=q;}
-      window.chQ=chQ;
-
-      function addPed(ped,id,src){
-        const p=src[id]||VM[id]||TM[id]; if(!p)return;
-        const sel=document.getElementById('pk-'+id); const pn=sel?sel.value:p.packs[0].pn;
-        const qty=parseInt(document.getElementById('qty-'+id)?.textContent)||100;
-        const pl=p.packs.find(x=>x.pn===pn)?.l||p.packs[0].l;
-        const k=id+'__'+pn; if(ped[k])ped[k].qty+=qty; else ped[k]={prod:p,pn,packLabel:pl,qty};
-        const el=document.getElementById('qty-'+id); if(el)el.textContent=100;
-        const vc=document.getElementById('vc-'+id); if(vc){vc.classList.add('added');setTimeout(()=>vc.classList.remove('added'),700);}
-      }
-
-      function rPed(ped,countId,bodyId){
-        const it=Object.entries(ped); document.getElementById(countId).textContent=it.length;
-        const b=document.getElementById(bodyId);
-        if(!it.length){b.innerHTML='<div class="s-pedido-empty">Agregá productos para armar el pedido.</div>';return;}
-        const tot=it.reduce((s,[,i])=>s+i.qty,0);
-        b.innerHTML=`<table class="s-pedido-table"><thead><tr><th>PN Agilent</th><th>Descripción</th><th>Pack</th><th style="text-align:right">Cant.</th><th></th></tr></thead><tbody>${it.map(([k,i])=>`<tr><td style="font-family:'DM Mono',monospace;font-size:12px">${i.pn}</td><td style="font-size:12px">${i.prod.nombre}</td><td style="font-size:12px;color:var(--color-text-secondary)">${i.packLabel}</td><td style="text-align:right;font-weight:500">${i.qty}</td><td><button class="s-pedido-remove" onclick="window._rmPed('${k}','${countId}','${bodyId}')">×</button></td></tr>`).join('')}</tbody></table><div class="s-pedido-total">Total: <strong>${tot} unidades · ${it.length} referencias</strong></div>`;
-      }
-
-      window._rmPed=function(k,cid,bid){
-        if(bid==='vPedBody'){delete vPed[k];rPed(vPed,'vPedCount','vPedBody');}
-        else if(bid==='tPedBody'){delete tPed[k];rPed(tPed,'tPedCount','tPedBody');}
-        else{delete sPed[k];rPed(sPed,'sPedCount','sPedBody');}
-      };
-
-      /* ── VIALES ── */
-      function vRenderEq(){rEqChips('vEqChips',vEq);}
-      function vRenderSepRec(){
-        const b=document.getElementById('vSepRec');
-        if(!vEq.length){b.style.display='none';return;}
-        const g=vEq.some(e=>EQ[e].gcms),h=vEq.some(e=>EQ[e].hplc);
-        let r; if(g&&h)r=null; else if(g)r=SEP_RECS.gcms; else if(h)r=SEP_RECS.hplc; else r=SEP_RECS.gc;
-        if(!r){b.style.display='none';return;}
-        b.style.display='block'; b.innerHTML=`<strong>Septum sugerido <span class="s-sep-badge">${r.badge}</span></strong><br>${r.texto}`;
-      }
-      function vRender(){
-        const cp=getCierres(vEq);
-        const n=document.getElementById('vNote');
-        if(vEq.length>1){n.style.display='block';n.textContent=`Intersección de ${vEq.length} equipos.`;}else n.style.display='none';
-        let f=VIALES.filter(p=>{
-          if(vACat!=='all'&&p.cat!==vACat)return false;
-          if((p.cat==='vial'||p.cat==='kit')){if(cp&&!cp.includes(p.cierre))return false;if(vAF.cierre&&p.cierre!==vAF.cierre)return false;if(vAF.color&&p.color!==vAF.color)return false;if(vAF.inscripcion&&p.inscripcion!==vAF.inscripcion)return false;if(vAF.superficie&&p.superficie!==vAF.superficie)return false;}
-          if(p.cat==='tapa'||p.cat==='septa'){if(cp&&!cp.includes(p.cierre))return false;if(vAF.cierre&&p.cierre!==vAF.cierre)return false;}
-          return true;
-        });
-        document.getElementById('vCount').textContent=f.length;
-        const g=document.getElementById('vGrid');
-        if(!f.length){g.innerHTML='<div class="s-empty">Ningún producto cumple los filtros.</div>';return;}
-        const cs=['vial','kit','tapa','septa'], cl={vial:'Viales',kit:'Vial kits',tapa:'Tapas',septa:'Septas sueltas'};
-        let h='';
-        if(vACat==='all'){cs.forEach(c=>{const it=f.filter(p=>p.cat===c);if(!it.length)return;h+=`<div class="s-cat-label">${cl[c]}</div>`;h+=it.map(p=>cardVial(p,null)).join('');});}
-        else h=f.map(p=>cardVial(p,null)).join('');
-        g.innerHTML=h;
-      }
-      window.vAddEq=function(){const s=document.getElementById('vEqSel'),v=s.value;if(!v||vEq.includes(v))return;vEq.push(v);s.value='';vRenderEq();vRender();vRenderSepRec();};
-      window.vRemEq=function(v){vEq=vEq.filter(e=>e!==v);vRenderEq();vRender();vRenderSepRec();};
-      window.vTF=function(btn){const f=btn.dataset.f,v=btn.dataset.v;if(vAF[f]===v){delete vAF[f];btn.classList.remove('active');}else{vAF[f]=v;document.querySelectorAll(`#d-viales .s-pill[data-f="${f}"]`).forEach(b=>b.classList.remove('active'));btn.classList.add('active');}vRender();};
-      window.vReset=function(){vAF={};vEq=[];document.querySelectorAll('#d-viales .s-pill').forEach(b=>b.classList.remove('active'));document.getElementById('vEqSel').value='';vRenderEq();vRender();vRenderSepRec();};
-      window.vCat=function(btn,cat){vACat=cat;document.querySelectorAll('#d-viales .s-cat-pill').forEach(b=>b.classList.remove('active'));btn.classList.add('active');vRender();};
-      window.addP=function(id){
-        const tab=document.querySelector('.d-tab.active');
-        const which=tab?.textContent?.trim();
-        if(which==='Viales'){addPed(vPed,id,VM);rPed(vPed,'vPedCount','vPedBody');}
-        else if(which==='Tapas'){addPed(tPed,id,TM);rPed(tPed,'tPedCount','tPedBody');}
-        else{addPed(sPed,id,Object.fromEntries(SEPTAS.map(p=>[p.id,p])));rPed(sPed,'sPedCount','sPedBody');}
-      };
-      window.vClearPed=function(){vPed={};rPed(vPed,'vPedCount','vPedBody');};
-
-      /* ── TAPAS ── */
-      function tRenderEq(){rEqChips('tEqChips',tEq);}
-      function tRender(){
-        const cp=getCierres(tEq);
-        const n=document.getElementById('tNote');
-        if(tEq.length>1){n.style.display='block';n.textContent=`Intersección de ${tEq.length} equipos.`;}else n.style.display='none';
-        let f=VIALES.filter(p=>{
-          if(p.cat!=='tapa')return false;
-          if(cp&&!cp.includes(p.cierre))return false;
-          if(tAF.cierre&&p.cierre!==tAF.cierre)return false;
-          if(tAF.septum&&p.septum!==tAF.septum)return false;
-          return true;
-        });
-        document.getElementById('tCount').textContent=f.length;
-        const g=document.getElementById('tGrid');
-        if(!f.length){g.innerHTML='<div class="s-empty">Ningún producto cumple los filtros.</div>';return;}
-        g.innerHTML=f.map(p=>cardVial(p,TAPA_INFO)).join('');
-      }
-      window.tAddEq=function(){const s=document.getElementById('tEqSel'),v=s.value;if(!v||tEq.includes(v))return;tEq.push(v);s.value='';tRenderEq();tRender();};
-      window.tRemEq=function(v){tEq=tEq.filter(e=>e!==v);tRenderEq();tRender();};
-      window.tTF=function(btn){const f=btn.dataset.f,v=btn.dataset.v;if(tAF[f]===v){delete tAF[f];btn.classList.remove('active');}else{tAF[f]=v;document.querySelectorAll(`#d-tapas .s-pill[data-f="${f}"]`).forEach(b=>b.classList.remove('active'));btn.classList.add('active');}tRender();};
-      window.tReset=function(){tAF={};tEq=[];document.querySelectorAll('#d-tapas .s-pill').forEach(b=>b.classList.remove('active'));document.getElementById('tEqSel').value='';tRenderEq();tRender();};
-      window.tClearPed=function(){tPed={};rPed(tPed,'tPedCount','tPedBody');};
-
-      /* ── SEPTAS ── */
-      function sRender(){
-        const g=document.getElementById('sGrid');
-        g.innerHTML=SEPTAS.map(p=>cardVial(p,SEP_INFO)).join('');
-      }
-      window.sClearPed=function(){sPed={};rPed(sPed,'sPedCount','sPedBody');};
-
-      /* ── TABS ── */
-      window.dTab=function(id,btn){
-        document.querySelectorAll('.d-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');
-        document.querySelectorAll('.d-section').forEach(s=>s.classList.remove('active'));
-        document.getElementById('d-'+id).classList.add('active');
-      };
-
-      /* INIT */
-      vRenderEq(); vRender(); vRenderSepRec();
-      tRenderEq(); tRender();
-      sRender();
-      rPed(vPed,'vPedCount','vPedBody');
-      rPed(tPed,'tPedCount','tPedBody');
-      rPed(sPed,'sPedCount','sPedBody');
-    }
-
-    function eqOptions(){ return '<option value="">— Seleccionar equipo —</option><optgroup label="Agilent"><option value="ag-gc">GC Agilent</option><option value="ag-gcms">GC-MS Agilent</option><option value="ag-hplc">HPLC Agilent</option><option value="ag-lcms">LC-MS Agilent</option></optgroup><optgroup label="Shimadzu"><option value="sh-gc">GC Shimadzu</option><option value="sh-gcms">GC-MS Shimadzu</option><option value="sh-hplc">HPLC Shimadzu</option><option value="sh-lcms">LC-MS Shimadzu</option></optgroup><optgroup label="Thermo Scientific"><option value="th-gc">GC Thermo</option><option value="th-gcms">GC-MS Thermo</option><option value="th-hplc">HPLC Thermo</option><option value="th-lcms">LC-MS Thermo</option></optgroup><optgroup label="Waters"><option value="wa-hplc">HPLC Waters</option><option value="wa-lcms">LC-MS Waters</option></optgroup><optgroup label="Knauer"><option value="kn-hplc">HPLC Knauer</option></optgroup>'; }
+    navRight.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navRight.classList.remove('open');
+      });
+    });
   </script>
 
 </body>
