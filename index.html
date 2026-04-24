@@ -77,7 +77,7 @@
     .catalog { max-width:1200px; margin:0 auto; padding:64px 48px; }
     .section-label { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:28px; }
     .category-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:0.5px solid var(--border); border-radius:14px; overflow:hidden; }
-    .cat-card { background:var(--cream); padding:26px 22px 24px; transition:background 0.15s; cursor:pointer; }
+    .cat-card { background:var(--cream); padding:26px 22px 24px; transition:background 0.15s; cursor:pointer; display:flex; flex-direction:column; }
     .cat-card:hover { background:var(--white); }
     .cat-card-img { width:100%; height:140px; margin-bottom:14px; overflow:hidden; border-radius:8px; }
     .cat-card-img img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
@@ -89,7 +89,7 @@
     .tag-hplc { background:var(--hplc-bg); color:var(--hplc-text); }
     .tag-lcms { background:var(--lcms-bg); color:var(--lcms-text); }
     .cat-name { font-size:15px; font-weight:500; color:var(--navy); margin-bottom:6px; line-height:1.3; }
-    .cat-desc { font-size:12px; color:var(--ink-muted); line-height:1.6; font-weight:300; }
+    .cat-desc { font-size:12px; color:var(--ink-muted); line-height:1.6; font-weight:300; flex:1; }
     .cat-card-consult { background:var(--cream); padding:26px 22px 24px; display:flex; flex-direction:column; justify-content:center; gap:8px; }
     .consult-title { font-size:15px; font-weight:500; color:var(--ink-soft); }
     .consult-examples { font-size:11px; color:var(--ink-faint); line-height:1.75; font-weight:300; }
@@ -279,7 +279,7 @@
         </div>
         <div class="cat-name">Viales y tapas</div>
         <div class="cat-desc">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
-        <div style="margin-top:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div style="margin-top:auto;padding-top:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
           <a href="javascript:void(0)" onclick="openDrawer()" class="consult-link" style="color:var(--blue);">Abrir selector →</a>
           <span style="color:var(--ink-faint);font-size:12px;">·</span>
           <a href="#contacto" class="consult-link">Consultanos →</a>
@@ -308,7 +308,7 @@
         </div>
         <div class="cat-name">Consumibles de GC</div>
         <div class="cat-desc">Liners split/splitless, septas, ferrules, filamentos MSD, columnas capilares, filtros para gases.</div>
-        <div style="margin-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
+        <div style="margin-top:auto;padding-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
       <!-- Accesorios HPLC -->
@@ -321,7 +321,7 @@
         </div>
         <div class="cat-name">Consumibles de HPLC y LC-MS</div>
         <div class="cat-desc">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
-        <div style="margin-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
+        <div style="margin-top:auto;padding-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
       <!-- Otros consumibles + consulta unificados -->
@@ -342,9 +342,9 @@
 
     <!-- SELECTOR BANNER -->
     <div id="selector-banner" onclick="openDrawer()" style="margin-top:1px;border:0.5px solid var(--border);border-radius:0 0 14px 14px;overflow:hidden;cursor:pointer;position:relative;">
-      <img src="selector-banner.jpg" alt="Selector de viales y tapas" style="width:100%;height:220px;object-fit:cover;object-position:center 30%;display:block;" />
+      <img src="selector-banner.png" alt="Selector de viales y tapas" style="width:100%;height:220px;object-fit:cover;object-position:center 30%;display:block;filter:saturate(0.3) brightness(1.05);" />
       <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(11,36,64,0.32);">
-        <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#fff;background:rgba(11,36,64,0.75);padding:12px 28px;border-radius:100px;display:inline-flex;align-items:center;gap:10px;backdrop-filter:blur(6px);border:0.5px solid rgba(255,255,255,0.2);letter-spacing:0.01em;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:var(--navy);background:#fff;padding:14px 36px;border-radius:100px;display:inline-flex;align-items:center;gap:12px;box-shadow:0 4px 24px rgba(0,0,0,0.18);letter-spacing:0.01em;">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           Herramienta selectora de viales — encontrá el compatible con tu equipo
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -366,7 +366,7 @@
       </p>
     </div>
     <div class="quienes-photo">
-      <img src="quienes-foto.jpg" alt="Técnicos de AGS Analítica trabajando en equipos de cromatografía" />
+      <img src="quienes-foto.png" alt="Técnicos de AGS Analítica trabajando en equipos de cromatografía" />
     </div>
   </section>
 
