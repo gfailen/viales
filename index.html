@@ -101,8 +101,9 @@
     .divider-line { border:none; border-top:0.5px solid var(--border); max-width:1104px; margin:0 auto; }
 
     /* ── QUIÉNES SOMOS ── */
-    .quienes-section { max-width:1200px; margin:0 auto; padding:72px 48px 80px; }
+    .quienes-section { max-width:1200px; margin:0 auto; padding:72px 48px 80px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
     .quienes-inner { max-width:520px; }
+    .quienes-photo img { width:100%; height:420px; object-fit:cover; object-position:center top; border-radius:12px; display:block; }
     .section-pre { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:20px; }
     .quienes-headline { font-family:'Playfair Display',serif; font-size:clamp(24px,3vw,32px); font-weight:400; color:var(--navy); line-height:1.3; margin-bottom:16px; }
     .quienes-body { font-size:15px; font-weight:300; color:var(--ink-soft); line-height:1.75; }
@@ -189,7 +190,8 @@
       .catalog { padding:48px 20px; }
       .category-grid { grid-template-columns:1fr 1fr; }
       .divider-wrap { padding:0 20px; }
-      .quienes-section { padding:56px 20px 64px; }
+      .quienes-section { grid-template-columns:1fr; padding:56px 20px 64px; }
+      .quienes-photo img { height:280px; }
       .guide-section { grid-template-columns:1fr; padding:64px 20px; gap:48px; }
       .contact-section { grid-template-columns:1fr; padding:64px 20px; gap:40px; }
       .contact-form { padding:28px 20px; }
@@ -342,6 +344,9 @@
       <p class="quienes-body">
         viales.com.ar es la <strong>división de consumibles de AGS Analítica S.A.</strong> — empresa con más de 20 años de servicio técnico en GC, GC-MS, HPLC y LC-MS en toda la Argentina. Los mismos que reparan tus equipos son los que te recomiendan los consumibles.
       </p>
+    </div>
+    <div class="quienes-photo">
+      <img src="quienes-foto.png" alt="Técnicos de AGS Analítica trabajando en equipos de cromatografía" />
     </div>
   </section>
 
