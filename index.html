@@ -79,9 +79,9 @@
     .category-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:0.5px solid var(--border); border-radius:14px; overflow:hidden; }
     .cat-card { background:var(--cream); padding:26px 22px 24px; transition:background 0.15s; cursor:pointer; }
     .cat-card:hover { background:var(--white); }
-    .cat-card-img { width:100%; height:96px; display:flex; align-items:center; justify-content:center; margin-bottom:14px; overflow:hidden; }
-    .cat-card-img img { max-height:88px; max-width:100%; object-fit:contain; }
-    .cat-card-img svg { opacity:0.7; }
+    .cat-card-img { width:100%; height:100px; margin-bottom:14px; overflow:hidden; border-radius:8px; }
+    .cat-card-img img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+    
     .tech-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
     .tag { font-size:10px; font-weight:500; letter-spacing:0.07em; text-transform:uppercase; padding:3px 8px; border-radius:100px; }
     .tag-gc   { background:var(--gc-bg);   color:var(--gc-text); }
@@ -270,14 +270,7 @@
       <!-- Viales y tapas — abre drawer -->
       <div class="cat-card" id="card-viales" onclick="openDrawer()">
         <div class="cat-card-img">
-          <svg width="64" height="80" viewBox="0 0 64 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="8" width="18" height="52" rx="3" fill="#F5D080" stroke="#B8860B" stroke-width="1.5"/>
-            <rect x="10" y="8" width="18" height="10" rx="2" fill="#B8860B" opacity="0.3"/>
-            <rect x="36" y="14" width="18" height="46" rx="3" fill="#E8F4FB" stroke="#7AABB8" stroke-width="1.5"/>
-            <rect x="36" y="14" width="18" height="9" rx="2" fill="#7AABB8" opacity="0.3"/>
-            <rect x="12" y="58" width="16" height="8" rx="2" fill="#1a1a1a" opacity="0.8"/>
-            <rect x="38" y="58" width="16" height="8" rx="2" fill="#2E5FA3" opacity="0.9"/>
-          </svg>
+          <img src="cat-viales.png" alt="Viales y tapas" />
         </div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -289,13 +282,7 @@
       <!-- Filtros de jeringa -->
       <div class="cat-card">
         <div class="cat-card-img">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="36" cy="36" r="26" fill="#EEF7E0" stroke="#7AB648" stroke-width="1.5"/>
-            <circle cx="36" cy="36" r="16" fill="none" stroke="#7AB648" stroke-width="1" stroke-dasharray="3 2" opacity="0.5"/>
-            <circle cx="36" cy="36" r="8" fill="#C8E6A0" stroke="#7AB648" stroke-width="1"/>
-            <rect x="33" y="8" width="6" height="12" rx="3" fill="#E8D060" stroke="#B8A020" stroke-width="1.2"/>
-            <rect x="33" y="52" width="6" height="12" rx="3" fill="#E8D060" stroke="#B8A020" stroke-width="1.2"/>
-          </svg>
+          <img src="cat-filtros.png" alt="Filtros de jeringa" />
         </div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -307,15 +294,7 @@
       <!-- Consumibles GC -->
       <div class="cat-card">
         <div class="cat-card-img">
-          <svg width="80" height="64" viewBox="0 0 80 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="24" width="56" height="16" rx="8" fill="#E8F4FB" stroke="#7AABB8" stroke-width="1.5"/>
-            <circle cx="8" cy="32" r="5" fill="#B0BFCC" stroke="#8896A8" stroke-width="1"/>
-            <circle cx="64" cy="32" r="5" fill="#B0BFCC" stroke="#8896A8" stroke-width="1"/>
-            <rect x="22" y="27" width="28" height="10" rx="2" fill="none" stroke="#7AABB8" stroke-width="0.8" opacity="0.6"/>
-            <line x1="26" y1="32" x2="50" y2="32" stroke="#7AABB8" stroke-width="0.8" opacity="0.5"/>
-            <rect x="60" y="10" width="12" height="44" rx="3" fill="#F5F5F0" stroke="#999" stroke-width="1.2"/>
-            <ellipse cx="66" cy="12" rx="5" ry="3" fill="#DDD" stroke="#999" stroke-width="1"/>
-          </svg>
+          <img src="cat-gc.png" alt="Consumibles GC" />
         </div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span>
@@ -327,14 +306,7 @@
       <!-- Accesorios HPLC -->
       <div class="cat-card">
         <div class="cat-card-img">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="28" width="52" height="16" rx="4" fill="#E6F1FB" stroke="#2E5FA3" stroke-width="1.5"/>
-            <circle cx="10" cy="36" r="6" fill="#B5D4F4" stroke="#2E5FA3" stroke-width="1.2"/>
-            <circle cx="62" cy="36" r="6" fill="#B5D4F4" stroke="#2E5FA3" stroke-width="1.2"/>
-            <rect x="28" y="14" width="16" height="44" rx="4" fill="#F0F4FF" stroke="#2E5FA3" stroke-width="1.2"/>
-            <rect x="30" y="18" width="12" height="36" rx="2" fill="#D6E8FF" opacity="0.6"/>
-            <line x1="36" y1="20" x2="36" y2="52" stroke="#2E5FA3" stroke-width="0.8" opacity="0.4"/>
-          </svg>
+          <img src="cat-hplc.png" alt="Accesorios HPLC y LC-MS" />
         </div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -343,33 +315,17 @@
         <div class="cat-desc">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
       </div>
 
-      <!-- Otros consumibles -->
-      <div class="cat-card">
-        <div class="cat-card-img">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="22" cy="22" r="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.2"/>
-            <circle cx="22" cy="22" r="5" fill="#F5C4B0" stroke="#993C1D" stroke-width="0.8"/>
-            <circle cx="50" cy="22" r="10" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.2"/>
-            <rect x="46" y="18" width="8" height="8" rx="1" fill="#A8DFC8" stroke="#0F6E56" stroke-width="0.8"/>
-            <circle cx="22" cy="50" r="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.2"/>
-            <line x1="18" y1="50" x2="26" y2="50" stroke="#185FA5" stroke-width="1.5"/>
-            <line x1="22" y1="46" x2="22" y2="54" stroke="#185FA5" stroke-width="1.5"/>
-            <circle cx="50" cy="50" r="10" fill="#F1EFE8" stroke="#888" stroke-width="1.2"/>
-            <circle cx="50" cy="50" r="4" fill="#DDD" stroke="#888" stroke-width="0.8"/>
-            <circle cx="50" cy="50" r="1.5" fill="#888"/>
-          </svg>
+      <!-- Otros consumibles + consulta unificados -->
+      <div class="cat-card" style="grid-column: span 2;">
+        <div class="cat-card-img" style="height:120px;">
+          <img src="cat-otros.png" alt="Otros consumibles" />
         </div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
         <div class="cat-name">Otros consumibles</div>
-        <div class="cat-desc">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
-      </div>
-
-      <!-- No lo ves -->
-      <div class="cat-card-consult">
-        <div class="consult-title">¿No lo ves?</div>
-        <div class="consult-examples">Trabajamos con múltiples<br>proveedores internacionales.<br>Si no está, lo conseguimos.</div>
+        <div class="cat-desc" style="margin-bottom:10px;">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
+        <div style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px;">¿No lo ves? Trabajamos con múltiples proveedores internacionales. Si no está, lo conseguimos.</div>
         <a href="#contacto" class="consult-link">Consultanos →</a>
       </div>
 
