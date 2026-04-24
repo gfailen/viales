@@ -226,8 +226,8 @@
         <p class="hero-eyebrow">División de consumibles · AGS Analítica</p>
         <h1 class="hero-title">
           Tus consumibles,<br>
-          con el respaldo<br>
-          de <em>quienes reparan</em><br>
+          con el respaldo de<br>
+          <em>quienes reparan</em><br>
           tus equipos.
         </h1>
         <p class="hero-subtitle">Viales, liners, filtros, columnas y más — con más de 20 años de servicio técnico en laboratorios de toda la Argentina.</p>
@@ -277,8 +277,13 @@
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
-        <div class="cat-name">Viales y tapas <span style="font-size:11px;color:var(--blue);font-weight:400;">→ Ver selector</span></div>
+        <div class="cat-name">Viales y tapas</div>
         <div class="cat-desc">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
+        <div style="margin-top:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <a href="javascript:void(0)" onclick="openDrawer()" class="consult-link" style="color:var(--blue);">Abrir selector →</a>
+          <span style="color:var(--ink-faint);font-size:12px;">·</span>
+          <a href="#contacto" class="consult-link">Consultanos →</a>
+        </div>
       </div>
 
       <!-- Filtros de jeringa -->
@@ -303,6 +308,7 @@
         </div>
         <div class="cat-name">Consumibles de GC</div>
         <div class="cat-desc">Liners split/splitless, septas, ferrules, filamentos MSD, columnas capilares, filtros para gases.</div>
+        <div style="margin-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
       <!-- Accesorios HPLC -->
@@ -315,6 +321,7 @@
         </div>
         <div class="cat-name">Consumibles de HPLC y LC-MS</div>
         <div class="cat-desc">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
+        <div style="margin-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
       <!-- Otros consumibles + consulta unificados -->
@@ -332,6 +339,19 @@
       </div>
 
     </div>
+
+    <!-- SELECTOR BANNER -->
+    <div id="selector-banner" onclick="openDrawer()" style="margin-top:1px;border:0.5px solid var(--border);border-radius:0 0 14px 14px;overflow:hidden;cursor:pointer;position:relative;">
+      <img src="selector-banner.png" alt="Selector de viales y tapas" style="width:100%;height:220px;object-fit:cover;object-position:center 30%;display:block;" />
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(11,36,64,0.32);">
+        <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#fff;background:rgba(11,36,64,0.75);padding:12px 28px;border-radius:100px;display:inline-flex;align-items:center;gap:10px;backdrop-filter:blur(6px);border:0.5px solid rgba(255,255,255,0.2);letter-spacing:0.01em;">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Herramienta selectora de viales — encontrá el compatible con tu equipo
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <div class="divider-wrap"><hr class="divider-line" /></div>
