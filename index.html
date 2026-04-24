@@ -188,7 +188,7 @@
       .trust { padding:24px 20px; gap:28px; }
       .trust-domain { display:none; }
       .catalog { padding:48px 20px; }
-      .category-grid { grid-template-columns:1fr 1fr; }
+      .category-grid { grid-template-columns:1fr; }
       .divider-wrap { padding:0 20px; }
       .quienes-section { grid-template-columns:1fr; padding:56px 20px 64px; }
       .quienes-photo img { height:280px; }
@@ -200,6 +200,7 @@
     }
     @media(max-width:560px){
       .category-grid { grid-template-columns:1fr; }
+      .category-grid > * { grid-column: span 1 !important; }
     }
   </style>
 </head>
