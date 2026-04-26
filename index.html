@@ -82,7 +82,7 @@
     .cat-gc  { background:#FAEEDA; } .cat-gc:hover  { background:#fff8ef; }
     .cat-lc  { background:#E6F1FB; } .cat-lc:hover  { background:#f2f8ff; }
     .cat-mix { background:#E1F5EE; } .cat-mix:hover { background:#edfaf6; }
-    .cat-card-img { width:100%; height:140px; margin-bottom:14px; overflow:hidden; border-radius:8px; }
+    .cat-card-img { width:100%; height:140px; margin-top:16px; margin-bottom:0; overflow:hidden; border-radius:8px; }
     .cat-card-img img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
     
     .tech-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
@@ -91,7 +91,7 @@
     .tag-gcms { background:var(--gcms-bg); color:var(--gcms-text); }
     .tag-hplc { background:var(--hplc-bg); color:var(--hplc-text); }
     .tag-lcms { background:var(--lcms-bg); color:var(--lcms-text); }
-    .cat-name { font-size:15px; font-weight:500; color:var(--navy); margin-bottom:6px; line-height:1.3; }
+    .cat-name { font-size:22px; font-weight:500; color:var(--navy); margin-bottom:8px; line-height:1.2; }
     .cat-desc { font-size:12px; color:var(--ink-muted); line-height:1.6; font-weight:300; flex:1; }
     .cat-card-consult { background:var(--cream); padding:26px 22px 24px; display:flex; flex-direction:column; justify-content:center; gap:8px; }
     .consult-title { font-size:15px; font-weight:500; color:var(--ink-soft); }
@@ -276,14 +276,14 @@
 
       <!-- Viales y tapas — abre drawer -->
       <div class="cat-card cat-mix" id="card-viales" onclick="openDrawer()">
-        <div class="cat-card-img">
-          <img src="cat-viales.png" alt="Viales y tapas" />
-        </div>
+        <div class="cat-name">Viales y tapas</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
-        <div class="cat-name">Viales y tapas</div>
-        <div class="cat-desc">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
+        <div class="cat-card-img">
+          <img src="cat-viales.png" alt="Viales y tapas" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
         <div style="margin-top:auto;padding-top:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
           <a href="javascript:void(0)" onclick="openDrawer()" class="consult-link" style="color:var(--blue);">Abrir selector →</a>
           <span style="color:var(--ink-faint);font-size:12px;">·</span>
@@ -293,53 +293,53 @@
 
       <!-- Filtros de jeringa -->
       <div class="cat-card cat-lc">
-        <div class="cat-card-img">
-          <img src="cat-filtros.png" alt="Filtros de jeringa" />
-        </div>
+        <div class="cat-name">Filtros de jeringa</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
-        <div class="cat-name">Filtros de jeringa</div>
-        <div class="cat-desc">PTFE, Nylon, PES, PVDF, RC. Diámetros 4–25 mm para filtración previa a inyección.</div>
+        <div class="cat-card-img">
+          <img src="cat-filtros.png" alt="Filtros de jeringa" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;">PTFE, Nylon, PES, PVDF, RC. Diámetros 4–25 mm para filtración previa a inyección.</div>
         <div style="margin-top:auto;padding-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
       <!-- Consumibles de GC -->
       <div class="cat-card cat-gc">
-        <div class="cat-card-img">
-          <img src="cat-gc.png" alt="Consumibles de GC" />
-        </div>
+        <div class="cat-name">Consumibles de GC</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span>
         </div>
-        <div class="cat-name">Consumibles de GC</div>
-        <div class="cat-desc">Liners split/splitless, septas, ferrules, filamentos MSD, columnas capilares, filtros para gases.</div>
+        <div class="cat-card-img">
+          <img src="cat-gc.png" alt="Consumibles de GC" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;">Liners split/splitless, septas, ferrules, filamentos MSD, columnas capilares, filtros para gases.</div>
         <div style="margin-top:auto;padding-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
       <!-- Accesorios HPLC -->
       <div class="cat-card cat-lc">
-        <div class="cat-card-img">
-          <img src="cat-hplc.png" alt="Consumibles de HPLC y LC-MS" />
-        </div>
+        <div class="cat-name">Consumibles de HPLC y LC-MS</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
-        <div class="cat-name">Consumibles de HPLC y LC-MS</div>
-        <div class="cat-desc">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
+        <div class="cat-card-img">
+          <img src="cat-hplc.png" alt="Consumibles de HPLC y LC-MS" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
         <div style="margin-top:auto;padding-top:12px;"><a href="#contacto" class="consult-link">Consultanos →</a></div>
       </div>
 
-      <!-- Otros consumibles + consulta unificados -->
+      <!-- Otros consumibles -->
       <div class="cat-card cat-mix" style="grid-column: span 2;">
-        <div class="cat-card-img" style="height:120px;">
-          <img src="cat-otros.png" alt="Otros consumibles" />
-        </div>
+        <div class="cat-name">Otros consumibles</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
-        <div class="cat-name">Otros consumibles</div>
-        <div class="cat-desc" style="margin-bottom:10px;">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
+        <div class="cat-card-img" style="height:120px;">
+          <img src="cat-otros.png" alt="Otros consumibles" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;margin-bottom:6px;">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
         <div style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px;">¿No lo ves? Trabajamos con múltiples proveedores internacionales. Si no está, lo conseguimos.</div>
         <a href="#contacto" class="consult-link">Consultanos →</a>
       </div>
