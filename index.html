@@ -99,6 +99,10 @@
     .consult-link { font-size:13px; color:var(--blue); font-weight:500; text-decoration:none; margin-top:4px; display:inline-block; transition:opacity 0.2s; }
     .consult-link:hover { opacity:0.75; }
 
+    .cat-gc  { background:#FAEEDA; } .cat-gc:hover  { background:#fff8ef; }
+    .cat-lc  { background:#E6F1FB; } .cat-lc:hover  { background:#f2f8ff; }
+    .cat-mix { background:#E1F5EE; } .cat-mix:hover { background:#edfaf6; }
+    
     /* ── DIVIDER ── */
     .divider-wrap { padding:0 48px; }
     .divider-line { border:none; border-top:0.5px solid var(--border); max-width:1104px; margin:0 auto; }
@@ -276,7 +280,7 @@
     <div class="category-grid">
 
       <!-- Viales y tapas — abre drawer -->
-      <div class="cat-card" id="card-viales" onclick="openDrawer()">
+      <div class="cat-card cat-mix" id="card-viales" onclick="openDrawer()">
         <div class="cat-name">Viales y tapas</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -292,7 +296,7 @@
       </div>
 
       <!-- Filtros de jeringa -->
-      <div class="cat-card">
+      <div class="cat-card cat-lc">
         <div class="cat-name">Filtros de jeringa</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -307,7 +311,7 @@
       </div>
 
       <!-- Consumibles de HPLC y LC-MS -->
-      <div class="cat-card">
+      <div class="cat-card cat-lc">
         <div class="cat-name">Consumibles de HPLC y LC-MS</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -326,7 +330,7 @@
     <div class="category-grid-2">
 
       <!-- Consumibles de GC -->
-      <div class="cat-card">
+      <div class="cat-card cat-gc">
         <div class="cat-name">Consumibles de GC</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span>
@@ -341,7 +345,7 @@
       </div>
 
       <!-- Otros consumibles -->
-      <div class="cat-card">
+      <div class="cat-card cat-mix">
         <div class="cat-name">Otros consumibles</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
