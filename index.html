@@ -24,7 +24,7 @@
     :root {
       --cream:      #F8F7F4;
       --white:      #FFFFFF;
-      --navy:       #0B2440;
+      --navy:       #0d1b35;
       --ink-soft:   #4A5568;
       --ink-muted:  #8896A8;
       --ink-faint:  #B0BFCC;
@@ -38,10 +38,10 @@
     }
 
     html { scroll-behavior: smooth; overflow-x: hidden; }
-    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--navy); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; background:var(--cream); color:var(--navy); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
 
     /* ── NAV ── */
-    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:60px; background:var(--navy); border-bottom:0.5px solid rgba(255,255,255,0.08); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:64px; background:var(--navy); border-bottom:0.5px solid rgba(255,255,255,0.08); }
     .nav-inner { max-width:1200px; margin:0 auto; padding:0 48px; height:100%; display:flex; align-items:center; justify-content:space-between; }
     .nav-logo { display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
     .nav-logo img { height:36px; width:auto; display:block; }
@@ -52,7 +52,7 @@
     .nav-cta:hover { background:var(--cream); }
 
     /* ── HERO ── */
-    .hero-section { padding-top:60px; overflow:hidden; }
+    .hero-section { padding-top:64px; overflow:hidden; }
     .hero {
       max-width:1200px; margin:0 auto; padding:64px 48px 72px;
       display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
@@ -60,7 +60,7 @@
     }
     .hero-content { max-width:560px; }
     .hero-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:20px; }
-    .hero-title { font-family:'Playfair Display',Georgia,serif; font-size:clamp(36px,4.5vw,56px); font-weight:400; line-height:1.13; color:var(--navy); margin-bottom:20px; letter-spacing:-0.01em; }
+    .hero-title { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; font-size:clamp(36px,4.5vw,56px); font-weight:600; line-height:1.13; color:var(--navy); margin-bottom:20px; letter-spacing:-0.01em; }
     .hero-title em { font-style:italic; color:var(--blue); }
     .hero-subtitle { font-size:16px; font-weight:300; color:var(--ink-soft); line-height:1.7; margin-bottom:40px; max-width:460px; }
     .hero-actions { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
@@ -76,7 +76,7 @@
     /* ── TRUST STRIP ── */
     .trust-wrap { background:var(--white); border-top:0.5px solid var(--border); border-bottom:0.5px solid var(--border); }
     .trust { max-width:1200px; margin:0 auto; padding:28px 48px; display:flex; gap:56px; align-items:flex-start; flex-wrap:wrap; }
-    .trust-number { font-family:'Playfair Display',serif; font-size:26px; font-weight:400; color:var(--navy); line-height:1; margin-bottom:4px; }
+    .trust-number { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; font-size:26px; font-weight:600; color:var(--navy); line-height:1; margin-bottom:4px; }
     .trust-number.small { font-size:17px; padding-top:5px; }
     .trust-label { font-size:11px; color:var(--ink-muted); font-weight:400; }
     .trust-domain { margin-left:auto; font-size:11px; color:var(--ink-faint); line-height:1.7; text-align:right; align-self:center; }
@@ -86,7 +86,7 @@
     .section-label { font-size:13px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:28px; }
     .category-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
     .category-grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:16px; }
-    .cat-card { background:var(--white); border:0.5px solid var(--border-mid); border-radius:14px; padding:24px 22px 22px; transition:border-color 0.2s, box-shadow 0.2s; cursor:pointer; display:flex; flex-direction:column; }
+    .cat-card { background:var(--white); border:1px solid #e2e8f0; border-radius:12px; padding:24px 22px 22px; transition:border-color 0.2s, box-shadow 0.2s; cursor:pointer; display:flex; flex-direction:column; }
     .cat-card:hover { border-color:rgba(0,0,0,0.2); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
     .cat-card-img { width:100%; height:140px; margin-top:12px; margin-bottom:0; overflow:hidden; border-radius:8px; background:var(--cream); }
     .cat-card-img img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
@@ -100,16 +100,14 @@
     .cat-name { font-size:20px; font-weight:500; color:var(--navy); margin-bottom:8px; line-height:1.2; }
     .cat-desc { font-size:12px; color:var(--ink-muted); line-height:1.6; font-weight:300; flex:1; }
     .cat-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:auto; padding-top:16px; border-top:0.5px solid var(--border); }
-    .cat-btn-primary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--white); background:var(--navy); text-decoration:none; padding:8px 18px; border-radius:100px; border:none; cursor:pointer; transition:background 0.15s; font-family:'DM Sans',sans-serif; }
+    .cat-btn-primary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--white); background:var(--navy); text-decoration:none; padding:8px 18px; border-radius:100px; border:none; cursor:pointer; transition:background 0.15s; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
     .cat-btn-primary:hover { background:#1a3a5c; }
-    .cat-btn-secondary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--ink-soft); background:transparent; text-decoration:none; padding:8px 18px; border-radius:100px; border:0.5px solid var(--border-mid); cursor:pointer; transition:background 0.15s, color 0.15s; font-family:'DM Sans',sans-serif; }
+    .cat-btn-secondary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--ink-soft); background:transparent; text-decoration:none; padding:8px 18px; border-radius:100px; border:0.5px solid var(--border-mid); cursor:pointer; transition:background 0.15s, color 0.15s; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
     .cat-btn-secondary:hover { background:var(--cream); color:var(--navy); }
     .consult-link { font-size:13px; color:var(--blue); font-weight:500; text-decoration:none; margin-top:4px; display:inline-block; transition:opacity 0.2s; }
     .consult-link:hover { opacity:0.75; }
 
-    .cat-gc  { background:#FAEEDA; } .cat-gc:hover  { background:#fff8ef; }
-    .cat-lc  { background:#E6F1FB; } .cat-lc:hover  { background:#f2f8ff; }
-    .cat-mix { background:#E1F5EE; } .cat-mix:hover { background:#edfaf6; }
+    /* Las cards ya no llevan fondo por técnica — la diferenciación queda en los .tag */
     
     /* ── DIVIDER ── */
     .divider-wrap { padding:0 48px; }
@@ -120,7 +118,7 @@
     .quienes-inner { max-width:520px; }
     .quienes-photo img { width:100%; height:420px; object-fit:cover; object-position:center top; border-radius:12px; display:block; }
     .section-pre { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:20px; }
-    .quienes-headline { font-family:'Playfair Display',serif; font-size:clamp(24px,3vw,32px); font-weight:400; color:var(--navy); line-height:1.3; margin-bottom:16px; }
+    .quienes-headline { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; font-size:clamp(24px,3vw,32px); font-weight:600; color:var(--navy); line-height:1.3; margin-bottom:16px; }
     .quienes-body { font-size:15px; font-weight:300; color:var(--ink-soft); line-height:1.75; }
     .quienes-body strong { color:var(--navy); font-weight:500; }
 
@@ -128,7 +126,7 @@
     .guide-wrap { background:var(--navy); }
     .guide-section { max-width:1200px; margin:0 auto; padding:80px 48px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
     .guide-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:20px; }
-    .guide-title { font-family:'Playfair Display',serif; font-size:clamp(24px,3vw,36px); font-weight:400; color:var(--white); line-height:1.2; margin-bottom:20px; }
+    .guide-title { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; font-size:clamp(24px,3vw,36px); font-weight:600; color:var(--white); line-height:1.2; margin-bottom:20px; }
     .guide-title em { font-style:italic; color:rgba(255,255,255,0.5); }
     .guide-desc { font-size:15px; font-weight:300; color:rgba(255,255,255,0.55); line-height:1.75; margin-bottom:36px; }
     .btn-white { display:inline-flex; align-items:center; gap:8px; background:var(--white); color:var(--navy); text-decoration:none; font-size:14px; font-weight:500; padding:13px 26px; border-radius:100px; transition:background 0.2s,transform 0.15s; }
@@ -143,7 +141,7 @@
     /* ── CONTACT ── */
     .contact-wrap { background:var(--white); border-top:0.5px solid var(--border); }
     .contact-section { max-width:680px; margin:0 auto; padding:96px 48px; display:flex; flex-direction:column; gap:40px; align-items:center; text-align:center; }
-    .contact-title { font-family:'Playfair Display',serif; font-size:clamp(26px,3vw,38px); font-weight:400; color:var(--navy); line-height:1.2; margin-bottom:16px; }
+    .contact-title { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; font-size:clamp(26px,3vw,38px); font-weight:600; color:var(--navy); line-height:1.2; margin-bottom:16px; }
     .contact-title em { font-style:italic; color:var(--blue); }
     .contact-desc { font-size:15px; font-weight:300; color:var(--ink-soft); line-height:1.75; margin-bottom:36px; }
     .contact-items { display:flex; flex-direction:row; gap:24px; justify-content:center; flex-wrap:wrap; }
@@ -193,7 +191,7 @@
       .nav-inner { padding:0 20px; }
       .nav-logo img { height:30px; }
       .nav-hamburger { display:flex; }
-      .nav-right { display:none; position:fixed; top:60px; left:0; right:0; background:var(--navy); flex-direction:column; align-items:flex-start; padding:24px; gap:0; border-top:0.5px solid rgba(255,255,255,0.08); z-index:150; }
+      .nav-right { display:none; position:fixed; top:64px; left:0; right:0; background:var(--navy); flex-direction:column; align-items:flex-start; padding:24px; gap:0; border-top:0.5px solid rgba(255,255,255,0.08); z-index:150; }
       .nav-right.open { display:flex; }
       .nav-link { display:block; width:100%; padding:16px 0; font-size:16px; border-bottom:0.5px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.65); }
       .nav-cta { margin-top:20px; width:100%; text-align:center; padding:14px 20px; font-size:15px; border-radius:100px; }
@@ -288,7 +286,7 @@
     <div class="category-grid">
 
       <!-- Viales y tapas — abre drawer -->
-      <div class="cat-card cat-mix" id="card-viales" onclick="openDrawer()">
+      <div class="cat-card" id="card-viales" onclick="openDrawer()">
         <div class="cat-name">Viales y tapas</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -304,7 +302,7 @@
       </div>
 
       <!-- Filtros de jeringa -->
-      <div class="cat-card cat-lc">
+      <div class="cat-card">
         <div class="cat-name">Filtros de jeringa</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -319,7 +317,7 @@
       </div>
 
       <!-- Consumibles de HPLC y LC-MS -->
-      <div class="cat-card cat-lc">
+      <div class="cat-card">
         <div class="cat-name">Consumibles para HPLC y LC-MS</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -338,7 +336,7 @@
     <div class="category-grid-2">
 
       <!-- Consumibles de GC -->
-      <div class="cat-card cat-gc">
+      <div class="cat-card">
         <div class="cat-name">Consumibles para GC</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span>
@@ -353,7 +351,7 @@
       </div>
 
       <!-- Otros consumibles -->
-      <div class="cat-card cat-mix">
+      <div class="cat-card">
         <div class="cat-name">Otros consumibles</div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -374,7 +372,7 @@
     <div id="selector-banner" onclick="openDrawer()" style="margin-top:20px;border:0.5px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;position:relative;">
       <img src="selector-banner.jpg" alt="Selector de viales y tapas" style="width:100%;height:220px;object-fit:cover;object-position:center 30%;display:block;filter:saturate(0.3) brightness(1.05);" />
       <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(11,36,64,0.32);">
-        <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;color:var(--navy);background:#fff;padding:14px 36px;border-radius:100px;display:inline-flex;align-items:center;gap:12px;box-shadow:0 4px 24px rgba(0,0,0,0.18);letter-spacing:0.01em;">
+        <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;font-size:15px;font-weight:600;color:var(--navy);background:#fff;padding:14px 36px;border-radius:100px;display:inline-flex;align-items:center;gap:12px;box-shadow:0 4px 24px rgba(0,0,0,0.18);letter-spacing:0.01em;">
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           Elegí tu vial
           <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
