@@ -155,15 +155,16 @@
 
     /* ── FOOTER ── */
     footer { background:var(--navy); }
-    .footer-inner { max-width:1200px; margin:0 auto; padding:40px 48px; }
-    .footer-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding-bottom:24px; border-bottom:0.5px solid rgba(255,255,255,0.1); margin-bottom:20px; }
-    .footer-links { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-    .footer-link { font-size:12px; font-weight:300; letter-spacing:0.04em; color:rgba(255,255,255,0.55); text-decoration:none; transition:color 0.2s; }
-    .footer-link:hover { color:var(--white); }
-    .footer-sep  { color:rgba(255,255,255,0.2); font-size:12px; }
-    .footer-meta { font-size:12px; font-weight:300; letter-spacing:0.04em; color:rgba(255,255,255,0.4); }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:40px 48px; display:flex; flex-direction:column; gap:20px; }
+    .footer-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding-bottom:24px; border-bottom:0.5px solid rgba(255,255,255,0.1); }
+    .footer-links { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .footer-link { font-size:13px; font-weight:400; color:#94a3b8; text-decoration:none; transition:color 0.15s; }
+    .footer-link:hover { color:#fff; }
     .footer-legal { display:flex; flex-direction:column; gap:8px; }
-    .footer-legal p { font-size:11px; font-weight:300; letter-spacing:0.03em; color:rgba(255,255,255,0.35); line-height:1.65; }
+    .footer-legal p { font-size:11px; font-weight:300; letter-spacing:0.03em; color:#64748b; line-height:1.65; }
+    .footer-copy { color:#475569; font-size:11px; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:16px; }
+    .footer-copy a { color:inherit; text-decoration:none; }
+    .footer-copy a:hover { color:#94a3b8; }
 
     /* ── HAMBURGER ── */
     .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:36px; height:36px; background:none; border:none; cursor:pointer; padding:4px; z-index:200; flex-shrink:0; }
@@ -447,17 +448,16 @@
       <div class="footer-top">
         <img src="Viales-com-ar_transp.svg" alt="VIALES" style="height:30px;width:auto;" />
         <div class="footer-links">
-          <a href="https://www.agsanalitica.com/" class="footer-link" target="_blank" rel="noopener noreferrer">↗ AGS Analítica S.A.</a>
-          <span class="footer-sep">·</span>
+          <a href="https://www.agsanalitica.com" class="footer-link" target="_blank" rel="noopener">AGS Analítica</a>
+          <a href="https://www.cromatografia.com.ar" class="footer-link" target="_blank" rel="noopener">cromatografia.com.ar</a>
           <a href="mailto:consumibles@agsanalitica.com" class="footer-link">consumibles@agsanalitica.com</a>
-          <span class="footer-sep">·</span>
-          <span class="footer-meta">Argentina · viales.com.ar</span>
         </div>
       </div>
       <div class="footer-legal">
         <p>AGILENT®, SHIMADZU®, WATERS®, PERKIN ELMER® y THERMO FISHER® son marcas registradas de sus respectivos propietarios. AGS ANALÍTICA S.A. no es representante ni tiene vinculación comercial alguna con dichas empresas. Los nombres de marcas se mencionan únicamente a los efectos de indicar compatibilidad de productos.</p>
         <p>AGS ANALÍTICA S.A. cumple con la Ley Nacional de Protección de Datos Personales N° 25.326.</p>
       </div>
+      <div class="footer-copy">&copy; 2026 AGS ANALÍTICA S.A. — viales.com.ar, división de consumibles de <a href="https://www.agsanalitica.com" target="_blank" rel="noopener">AGS Analítica</a></div>
     </div>
   </footer>
 
