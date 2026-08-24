@@ -95,6 +95,9 @@
     .tag-hplc { background:var(--hplc-bg); color:var(--hplc-text); }
     .tag-lcms { background:var(--lcms-bg); color:var(--lcms-text); }
     .cat-name { font-size:20px; font-weight:500; color:var(--navy); margin-bottom:8px; line-height:1.2; }
+    .cat-name-hint { font-size:14px; font-weight:700; color:var(--ink-muted); }
+    #card-viales { background:#D6EAF8; }
+    #card-viales .cat-card-img { background:var(--cream); }
     .cat-desc { font-size:12px; color:var(--ink-muted); line-height:1.6; font-weight:300; flex:1; }
     .cat-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:auto; padding-top:16px; border-top:0.5px solid var(--border); }
     .cat-btn-primary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--white); background:var(--navy); text-decoration:none; padding:8px 18px; border-radius:100px; border:none; cursor:pointer; transition:background 0.15s; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; }
@@ -273,8 +276,8 @@
     <div class="category-grid">
 
       <!-- Viales y tapas — selector en página propia -->
-      <div class="cat-card" id="card-viales">
-        <div class="cat-name">Viales y tapas</div>
+      <div class="cat-card" id="card-viales" onclick="location.href='/selector/'" style="cursor:pointer;">
+        <div class="cat-name">Viales y tapas <span class="cat-name-hint">(Click para elegir tus viales)</span></div>
         <div class="tech-tags">
           <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
         </div>
@@ -284,7 +287,7 @@
         <div class="cat-desc" style="margin-top:12px;">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
         <div class="cat-actions">
           <a href="/selector/" class="cat-btn-primary">Abrir selector</a>
-          <a href="#contacto" class="cat-btn-secondary">Consultanos</a>
+          <a href="#contacto" class="cat-btn-secondary" onclick="event.stopPropagation()">Consultanos</a>
         </div>
       </div>
 
