@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PNDG6ECGKM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PNDG6ECGKM');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selector de viales y tapas — VIALES</title>
+  <meta name="description" content="Selector guiado de viales, tapas, septas y kits para cromatografía. Filtrá por equipo, cierre, color e inscripción y armá tu pedido." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #f1f5f9;
+      --white:      #FFFFFF;
+      --navy:       #0d1b35;
+      --ink-soft:   #4A5568;
+      --ink-muted:  #8896A8;
+      --ink-faint:  #B0BFCC;
+      --blue:       #2E5FA3;
+      --border:     rgba(0,0,0,0.08);
+      --border-mid: rgba(0,0,0,0.12);
+      --gc-bg:#FAECE7;--gc-text:#993C1D;
+      --gcms-bg:#FAECE7;--gcms-text:#993C1D;
+      --hplc-bg:#E6F1FB;--hplc-text:#185FA5;
+      --lcms-bg:#E1F5EE;--lcms-text:#0F6E56;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif; background:var(--cream); color:var(--navy); -webkit-font-smoothing:antialiased; }
+
+    /* ── NAV (igual a la home) ── */
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:64px; background:var(--navy); border-bottom:0.5px solid rgba(255,255,255,0.08); }
+    .nav-inner { max-width:1200px; margin:0 auto; padding:0 48px; height:100%; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
+    .nav-logo img { height:36px; width:auto; display:block; }
+    .nav-right { display:flex; align-items:center; gap:32px; }
+    .nav-link { font-size:13px; font-weight:400; color:rgba(255,255,255,0.65); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s; }
+    .nav-link:hover { color:var(--white); }
+    .nav-cta { font-size:13px; font-weight:500; color:var(--navy); background:var(--white); text-decoration:none; padding:8px 20px; border-radius:100px; transition:background 0.2s; }
+    .nav-cta:hover { background:var(--cream); }
+    .nav-hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; width:36px; height:36px; background:none; border:none; cursor:pointer; padding:4px; z-index:200; flex-shrink:0; }
+    .nav-hamburger span { display:block; width:22px; height:1.5px; background:var(--white); border-radius:2px; transition:all 0.25s ease; transform-origin:center; }
+    .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity:0; }
+    .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+
+    /* ── TOOL HEADER ── */
+    .tool-header { max-width:1200px; margin:0 auto; padding:104px 48px 24px; }
+    .tool-back { font-size:13px; color:var(--ink-muted); text-decoration:none; display:inline-flex; align-items:center; gap:6px; margin-bottom:16px; transition:color 0.15s; }
+    .tool-back:hover { color:var(--navy); }
+    .tool-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
+    .tool-title { font-size:clamp(24px,3vw,32px); font-weight:600; color:var(--navy); line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em; }
+    .tool-desc { font-size:14px; font-weight:400; color:var(--ink-soft); line-height:1.6; max-width:560px; }
+
+    /* ── APP ── */
+    .app-wrap { max-width:1200px; margin:0 auto; padding:0 48px 80px; }
+    .tabs { display:flex; gap:0; margin-bottom:20px; border-bottom:0.5px solid var(--border-mid); }
+    .tab { padding:10px 20px; font-size:13px; cursor:pointer; border:none; background:none; color:var(--ink-muted); border-bottom:2px solid transparent; margin-bottom:-0.5px; }
+    .tab.active { color:var(--blue); border-bottom-color:var(--blue); font-weight:500; }
+    .tab:hover { color:var(--navy); }
+    .section { display:none; }
+    .section.active { display:block; }
+    .layout { display:grid; grid-template-columns:260px minmax(0,1fr); gap:24px; align-items:start; }
+    .panel { background:var(--white); border:1px solid var(--border-mid); border-radius:12px; padding:18px; }
+    .panel-title { font-size:11px; font-weight:500; color:var(--ink-muted); letter-spacing:.05em; text-transform:uppercase; margin-bottom:12px; }
+    .panel-title-optional { text-transform:none; font-weight:400; letter-spacing:0; color:var(--ink-faint); }
+    .equipo-select { width:100%; margin-bottom:8px; font-size:13px; font-family:inherit; padding:7px 8px; border:1px solid var(--border-mid); border-radius:6px; background:#fff; color:var(--navy); }
+    .equipo-add { width:100%; font-size:13px; padding:8px; cursor:pointer; border-radius:6px; background:var(--navy); color:#fff; border:none; font-weight:500; }
+    .equipo-add:hover { background:#1a3a5c; }
+    .equipo-chips { display:flex; flex-direction:column; gap:6px; margin-bottom:12px; min-height:16px; }
+    .echip { background:var(--hplc-bg); border-radius:6px; padding:6px 10px; font-size:12px; color:var(--hplc-text); }
+    .echip-top { display:flex; align-items:center; justify-content:space-between; }
+    .echip-top button { background:none; border:none; cursor:pointer; font-size:14px; color:var(--hplc-text); padding:0; line-height:1; }
+    .echip-models { font-size:10px; color:var(--hplc-text); opacity:.7; margin-top:2px; line-height:1.4; }
+    .divider { border:none; border-top:1px solid var(--border); margin:14px 0; }
+    .filter-group { margin-bottom:14px; }
+    .filter-label { font-size:12px; color:var(--ink-muted); margin-bottom:6px; display:block; }
+    .filter-pills { display:flex; flex-wrap:wrap; gap:5px; }
+    .fpill { padding:5px 11px; border-radius:20px; font-size:12px; border:1px solid var(--border-mid); background:#fff; color:var(--ink-muted); cursor:pointer; }
+    .fpill:hover { background:var(--cream); }
+    .fpill.active { background:var(--hplc-bg); border-color:#378ADD; color:#0C447C; font-weight:500; }
+    /* color de las pastillas de Color: reflejan el tono real del vidrio */
+    .fpill[data-filter="color"][data-val="transparente"] { background:#EAF4FB; border-color:#BFDDF0; color:#2E5FA3; }
+    .fpill[data-filter="color"][data-val="transparente"]:hover { background:#DCEEFB; }
+    .fpill[data-filter="color"][data-val="transparente"].active { background:#BFE0F7; border-color:#378ADD; color:#0C447C; }
+    .fpill[data-filter="color"][data-val="ambar"] { background:#F6E9D9; border-color:#E0C39B; color:#8B5417; }
+    .fpill[data-filter="color"][data-val="ambar"]:hover { background:#F0DCC0; }
+    .fpill[data-filter="color"][data-val="ambar"].active { background:#E8C08A; border-color:#8B5417; color:#5c3610; }
+    /* Superficie: normal apenas gris, silanizado blanco */
+    .fpill[data-filter="superficie"][data-val="normal"] { background:#F1F5F9; border-color:#E2E8F0; }
+    .fpill[data-filter="superficie"][data-val="silanizado"] { background:#fff; }
+    .fpill[data-filter="superficie"].active { background:var(--hplc-bg); border-color:#378ADD; color:#0C447C; }
+    /* Inscripción: liso apenas gris, con escala blanco */
+    .fpill[data-filter="inscripcion"][data-val="liso"] { background:#F1F5F9; border-color:#E2E8F0; }
+    .fpill[data-filter="inscripcion"][data-val="label"] { background:#fff; }
+    .fpill[data-filter="inscripcion"].active { background:var(--hplc-bg); border-color:#378ADD; color:#0C447C; }
+    .reset-btn { font-size:12px; color:var(--ink-muted); background:none; border:none; cursor:pointer; text-decoration:underline; margin-top:4px; }
+    .sep-rec { font-size:12px; background:var(--lcms-bg); color:#085041; border-radius:8px; padding:10px 14px; margin-bottom:16px; display:none; line-height:1.5; }
+    .sep-badge { display:inline-block; padding:1px 6px; border-radius:3px; font-size:10px; background:#C4ECD8; color:#085041; margin-left:4px; }
+    .cat-tabs { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+    .cat-pill { padding:6px 16px; border-radius:20px; font-size:12px; border:1px solid var(--border-mid); background:#fff; color:var(--ink-muted); cursor:pointer; font-weight:500; }
+    .cat-pill:hover { background:var(--cream); }
+    .cat-pill.active { background:#1D9E75; border-color:#1D9E75; color:#fff; }
+
+    /* ── PREVIEW PANEL ── */
+    .preview-panel { background:var(--white); border:1px solid var(--border-mid); border-radius:14px; padding:20px 24px; margin-bottom:20px; display:flex; align-items:center; gap:24px; min-height:180px; }
+    .preview-box { flex-shrink:0; width:130px; display:flex; align-items:center; justify-content:center; transition:opacity 0.2s ease; }
+    .preview-box.fading { opacity:0; }
+    .preview-info { flex:1; min-width:0; }
+    .preview-tag { font-size:10px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:6px; }
+    .preview-name { font-size:16px; font-weight:600; color:var(--navy); line-height:1.3; margin-bottom:6px; }
+    .preview-meta { font-size:12px; color:var(--ink-muted); line-height:1.6; margin-bottom:12px; }
+    .preview-empty { font-size:13px; color:var(--ink-muted); }
+    .preview-add { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:500; color:#fff; background:#0ea5e9; border:none; padding:7px 16px; border-radius:100px; cursor:pointer; }
+    .preview-add:hover { background:#0284c7; }
+
+    .results-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+    .results-header span { font-size:13px; color:var(--ink-muted); }
+    .results-header strong { color:var(--navy); }
+    .intersect-note { font-size:12px; background:#FEF3C7; color:#92400E; border-radius:8px; padding:8px 12px; margin-bottom:12px; display:none; }
+    .search2-wrap { position:relative; margin-bottom:16px; }
+    .search2-wrap input { width:100%; padding:10px 36px 10px 14px; font-size:13px; font-family:inherit; border:1px solid var(--border-mid); border-radius:8px; background:var(--white); color:var(--navy); }
+    .search2-wrap input:focus { outline:none; border-color:#378ADD; }
+    .search2-clear { position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:14px; color:var(--ink-faint); display:none; padding:0; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; }
+    .vcard { background:var(--white); border:1px solid #e2e8f0; border-radius:12px; padding:14px; display:flex; flex-direction:column; gap:8px; cursor:default; transition:border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
+    .vcard:hover { border-color:#0ea5e9; box-shadow:0 4px 20px rgba(14,165,233,.15); transform:translateY(-2px); }
+    .vcard.added { border-color:#0ea5e9; border-width:1.5px; }
+    .vcard-photo { height:96px; display:flex; align-items:center; justify-content:center; background:var(--cream); border-radius:8px; }
+    .vcard-name { font-size:12px; font-weight:500; line-height:1.3; color:var(--navy); }
+    .vcard-tags { display:flex; flex-wrap:wrap; gap:3px; }
+    .vtag { font-size:10px; padding:2px 6px; border-radius:4px; }
+    .vtag.rosca { background:#EAF3DE; color:#27500A; }
+    .vtag.crimp { background:#EEEDFE; color:#3C3489; }
+    .vtag.amber { background:#FAEEDA; color:#633806; }
+    .vtag.clear { background:#E6F1FB; color:#0C447C; }
+    .vtag.label { background:#F1EFE8; color:#444441; }
+    .vtag.sil { background:#FBEAF0; color:#72243E; }
+    .vtag.kit { background:#E1F5EE; color:#085041; }
+    .vtag.n9 { background:#EAF3DE; color:#27500A; }
+    .vtag.n11 { background:#EEEDFE; color:#3C3489; }
+    .vtag.sep { background:#FAEEDA; color:#633806; }
+    .vcard-pn { font-size:10px; color:var(--ink-faint); font-family:ui-monospace,monospace; }
+    .pack-select { font-size:11px; width:100%; margin-top:2px; font-family:inherit; border:1px solid var(--border-mid); border-radius:5px; padding:4px 5px; }
+    .qty-row { display:flex; align-items:center; gap:6px; margin-top:2px; }
+    .qty-btn { width:27px; height:27px; border-radius:6px; border:1px solid var(--border-mid); background:var(--cream); cursor:pointer; font-size:15px; color:var(--navy); display:flex; align-items:center; justify-content:center; }
+    .qty-btn:hover { background:#fff; }
+    .qty-display { font-size:12px; font-weight:500; min-width:44px; text-align:center; color:var(--navy); }
+    .qty-unit { font-size:10px; color:var(--ink-faint); }
+    .add-btn { width:100%; padding:7px; font-size:12px; cursor:pointer; border-radius:6px; background:#0ea5e9; border:none; color:#fff; font-weight:500; margin-top:auto; }
+    .add-btn:hover { background:#0284c7; }
+    .empty { padding:2.5rem; text-align:center; color:var(--ink-muted); font-size:13px; grid-column:1/-1; }
+    .cat-label { font-size:11px; font-weight:500; color:var(--ink-faint); letter-spacing:.04em; text-transform:uppercase; margin:16px 0 8px; grid-column:1/-1; }
+
+    .pedido-section { margin-top:2.5rem; border-top:1px solid var(--border); padding-top:1.5rem; }
+    .pedido-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+    .pedido-header h2 { font-size:16px; font-weight:600; color:var(--navy); }
+    .pedido-clear { font-size:12px; color:var(--ink-muted); background:none; border:none; cursor:pointer; text-decoration:underline; }
+    .pedido-empty { font-size:13px; color:var(--ink-faint); padding:1rem 0; }
+    .pedido-table { width:100%; border-collapse:collapse; font-size:12px; }
+    .pedido-table th { font-weight:500; font-size:11px; color:var(--ink-muted); text-align:left; padding:8px 10px; border-bottom:1px solid var(--border); background:var(--cream); }
+    .pedido-table td { padding:8px 10px; border-bottom:1px solid var(--border); vertical-align:middle; color:var(--navy); }
+    .pedido-table tr:last-child td { border-bottom:none; }
+    .pedido-remove { background:none; border:none; cursor:pointer; font-size:14px; color:var(--ink-faint); padding:0; }
+    .pedido-total { display:flex; justify-content:flex-end; margin-top:10px; font-size:13px; color:var(--ink-muted); }
+    .pedido-total strong { color:var(--navy); margin-left:6px; }
+    .badge-count { display:inline-block; background:#0ea5e9; color:#fff; border-radius:20px; font-size:10px; padding:2px 8px; margin-left:6px; font-weight:500; }
+
+    /* ── FOOTER (igual a la home) ── */
+    footer { background:var(--navy); }
+    .footer-inner { max-width:1200px; margin:0 auto; padding:40px 48px; display:flex; flex-direction:column; gap:20px; }
+    .footer-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding-bottom:24px; border-bottom:0.5px solid rgba(255,255,255,0.1); }
+    .footer-links { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+    .footer-link { font-size:13px; font-weight:400; color:#94a3b8; text-decoration:none; transition:color 0.15s; }
+    .footer-link:hover { color:#fff; }
+    .footer-legal { display:flex; flex-direction:column; gap:8px; }
+    .footer-legal p { font-size:11px; font-weight:300; letter-spacing:0.03em; color:#64748b; line-height:1.65; }
+    .footer-copy { color:#475569; font-size:11px; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:16px; }
+    .footer-copy a { color:inherit; text-decoration:none; }
+    .footer-copy a:hover { color:#94a3b8; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px){
+      .nav-inner { padding:0 20px; }
+      .nav-logo img { height:30px; }
+      .nav-hamburger { display:flex; }
+      .nav-right { display:none; position:fixed; top:64px; left:0; right:0; background:var(--navy); flex-direction:column; align-items:flex-start; padding:24px; gap:0; border-top:0.5px solid rgba(255,255,255,0.08); z-index:150; }
+      .nav-right.open { display:flex; }
+      .nav-link { display:block; width:100%; padding:16px 0; font-size:16px; border-bottom:0.5px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.65); }
+      .nav-cta { margin-top:20px; width:100%; text-align:center; padding:14px 20px; font-size:15px; border-radius:100px; }
+      .tool-header { padding:88px 20px 20px; }
+      .app-wrap { padding:0 20px 56px; }
+      .layout { grid-template-columns:1fr; }
+      .preview-panel { flex-direction:column; text-align:center; }
+      .footer-inner { padding:32px 20px; }
+      .footer-top { flex-direction:column; align-items:flex-start; }
+    }
+    @media(max-width:560px){
+      .grid { grid-template-columns:repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/Viales-com-ar_transp.svg" alt="VIALES" /></a>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+      <div class="nav-right" id="navRight">
+        <a href="/#consumibles" class="nav-link">Consumibles</a>
+        <a href="/#guia" class="nav-link">Guía de selección</a>
+        <a href="/#quienes" class="nav-link">Quiénes somos</a>
+        <a href="/#contacto" class="nav-cta">Cotizar</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOOL HEADER -->
+  <div class="tool-header">
+    <a href="/" class="tool-back">← Volver al catálogo</a>
+    <p class="tool-eyebrow">Selector guiado</p>
+    <h1 class="tool-title">Viales, tapas y septas</h1>
+    <p class="tool-desc">Filtrá por tu equipo, cierre, color e inscripción, y armá tu pedido. Podés combinar filtros o usar la búsqueda rápida si ya sabés qué necesitás.</p>
+  </div>
+
+  <!-- APP -->
+  <div class="app-wrap">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('guiado',this)">Selector guiado</button>
+      <button class="tab" onclick="switchTab('rapido',this)">Carga rápida</button>
+    </div>
+
+    <div id="sec-guiado" class="section active">
+      <div class="layout">
+        <div class="panel">
+          <div class="panel-title">Mis equipos <span class="panel-title-optional">(opcional)</span></div>
+          <div class="equipo-chips" id="equipo-chips"></div>
+          <select class="equipo-select" id="equipo-select">
+            <option value="">— Seleccionar equipo —</option>
+            <optgroup label="Agilent">
+              <option value="ag-gc">GC Agilent</option>
+              <option value="ag-gcms">GC-MS Agilent</option>
+              <option value="ag-hplc">HPLC Agilent</option>
+              <option value="ag-lcms">LC-MS Agilent</option>
+            </optgroup>
+            <optgroup label="Shimadzu">
+              <option value="sh-gc">GC Shimadzu</option>
+              <option value="sh-gcms">GC-MS Shimadzu</option>
+              <option value="sh-hplc">HPLC Shimadzu</option>
+              <option value="sh-lcms">LC-MS Shimadzu</option>
+            </optgroup>
+            <optgroup label="Thermo Scientific">
+              <option value="th-gc">GC Thermo</option>
+              <option value="th-gcms">GC-MS Thermo</option>
+              <option value="th-hplc">HPLC Thermo</option>
+              <option value="th-lcms">LC-MS Thermo</option>
+            </optgroup>
+            <optgroup label="Waters">
+              <option value="wa-hplc">HPLC Waters</option>
+              <option value="wa-lcms">LC-MS Waters</option>
+            </optgroup>
+            <optgroup label="Knauer">
+              <option value="kn-hplc">HPLC Knauer</option>
+            </optgroup>
+          </select>
+          <button class="equipo-add" onclick="addEquipo()">+ Agregar equipo</button>
+          <hr class="divider">
+          <div class="filter-group">
+            <span class="filter-label">Color</span>
+            <div class="filter-pills">
+              <button class="fpill" data-filter="color" data-val="transparente" onclick="toggleFilter(this)">Transparente</button>
+              <button class="fpill" data-filter="color" data-val="ambar" onclick="toggleFilter(this)">Ámbar</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Inscripción</span>
+            <div class="filter-pills">
+              <button class="fpill" data-filter="inscripcion" data-val="liso" onclick="toggleFilter(this)">Liso</button>
+              <button class="fpill" data-filter="inscripcion" data-val="label" onclick="toggleFilter(this)">Con escala</button>
+            </div>
+          </div>
+          <div class="filter-group">
+            <span class="filter-label">Superficie</span>
+            <div class="filter-pills">
+              <button class="fpill" data-filter="superficie" data-val="normal" onclick="toggleFilter(this)">Normal</button>
+              <button class="fpill" data-filter="superficie" data-val="silanizado" onclick="toggleFilter(this)">Silanizado</button>
+            </div>
+          </div>
+          <button class="reset-btn" onclick="resetGuiado()">Limpiar filtros</button>
+        </div>
+
+        <div>
+          <div id="sep-rec" class="sep-rec"></div>
+          <div id="intersect-note" class="intersect-note"></div>
+
+          <div class="preview-panel">
+            <div class="preview-box" id="preview-box"></div>
+            <div class="preview-info" id="preview-info"></div>
+          </div>
+
+          <div class="cat-tabs">
+            <button class="cat-pill active" onclick="setCat(this,'all')">Todo</button>
+            <button class="cat-pill" onclick="setCat(this,'vial')">Viales</button>
+            <button class="cat-pill" onclick="setCat(this,'kit')">Kits</button>
+            <button class="cat-pill" onclick="setCat(this,'tapa')">Tapas</button>
+            <button class="cat-pill" onclick="setCat(this,'septa')">Septas</button>
+          </div>
+          <div class="results-header">
+            <span><strong id="g-count">0</strong> productos</span>
+          </div>
+          <div class="grid" id="g-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sec-rapido" class="section">
+      <div class="search2-wrap">
+        <input type="text" id="r-search" placeholder="Buscar por nombre, PN, tipo..." oninput="renderRapido()" />
+        <button class="search2-clear" id="r-clear" onclick="clearRapido()">×</button>
+      </div>
+      <div class="grid" id="r-grid"></div>
+    </div>
+
+    <div class="pedido-section">
+      <div class="pedido-header">
+        <h2>Mi pedido <span class="badge-count" id="pedido-count">0</span></h2>
+        <button class="pedido-clear" onclick="clearPedido()">Limpiar</button>
+      </div>
+      <div id="pedido-body"><div class="pedido-empty">El pedido está vacío — agregá productos desde cualquiera de las dos herramientas.</div></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <img src="/Viales-com-ar_transp.svg" alt="VIALES" style="height:30px;width:auto;" />
+        <div class="footer-links">
+          <a href="https://www.agsanalitica.com" class="footer-link" target="_blank" rel="noopener">AGS Analítica</a>
+          <a href="https://www.cromatografia.com.ar" class="footer-link" target="_blank" rel="noopener">cromatografia.com.ar</a>
+          <a href="mailto:consumibles@agsanalitica.com" class="footer-link">consumibles@agsanalitica.com</a>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <p>AGILENT®, SHIMADZU®, WATERS®, PERKIN ELMER® y THERMO FISHER® son marcas registradas de sus respectivos propietarios. AGS ANALÍTICA S.A. no es representante ni tiene vinculación comercial alguna con dichas empresas. Los nombres de marcas se mencionan únicamente a los efectos de indicar compatibilidad de productos.</p>
+        <p>AGS ANALÍTICA S.A. cumple con la Ley Nacional de Protección de Datos Personales N° 25.326.</p>
+      </div>
+      <div class="footer-copy">&copy; 2026 AGS ANALÍTICA S.A. — viales.com.ar, división de consumibles de <a href="https://www.agsanalitica.com" target="_blank" rel="noopener">AGS Analítica</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV HAMBURGER ──
+    var hamburger = document.getElementById('navHamburger');
+    var navRight  = document.getElementById('navRight');
+    hamburger.addEventListener('click', function(){
+      hamburger.classList.toggle('open');
+      navRight.classList.toggle('open');
+    });
+
+    // ── PRODUCT GLYPHS (placeholders — se reemplazan por fotos reales) ──
+    // Colores reales confirmados contra agilent.com/store (no decorativos): las tapas
+    // rosca son polipropileno inyectado (vienen en azul/verde), las tapas crimp son
+    // aluminio prensado sin pintar (siempre plateadas, nunca de color).
+    var CAP_PALETTE = {
+      azul:     {fill:'#B5D4F4', stroke:'#378ADD'},
+      verde:    {fill:'#BFE6D2', stroke:'#1D9E75'},
+      plateado: {fill:'#D8D8D8', stroke:'#8A8A8A'}
+    };
+    var SEPT_PALETTE = {
+      marfil: {fill:'#F1EDE3', stroke:'#A8A08C'},
+      rojo:   {fill:'#D9534F', stroke:'#8B2E2A'},
+      azul:   {fill:'#7FB3E8', stroke:'#2E6DA4'}
+    };
+    function vialGlyph(color, hasLabel, capColor, size){
+      var glass = color==='ambar' ? {fill:'#C97A2E',stroke:'#8B5417'} : {fill:'#DCEEFB',stroke:'#8FB8D6'};
+      // los viales sueltos NO incluyen tapa (se compra aparte) — solo se dibuja si es un kit
+      var capHTML = capColor ? '<rect x="15" y="4" width="30" height="9" rx="2" fill="'+CAP_PALETTE[capColor].fill+'" stroke="'+CAP_PALETTE[capColor].stroke+'" stroke-width="1.5"/>' : '';
+      return '<svg viewBox="0 0 60 60" width="'+size+'" height="'+size+'" aria-hidden="true">' +
+        capHTML +
+        '<path d="M15 13 L15 50 Q15 56 21 56 L39 56 Q45 56 45 50 L45 13 Z" fill="'+glass.fill+'" fill-opacity="0.55" stroke="'+glass.stroke+'" stroke-width="1.5"/>' +
+        (hasLabel ? '<rect x="19" y="36" width="22" height="13" rx="2" fill="#fff" fill-opacity="0.85"/>' : '') +
+        '</svg>';
+    }
+    function capGlyph(capColor, size){
+      var c = CAP_PALETTE[capColor] || CAP_PALETTE.plateado;
+      return '<svg viewBox="0 0 60 40" width="'+size+'" height="'+(size*40/60)+'" aria-hidden="true">' +
+        '<rect x="10" y="6" width="40" height="26" rx="4" fill="'+c.fill+'" stroke="'+c.stroke+'" stroke-width="1.5"/>' +
+        '<ellipse cx="30" cy="19" rx="14" ry="7" fill="#fff" fill-opacity="0.35"/>' +
+        '</svg>';
+    }
+    function septaGlyph(septColor, size){
+      var c = SEPT_PALETTE[septColor] || SEPT_PALETTE.marfil;
+      return '<svg viewBox="0 0 60 20" width="'+size+'" height="'+(size*20/60)+'" aria-hidden="true">' +
+        '<ellipse cx="30" cy="10" rx="26" ry="7" fill="'+c.fill+'" stroke="'+c.stroke+'" stroke-width="1.5"/>' +
+        '</svg>';
+    }
+    function productGlyph(p, size){
+      size = size || 64;
+      if (p.cat==='vial') return vialGlyph(p.color, p.inscripcion==='label', null, size);
+      if (p.cat==='kit') return vialGlyph(p.color, p.inscripcion==='label', p.capColor, size);
+      if (p.cat==='tapa') return capGlyph(p.capColor, size);
+      return septaGlyph(p.septColor, size);
+    }
+
+    // ── SELECTOR DATA ──
+    var EQUIPOS = {
+      'ag-gc':  {label:'GC Agilent',   modelos:'7890A, 7890B, 8860, 6890',  cierres:['rosca','crimp'], gcms:false, hplc:false},
+      'ag-gcms':{label:'GC-MS Agilent',modelos:'5977A, 5977B, 5975, 7000',  cierres:['rosca','crimp'], gcms:true,  hplc:false},
+      'ag-hplc':{label:'HPLC Agilent', modelos:'1260, 1290 Infinity',        cierres:['rosca','crimp'], gcms:false, hplc:true},
+      'ag-lcms':{label:'LC-MS Agilent',modelos:'6420, 6460, 6545',           cierres:['rosca','crimp'], gcms:true,  hplc:true},
+      'sh-gc':  {label:'GC Shimadzu',  modelos:'GC-2010, GC-2030',           cierres:['rosca','crimp'], gcms:false, hplc:false},
+      'sh-gcms':{label:'GC-MS Shimadzu',modelos:'GCMS-QP2020, QP2010',       cierres:['rosca','crimp'], gcms:true,  hplc:false},
+      'sh-hplc':{label:'HPLC Shimadzu',modelos:'Prominence, Nexera',         cierres:['rosca','crimp'], gcms:false, hplc:true},
+      'sh-lcms':{label:'LC-MS Shimadzu',modelos:'LCMS-8060, 8050',           cierres:['rosca','crimp'], gcms:true,  hplc:true},
+      'th-gc':  {label:'GC Thermo',    modelos:'TRACE 1300, 1600',           cierres:['rosca','crimp'], gcms:false, hplc:false},
+      'th-gcms':{label:'GC-MS Thermo', modelos:'ISQ, TSQ Duo',               cierres:['rosca','crimp'], gcms:true,  hplc:false},
+      'th-hplc':{label:'HPLC Thermo',  modelos:'Vanquish, UltiMate 3000',    cierres:['rosca','crimp'], gcms:false, hplc:true},
+      'th-lcms':{label:'LC-MS Thermo', modelos:'Q Exactive, Orbitrap',       cierres:['rosca','crimp'], gcms:true,  hplc:true},
+      'wa-hplc':{label:'HPLC Waters',  modelos:'Alliance, Acquity UPLC',     cierres:['rosca','crimp'], gcms:false, hplc:true},
+      'wa-lcms':{label:'LC-MS Waters', modelos:'Acquity TQD, Xevo',          cierres:['rosca','crimp'], gcms:true,  hplc:true},
+      'kn-hplc':{label:'HPLC Knauer',  modelos:'Azura, BlueShadow',          cierres:['rosca'],         gcms:false, hplc:true}
+    };
+    // Catálogo verificado contra agilent.com/store (páginas reales de producto, 2026-08-23).
+    // No hay vial N9 "silanizado liso": en la línea rosca el silanizado viene siempre con
+    // escala de escritura. No existe vial N11 crimp ámbar liso en ninguna variante (decisión
+    // del cliente: sacar ese slot del catálogo en vez de forzarlo).
+    var PRODUCTOS = [
+      {id:'v-sc-cl',   cat:'vial', nombre:'Vial N9 rosca transparente liso',                  cierre:'rosca', color:'transparente',inscripcion:'liso',  superficie:'normal',    packs:[{l:'100pk',pn:'5182-0714'}]},
+      {id:'v-sc-cl-l', cat:'vial', nombre:'Vial N9 rosca transparente con escala',             cierre:'rosca', color:'transparente',inscripcion:'label', superficie:'normal',    packs:[{l:'100pk',pn:'5182-0715'}]},
+      {id:'v-sc-am',   cat:'vial', nombre:'Vial N9 rosca ámbar liso',                          cierre:'rosca', color:'ambar',       inscripcion:'liso',  superficie:'normal',    packs:[{l:'100pk',pn:'5188-6535'}]},
+      {id:'v-sc-am-l', cat:'vial', nombre:'Vial N9 rosca ámbar con escala',                    cierre:'rosca', color:'ambar',       inscripcion:'label', superficie:'normal',    packs:[{l:'100pk',pn:'5182-0716'}]},
+      {id:'v-sc-cl-s', cat:'vial', nombre:'Vial N9 rosca transparente silanizado (con escala)',cierre:'rosca', color:'transparente',inscripcion:'label', superficie:'silanizado',packs:[{l:'100pk',pn:'5183-2071'}]},
+      {id:'v-sc-am-s', cat:'vial', nombre:'Vial N9 rosca ámbar silanizado (con escala)',       cierre:'rosca', color:'ambar',       inscripcion:'label', superficie:'silanizado',packs:[{l:'100pk',pn:'5183-2072'}]},
+      {id:'v-cr-cl',   cat:'vial', nombre:'Vial N11 crimp transparente liso',                  cierre:'crimp', color:'transparente',inscripcion:'liso',  superficie:'normal',    packs:[{l:'100pk',pn:'5181-3375'}]},
+      {id:'v-cr-cl-l', cat:'vial', nombre:'Vial N11 crimp transparente con escala',             cierre:'crimp', color:'transparente',inscripcion:'label', superficie:'normal',    packs:[{l:'100pk',pn:'5182-0543'}]},
+      {id:'v-cr-am-l', cat:'vial', nombre:'Vial N11 crimp ámbar con escala',                    cierre:'crimp', color:'ambar',       inscripcion:'label', superficie:'normal',    packs:[{l:'100pk',pn:'5181-3376'}]},
+      {id:'v-cr-cl-s', cat:'vial', nombre:'Vial N11 crimp transparente silanizado',             cierre:'crimp', color:'transparente',inscripcion:'liso',  superficie:'silanizado',packs:[{l:'100pk',pn:'5183-4494'}]},
+      {id:'v-cr-am-s', cat:'vial', nombre:'Vial N11 crimp ámbar silanizado (con escala)',       cierre:'crimp', color:'ambar',       inscripcion:'label', superficie:'silanizado',packs:[{l:'100pk',pn:'5183-4496'}]},
+      {id:'k-sc-cl',   cat:'kit', nombre:'Kit rosca transparente + tapa azul (PTFE/sil. roja)',           cierre:'rosca', color:'transparente',inscripcion:'liso', superficie:'normal', capColor:'azul',     packs:[{l:'100pk',pn:'5182-0553'}]},
+      {id:'k-sc-cl-l', cat:'kit', nombre:'Kit rosca transparente con escala + tapa azul (PTFE/sil. roja)',cierre:'rosca', color:'transparente',inscripcion:'label',superficie:'normal', capColor:'azul',     packs:[{l:'100pk',pn:'5182-0864'}]},
+      {id:'k-sc-am',   cat:'kit', nombre:'Kit rosca ámbar con escala + tapa verde (PTFE/sil. roja)',      cierre:'rosca', color:'ambar',       inscripcion:'label',superficie:'normal', capColor:'verde',    packs:[{l:'100pk',pn:'5182-0554'}]},
+      {id:'k-cr-cl',   cat:'kit', nombre:'Kit crimp transparente + tapa plateada (PTFE/sil.)',            cierre:'crimp', color:'transparente',inscripcion:'liso', superficie:'normal', capColor:'plateado', packs:[{l:'100pk',pn:'8010-0195'}]},
+      {id:'k-cr-am',   cat:'kit', nombre:'Kit crimp ámbar con escala + tapa plateada (PTFE/sil.)',        cierre:'crimp', color:'ambar',       inscripcion:'label',superficie:'normal', capColor:'plateado', packs:[{l:'100pk',pn:'8010-0196'}]},
+      {id:'t-n9-uni',  cat:'tapa', nombre:'Tapa N9 azul — universal GC/HPLC (PTFE/sil. roja)',        cierre:'rosca', capColor:'azul',  packs:[{l:'100pk',pn:'5182-0717'}]},
+      {id:'t-n9-sand', cat:'tapa', nombre:'Tapa N9 azul — sándwich GC-MS (PTFE/sil./PTFE)',           cierre:'rosca', capColor:'azul',  packs:[{l:'100pk',pn:'5182-0723'}]},
+      {id:'t-n9-rr',   cat:'tapa', nombre:'Tapa N9 verde — económica (PTFE/sil. roja)',               cierre:'rosca', capColor:'verde', packs:[{l:'100pk',pn:'5182-0718'}]},
+      {id:'t-n9-slit', cat:'tapa', nombre:'Tapa N9 azul — HPLC (PTFE/sil.)',                          cierre:'rosca', capColor:'azul',  packs:[{l:'100pk',pn:'5182-0720'}]},
+      {id:'t-n9-bond', cat:'tapa', nombre:'Tapa N9 azul bonded preslit — HPLC alta presión',          cierre:'rosca', capColor:'azul',  packs:[{l:'100pk',pn:'5185-5824'}]},
+      {id:'t-n11-uni', cat:'tapa', nombre:'Tapa N11 plateada — universal GC/HPLC (PTFE/goma roja)',   cierre:'crimp', capColor:'plateado', packs:[{l:'100pk',pn:'6181-1210'}]},
+      {id:'t-n11-sand',cat:'tapa', nombre:'Tapa N11 plateada — sándwich GC-MS (PTFE/sil./PTFE)',      cierre:'crimp', capColor:'plateado', packs:[{l:'100pk',pn:'5181-1211'}]},
+      {id:'t-n11-rr',  cat:'tapa', nombre:'Tapa N11 plateada — económica (PTFE/goma roja)',           cierre:'crimp', capColor:'plateado', packs:[{l:'100pk',pn:'6061-3370'}]},
+      {id:'t-n11-slit',cat:'tapa', nombre:'Tapa N11 plateada (PTFE/sil. roja)',                       cierre:'crimp', capColor:'plateado', packs:[{l:'100pk',pn:'5182-0552'}]},
+      {id:'s-n9-uni',  cat:'septa',nombre:'Septa N9 PTFE/sil. roja suelta',           cierre:'rosca', septColor:'marfil', packs:[{l:'100pk',pn:'5182-0731'}]},
+      {id:'s-n9-sand', cat:'septa',nombre:'Septa N9 PTFE/sil./PTFE sándwich suelta',  cierre:'rosca', septColor:'rojo',   packs:[{l:'100pk',pn:'5182-0729'}]},
+      {id:'s-n9-slit', cat:'septa',nombre:'Septa N9 azul preslit suelta',             cierre:'rosca', septColor:'azul',   packs:[{l:'100pk',pn:'5183-2074'}]}
+    ];
+    var SEP_RECS = {
+      gcms:{texto:'Para GC-MS: septum sándwich PTFE/Sil/PTFE — mínima contaminación de fuente',badge:'GC-MS'},
+      hplc:{texto:'Para HPLC: septum Sil/PTFE azul preslit — penetración suave con aguja roma',badge:'HPLC'},
+      gc:  {texto:'Para GC: septum universal Sil/PTFE rojo 45° shore A',badge:'GC'}
+    };
+    var PRODUTOS_MAP = {};
+    PRODUCTOS.forEach(function(p){ PRODUTOS_MAP[p.id] = p; });
+
+    var selectedEquipos = [], activeFilters = {}, activeCat = 'all';
+    var lastGuiadoResults = [], activeProductId = null;
+
+    // ── PEDIDO (persistido en localStorage) ──
+    var PEDIDO_KEY = 'viales-pedido-v1';
+    var pedido = {};
+    try {
+      var stored = JSON.parse(localStorage.getItem(PEDIDO_KEY) || '{}');
+      Object.keys(stored).forEach(function(key){
+        if (stored[key] && stored[key].prod && PRODUTOS_MAP[stored[key].prod.id]) pedido[key] = stored[key];
+      });
+    } catch (e) { pedido = {}; }
+    function savePedido(){ try { localStorage.setItem(PEDIDO_KEY, JSON.stringify(pedido)); } catch(e){} }
+
+    function switchTab(id,btn){
+      document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
+      document.getElementById('sec-'+id).classList.add('active');
+      if (id==='rapido') renderRapido();
+    }
+    function addEquipo(){
+      var sel=document.getElementById('equipo-select'), val=sel.value;
+      if(!val||selectedEquipos.includes(val)) return;
+      selectedEquipos.push(val); sel.value='';
+      renderEquipos(); renderGuiado(); renderSepRec();
+    }
+    function removeEquipo(val){
+      selectedEquipos=selectedEquipos.filter(function(e){ return e!==val; });
+      renderEquipos(); renderGuiado(); renderSepRec();
+    }
+    function renderEquipos(){
+      var c=document.getElementById('equipo-chips');
+      if(selectedEquipos.length===0){ c.innerHTML='<span style="font-size:12px;color:var(--ink-faint)">Ningún equipo — se muestran todos</span>'; return; }
+      c.innerHTML=selectedEquipos.map(function(v){
+        var e=EQUIPOS[v];
+        return '<div class="echip"><div class="echip-top"><span style="font-weight:500">'+e.label+'</span><button onclick="removeEquipo(\''+v+'\')">×</button></div><div class="echip-models">'+e.modelos+'</div></div>';
+      }).join('');
+    }
+    function renderSepRec(){
+      var box=document.getElementById('sep-rec');
+      if(selectedEquipos.length===0){ box.style.display='none'; return; }
+      var hayGcms=selectedEquipos.some(function(e){ return EQUIPOS[e].gcms; });
+      var hayHplc=selectedEquipos.some(function(e){ return EQUIPOS[e].hplc; });
+      var rec;
+      if(hayGcms&&hayHplc) rec=null;
+      else if(hayGcms) rec=SEP_RECS.gcms;
+      else if(hayHplc) rec=SEP_RECS.hplc;
+      else rec=SEP_RECS.gc;
+      if(!rec){ box.style.display='none'; return; }
+      box.style.display='block';
+      box.innerHTML='<strong>Septum sugerido <span class="sep-badge">'+rec.badge+'</span></strong><br>'+rec.texto;
+    }
+    function toggleFilter(btn){
+      var f=btn.dataset.filter, v=btn.dataset.val;
+      if(activeFilters[f]===v) delete activeFilters[f];
+      else {
+        activeFilters[f]=v;
+        document.querySelectorAll('.fpill[data-filter="'+f+'"]').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+      }
+      if(activeFilters[f]===undefined) btn.classList.remove('active');
+      renderGuiado();
+    }
+    function resetGuiado(){
+      activeFilters={}; selectedEquipos=[];
+      document.querySelectorAll('.fpill').forEach(function(b){ b.classList.remove('active'); });
+      document.getElementById('equipo-select').value='';
+      renderEquipos(); renderGuiado(); renderSepRec();
+    }
+    function setCat(btn,cat){
+      activeCat=cat;
+      document.querySelectorAll('.cat-pill').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderGuiado();
+    }
+    function equiposCierre(){
+      if(selectedEquipos.length===0) return null;
+      var c=null;
+      selectedEquipos.forEach(function(eid){
+        var ec=EQUIPOS[eid].cierres;
+        c = c===null ? ec.slice() : c.filter(function(x){ return ec.includes(x); });
+      });
+      return c;
+    }
+    function getPackPn(id){
+      var sel=document.getElementById('pack-'+id);
+      if(sel) return sel.value;
+      var p=PRODUTOS_MAP[id];
+      return p ? p.packs[0].pn : '';
+    }
+    function getQty(id){
+      var el = document.getElementById('qty-'+id);
+      return parseInt(el && el.textContent) || 100;
+    }
+    function changeQty(id,delta){
+      var q=getQty(id)+delta*100;
+      if(q<100) q=100;
+      var el=document.getElementById('qty-'+id);
+      if(el) el.textContent=q;
+    }
+    function addToPedido(id){
+      var p=PRODUTOS_MAP[id];
+      if(!p) return;
+      var pn=getPackPn(id), qty=getQty(id);
+      var packMatch = p.packs.filter(function(x){ return x.pn===pn; })[0];
+      var packLabel = packMatch ? packMatch.l : p.packs[0].l;
+      var key=id+'__'+pn;
+      if(pedido[key]) pedido[key].qty+=qty;
+      else pedido[key]={prod:p,pn:pn,packLabel:packLabel,qty:qty};
+      savePedido();
+      var el=document.getElementById('qty-'+id);
+      if(el) el.textContent=100;
+      var card=document.getElementById('card-'+id);
+      if(card){ card.classList.add('added'); setTimeout(function(){ card.classList.remove('added'); },700); }
+      renderPedido();
+    }
+    function removeFromPedido(key){ delete pedido[key]; savePedido(); renderPedido(); }
+    function clearPedido(){ pedido={}; savePedido(); renderPedido(); }
+    function renderPedido(){
+      var items=Object.entries(pedido);
+      document.getElementById('pedido-count').textContent=items.length;
+      var body=document.getElementById('pedido-body');
+      if(items.length===0){ body.innerHTML='<div class="pedido-empty">El pedido está vacío — agregá productos desde cualquiera de las dos herramientas.</div>'; return; }
+      var totalUds=items.reduce(function(s,kv){ return s+kv[1].qty; },0);
+      body.innerHTML='<table class="pedido-table"><thead><tr><th>PN Agilent</th><th>Descripción</th><th>Pack</th><th style="text-align:right">Cant.</th><th></th></tr></thead><tbody>'+
+        items.map(function(kv){
+          var key=kv[0], i=kv[1];
+          return '<tr><td style="font-family:ui-monospace,monospace;font-size:11px">'+i.pn+'</td><td style="font-size:11px">'+i.prod.nombre+'</td><td style="font-size:11px;color:var(--ink-muted)">'+i.packLabel+'</td><td style="text-align:right;font-weight:500">'+i.qty+'</td><td><button class="pedido-remove" onclick="removeFromPedido(\''+key+'\')">×</button></td></tr>';
+        }).join('')+
+        '</tbody></table><div class="pedido-total">Total: <strong>'+totalUds+' unidades · '+items.length+' referencias</strong></div>';
+    }
+    function cardHTML(p){
+      var isVial=p.cat==='vial', isKit=p.cat==='kit', isTapa=p.cat==='tapa', isSepta=p.cat==='septa';
+      var isCrimp=p.cierre==='crimp';
+      var hasLabel=p.inscripcion==='label', isSil=p.superficie==='silanizado';
+      var pnDefault=p.packs[0].pn;
+      var packSelect = p.packs.length>1
+        ? '<select class="pack-select" id="pack-'+p.id+'">'+p.packs.map(function(pk){ return '<option value="'+pk.pn+'">'+pk.l+' — '+pk.pn+'</option>'; }).join('')+'</select>'
+        : '<div class="vcard-pn">'+pnDefault+'</div>';
+      var tags=[];
+      if(isVial||isKit){
+        tags.push('<span class="vtag '+(isCrimp?'n11':'n9')+'">'+(isCrimp?'N 11':'N 9')+'</span>');
+        if(p.color) tags.push('<span class="vtag '+(p.color==='ambar'?'amber':'clear')+'">'+(p.color==='ambar'?'Ámbar':'Transparente')+'</span>');
+        if(hasLabel) tags.push('<span class="vtag label">Con escala</span>');
+        if(isSil) tags.push('<span class="vtag sil">Silanizado</span>');
+        if(isKit) tags.push('<span class="vtag kit">Kit</span>');
+      } else {
+        tags.push('<span class="vtag '+(isCrimp?'n11':'n9')+'">'+(isCrimp?'Crimp N 11':'Rosca N 9')+'</span>');
+        if(isSepta) tags.push('<span class="vtag sep">Septa suelta</span>');
+      }
+      return '<div class="vcard" id="card-'+p.id+'" onmouseenter="setActiveProduct(\''+p.id+'\')">' +
+        '<div class="vcard-photo">'+productGlyph(p,56)+'</div>' +
+        '<div class="vcard-name">'+p.nombre+'</div>' +
+        '<div class="vcard-tags">'+tags.join('')+'</div>' +
+        packSelect +
+        '<div class="qty-row"><button class="qty-btn" onclick="changeQty(\''+p.id+'\',-1)">−</button><span class="qty-display" id="qty-'+p.id+'">100</span><span class="qty-unit">u.</span><button class="qty-btn" onclick="changeQty(\''+p.id+'\',1)">+</button></div>' +
+        '<button class="add-btn" onclick="addToPedido(\''+p.id+'\')">Agregar al pedido</button>' +
+        '</div>';
+    }
+    function renderGuiado(){
+      var cp=equiposCierre();
+      var note=document.getElementById('intersect-note');
+      if(selectedEquipos.length>1){ note.style.display='block'; note.textContent='Intersección de '+selectedEquipos.length+' equipos.'; }
+      else note.style.display='none';
+      var filtered=PRODUCTOS.filter(function(p){
+        if(activeCat!=='all' && p.cat!==activeCat) return false;
+        if(p.cat==='vial'||p.cat==='kit'){
+          if(cp && !cp.includes(p.cierre)) return false;
+          if(activeFilters.cierre && p.cierre!==activeFilters.cierre) return false;
+          if(activeFilters.color && p.color!==activeFilters.color) return false;
+          if(activeFilters.inscripcion && p.inscripcion!==activeFilters.inscripcion) return false;
+          if(activeFilters.superficie && p.superficie!==activeFilters.superficie) return false;
+        }
+        if(p.cat==='tapa'||p.cat==='septa'){
+          if(cp && !cp.includes(p.cierre)) return false;
+          if(activeFilters.cierre && p.cierre!==activeFilters.cierre) return false;
+        }
+        return true;
+      });
+      lastGuiadoResults = filtered;
+      if (activeProductId && !filtered.some(function(p){ return p.id===activeProductId; })) activeProductId = null;
+      document.getElementById('g-count').textContent=filtered.length;
+      var grid=document.getElementById('g-grid');
+      if(filtered.length===0){ grid.innerHTML='<div class="empty">Ningún producto cumple los filtros.</div>'; }
+      else {
+        var cats=['vial','kit','tapa','septa'];
+        var catLabels={vial:'Viales',kit:'Vial kits',tapa:'Tapas completas',septa:'Septas sueltas'};
+        var html='';
+        if(activeCat==='all'){
+          cats.forEach(function(cat){
+            var items=filtered.filter(function(p){ return p.cat===cat; });
+            if(items.length===0) return;
+            html+='<div class="cat-label">'+catLabels[cat]+'</div>';
+            html+=items.map(cardHTML).join('');
+          });
+        } else {
+          html=filtered.map(cardHTML).join('');
+        }
+        grid.innerHTML=html;
+      }
+      renderPreview();
+    }
+    function renderRapido(){
+      var inp=document.getElementById('r-search');
+      var q=inp.value.trim().toLowerCase();
+      document.getElementById('r-clear').style.display=q?'block':'none';
+      var filtered=PRODUCTOS.filter(function(p){
+        if(!q) return true;
+        if(p.nombre.toLowerCase().includes(q)) return true;
+        if(p.packs.some(function(pk){ return pk.pn.toLowerCase().includes(q); })) return true;
+        if(p.cat.toLowerCase().includes(q)) return true;
+        if(p.cierre && p.cierre.toLowerCase().includes(q)) return true;
+        if(p.color && p.color.toLowerCase().includes(q)) return true;
+        return false;
+      });
+      var grid=document.getElementById('r-grid');
+      grid.innerHTML = filtered.length===0 ? '<div class="empty">Ningún producto encontrado.</div>' : filtered.map(cardHTML).join('');
+    }
+    function clearRapido(){
+      document.getElementById('r-search').value='';
+      document.getElementById('r-clear').style.display='none';
+      renderRapido();
+    }
+
+    // ── PREVIEW (crossfade; el hover deja el producto elegido y fijo hasta que se pase por otro) ──
+    function setActiveProduct(id){ activeProductId=id; renderPreview(); }
+    function currentPreviewProduct(){
+      if(activeProductId && PRODUTOS_MAP[activeProductId]) return PRODUTOS_MAP[activeProductId];
+      return lastGuiadoResults.length ? lastGuiadoResults[0] : null;
+    }
+    function renderPreview(){
+      var box=document.getElementById('preview-box');
+      var info=document.getElementById('preview-info');
+      box.classList.add('fading');
+      setTimeout(function(){
+        var p=currentPreviewProduct();
+        if(!p){
+          box.innerHTML='';
+          info.innerHTML='<div class="preview-empty">Sin coincidencias con estos filtros. Probá sacar alguno.</div>';
+        } else {
+          box.innerHTML=productGlyph(p,120);
+          info.innerHTML =
+            '<div class="preview-tag">Foto ilustrativa — foto real próximamente</div>' +
+            '<div class="preview-name">'+p.nombre+'</div>' +
+            '<div class="preview-meta">'+p.packs[0].pn+(lastGuiadoResults.length>1?' · '+lastGuiadoResults.length+' productos coinciden con estos filtros':'')+'</div>' +
+            '<button class="preview-add" onclick="addToPedido(\''+p.id+'\')">+ Agregar al pedido</button>';
+        }
+        box.classList.remove('fading');
+      }, 180);
+    }
+
+    renderEquipos();
+    renderGuiado();
+    renderRapido();
+    renderPedido();
+  </script>
+
+</body>
+</html>
