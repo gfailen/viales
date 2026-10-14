@@ -153,6 +153,35 @@
     .form-title { font-size:15px; font-weight:500; color:var(--navy); margin-bottom:4px; }
     .form-sub   { font-size:13px; font-weight:300; color:var(--ink-muted); margin-bottom:24px; }
 
+    /* ── FORM DE PEDIDO ── */
+    #pedido-form { text-align:left; }
+    .pf-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .pf-row-3 { grid-template-columns:1fr 1fr 1fr; }
+    .pf-group { margin-bottom:16px; min-width:0; }
+    .pf-group label { display:block; font-size:12px; font-weight:500; letter-spacing:0.02em; color:var(--navy); margin-bottom:6px; }
+    .pf-req { color:#b4432b; }
+    .pf-opt { color:var(--ink-muted); font-weight:300; }
+    .pf-group input[type="text"], .pf-group input[type="email"], .pf-group input[type="tel"], .pf-group select, .pf-group textarea {
+      width:100%; font-family:inherit; font-size:14px; color:var(--navy); background:var(--white);
+      border:0.5px solid var(--border-mid); border-radius:8px; padding:10px 12px; outline:none;
+      transition:border-color 0.15s, box-shadow 0.15s;
+    }
+    .pf-group textarea { resize:vertical; min-height:110px; line-height:1.5; }
+    .pf-group input:focus, .pf-group select:focus, .pf-group textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(46,95,163,0.12); }
+    .pf-group input[type="file"] { font-size:13px; color:var(--ink-soft); width:100%; }
+    .pf-help { font-size:12px; color:var(--ink-muted); margin-top:6px; }
+    .pf-error { display:none; font-size:12px; color:#b4432b; margin-top:6px; }
+    .pf-group.invalid input, .pf-group.invalid select, .pf-group.invalid textarea { border-color:#b4432b; }
+    .pf-group.invalid .pf-error { display:block; }
+    .pf-hp { position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden; }
+    .pf-submit { width:100%; font-family:inherit; font-size:14px; font-weight:500; color:var(--white); background:var(--navy); border:none; padding:13px 26px; border-radius:100px; cursor:pointer; transition:background 0.2s; }
+    .pf-submit:hover { background:#1a3a5c; }
+    .pf-submit:disabled { opacity:0.6; cursor:not-allowed; }
+    .pf-note { font-size:12px; font-weight:300; color:var(--ink-muted); margin-top:12px; text-align:center; }
+    #pf-msg { display:none; padding:14px 16px; border-radius:8px; margin-bottom:18px; font-size:14px; line-height:1.5; text-align:left; }
+    #pf-msg.ok { display:block; background:#e4f4ec; color:#1d6b46; border:0.5px solid #b9e0cb; }
+    #pf-msg.err { display:block; background:#fbeae6; color:#9c3a24; border:0.5px solid #efc7bd; }
+
     /* ── FOOTER ── */
     footer { background:var(--navy); }
     .footer-inner { max-width:1200px; margin:0 auto; padding:40px 48px; display:flex; flex-direction:column; gap:20px; }
@@ -200,6 +229,7 @@
       .guide-section { grid-template-columns:1fr; padding:64px 20px; gap:48px; }
       .contact-section { grid-template-columns:1fr; padding:64px 20px; gap:40px; }
       .contact-form { padding:28px 20px; }
+      .pf-row, .pf-row-3 { grid-template-columns:1fr; gap:0; }
       .footer-inner { padding:32px 20px; }
       .footer-top { flex-direction:column; align-items:flex-start; }
     }
@@ -425,8 +455,87 @@
       <div class="contact-form">
         <div class="form-title">Formulario de consulta</div>
         <div class="form-sub">Te responderemos a la brevedad.</div>
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-860eb25c-e6e8-45ed-b212-facfc74407ac" data-elfsight-app-lazy></div>
+        <div id="pf-msg" role="status" aria-live="polite"></div>
+        <form id="pedido-form" novalidate>
+          <div class="pf-row">
+            <div class="pf-group">
+              <label for="pf-nombre">Nombre <span class="pf-req">*</span></label>
+              <input type="text" id="pf-nombre" name="nombre" maxlength="80" autocomplete="given-name" required>
+            </div>
+            <div class="pf-group">
+              <label for="pf-apellido">Apellido <span class="pf-req">*</span></label>
+              <input type="text" id="pf-apellido" name="apellido" maxlength="80" autocomplete="family-name" required>
+            </div>
+          </div>
+
+          <div class="pf-group">
+            <label for="pf-empresa">Empresa <span class="pf-req">*</span></label>
+            <input type="text" id="pf-empresa" name="empresa" maxlength="150" autocomplete="organization" required>
+          </div>
+
+          <div class="pf-row">
+            <div class="pf-group">
+              <label for="pf-email">Email <span class="pf-req">*</span></label>
+              <input type="email" id="pf-email" name="email" maxlength="150" autocomplete="email" placeholder="nombre@empresa.com" required>
+              <div class="pf-error">Ingresá un email válido.</div>
+            </div>
+            <div class="pf-group">
+              <label for="pf-celular">Celular / WhatsApp</label>
+              <input type="tel" id="pf-celular" name="celular" maxlength="40" autocomplete="tel" placeholder="+54 9 11 …">
+            </div>
+          </div>
+
+          <div class="pf-row pf-row-3">
+            <div class="pf-group">
+              <label for="pf-marca">Marca del equipo</label>
+              <select id="pf-marca" name="marca">
+                <option value="">Seleccionar…</option>
+                <option>Agilent</option>
+                <option>Shimadzu</option>
+                <option>Thermo</option>
+                <option>Waters</option>
+                <option>Knauer</option>
+                <option>PerkinElmer</option>
+                <option>Otra</option>
+              </select>
+            </div>
+            <div class="pf-group">
+              <label for="pf-modelo">Modelo</label>
+              <input type="text" id="pf-modelo" name="modelo" maxlength="100" placeholder="Ej: 1260, 8890, Nexera">
+            </div>
+            <div class="pf-group">
+              <label for="pf-tecnica">Técnica</label>
+              <select id="pf-tecnica" name="tecnica">
+                <option value="">Seleccionar…</option>
+                <option>GC</option>
+                <option>GC-MS</option>
+                <option>HPLC</option>
+                <option>LC-MS</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pf-group">
+            <label for="pf-detalle">Detalle del pedido <span class="pf-req">*</span></label>
+            <textarea id="pf-detalle" name="detalle" rows="5" maxlength="3000" placeholder="Qué necesitás: código o descripción del consumible, cantidad estimada, aplicación…" required></textarea>
+          </div>
+
+          <div class="pf-group">
+            <label for="pf-archivos">Fotos o adjuntos <span class="pf-opt">(opcional)</span></label>
+            <input type="file" id="pf-archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.xlsx,.xls,.csv,.docx">
+            <div class="pf-help">Hasta 3 archivos, 3 MB en total (PDF, imágenes, Excel, Word).</div>
+            <div class="pf-error" id="pf-archivos-error"></div>
+          </div>
+
+          <!-- Honeypot: invisible para personas -->
+          <div class="pf-hp" aria-hidden="true">
+            <label for="pf-sitio">No completar este campo</label>
+            <input type="text" id="pf-sitio" name="sitio_web" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="pf-submit" id="pf-submit">Enviar pedido de presupuesto</button>
+          <p class="pf-note">Usamos tus datos solo para responder esta consulta.</p>
+        </form>
       </div>
     </section>
   </div>
@@ -464,6 +573,109 @@
         navRight.classList.remove('open');
       });
     });
+
+    // ── FORM DE PEDIDO ──
+    (function () {
+      const form = document.getElementById('pedido-form');
+      if (!form) return;
+      const btn = document.getElementById('pf-submit');
+      const msg = document.getElementById('pf-msg');
+      const fileInput = document.getElementById('pf-archivos');
+      const fileError = document.getElementById('pf-archivos-error');
+      const MAX_FILES = 3;
+      const MAX_BYTES = 3 * 1024 * 1024;
+      const loadedAt = Date.now();
+
+      function showMsg(kind, text) {
+        msg.className = kind;
+        msg.textContent = text;
+        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function checkFiles() {
+        const files = Array.from(fileInput.files || []);
+        const grp = fileInput.closest('.pf-group');
+        let err = '';
+        if (files.length > MAX_FILES) err = 'Podés adjuntar hasta ' + MAX_FILES + ' archivos.';
+        else if (files.reduce((s, f) => s + f.size, 0) > MAX_BYTES) err = 'Los archivos superan los 3 MB en total.';
+        fileError.textContent = err;
+        grp.classList.toggle('invalid', !!err);
+        return !err;
+      }
+      fileInput.addEventListener('change', checkFiles);
+
+      function validate() {
+        let first = null;
+        form.querySelectorAll('[required]').forEach(function (el) {
+          let ok = el.value.trim() !== '';
+          if (ok && el.type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+          el.closest('.pf-group').classList.toggle('invalid', !ok);
+          if (!ok && !first) first = el;
+        });
+        if (!checkFiles() && !first) first = fileInput;
+        return first;
+      }
+
+      function toBase64(file) {
+        return new Promise(function (resolve, reject) {
+          const r = new FileReader();
+          r.onload = function () { resolve(String(r.result).split(',')[1] || ''); };
+          r.onerror = reject;
+          r.readAsDataURL(file);
+        });
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (btn.disabled) return;
+        msg.className = '';
+
+        const bad = validate();
+        if (bad) {
+          showMsg('err', 'Revisá los campos marcados en rojo.');
+          bad.focus();
+          return;
+        }
+
+        btn.disabled = true;
+        const original = btn.textContent;
+        btn.textContent = 'Enviando…';
+
+        try {
+          const fd = new FormData(form);
+          const body = {
+            nombre: fd.get('nombre'), apellido: fd.get('apellido'), empresa: fd.get('empresa'),
+            email: fd.get('email'), celular: fd.get('celular'),
+            marca: fd.get('marca'), modelo: fd.get('modelo'), tecnica: fd.get('tecnica'),
+            detalle: fd.get('detalle'), sitio_web: fd.get('sitio_web'),
+            t: Date.now() - loadedAt,
+            archivos: await Promise.all(Array.from(fileInput.files || []).map(async function (f) {
+              return { name: f.name, content: await toBase64(f) };
+            }))
+          };
+          const r = await fetch('/api/pedido', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+          const data = await r.json().catch(function () { return { ok: false }; });
+          if (data && data.ok) {
+            showMsg('ok', 'Gracias. Recibimos tu pedido y te respondemos a la brevedad. Te enviamos una confirmación por mail.');
+            if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'pedido_presupuesto' });
+            form.reset();
+            form.style.display = 'none';
+          } else {
+            showMsg('err', 'No pudimos enviar tu pedido. Probá de nuevo o escribinos a consumibles@agsanalitica.com.');
+            btn.disabled = false;
+            btn.textContent = original;
+          }
+        } catch (err) {
+          showMsg('err', 'No pudimos enviar tu pedido. Probá de nuevo o escribinos a consumibles@agsanalitica.com.');
+          btn.disabled = false;
+          btn.textContent = original;
+        }
+      });
+    })();
 
   </script>
 
