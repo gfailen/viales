@@ -260,7 +260,9 @@ module.exports = async function handler(req, res) {
     '<p>Hola ' + esc(nombre) + ':</p>' +
     '<p>Recibimos tu pedido y lo estamos revisando. Te respondemos con la cotización a la brevedad.</p>' +
     '<p><strong>Si es tu primer pedido a AGS Analítica</strong>, te pedimos que completes el siguiente formulario para poder trabajar en él:<br>' +
-    '<a href="' + esc(altaUrl) + '">' + esc(altaUrl) + '</a></p>' +
+    // El texto del enlace NO repite la URL: Brevo reescribe el href con su redirector y un texto con
+    // otro dominio a la vista es una señal típica de phishing. El texto plano conserva la URL directa.
+    '<a href="' + esc(altaUrl) + '">Completar el alta de cliente</a></p>' +
     '<p>Si ya sos cliente, no hace falta que hagas nada.</p>' +
     '<p style="margin-bottom:8px">Saludos cordiales,<br>AGS Analítica | Consumibles</p>' +
     // Las imágenes tienen que estar publicadas en una URL pública: se sirven desde /email/ del propio sitio.
