@@ -18,6 +18,10 @@
 
 const BREVO_URL = 'https://api.brevo.com/v3/smtp/email';
 
+// URL pública del sitio: de ahí se cargan los logos de la firma (/email/logo-*.png).
+const SITE_URL = (process.env.SITE_URL || 'https://www.viales.com.ar').replace(/\/+$/, '');
+const LOGO_AGS_ALTO = 36; // px de alto con que se muestra el logo de AGS en la firma
+
 const MARCAS = ['Agilent', 'Shimadzu', 'Thermo', 'Waters', 'Knauer', 'PerkinElmer', 'Otra'];
 const TECNICAS = ['GC', 'GC-MS', 'HPLC', 'LC-MS'];
 
@@ -247,8 +251,8 @@ module.exports = async function handler(req, res) {
     altaUrl + '\n\n' +
     'Si ya sos cliente, no hace falta que hagas nada.\n\n' +
     'Saludos cordiales,\n' +
-    'Consumibles · AGS Analítica\n' +
-    'viales.com.ar';
+    'AGS Analítica | Consumibles\n' +
+    SITE_URL;
 
   const htmlCliente =
     '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#0d1b35">' +
@@ -257,8 +261,16 @@ module.exports = async function handler(req, res) {
     '<p><strong>Si es tu primer pedido a AGS Analítica</strong>, te pedimos que completes el siguiente formulario para poder trabajar en él:<br>' +
     '<a href="' + esc(altaUrl) + '">' + esc(altaUrl) + '</a></p>' +
     '<p>Si ya sos cliente, no hace falta que hagas nada.</p>' +
-    '<p>Saludos cordiales,<br>Consumibles · AGS Analítica<br>' +
-    '<a href="https://www.viales.com.ar">viales.com.ar</a></p>' +
+    '<p style="margin-bottom:8px">Saludos cordiales,<br>AGS Analítica | Consumibles</p>' +
+    // Las imágenes tienen que estar publicadas en una URL pública: se sirven desde /email/ del propio sitio.
+    '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:4px"><tr>' +
+    '<td style="padding-right:18px;vertical-align:middle">' +
+    '<img src="' + esc(SITE_URL) + '/email/logo-ags.png" alt="AGS Analítica" height="' + LOGO_AGS_ALTO + '" ' +
+    'style="display:block;height:' + LOGO_AGS_ALTO + 'px;width:auto;border:0"></td>' +
+    '<td style="border-left:1px solid #cfd6e2;padding-left:18px;vertical-align:middle">' +
+    '<a href="' + esc(SITE_URL) + '"><img src="' + esc(SITE_URL) + '/email/logo-viales.png" alt="viales.com.ar" ' +
+    'width="150" height="18" style="display:block;width:150px;height:auto;border:0"></a></td>' +
+    '</tr></table>' +
     '</div>';
 
   const okCliente = await enviarBrevo(apiKey, {
