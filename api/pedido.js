@@ -20,7 +20,8 @@ const BREVO_URL = 'https://api.brevo.com/v3/smtp/email';
 
 // URL pública del sitio: de ahí se cargan los logos de la firma (/email/logo-*.png).
 const SITE_URL = (process.env.SITE_URL || 'https://www.viales.com.ar').replace(/\/+$/, '');
-const LOGO_AGS_ALTO = 36; // px de alto con que se muestra el logo de AGS en la firma
+const LOGO_AGS_ALTO = 64; // px con que se muestra el logo de AGS en la firma (el PNG es 428×184)
+const LOGO_AGS_ANCHO = Math.round((LOGO_AGS_ALTO * 428) / 184);
 
 const MARCAS = ['Agilent', 'Shimadzu', 'Thermo', 'Waters', 'Knauer', 'PerkinElmer', 'Otra'];
 const TECNICAS = ['GC', 'GC-MS', 'HPLC', 'LC-MS'];
@@ -265,8 +266,8 @@ module.exports = async function handler(req, res) {
     // Las imágenes tienen que estar publicadas en una URL pública: se sirven desde /email/ del propio sitio.
     '<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:4px"><tr>' +
     '<td style="padding-right:18px;vertical-align:middle">' +
-    '<img src="' + esc(SITE_URL) + '/email/logo-ags.png" alt="AGS Analítica" height="' + LOGO_AGS_ALTO + '" ' +
-    'style="display:block;height:' + LOGO_AGS_ALTO + 'px;width:auto;border:0"></td>' +
+    '<img src="' + esc(SITE_URL) + '/email/logo-ags.png" alt="AGS Analítica" width="' + LOGO_AGS_ANCHO + '" height="' + LOGO_AGS_ALTO + '" ' +
+    'style="display:block;width:' + LOGO_AGS_ANCHO + 'px;height:' + LOGO_AGS_ALTO + 'px;border:0"></td>' +
     '<td style="border-left:1px solid #cfd6e2;padding-left:18px;vertical-align:middle">' +
     '<a href="' + esc(SITE_URL) + '"><img src="' + esc(SITE_URL) + '/email/logo-viales.png" alt="viales.com.ar" ' +
     'width="150" height="18" style="display:block;width:150px;height:auto;border:0"></a></td>' +
