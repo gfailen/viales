@@ -189,8 +189,8 @@ module.exports = async function handler(req, res) {
   const htmlInterno =
     '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#0d1b35;max-width:640px">' +
     '<div style="background:#fff4cc;border:1px solid #e0a800;border-radius:8px;padding:12px 14px;margin-bottom:16px">' +
-    '<strong>⚠ No uses “Responder”.</strong> Esa respuesta vuelve a consumibles@, no llega al cliente. ' +
-    'Para contestarle usá el botón <strong>Responder al cliente</strong>.</div>' +
+    '<strong>No uses “Responder”.</strong> Esa respuesta vuelve a consumibles@. ' +
+    'Usá el botón <strong>Responder al cliente</strong></div>' +
     '<p style="margin:0 0 18px"><a href="' + esc(mailtoCliente) + '" ' +
     'style="display:inline-block;background:#0d1b35;color:#ffffff;text-decoration:none;font-weight:bold;padding:11px 22px;border-radius:100px">' +
     'Responder al cliente</a></p>' +
@@ -212,8 +212,8 @@ module.exports = async function handler(req, res) {
     '</div>';
 
   const cuerpoInterno =
-    'NO USES “RESPONDER”: esa respuesta vuelve a consumibles@, no llega al cliente.\n' +
-    'Para contestarle, abrí este enlace: ' + mailtoCliente + '\n\n' +
+    'NO USES “RESPONDER”. Esa respuesta vuelve a consumibles@.\n' +
+    'Usá este enlace para contestarle al cliente: ' + mailtoCliente + '\n\n' +
     'NUEVO PEDIDO DE PRESUPUESTO — viales.com.ar\n\n' +
     'CONTACTO\n' +
     'Nombre: ' + nombreCompleto + '\n' +
