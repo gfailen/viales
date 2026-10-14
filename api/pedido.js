@@ -2,7 +2,7 @@
  * POST /api/pedido — formulario "Solicitar cotización" de viales.com.ar
  *
  * Envía por la API HTTPS de Brevo:
- *   1. Aviso interno a MAIL_TO (reply-to = email del cliente).
+ *   1. Aviso interno a MAIL_TO, con botón "Responder al cliente" (mailto) y advertencia de no usar "Responder".
  *   2. Confirmación automática al cliente, con link al alta.
  *
  * Variables de entorno (Vercel → Settings → Environment Variables):
@@ -170,7 +170,45 @@ module.exports = async function handler(req, res) {
   const nombreCompleto = nombre + ' ' + apellido;
 
   // ── 1. Aviso interno ──
+  // El reply-to NO es el cliente: Gmail marca como posible phishing un mail "de agsanalitica.com"
+  // cuyas respuestas van a otra dirección. En su lugar va un enlace "Responder al cliente" (mailto).
+  const mailtoCliente =
+    'mailto:' + email +
+    '?subject=' + encodeURIComponent('Re: tu pedido en viales.com.ar') +
+    '&body=' + encodeURIComponent('Hola ' + nombre + ':\n\n');
+
+  const filaHtml = (k, v) =>
+    '<tr><td style="padding:4px 14px 4px 0;color:#667085;white-space:nowrap;vertical-align:top">' + esc(k) +
+    '</td><td style="padding:4px 0;color:#0d1b35">' + esc(v) + '</td></tr>';
+
+  const htmlInterno =
+    '<div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.55;color:#0d1b35;max-width:640px">' +
+    '<div style="background:#fff4cc;border:1px solid #e0a800;border-radius:8px;padding:12px 14px;margin-bottom:16px">' +
+    '<strong>⚠ No uses “Responder”.</strong> Esa respuesta vuelve a consumibles@, no llega al cliente. ' +
+    'Para contestarle usá el botón <strong>Responder al cliente</strong>.</div>' +
+    '<p style="margin:0 0 18px"><a href="' + esc(mailtoCliente) + '" ' +
+    'style="display:inline-block;background:#0d1b35;color:#ffffff;text-decoration:none;font-weight:bold;padding:11px 22px;border-radius:100px">' +
+    'Responder al cliente</a></p>' +
+    '<h3 style="margin:0 0 6px;font-size:15px">Nuevo pedido de presupuesto — viales.com.ar</h3>' +
+    '<table style="border-collapse:collapse;margin-bottom:14px">' +
+    filaHtml('Nombre', nombreCompleto) +
+    filaHtml('Empresa', empresa) +
+    filaHtml('Email', email) +
+    filaHtml('Celular / WhatsApp', celular || '—') +
+    filaHtml('Marca', marca || '—') +
+    filaHtml('Modelo', modelo || '—') +
+    filaHtml('Técnica', tecnica || '—') +
+    '</table>' +
+    '<div style="color:#667085;margin-bottom:4px">Detalle del pedido</div>' +
+    '<div style="background:#f1f5f9;border-radius:8px;padding:12px 14px;white-space:pre-wrap;margin-bottom:14px">' + esc(detalle) + '</div>' +
+    '<p style="margin:0 0 6px">' +
+    (arch.lista.length ? 'Adjuntos: ' + esc(arch.lista.map((a) => a.name).join(', ')) : 'Sin adjuntos.') + '</p>' +
+    '<p style="margin:0;color:#667085;font-size:13px">Si es su primer pedido, el cliente recibió el link al alta (' + esc(altaUrl) + ').</p>' +
+    '</div>';
+
   const cuerpoInterno =
+    'NO USES “RESPONDER”: esa respuesta vuelve a consumibles@, no llega al cliente.\n' +
+    'Para contestarle, abrí este enlace: ' + mailtoCliente + '\n\n' +
     'NUEVO PEDIDO DE PRESUPUESTO — viales.com.ar\n\n' +
     'CONTACTO\n' +
     'Nombre: ' + nombreCompleto + '\n' +
@@ -186,14 +224,14 @@ module.exports = async function handler(req, res) {
     (arch.lista.length
       ? 'Adjuntos: ' + arch.lista.map((a) => a.name).join(', ') + '\n\n'
       : 'Sin adjuntos.\n\n') +
-    'Si es su primer pedido, el cliente recibió el link al alta (' + altaUrl + ').\n' +
-    'Podés responder este mail: la respuesta le llega al cliente.';
+    'Si es su primer pedido, el cliente recibió el link al alta (' + altaUrl + ').';
 
   const payloadInterno = {
     sender: { name: 'Formulario viales.com.ar', email: from },
     to: to.map((e) => ({ email: e })),
-    replyTo: { email: email, name: nombreCompleto },
+    replyTo: { email: from },
     subject: '[Viales.com.ar] Nuevo pedido – ' + empresa + ' – ' + nombreCompleto,
+    htmlContent: htmlInterno,
     textContent: cuerpoInterno,
   };
   if (arch.lista.length) payloadInterno.attachment = arch.lista;
