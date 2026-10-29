@@ -24,7 +24,7 @@ const LOGO_AGS_ALTO = 64; // px con que se muestra el logo de AGS en la firma (e
 const LOGO_AGS_ANCHO = Math.round((LOGO_AGS_ALTO * 428) / 184);
 
 const MARCAS = ['Agilent', 'Shimadzu', 'Thermo', 'Waters', 'Knauer', 'PerkinElmer', 'Otra'];
-const TECNICAS = ['GC', 'GC-MS', 'HPLC', 'LC-MS'];
+const TECNICAS = ['GC', 'GC-MS', 'GC-MS/MS', 'HPLC', 'LC-MS', 'ICP-OES', 'ICP-MS', 'UV-Vis'];
 
 const MAX_ARCHIVOS = 3;
 const MAX_BYTES_TOTAL = 3 * 1024 * 1024; // 3 MB reales (≈4 MB en base64; Vercel limita el cuerpo a 4,5 MB)

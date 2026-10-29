@@ -50,11 +50,12 @@
       text-align:center;
       animation:fadeUp 0.8s ease both;
     }
-    .hero-content { max-width:620px; margin:0 auto; }
+    .hero-content { max-width:1100px; margin:0 auto; }
     .hero-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:12px; }
-    .hero-title { font-size:clamp(32px,4vw,46px); font-weight:700; line-height:1.15; color:var(--navy); margin-bottom:14px; letter-spacing:-0.02em; }
-    .hero-title em { font-style:normal; font-weight:400; color:var(--blue); }
-    .hero-subtitle { font-size:16px; font-weight:400; color:var(--ink-soft); line-height:1.6; margin-bottom:0; max-width:560px; margin-left:auto; margin-right:auto; }
+    .hero-title { font-size:clamp(30px,3.9vw,50px); font-weight:700; line-height:1.12; color:var(--navy); margin-bottom:16px; letter-spacing:-0.025em; }
+    @media(min-width:901px){ .hero-title { white-space:nowrap; } }
+    .hero-title em { font-style:normal; font-weight:700; color:var(--blue); }
+    .hero-subtitle { font-size:18px; font-weight:400; color:var(--ink-soft); line-height:1.6; margin-bottom:0; max-width:560px; margin-left:auto; margin-right:auto; }
     .hero-actions { display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap; }
     .btn-primary { display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:var(--cream); text-decoration:none; font-size:14px; font-weight:500; padding:13px 26px; border-radius:100px; letter-spacing:0.01em; transition:background 0.2s,transform 0.15s; }
     .btn-primary:hover { background:#1a3a5c; transform:translateY(-1px); }
@@ -211,13 +212,24 @@
     .pf-error { display:none; font-size:12px; color:#b4432b; margin-top:6px; }
     .pf-group.invalid input, .pf-group.invalid select, .pf-group.invalid textarea { border-color:#b4432b; }
     .pf-group.invalid .pf-error { display:block; }
-    .pf-items { border:0.5px solid var(--border-mid); border-radius:12px; padding:16px 16px 4px; margin:4px 0 18px; background:var(--white); min-width:0; }
-    .pf-items legend { font-size:12px; font-weight:600; letter-spacing:0.02em; color:var(--navy); padding:0 6px; }
+    .contact-form { padding:28px; }
+    .pf-step { border:1px solid; border-radius:14px; padding:18px 18px 4px; margin-bottom:14px; }
+    .pf-step-1 { background:#EEF2FF; border-color:#C7D2FE; } .pf-step-1 .pf-num { background:#4F46E5; }
+    .pf-step-2 { background:#ECFEFF; border-color:#A5F3FC; } .pf-step-2 .pf-num { background:#0891B2; }
+    .pf-step-3 { background:#FFF7ED; border-color:#FED7AA; } .pf-step-3 .pf-num { background:#EA580C; }
+    .pf-step-head { display:flex; gap:12px; align-items:flex-start; margin-bottom:16px; }
+    .pf-num { flex-shrink:0; width:28px; height:28px; border-radius:50%; color:#fff; font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .pf-step-title { font-size:16px; font-weight:600; color:var(--navy); line-height:1.3; }
+    .pf-step-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; margin-top:2px; }
+    .pf-detect { font-size:12px; color:#4338CA; margin:-8px 0 12px; min-height:0; }
+    .pf-detect:empty { display:none; }
+    .pf-autofilled { animation:pfFlash 0.9s ease; }
+    @keyframes pfFlash { 0%{ box-shadow:0 0 0 3px rgba(79,70,229,0.35); } 100%{ box-shadow:0 0 0 0 rgba(79,70,229,0); } }
     .pf-row-item { grid-template-columns:1fr 110px auto; align-items:start; }
     .pf-add-wrap { padding-top:21px; }
-    .pf-add { font-family:inherit; font-size:13px; font-weight:500; color:var(--navy); background:#EEF2FF; border:1px solid #C7D2FE; border-radius:100px; padding:10px 16px; cursor:pointer; white-space:nowrap; transition:background 0.15s, border-color 0.15s; }
-    .pf-add:hover { background:#E0E7FF; border-color:#818CF8; }
-    .pf-list { list-style:none; margin:0 0 12px; padding:0; }
+    .pf-add { font-family:inherit; font-size:13px; font-weight:600; color:#fff; background:#4F46E5; border:none; border-radius:100px; padding:11px 18px; cursor:pointer; white-space:nowrap; transition:background 0.15s; }
+    .pf-add:hover { background:#4338CA; }
+    .pf-list { list-style:none; margin:0 0 14px; padding:2px 6px; background:#fff; border:1px solid #C7D2FE; border-radius:10px; }
     .pf-list:empty { display:none; }
     .pf-list li { display:flex; align-items:flex-start; gap:10px; padding:9px 10px; border-top:0.5px solid var(--border); font-size:13px; line-height:1.45; }
     .pf-list li:first-child { border-top:none; }
@@ -340,8 +352,7 @@
     <div class="hero">
       <div class="hero-content">
         <h1 class="hero-title">
-          El consumible correcto<br>
-          <em>para tu cromatógrafo.</em>
+          El consumible correcto <em>para tu cromatógrafo.</em>
         </h1>
         <p class="hero-subtitle">Originales o alternativos, con el respaldo técnico<br>de quienes reparan tus equipos.</p>
       </div>
@@ -518,7 +529,7 @@
     <section class="contact-section" id="contacto">
       <div>
         <h2 class="contact-title">Solicitar <em>cotización</em></h2>
-        <p class="contact-desc">Completá el formulario y envianos tu consulta. Podés incluir equipo, marca, código, cantidad estimada o cualquier dato que ayude a identificar el consumible.</p>
+        <p class="contact-desc">Cargá los productos que necesitás, uno por renglón. Con el modelo de tu equipo completamos marca y técnica; si no lo sabés, dejalo vacío.</p>
         <div class="contact-items">
           <a href="mailto:consumibles@agsanalitica.com" class="contact-item">
             <span class="contact-icon"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
@@ -535,54 +546,27 @@
         <div class="form-sub">Te responderemos a la brevedad.</div>
         <div id="pf-msg" role="status" aria-live="polite"></div>
         <form id="pedido-form" novalidate>
-          <div class="pf-row">
-            <div class="pf-group">
-              <label for="pf-nombre">Nombre <span class="pf-req">*</span></label>
-              <input type="text" id="pf-nombre" name="nombre" maxlength="80" autocomplete="given-name" required>
-            </div>
-            <div class="pf-group">
-              <label for="pf-apellido">Apellido <span class="pf-req">*</span></label>
-              <input type="text" id="pf-apellido" name="apellido" maxlength="80" autocomplete="family-name" required>
-            </div>
-          </div>
 
-          <div class="pf-group">
-            <label for="pf-empresa">Empresa <span class="pf-req">*</span></label>
-            <input type="text" id="pf-empresa" name="empresa" maxlength="150" autocomplete="organization" required>
-          </div>
-
-          <div class="pf-row">
-            <div class="pf-group">
-              <label for="pf-email">Email <span class="pf-req">*</span></label>
-              <input type="email" id="pf-email" name="email" maxlength="150" autocomplete="email" placeholder="nombre@empresa.com" required>
-              <div class="pf-error">Ingresá un email válido.</div>
-            </div>
-            <div class="pf-group">
-              <label for="pf-celular">Celular / WhatsApp</label>
-              <input type="tel" id="pf-celular" name="celular" maxlength="40" autocomplete="tel" placeholder="+54 9 11 …">
-            </div>
-          </div>
-
-          <fieldset class="pf-items">
-            <legend>Ítems del pedido</legend>
-            <p class="pf-help" style="margin:0 0 14px;">Cargá un renglón por producto. Si no sabés el modelo, dejalo vacío.</p>
+          <section class="pf-step pf-step-1">
+            <div class="pf-step-head"><span class="pf-num">1</span><div><div class="pf-step-title">¿Qué necesitás?</div><div class="pf-step-sub">Un renglón por producto. Escribí el modelo del equipo y completamos marca y técnica.</div></div></div>
             <div class="pf-row pf-row-3">
               <div class="pf-group">
-                <label for="pf-marca">Marca del equipo</label>
+                <label for="pf-modelo">Modelo del equipo</label>
+                <input type="text" id="pf-modelo" maxlength="100" list="pf-modelos" autocomplete="off" placeholder="Ej: 1260, Nexera, 8890">
+                <datalist id="pf-modelos"></datalist>
+              </div>
+              <div class="pf-group">
+                <label for="pf-marca">Marca</label>
                 <select id="pf-marca">
                   <option value="">Seleccionar…</option>
                   <option>Agilent</option>
                   <option>Shimadzu</option>
                   <option>Thermo</option>
                   <option>Waters</option>
-                  <option>Knauer</option>
                   <option>PerkinElmer</option>
+                  <option>Knauer</option>
                   <option>Otra</option>
                 </select>
-              </div>
-              <div class="pf-group">
-                <label for="pf-modelo">Modelo</label>
-                <input type="text" id="pf-modelo" maxlength="100" placeholder="Ej: 1260, 8890, Nexera">
               </div>
               <div class="pf-group">
                 <label for="pf-tecnica">Técnica</label>
@@ -590,11 +574,16 @@
                   <option value="">Seleccionar…</option>
                   <option>GC</option>
                   <option>GC-MS</option>
+                  <option>GC-MS/MS</option>
                   <option>HPLC</option>
                   <option>LC-MS</option>
+                  <option>ICP-OES</option>
+                  <option>ICP-MS</option>
+                  <option>UV-Vis</option>
                 </select>
               </div>
             </div>
+            <div class="pf-detect" id="pf-detect" aria-live="polite"></div>
             <div class="pf-row pf-row-item">
               <div class="pf-group">
                 <label for="pf-producto">Producto <span class="pf-opt">(código o descripción)</span></label>
@@ -610,20 +599,51 @@
               </div>
             </div>
             <ul class="pf-list" id="pf-list" aria-live="polite"></ul>
-          </fieldset>
+          </section>
 
-          <div class="pf-group">
-            <label for="pf-detalle">Comentarios <span class="pf-opt">(opcional si cargaste ítems)</span></label>
-            <textarea id="pf-detalle" name="detalle" rows="4" maxlength="3000" placeholder="Aplicación, urgencia, número de serie del equipo, lo que quieras agregar…"></textarea>
-            <div class="pf-error">Cargá al menos un ítem o contanos qué necesitás.</div>
-          </div>
+          <section class="pf-step pf-step-2">
+            <div class="pf-step-head"><span class="pf-num">2</span><div><div class="pf-step-title">Tus datos</div><div class="pf-step-sub">Para enviarte la cotización.</div></div></div>
+            <div class="pf-row">
+              <div class="pf-group">
+                <label for="pf-nombre">Nombre <span class="pf-req">*</span></label>
+                <input type="text" id="pf-nombre" name="nombre" maxlength="80" autocomplete="given-name" required>
+              </div>
+              <div class="pf-group">
+                <label for="pf-apellido">Apellido <span class="pf-req">*</span></label>
+                <input type="text" id="pf-apellido" name="apellido" maxlength="80" autocomplete="family-name" required>
+              </div>
+            </div>
+            <div class="pf-group">
+              <label for="pf-empresa">Empresa <span class="pf-req">*</span></label>
+              <input type="text" id="pf-empresa" name="empresa" maxlength="150" autocomplete="organization" required>
+            </div>
+            <div class="pf-row">
+              <div class="pf-group">
+                <label for="pf-email">Email <span class="pf-req">*</span></label>
+                <input type="email" id="pf-email" name="email" maxlength="150" autocomplete="email" placeholder="nombre@empresa.com" required>
+                <div class="pf-error">Ingresá un email válido.</div>
+              </div>
+              <div class="pf-group">
+                <label for="pf-celular">Celular / WhatsApp</label>
+                <input type="tel" id="pf-celular" name="celular" maxlength="40" autocomplete="tel" placeholder="+54 9 11 …">
+              </div>
+            </div>
+          </section>
 
-          <div class="pf-group">
-            <label for="pf-archivos">Fotos o adjuntos <span class="pf-opt">(opcional)</span></label>
-            <input type="file" id="pf-archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.xlsx,.xls,.csv,.docx">
-            <div class="pf-help">Hasta 3 archivos, 3 MB en total (PDF, imágenes, Excel, Word).</div>
-            <div class="pf-error" id="pf-archivos-error"></div>
-          </div>
+          <section class="pf-step pf-step-3">
+            <div class="pf-step-head"><span class="pf-num">3</span><div><div class="pf-step-title">Comentarios y adjuntos</div><div class="pf-step-sub">Opcional si ya cargaste ítems.</div></div></div>
+            <div class="pf-group">
+              <label for="pf-detalle">Comentarios</label>
+              <textarea id="pf-detalle" name="detalle" rows="3" maxlength="3000" placeholder="Aplicación, urgencia, número de serie del equipo, lo que quieras agregar…"></textarea>
+              <div class="pf-error">Cargá al menos un ítem o contanos qué necesitás.</div>
+            </div>
+            <div class="pf-group">
+              <label for="pf-archivos">Fotos o adjuntos</label>
+              <input type="file" id="pf-archivos" name="archivos" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.xlsx,.xls,.csv,.docx">
+              <div class="pf-help">Hasta 3 archivos, 3 MB en total (PDF, imágenes, Excel, Word).</div>
+              <div class="pf-error" id="pf-archivos-error"></div>
+            </div>
+          </section>
 
           <!-- Honeypot: invisible para personas -->
           <div class="pf-hp" aria-hidden="true">
@@ -788,6 +808,35 @@
       const fDetalle = document.getElementById('pf-detalle');
       const MAX_ITEMS = 30;
 
+      // ── Autocompletado por modelo: [marca, técnica, nombre, ...alias] ──
+      const MODELOS = [["Agilent", "GC", "6890N", "6890"], ["Agilent", "GC", "7820A", "7820"], ["Agilent", "GC", "7890A"], ["Agilent", "GC", "7890B"], ["Agilent", "GC", "8860"], ["Agilent", "GC", "8890"], ["Agilent", "GC", "Intuvo 9000", "Intuvo"], ["Agilent", "GC-MS", "5975C", "5975"], ["Agilent", "GC-MS", "5977A"], ["Agilent", "GC-MS", "5977B"], ["Agilent", "GC-MS", "5977C"], ["Agilent", "GC-MS/MS", "7000D", "7000"], ["Agilent", "GC-MS/MS", "7010B"], ["Agilent", "GC-MS/MS", "7010C"], ["Agilent", "HPLC", "1100"], ["Agilent", "HPLC", "1200"], ["Agilent", "HPLC", "1220 Infinity II", "1220"], ["Agilent", "HPLC", "1260 Infinity II", "1260"], ["Agilent", "HPLC", "1290 Infinity II", "1290"], ["Agilent", "LC-MS", "6125B", "6125"], ["Agilent", "LC-MS", "6470"], ["Agilent", "LC-MS", "6475"], ["Agilent", "LC-MS", "6495C", "6495"], ["Agilent", "LC-MS", "6545 Q-TOF", "6545"], ["Agilent", "ICP-OES", "5110 ICP-OES", "5110"], ["Agilent", "ICP-OES", "5800 ICP-OES", "5800"], ["Agilent", "ICP-OES", "5900 ICP-OES", "5900"], ["Agilent", "ICP-MS", "7800 ICP-MS", "7800"], ["Agilent", "ICP-MS", "7900 ICP-MS", "7900"], ["Agilent", "ICP-MS", "8900 ICP-QQQ", "8900"], ["Agilent", "UV-Vis", "Cary 60"], ["Agilent", "UV-Vis", "Cary 3500"], ["Agilent", "UV-Vis", "8453"], ["Shimadzu", "GC", "GC-2010 Plus", "GC-2010"], ["Shimadzu", "GC", "GC-2014"], ["Shimadzu", "GC", "Nexis GC-2030", "GC-2030", "Nexis"], ["Shimadzu", "GC-MS", "GCMS-QP2010 SE", "QP2010 SE"], ["Shimadzu", "GC-MS", "GCMS-QP2010 Ultra", "QP2010 Ultra", "QP2010"], ["Shimadzu", "GC-MS", "GCMS-QP2020 NX", "QP2020"], ["Shimadzu", "GC-MS/MS", "GCMS-TQ8040 NX", "TQ8040"], ["Shimadzu", "GC-MS/MS", "GCMS-TQ8050 NX", "TQ8050"], ["Shimadzu", "HPLC", "Nexera", "Nexera X2", "Nexera XR", "Nexera X3"], ["Shimadzu", "HPLC", "Prominence LC-20", "LC-20", "LC-20AD", "Prominence"], ["Shimadzu", "HPLC", "LC-2030 i-Series", "LC-2030", "i-Series", "LC-2050"], ["Shimadzu", "HPLC", "LC-40"], ["Shimadzu", "LC-MS", "LCMS-2020"], ["Shimadzu", "LC-MS", "LCMS-2050"], ["Shimadzu", "LC-MS", "LCMS-8045"], ["Shimadzu", "LC-MS", "LCMS-8050"], ["Shimadzu", "LC-MS", "LCMS-8060"], ["Shimadzu", "ICP-OES", "ICPE-9820"], ["Shimadzu", "ICP-MS", "ICPMS-2030"], ["Shimadzu", "UV-Vis", "UV-1800"], ["Shimadzu", "UV-Vis", "UV-1900i", "UV-1900"], ["Shimadzu", "UV-Vis", "UV-2600i", "UV-2600"], ["Thermo", "GC", "TRACE 1310", "Trace 1300"], ["Thermo", "GC", "TRACE 1610", "Trace 1600"], ["Thermo", "GC-MS", "ISQ 7000"], ["Thermo", "GC-MS", "ISQ 7610"], ["Thermo", "GC-MS/MS", "TSQ 9000"], ["Thermo", "GC-MS/MS", "TSQ 9610"], ["Thermo", "HPLC", "UltiMate 3000", "Ultimate", "Dionex"], ["Thermo", "HPLC", "Vanquish", "Vanquish Core", "Vanquish Flex", "Vanquish Horizon"], ["Thermo", "LC-MS", "TSQ Altis"], ["Thermo", "LC-MS", "TSQ Quantis"], ["Thermo", "LC-MS", "Q Exactive"], ["Thermo", "LC-MS", "Orbitrap Exploris", "Exploris"], ["Thermo", "LC-MS", "ISQ EM"], ["Thermo", "ICP-OES", "iCAP PRO"], ["Thermo", "ICP-MS", "iCAP RQ"], ["Thermo", "ICP-MS", "iCAP TQ"], ["Thermo", "UV-Vis", "Evolution 201", "Evolution"], ["Thermo", "UV-Vis", "GENESYS 50", "Genesys"], ["PerkinElmer", "GC", "Clarus 580"], ["PerkinElmer", "GC", "Clarus 590"], ["PerkinElmer", "GC", "Clarus 680"], ["PerkinElmer", "GC", "Clarus 690"], ["PerkinElmer", "GC-MS", "Clarus SQ 8", "SQ 8"], ["PerkinElmer", "HPLC", "Flexar"], ["PerkinElmer", "HPLC", "LC 300"], ["PerkinElmer", "LC-MS", "QSight 220", "QSight"], ["PerkinElmer", "ICP-OES", "Optima 8300", "Optima"], ["PerkinElmer", "ICP-OES", "Avio 220 Max", "Avio 220"], ["PerkinElmer", "ICP-OES", "Avio 550 Max", "Avio 550"], ["PerkinElmer", "ICP-MS", "NexION 2000"], ["PerkinElmer", "ICP-MS", "NexION 5000"], ["PerkinElmer", "UV-Vis", "Lambda 365"], ["PerkinElmer", "UV-Vis", "Lambda 1050"], ["Knauer", "HPLC", "AZURA", "Azura LC"], ["Knauer", "HPLC", "Smartline"], ["Knauer", "HPLC", "PLATINblue"], ["Waters", "HPLC", "Alliance e2695", "Alliance", "2695"], ["Waters", "HPLC", "Alliance iS"], ["Waters", "HPLC", "Arc HPLC", "Arc"], ["Waters", "HPLC", "ACQUITY UPLC H-Class", "H-Class"], ["Waters", "HPLC", "ACQUITY UPLC I-Class", "I-Class"], ["Waters", "HPLC", "ACQUITY Premier", "Premier"], ["Waters", "LC-MS", "ACQUITY QDa", "QDa"], ["Waters", "LC-MS", "Xevo TQ-S micro", "TQ-S micro"], ["Waters", "LC-MS", "Xevo TQ-XS", "TQ-XS"], ["Waters", "LC-MS", "Xevo TQ Absolute", "TQ Absolute"], ["Waters", "LC-MS", "Xevo G2-XS QTOF", "G2-XS"]];
+      const norm = function (t) { return String(t).toLowerCase().replace(/[^a-z0-9]/g, ''); };
+      const IDX = MODELOS.map(function (m) { return { marca: m[0], tecnica: m[1], nombre: m[2], keys: m.slice(2).map(norm) }; });
+      const dl = document.getElementById('pf-modelos');
+      dl.innerHTML = IDX.map(function (m) { return '<option value="' + m.nombre + '">' + m.marca + ' · ' + m.tecnica + '</option>'; }).join('');
+      const detect = document.getElementById('pf-detect');
+      function flash(el) { el.classList.remove('pf-autofilled'); void el.offsetWidth; el.classList.add('pf-autofilled'); }
+      function detectarModelo() {
+        const q = norm(fModelo.value);
+        detect.textContent = '';
+        if (q.length < 3) return;
+        let c = IDX.filter(function (m) { return m.keys.indexOf(q) !== -1; });
+        if (!c.length) c = IDX.filter(function (m) { return m.keys.some(function (k) { return k.indexOf(q) === 0 || (q.length >= 4 && k.indexOf(q) !== -1); }); });
+        if (!c.length) return;
+        const marcas = Array.from(new Set(c.map(function (m) { return m.marca; })));
+        const tecs = Array.from(new Set(c.map(function (m) { return m.tecnica; })));
+        if (marcas.length !== 1) return;
+        if (fMarca.value !== marcas[0]) { fMarca.value = marcas[0]; flash(fMarca); }
+        if (tecs.length === 1) {
+          if (fTecnica.value !== tecs[0]) { fTecnica.value = tecs[0]; flash(fTecnica); }
+          detect.textContent = '✓ ' + marcas[0] + ' · ' + tecs[0];
+        } else {
+          detect.textContent = '✓ ' + marcas[0] + ' — elegí la técnica';
+        }
+      }
+      fModelo.addEventListener('input', detectarModelo);
+      fModelo.addEventListener('change', detectarModelo);
+
       function esc(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
       function renderItems() {
         list.innerHTML = items.map(function (it, i) {
@@ -812,6 +861,7 @@
         return true;
       }
       document.getElementById('pf-add').addEventListener('click', function () { addItem(false); });
+      fModelo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); fProducto.focus(); } });
       [fProducto, fCantidad].forEach(function (el) {
         el.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); addItem(false); } });
       });
@@ -884,7 +934,7 @@
             showMsg('ok', 'Gracias. Recibimos tu pedido y te respondemos a la brevedad. Te enviamos una confirmación por mail.');
             if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'pedido_presupuesto' });
             form.reset();
-            items.length = 0; renderItems();
+            items.length = 0; renderItems(); detect.textContent = '';
             form.style.display = 'none';
           } else {
             showMsg('err', 'No pudimos enviar tu pedido. Probá de nuevo o escribinos a consumibles@agsanalitica.com.');

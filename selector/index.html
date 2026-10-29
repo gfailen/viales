@@ -55,8 +55,8 @@
 
     /* ── TOOL HEADER ── */
     .tool-header { max-width:1200px; margin:0 auto; padding:104px 48px 24px; }
-    .tool-back { font-size:13px; color:var(--ink-muted); text-decoration:none; display:inline-flex; align-items:center; gap:6px; margin-bottom:16px; transition:color 0.15s; }
-    .tool-back:hover { color:var(--navy); }
+    .tool-back { font-family:inherit; font-size:14px; font-weight:500; color:var(--navy); background:var(--white); border:1.5px solid var(--navy); text-decoration:none; display:inline-flex; align-items:center; gap:8px; padding:9px 20px; border-radius:100px; margin-bottom:20px; transition:background 0.15s, color 0.15s; }
+    .tool-back:hover { background:var(--navy); color:var(--white); }
     .tool-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:10px; }
     .tool-title { font-size:clamp(24px,3vw,32px); font-weight:600; color:var(--navy); line-height:1.2; margin-bottom:8px; letter-spacing:-0.01em; }
     .tool-desc { font-size:14px; font-weight:400; color:var(--ink-soft); line-height:1.6; max-width:560px; }
@@ -227,7 +227,7 @@
 
   <!-- TOOL HEADER -->
   <div class="tool-header">
-    <a href="/" class="tool-back">← Volver al catálogo</a>
+    <a href="/#consumibles" class="tool-back"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Volver</a>
     <p class="tool-eyebrow">Selector guiado</p>
     <h1 class="tool-title">Viales, tapas y septas</h1>
     <p class="tool-desc">Filtrá por tu equipo, cierre, color e inscripción, y armá tu pedido. Podés combinar filtros o usar la búsqueda rápida si ya sabés qué necesitás.</p>
