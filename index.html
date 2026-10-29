@@ -221,6 +221,13 @@
     .pf-num { flex-shrink:0; width:28px; height:28px; border-radius:50%; color:#fff; font-size:14px; font-weight:700; display:flex; align-items:center; justify-content:center; }
     .pf-step-title { font-size:16px; font-weight:600; color:var(--navy); line-height:1.3; }
     .pf-step-sub { font-size:12px; color:var(--ink-soft); line-height:1.5; margin-top:2px; }
+    .pf-ac { position:relative; }
+    .pf-sug { display:none; position:absolute; z-index:20; top:calc(100% + 4px); left:0; min-width:100%; width:max-content; max-width:min(360px, 80vw); list-style:none; margin:0; padding:4px; background:#fff; border:1px solid #C7D2FE; border-radius:10px; box-shadow:0 8px 24px rgba(15,23,42,0.12); }
+    .pf-sug.open { display:block; }
+    .pf-sug li { padding:8px 10px; border-radius:7px; cursor:pointer; font-size:13px; line-height:1.35; color:var(--navy); }
+    .pf-sug li small { display:block; font-size:11px; color:var(--ink-muted); }
+    .pf-sug li.active, .pf-sug li:hover { background:#EEF2FF; }
+    .pf-sug li mark { background:none; color:#4338CA; font-weight:700; }
     .pf-detect { font-size:12px; color:#4338CA; margin:-8px 0 12px; min-height:0; }
     .pf-detect:empty { display:none; }
     .pf-autofilled { animation:pfFlash 0.9s ease; }
@@ -548,12 +555,14 @@
         <form id="pedido-form" novalidate>
 
           <section class="pf-step pf-step-1">
-            <div class="pf-step-head"><span class="pf-num">1</span><div><div class="pf-step-title">¿Qué necesitás?</div><div class="pf-step-sub">Un renglón por producto. Escribí el modelo del equipo y completamos marca y técnica.</div></div></div>
+            <div class="pf-step-head"><span class="pf-num">1</span><div><div class="pf-step-title">¿Qué necesitás?</div><div class="pf-step-sub">Un renglón por producto. Escribí el modelo del equipo o elegilo de las sugerencias: completamos marca y técnica. Si no está en la lista, escribilo igual; si no lo sabés, dejalo vacío.</div></div></div>
             <div class="pf-row pf-row-3">
               <div class="pf-group">
                 <label for="pf-modelo">Modelo del equipo</label>
-                <input type="text" id="pf-modelo" maxlength="100" list="pf-modelos" autocomplete="off" placeholder="Ej: 1260, Nexera, 8890">
-                <datalist id="pf-modelos"></datalist>
+                <div class="pf-ac">
+                  <input type="text" id="pf-modelo" maxlength="100" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="pf-sug" placeholder="Ej: 1260, Nexera, 8890">
+                  <ul class="pf-sug" id="pf-sug" role="listbox"></ul>
+                </div>
               </div>
               <div class="pf-group">
                 <label for="pf-marca">Marca</label>
@@ -809,33 +818,75 @@
       const MAX_ITEMS = 30;
 
       // ── Autocompletado por modelo: [marca, técnica, nombre, ...alias] ──
-      const MODELOS = [["Agilent", "GC", "6890N", "6890"], ["Agilent", "GC", "7820A", "7820"], ["Agilent", "GC", "7890A"], ["Agilent", "GC", "7890B"], ["Agilent", "GC", "8860"], ["Agilent", "GC", "8890"], ["Agilent", "GC", "Intuvo 9000", "Intuvo"], ["Agilent", "GC-MS", "5975C", "5975"], ["Agilent", "GC-MS", "5977A"], ["Agilent", "GC-MS", "5977B"], ["Agilent", "GC-MS", "5977C"], ["Agilent", "GC-MS/MS", "7000D", "7000"], ["Agilent", "GC-MS/MS", "7010B"], ["Agilent", "GC-MS/MS", "7010C"], ["Agilent", "HPLC", "1100"], ["Agilent", "HPLC", "1200"], ["Agilent", "HPLC", "1220 Infinity II", "1220"], ["Agilent", "HPLC", "1260 Infinity II", "1260"], ["Agilent", "HPLC", "1290 Infinity II", "1290"], ["Agilent", "LC-MS", "6125B", "6125"], ["Agilent", "LC-MS", "6470"], ["Agilent", "LC-MS", "6475"], ["Agilent", "LC-MS", "6495C", "6495"], ["Agilent", "LC-MS", "6545 Q-TOF", "6545"], ["Agilent", "ICP-OES", "5110 ICP-OES", "5110"], ["Agilent", "ICP-OES", "5800 ICP-OES", "5800"], ["Agilent", "ICP-OES", "5900 ICP-OES", "5900"], ["Agilent", "ICP-MS", "7800 ICP-MS", "7800"], ["Agilent", "ICP-MS", "7900 ICP-MS", "7900"], ["Agilent", "ICP-MS", "8900 ICP-QQQ", "8900"], ["Agilent", "UV-Vis", "Cary 60"], ["Agilent", "UV-Vis", "Cary 3500"], ["Agilent", "UV-Vis", "8453"], ["Shimadzu", "GC", "GC-2010 Plus", "GC-2010"], ["Shimadzu", "GC", "GC-2014"], ["Shimadzu", "GC", "Nexis GC-2030", "GC-2030", "Nexis"], ["Shimadzu", "GC-MS", "GCMS-QP2010 SE", "QP2010 SE"], ["Shimadzu", "GC-MS", "GCMS-QP2010 Ultra", "QP2010 Ultra", "QP2010"], ["Shimadzu", "GC-MS", "GCMS-QP2020 NX", "QP2020"], ["Shimadzu", "GC-MS/MS", "GCMS-TQ8040 NX", "TQ8040"], ["Shimadzu", "GC-MS/MS", "GCMS-TQ8050 NX", "TQ8050"], ["Shimadzu", "HPLC", "Nexera", "Nexera X2", "Nexera XR", "Nexera X3"], ["Shimadzu", "HPLC", "Prominence LC-20", "LC-20", "LC-20AD", "Prominence"], ["Shimadzu", "HPLC", "LC-2030 i-Series", "LC-2030", "i-Series", "LC-2050"], ["Shimadzu", "HPLC", "LC-40"], ["Shimadzu", "LC-MS", "LCMS-2020"], ["Shimadzu", "LC-MS", "LCMS-2050"], ["Shimadzu", "LC-MS", "LCMS-8045"], ["Shimadzu", "LC-MS", "LCMS-8050"], ["Shimadzu", "LC-MS", "LCMS-8060"], ["Shimadzu", "ICP-OES", "ICPE-9820"], ["Shimadzu", "ICP-MS", "ICPMS-2030"], ["Shimadzu", "UV-Vis", "UV-1800"], ["Shimadzu", "UV-Vis", "UV-1900i", "UV-1900"], ["Shimadzu", "UV-Vis", "UV-2600i", "UV-2600"], ["Thermo", "GC", "TRACE 1310", "Trace 1300"], ["Thermo", "GC", "TRACE 1610", "Trace 1600"], ["Thermo", "GC-MS", "ISQ 7000"], ["Thermo", "GC-MS", "ISQ 7610"], ["Thermo", "GC-MS/MS", "TSQ 9000"], ["Thermo", "GC-MS/MS", "TSQ 9610"], ["Thermo", "HPLC", "UltiMate 3000", "Ultimate", "Dionex"], ["Thermo", "HPLC", "Vanquish", "Vanquish Core", "Vanquish Flex", "Vanquish Horizon"], ["Thermo", "LC-MS", "TSQ Altis"], ["Thermo", "LC-MS", "TSQ Quantis"], ["Thermo", "LC-MS", "Q Exactive"], ["Thermo", "LC-MS", "Orbitrap Exploris", "Exploris"], ["Thermo", "LC-MS", "ISQ EM"], ["Thermo", "ICP-OES", "iCAP PRO"], ["Thermo", "ICP-MS", "iCAP RQ"], ["Thermo", "ICP-MS", "iCAP TQ"], ["Thermo", "UV-Vis", "Evolution 201", "Evolution"], ["Thermo", "UV-Vis", "GENESYS 50", "Genesys"], ["PerkinElmer", "GC", "Clarus 580"], ["PerkinElmer", "GC", "Clarus 590"], ["PerkinElmer", "GC", "Clarus 680"], ["PerkinElmer", "GC", "Clarus 690"], ["PerkinElmer", "GC-MS", "Clarus SQ 8", "SQ 8"], ["PerkinElmer", "HPLC", "Flexar"], ["PerkinElmer", "HPLC", "LC 300"], ["PerkinElmer", "LC-MS", "QSight 220", "QSight"], ["PerkinElmer", "ICP-OES", "Optima 8300", "Optima"], ["PerkinElmer", "ICP-OES", "Avio 220 Max", "Avio 220"], ["PerkinElmer", "ICP-OES", "Avio 550 Max", "Avio 550"], ["PerkinElmer", "ICP-MS", "NexION 2000"], ["PerkinElmer", "ICP-MS", "NexION 5000"], ["PerkinElmer", "UV-Vis", "Lambda 365"], ["PerkinElmer", "UV-Vis", "Lambda 1050"], ["Knauer", "HPLC", "AZURA", "Azura LC"], ["Knauer", "HPLC", "Smartline"], ["Knauer", "HPLC", "PLATINblue"], ["Waters", "HPLC", "Alliance e2695", "Alliance", "2695"], ["Waters", "HPLC", "Alliance iS"], ["Waters", "HPLC", "Arc HPLC", "Arc"], ["Waters", "HPLC", "ACQUITY UPLC H-Class", "H-Class"], ["Waters", "HPLC", "ACQUITY UPLC I-Class", "I-Class"], ["Waters", "HPLC", "ACQUITY Premier", "Premier"], ["Waters", "LC-MS", "ACQUITY QDa", "QDa"], ["Waters", "LC-MS", "Xevo TQ-S micro", "TQ-S micro"], ["Waters", "LC-MS", "Xevo TQ-XS", "TQ-XS"], ["Waters", "LC-MS", "Xevo TQ Absolute", "TQ Absolute"], ["Waters", "LC-MS", "Xevo G2-XS QTOF", "G2-XS"]];
+      const MODELOS = [["Agilent", "GC", "5890", "HP 5890", "5890 Series II"], ["Agilent", "GC", "6850"], ["Agilent", "GC", "6890", "6890N", "6890A", "6890 Plus"], ["Agilent", "GC", "7820", "7820A"], ["Agilent", "GC", "7890", "7890A", "7890B"], ["Agilent", "GC", "8860"], ["Agilent", "GC", "8890"], ["Agilent", "GC", "Intuvo 9000", "Intuvo"], ["Agilent", "GC-MS", "5971 MSD", "5971", "5972"], ["Agilent", "GC-MS", "5973 MSD", "5973", "5973N", "5973 inert"], ["Agilent", "GC-MS", "5975 MSD", "5975", "5975B", "5975C"], ["Agilent", "GC-MS", "5977 MSD", "5977", "5977A", "5977B", "5977C"], ["Agilent", "GC-MS/MS", "7000", "7000A", "7000B", "7000C", "7000D"], ["Agilent", "GC-MS/MS", "7010", "7010A", "7010B", "7010C"], ["Agilent", "HPLC", "1100", "HP 1100"], ["Agilent", "HPLC", "1200", "1200 Series", "1200 RRLC"], ["Agilent", "HPLC", "1120 Compact LC", "1120"], ["Agilent", "HPLC", "1220 Infinity", "1220"], ["Agilent", "HPLC", "1260 Infinity", "1260", "1260 Infinity II"], ["Agilent", "HPLC", "1290 Infinity", "1290", "1290 Infinity II"], ["Agilent", "LC-MS", "6100 Single Quad", "6110", "6120", "6125", "6130", "6140", "6150"], ["Agilent", "LC-MS", "6400 Triple Quad", "6410", "6420", "6430", "6460", "6470", "6475", "6490", "6495"], ["Agilent", "LC-MS", "6500 Q-TOF", "6520", "6530", "6540", "6545", "6546", "6550", "6560"], ["Agilent", "ICP-OES", "5100 / 5110 ICP-OES", "5100", "5110"], ["Agilent", "ICP-OES", "5800 / 5900 ICP-OES", "5800", "5900"], ["Agilent", "ICP-OES", "720 / 730 ICP-OES", "720", "725", "730", "735"], ["Agilent", "ICP-MS", "7700 ICP-MS", "7700", "7700x"], ["Agilent", "ICP-MS", "7800 ICP-MS", "7800"], ["Agilent", "ICP-MS", "7900 ICP-MS", "7900"], ["Agilent", "ICP-MS", "8800 / 8900 ICP-QQQ", "8800", "8900"], ["Agilent", "UV-Vis", "Cary 60"], ["Agilent", "UV-Vis", "Cary 100 / 300", "Cary 100", "Cary 300"], ["Agilent", "UV-Vis", "Cary 3500"], ["Agilent", "UV-Vis", "8453", "HP 8453"], ["Shimadzu", "GC", "GC-17A", "GC17A"], ["Shimadzu", "GC", "GC-2010", "GC-2010 Plus", "GC2010"], ["Shimadzu", "GC", "GC-2014", "GC2014"], ["Shimadzu", "GC", "GC-2025"], ["Shimadzu", "GC", "Nexis GC-2030", "GC-2030", "Nexis"], ["Shimadzu", "GC-MS", "GCMS-QP2010", "QP2010", "QP2010 Plus", "QP2010 SE", "QP2010 Ultra"], ["Shimadzu", "GC-MS", "GCMS-QP2020", "QP2020", "QP2020 NX"], ["Shimadzu", "GC-MS", "GCMS-QP5050", "QP5050", "QP5000"], ["Shimadzu", "GC-MS/MS", "GCMS-TQ8030 / TQ8040", "TQ8030", "TQ8040", "TQ8040 NX"], ["Shimadzu", "GC-MS/MS", "GCMS-TQ8050", "TQ8050", "TQ8050 NX"], ["Shimadzu", "HPLC", "LC-10 (VP)", "LC-10", "LC-10AD", "LC-10ADvp"], ["Shimadzu", "HPLC", "Prominence LC-20", "LC-20", "LC-20AD", "LC-20AT", "Prominence"], ["Shimadzu", "HPLC", "Nexera", "Nexera X2", "Nexera XR", "Nexera X3", "LC-30"], ["Shimadzu", "HPLC", "LC-40", "Nexera LC-40"], ["Shimadzu", "HPLC", "i-Series LC-2030 / LC-2050", "LC-2030", "LC-2040", "LC-2050", "i-Series"], ["Shimadzu", "LC-MS", "LCMS-2020"], ["Shimadzu", "LC-MS", "LCMS-2050"], ["Shimadzu", "LC-MS", "LCMS-8030 / 8040", "LCMS-8030", "LCMS-8040"], ["Shimadzu", "LC-MS", "LCMS-8045"], ["Shimadzu", "LC-MS", "LCMS-8050 / 8060", "LCMS-8050", "LCMS-8060"], ["Shimadzu", "ICP-OES", "ICPE-9800 / 9820", "ICPE-9800", "ICPE-9820"], ["Shimadzu", "ICP-MS", "ICPMS-2030"], ["Shimadzu", "UV-Vis", "UV-1800"], ["Shimadzu", "UV-Vis", "UV-1900i", "UV-1900"], ["Shimadzu", "UV-Vis", "UV-2600 / 2700", "UV-2600", "UV-2600i", "UV-2700"], ["Thermo", "GC", "TRACE GC Ultra", "Trace GC", "Trace Ultra"], ["Thermo", "GC", "TRACE 1300 / 1310", "Trace 1300", "Trace 1310"], ["Thermo", "GC", "TRACE 1600 / 1610", "Trace 1600", "Trace 1610"], ["Thermo", "GC", "FOCUS GC", "Focus"], ["Thermo", "GC-MS", "DSQ / ITQ", "DSQ", "DSQ II", "ITQ", "Polaris Q"], ["Thermo", "GC-MS", "ISQ", "ISQ 7000", "ISQ 7610", "ISQ QD"], ["Thermo", "GC-MS/MS", "TSQ 8000 / 9000", "TSQ 8000", "TSQ 9000", "TSQ 9610", "TSQ Evo"], ["Thermo", "HPLC", "Surveyor / Accela", "Surveyor", "Accela"], ["Thermo", "HPLC", "UltiMate 3000", "Ultimate", "Dionex"], ["Thermo", "HPLC", "Vanquish", "Vanquish Core", "Vanquish Flex", "Vanquish Horizon"], ["Thermo", "LC-MS", "TSQ Quantum", "Quantum Access", "Quantum Ultra"], ["Thermo", "LC-MS", "TSQ Altis / Quantis", "TSQ Altis", "TSQ Quantis", "TSQ Endura", "TSQ Fortis"], ["Thermo", "LC-MS", "LTQ / Velos", "LTQ", "LTQ XL", "Velos"], ["Thermo", "LC-MS", "Q Exactive", "QE"], ["Thermo", "LC-MS", "Orbitrap Exploris", "Exploris"], ["Thermo", "LC-MS", "ISQ EC / EM", "ISQ EC", "ISQ EM"], ["Thermo", "ICP-OES", "iCAP 6000 / 7000", "iCAP 6000", "iCAP 7000", "iCAP 7400"], ["Thermo", "ICP-OES", "iCAP PRO"], ["Thermo", "ICP-MS", "iCAP Q / RQ / TQ", "iCAP Q", "iCAP RQ", "iCAP TQ"], ["Thermo", "UV-Vis", "Evolution", "Evolution 201", "Evolution 220", "Evolution 300"], ["Thermo", "UV-Vis", "GENESYS", "Genesys 10S", "Genesys 50", "Genesys 150"], ["PerkinElmer", "GC", "AutoSystem XL", "AutoSystem"], ["PerkinElmer", "GC", "Clarus 500 / 600", "Clarus 500", "Clarus 600"], ["PerkinElmer", "GC", "Clarus 580 / 680", "Clarus 580", "Clarus 680"], ["PerkinElmer", "GC", "Clarus 590 / 690", "Clarus 590", "Clarus 690"], ["PerkinElmer", "GC-MS", "Clarus SQ 8", "SQ 8", "Clarus 500 MS", "Clarus 600 MS"], ["PerkinElmer", "HPLC", "Series 200", "Serie 200"], ["PerkinElmer", "HPLC", "Flexar"], ["PerkinElmer", "HPLC", "Altus / LC 300", "Altus", "LC 300"], ["PerkinElmer", "LC-MS", "QSight", "QSight 210", "QSight 220"], ["PerkinElmer", "ICP-OES", "Optima", "Optima 7300", "Optima 8000", "Optima 8300"], ["PerkinElmer", "ICP-OES", "Avio", "Avio 200", "Avio 220", "Avio 500", "Avio 550"], ["PerkinElmer", "ICP-MS", "NexION", "NexION 300", "NexION 350", "NexION 2000", "NexION 5000"], ["PerkinElmer", "UV-Vis", "Lambda", "Lambda 25", "Lambda 35", "Lambda 365", "Lambda 850", "Lambda 1050"], ["Knauer", "HPLC", "AZURA", "Azura LC"], ["Knauer", "HPLC", "Smartline"], ["Knauer", "HPLC", "PLATINblue"], ["Waters", "HPLC", "Alliance 2690 / 2695", "Alliance", "2690", "2695", "e2695"], ["Waters", "HPLC", "Alliance iS"], ["Waters", "HPLC", "Breeze", "Breeze 2"], ["Waters", "HPLC", "Arc HPLC", "Arc"], ["Waters", "HPLC", "ACQUITY UPLC", "Acquity", "Acquity classic"], ["Waters", "HPLC", "ACQUITY UPLC H-Class / I-Class", "H-Class", "I-Class"], ["Waters", "HPLC", "ACQUITY Premier", "Premier"], ["Waters", "LC-MS", "ACQUITY QDa", "QDa"], ["Waters", "LC-MS", "Quattro micro / Premier", "Quattro", "Quattro micro", "Quattro Premier"], ["Waters", "LC-MS", "Xevo TQD / TQ-S micro", "Xevo TQD", "TQD", "TQ-S micro"], ["Waters", "LC-MS", "Xevo TQ-S / TQ-XS / Absolute", "TQ-S", "TQ-XS", "TQ Absolute"], ["Waters", "LC-MS", "Xevo G2 QTOF", "G2-S", "G2-XS", "Synapt"]];
       const norm = function (t) { return String(t).toLowerCase().replace(/[^a-z0-9]/g, ''); };
       const IDX = MODELOS.map(function (m) { return { marca: m[0], tecnica: m[1], nombre: m[2], keys: m.slice(2).map(norm) }; });
-      const dl = document.getElementById('pf-modelos');
-      dl.innerHTML = IDX.map(function (m) { return '<option value="' + m.nombre + '">' + m.marca + ' · ' + m.tecnica + '</option>'; }).join('');
       const detect = document.getElementById('pf-detect');
       function flash(el) { el.classList.remove('pf-autofilled'); void el.offsetWidth; el.classList.add('pf-autofilled'); }
+      function autoSet(el, v) { if (el.value !== v) { el.value = v; flash(el); } el.dataset.auto = '1'; }
+      function autoClear() { [fMarca, fTecnica].forEach(function (el) { if (el.dataset.auto === '1') { el.value = ''; delete el.dataset.auto; } }); }
+      [fMarca, fTecnica].forEach(function (el) { el.addEventListener('change', function () { delete el.dataset.auto; }); });
       function detectarModelo() {
         const q = norm(fModelo.value);
         detect.textContent = '';
-        if (q.length < 3) return;
+        if (q.length < 3) { autoClear(); return; }
         let c = IDX.filter(function (m) { return m.keys.indexOf(q) !== -1; });
         if (!c.length) c = IDX.filter(function (m) { return m.keys.some(function (k) { return k.indexOf(q) === 0 || (q.length >= 4 && k.indexOf(q) !== -1); }); });
-        if (!c.length) return;
+        if (!c.length) { autoClear(); return; }
         const marcas = Array.from(new Set(c.map(function (m) { return m.marca; })));
         const tecs = Array.from(new Set(c.map(function (m) { return m.tecnica; })));
-        if (marcas.length !== 1) return;
-        if (fMarca.value !== marcas[0]) { fMarca.value = marcas[0]; flash(fMarca); }
+        if (marcas.length !== 1) { autoClear(); return; }
+        autoSet(fMarca, marcas[0]);
         if (tecs.length === 1) {
-          if (fTecnica.value !== tecs[0]) { fTecnica.value = tecs[0]; flash(fTecnica); }
+          autoSet(fTecnica, tecs[0]);
           detect.textContent = '✓ ' + marcas[0] + ' · ' + tecs[0];
         } else {
+          if (fTecnica.dataset.auto === '1') { fTecnica.value = ''; delete fTecnica.dataset.auto; }
           detect.textContent = '✓ ' + marcas[0] + ' — elegí la técnica';
         }
       }
-      fModelo.addEventListener('input', detectarModelo);
-      fModelo.addEventListener('change', detectarModelo);
+      // Sugerencias propias: el texto libre siempre es válido
+      const sug = document.getElementById('pf-sug');
+      let sugItems = [], sugActive = -1;
+      function cerrarSug() { sug.classList.remove('open'); sug.innerHTML = ''; sugItems = []; sugActive = -1; fModelo.setAttribute('aria-expanded', 'false'); }
+      function resaltar(nombre, raw) {
+        const t = raw.trim(); if (!t) return esc(nombre);
+        const i = nombre.toLowerCase().indexOf(t.toLowerCase());
+        return i < 0 ? esc(nombre) : esc(nombre.slice(0, i)) + '<mark>' + esc(nombre.slice(i, i + t.length)) + '</mark>' + esc(nombre.slice(i + t.length));
+      }
+      function mostrarSug() {
+        const q = norm(fModelo.value);
+        if (q.length < 2) { cerrarSug(); return; }
+        const pref = IDX.filter(function (m) { return m.keys.some(function (k) { return k.indexOf(q) === 0; }); });
+        const cont = IDX.filter(function (m) { return pref.indexOf(m) === -1 && m.keys.some(function (k) { return k.indexOf(q) !== -1; }); });
+        sugItems = pref.concat(cont).slice(0, 6);
+        if (!sugItems.length) { cerrarSug(); return; }
+        sugActive = -1;
+        sug.innerHTML = sugItems.map(function (m, i) {
+          return '<li role="option" data-i="' + i + '">' + resaltar(m.nombre, fModelo.value) + '<small>' + esc(m.marca + ' · ' + m.tecnica) + '</small></li>';
+        }).join('');
+        sug.classList.add('open'); fModelo.setAttribute('aria-expanded', 'true');
+      }
+      function elegirSug(i) {
+        const m = sugItems[i]; if (!m) return;
+        // Si lo escrito ya es un modelo exacto de ese grupo (ej. 6470), se respeta; si no, se usa el nombre de la lista
+        if (m.keys.indexOf(norm(fModelo.value)) === -1) fModelo.value = m.nombre;
+        autoSet(fMarca, m.marca);
+        autoSet(fTecnica, m.tecnica);
+        detect.textContent = '✓ ' + m.marca + ' · ' + m.tecnica;
+        cerrarSug(); fProducto.focus();
+      }
+      function marcarSug(i) {
+        sugActive = i;
+        Array.from(sug.children).forEach(function (li, j) { li.classList.toggle('active', j === i); });
+      }
+      fModelo.addEventListener('input', function () { detectarModelo(); mostrarSug(); });
+      fModelo.addEventListener('focus', mostrarSug);
+      fModelo.addEventListener('blur', function () { setTimeout(cerrarSug, 150); });
+      sug.addEventListener('mousedown', function (e) {
+        const li = e.target.closest('li'); if (!li) return;
+        e.preventDefault(); elegirSug(Number(li.dataset.i));
+      });
 
       function esc(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
       function renderItems() {
@@ -861,7 +912,16 @@
         return true;
       }
       document.getElementById('pf-add').addEventListener('click', function () { addItem(false); });
-      fModelo.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); fProducto.focus(); } });
+      fModelo.addEventListener('keydown', function (e) {
+        const open = sug.classList.contains('open');
+        if (e.key === 'ArrowDown' && open) { e.preventDefault(); marcarSug(Math.min(sugActive + 1, sugItems.length - 1)); }
+        else if (e.key === 'ArrowUp' && open) { e.preventDefault(); marcarSug(Math.max(sugActive - 1, 0)); }
+        else if (e.key === 'Escape') { cerrarSug(); }
+        else if (e.key === 'Enter') {
+          e.preventDefault();
+          if (open && sugActive >= 0) elegirSug(sugActive); else { cerrarSug(); fProducto.focus(); }
+        }
+      });
       [fProducto, fCantidad].forEach(function (el) {
         el.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); addItem(false); } });
       });
