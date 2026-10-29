@@ -33,18 +33,18 @@
     body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--navy); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
 
     /* ── NAV ── */
-    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:70px; background:var(--navy); border-bottom:0.5px solid rgba(255,255,255,0.08); }
+    nav { position:fixed; top:0; left:0; right:0; z-index:200; height:64px; background:var(--navy); border-bottom:0.5px solid rgba(255,255,255,0.08); }
     .nav-inner { max-width:1200px; margin:0 auto; padding:0 48px; height:100%; display:flex; align-items:center; justify-content:space-between; }
     .nav-logo { display:flex; align-items:center; text-decoration:none; flex-shrink:0; }
     .nav-logo img { height:30px; width:auto; display:block; }
-    .nav-right { display:flex; align-items:center; gap:32px; }
-    .nav-link { font-size:13px; font-weight:400; color:rgba(255,255,255,0.65); text-decoration:none; letter-spacing:0.01em; transition:color 0.2s; }
-    .nav-link:hover { color:var(--white); }
-    .nav-cta { font-size:13px; font-weight:500; color:var(--navy); background:var(--white); text-decoration:none; padding:8px 20px; border-radius:100px; transition:background 0.2s; }
+    .nav-right { display:flex; align-items:center; gap:6px; }
+    .nav-link { font-size:13px; font-weight:400; color:#BFDBFE; text-decoration:none; letter-spacing:0.01em; padding:5px 10px; border-radius:6px; transition:color 0.15s, background 0.15s; }
+    .nav-link:hover { color:var(--white); background:rgba(255,255,255,0.1); }
+    .nav-cta { margin-left:12px; font-size:13px; font-weight:500; color:var(--navy); background:var(--white); text-decoration:none; padding:8px 20px; border-radius:100px; transition:background 0.2s; }
     .nav-cta:hover { background:var(--cream); }
 
     /* ── HERO ── */
-    .hero-section { padding-top:70px; overflow:hidden; }
+    .hero-section { padding-top:64px; overflow:hidden; }
     .hero {
       max-width:1200px; margin:0 auto; padding:28px 48px 0;
       text-align:center;
@@ -116,17 +116,18 @@
     .trust-line { text-align:center; padding:0 48px 8px; font-size:12px; font-weight:400; color:var(--ink-muted); letter-spacing:0.04em; }
     .catalog { max-width:1200px; margin:0 auto; padding:32px 48px 64px; }
     .section-label { font-size:13px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:28px; }
-    .category-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    .category-grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:16px; }
-    .cat-card { background:var(--white); border:0.5px solid var(--border-mid); border-radius:14px; padding:24px 22px 22px; transition:border-color 0.2s, box-shadow 0.2s; cursor:pointer; display:flex; flex-direction:column; border-left:3px solid transparent; }
-    .cat-card[data-tech="lc"]  { border-left-color:#3B8BD4; }
-    .cat-card[data-tech="gc"]  { border-left-color:#D4713B; }
-    .cat-card[data-tech="all"] { border-left-color:#7B6CB5; }
-    .cat-card:hover { border-color:rgba(0,0,0,0.2); box-shadow:0 2px 12px rgba(0,0,0,0.04); }
-    .cat-card:hover[data-tech="lc"]  { border-left-color:#3B8BD4; }
-    .cat-card:hover[data-tech="gc"]  { border-left-color:#D4713B; }
-    .cat-card:hover[data-tech="all"] { border-left-color:#7B6CB5; }
-    .cat-card-img { width:100%; height:140px; margin-top:12px; margin-bottom:0; overflow:hidden; border-radius:8px; background:var(--cream); }
+    .category-grid { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:16px; }
+    .cat-card { background:var(--white); border:1px solid #D8DFE8; border-radius:14px; padding:24px 22px 22px; transition:border-color 0.15s, box-shadow 0.15s, transform 0.15s; cursor:pointer; display:flex; flex-direction:column; box-shadow:0 1px 2px rgba(15,23,42,0.05); }
+    .cat-card[data-tech="lc"]     { background:#ECFEFF; border-color:#A5F3FC; }
+    .cat-card[data-tech="gc"]     { background:#FFF7ED; border-color:#FED7AA; }
+    .cat-card[data-tech="all"]    { background:#EEF2FF; border-color:#C7D2FE; }
+    .cat-card[data-tech="filtro"] { background:#F0FDF4; border-color:#BBF7D0; }
+    .cat-card:hover { transform:translateY(-2px); box-shadow:0 4px 20px rgba(15,23,42,0.08); }
+    .cat-card[data-tech="lc"]:hover     { border-color:#22D3EE; }
+    .cat-card[data-tech="gc"]:hover     { border-color:#FB923C; }
+    .cat-card[data-tech="all"]:hover    { border-color:#818CF8; }
+    .cat-card[data-tech="filtro"]:hover { border-color:#4ADE80; }
+    .cat-card-img { width:100%; height:140px; margin-top:12px; margin-bottom:0; overflow:hidden; border-radius:8px; background:transparent; }
     .cat-card-img img { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
     
     .tech-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px; }
@@ -137,11 +138,11 @@
     .tag-lcms { background:var(--lcms-bg); color:var(--lcms-text); }
     .cat-name { font-size:20px; font-weight:500; color:var(--navy); margin-bottom:8px; line-height:1.2; }
     .cat-desc { font-size:12px; color:var(--ink-muted); line-height:1.6; font-weight:300; flex:1; }
-    .cat-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:auto; padding-top:16px; border-top:0.5px solid var(--border); }
+    .cat-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:auto; padding-top:16px; border-top:0.5px solid rgba(15,23,42,0.1); }
     .cat-btn-primary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--white); background:var(--navy); text-decoration:none; padding:8px 18px; border-radius:100px; border:none; cursor:pointer; transition:background 0.15s; font-family:'DM Sans',sans-serif; }
     .cat-btn-primary:hover { background:#1a3a5c; }
     .cat-btn-secondary { display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:500; color:var(--ink-soft); background:transparent; text-decoration:none; padding:8px 18px; border-radius:100px; border:0.5px solid var(--border-mid); cursor:pointer; transition:background 0.15s, color 0.15s; font-family:'DM Sans',sans-serif; }
-    .cat-btn-secondary:hover { background:var(--cream); color:var(--navy); }
+    .cat-btn-secondary:hover { background:rgba(255,255,255,0.7); color:var(--navy); }
     .consult-link { font-size:13px; color:var(--blue); font-weight:500; text-decoration:none; margin-top:4px; display:inline-block; transition:opacity 0.2s; }
     .consult-link:hover { opacity:0.75; }
 
@@ -249,10 +250,10 @@
       .nav-inner { padding:0 20px; }
       .nav-logo img { height:26px; }
       .nav-hamburger { display:flex; }
-      .nav-right { display:none; position:fixed; top:70px; left:0; right:0; background:var(--navy); flex-direction:column; align-items:flex-start; padding:24px; gap:0; border-top:0.5px solid rgba(255,255,255,0.08); z-index:150; }
+      .nav-right { display:none; position:fixed; top:64px; left:0; right:0; background:var(--navy); flex-direction:column; align-items:flex-start; padding:24px; gap:0; border-top:0.5px solid rgba(255,255,255,0.08); z-index:150; }
       .nav-right.open { display:flex; }
-      .nav-link { display:block; width:100%; padding:16px 0; font-size:16px; border-bottom:0.5px solid rgba(255,255,255,0.08); color:rgba(255,255,255,0.65); }
-      .nav-cta { margin-top:20px; width:100%; text-align:center; padding:14px 20px; font-size:15px; border-radius:100px; }
+      .nav-link { display:block; width:100%; padding:16px 0; font-size:16px; border-bottom:0.5px solid rgba(255,255,255,0.08); color:#BFDBFE; border-radius:0; }
+      .nav-cta { margin-left:0; margin-top:20px; width:100%; text-align:center; padding:14px 20px; font-size:15px; border-radius:100px; }
 
       .hero { padding:32px 20px 0; }
       .hero-actions { flex-direction:column; gap:10px; }
@@ -264,8 +265,7 @@
       .trust { padding:24px 20px; gap:28px; }
       .trust-domain { display:none; }
       .catalog { padding:48px 20px; }
-      .category-grid { grid-template-columns:1fr; }
-      .category-grid-2 { grid-template-columns:1fr; }
+      .category-grid { grid-template-columns:1fr; grid-auto-rows:auto; }
       .divider-wrap { padding:0 20px; }
       .quienes-section { grid-template-columns:1fr; padding:56px 20px 64px; }
       .quienes-photo img { height:280px; }
@@ -278,8 +278,7 @@
       .footer-top { flex-direction:column; align-items:flex-start; }
     }
     @media(max-width:560px){
-      .category-grid { grid-template-columns:1fr; }
-      .category-grid-2 { grid-template-columns:1fr; }
+      .category-grid { grid-template-columns:1fr; grid-auto-rows:auto; }
     }
   </style>
 </head>
@@ -347,7 +346,7 @@
         <div class="cat-desc" style="margin-top:12px;">N9 rosca, N11 crimp, snap-cap. Vidrio transparente y ámbar, insertos, septas.</div>
         <div class="cat-actions">
           <a href="javascript:void(0)" onclick="openDrawer()" class="cat-btn-primary">Abrir selector</a>
-          <a href="#contacto" class="cat-btn-secondary">Consultanos</a>
+          <a href="#contacto" class="cat-btn-secondary">Pedir cotización</a>
         </div>
       </div>
 
@@ -362,7 +361,7 @@
         </div>
         <div class="cat-desc" style="margin-top:12px;">Columnas C18/C8, loops, válvulas, conectores PEEK, capilares, lámparas, jeringas, agujas, frits.</div>
         <div class="cat-actions">
-          <a href="#contacto" class="cat-btn-secondary">Consultanos</a>
+          <a href="#contacto" class="cat-btn-secondary">Pedir cotización</a>
         </div>
       </div>
 
@@ -377,16 +376,44 @@
         </div>
         <div class="cat-desc" style="margin-top:12px;">Liners split/splitless, septas, ferrules, filamentos MSD, columnas capilares, filtros para gases.</div>
         <div class="cat-actions">
-          <a href="#contacto" class="cat-btn-secondary">Consultanos</a>
+          <a href="#contacto" class="cat-btn-secondary">Pedir cotización</a>
         </div>
       </div>
 
-    </div>
 
-    <div class="category-grid-2">
+      <!-- Otros consumibles -->
+      <div class="cat-card" data-tech="all">
+        <div class="cat-name">Otros consumibles</div>
+        <div class="tech-tags">
+          <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
+        </div>
+        <div class="cat-card-img">
+          <img src="cat-otros.png" alt="Otros consumibles" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;margin-bottom:6px;">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
+        <div style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px;">¿No lo ves? Trabajamos con múltiples proveedores internacionales. Si no está, lo conseguimos.</div>
+        <div class="cat-actions">
+          <a href="#contacto" class="cat-btn-secondary">Pedir cotización</a>
+        </div>
+      </div>
+
+      <!-- Columnas -->
+      <div class="cat-card" data-tech="all">
+        <div class="cat-name">Columnas</div>
+        <div class="tech-tags">
+          <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
+        </div>
+        <div class="cat-card-img">
+          <img src="hero-capillary.png" alt="Columnas para GC y HPLC" />
+        </div>
+        <div class="cat-desc" style="margin-top:12px;">Capilares para GC y GC-MS, fases reversas C18/C8 para HPLC, precolumnas y cartuchos guarda. Originales o equivalentes.</div>
+        <div class="cat-actions">
+          <a href="#contacto" class="cat-btn-secondary">Pedir cotización</a>
+        </div>
+      </div>
 
       <!-- Filtros de jeringa -->
-      <div class="cat-card">
+      <div class="cat-card" data-tech="filtro">
         <div class="cat-name">Filtros de jeringa</div>
         <div class="tech-tags">
           <span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
@@ -396,23 +423,7 @@
         </div>
         <div class="cat-desc" style="margin-top:12px;">PTFE, Nylon, PES, PVDF, RC. Diámetros 4–25 mm para filtración previa a inyección.</div>
         <div class="cat-actions">
-          <a href="#contacto" class="cat-btn-secondary">Consultanos</a>
-        </div>
-      </div>
-
-      <!-- Otros consumibles -->
-      <div class="cat-card">
-        <div class="cat-name">Otros consumibles</div>
-        <div class="tech-tags">
-          <span class="tag tag-gc">GC</span><span class="tag tag-gcms">GC-MS</span><span class="tag tag-hplc">HPLC</span><span class="tag tag-lcms">LC-MS</span>
-        </div>
-        <div class="cat-card-img" style="height:120px;">
-          <img src="cat-otros.png" alt="Otros consumibles" />
-        </div>
-        <div class="cat-desc" style="margin-top:12px;margin-bottom:6px;">O-rings, celdas, jets, septum nuts, trampas de humedad, válvulas y más.</div>
-        <div style="font-size:12px;color:var(--ink-muted);line-height:1.6;margin-bottom:6px;">¿No lo ves? Trabajamos con múltiples proveedores internacionales. Si no está, lo conseguimos.</div>
-        <div class="cat-actions">
-          <a href="#contacto" class="cat-btn-secondary">Consultanos</a>
+          <a href="#contacto" class="cat-btn-secondary">Pedir cotización</a>
         </div>
       </div>
 
