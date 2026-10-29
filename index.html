@@ -72,7 +72,7 @@
     .hero-marquee-wrap::before { left:0; background:linear-gradient(to right, var(--cream), transparent); }
     .hero-marquee-wrap::after  { right:0; background:linear-gradient(to left, var(--cream), transparent); }
     .hero-marquee-track {
-      display:flex; gap:64px; align-items:center;
+      display:flex; align-items:center;
       width:max-content;
       animation: marqueeScroll 35s linear infinite;
     }
@@ -80,7 +80,7 @@
       animation-play-state:paused;
     }
     .hero-marquee-item {
-      flex-shrink:0; height:90px; position:relative;
+      flex-shrink:0; height:90px; position:relative; margin-right:64px;
       transition:transform 0.4s cubic-bezier(.25,.46,.45,.94);
     }
     .hero-marquee-item img {
@@ -278,7 +278,7 @@
       .hero-actions .btn-primary, .hero-actions .btn-secondary { width:100%; justify-content:center; }
       .trust-line { font-size:11px; padding:0 20px 8px; }
       .hero-marquee-item { height:70px; }
-      .hero-marquee-track { gap:40px; }
+      .hero-marquee-item { margin-right:40px; }
       .hero-marquee-wrap::before, .hero-marquee-wrap::after { width:60px; }
       .trust { padding:24px 20px; gap:28px; }
       .trust-domain { display:none; }
@@ -664,8 +664,12 @@
     (function(){
       const track = document.getElementById('marqueeTrack');
       if(!track) return;
-      const items = track.innerHTML;
-      track.innerHTML = items + items;
+      // Each half of the track = the set repeated COPIES times, so one half is
+      // always wider than the screen; the animation moves exactly one half.
+      const COPIES = 3;
+      const group = track.innerHTML.repeat(COPIES);
+      track.innerHTML = group + group;
+      track.style.animationDuration = (35 * COPIES) + 's';
     })();
 
     // ── MARQUEE: parallax on mouse move ──
