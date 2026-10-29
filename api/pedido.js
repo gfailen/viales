@@ -29,6 +29,7 @@ const TECNICAS = ['GC', 'GC-MS', 'HPLC', 'LC-MS'];
 const MAX_ARCHIVOS = 3;
 const MAX_BYTES_TOTAL = 3 * 1024 * 1024; // 3 MB reales (≈4 MB en base64; Vercel limita el cuerpo a 4,5 MB)
 const EXT_PERMITIDAS = ['pdf', 'jpg', 'jpeg', 'png', 'webp', 'xlsx', 'xls', 'csv', 'docx'];
+const MAX_ITEMS = 30;
 const MIN_MS_FORM = 3000; // un humano tarda más que esto en completar el form
 
 function limpiar(valor, max) {
@@ -85,6 +86,48 @@ function validarArchivos(archivos) {
     lista.push({ name: nombre, content: contenido });
   }
   return { ok: true, lista };
+}
+
+function validarItems(items) {
+  if (items == null) return { ok: true, lista: [] };
+  if (!Array.isArray(items) || items.length > MAX_ITEMS) return { ok: false };
+  const lista = [];
+  for (const it of items) {
+    if (!it || typeof it !== 'object') return { ok: false };
+    const item = {
+      marca: unaLinea(it.marca, 40),
+      modelo: unaLinea(it.modelo, 100),
+      tecnica: unaLinea(it.tecnica, 20),
+      producto: unaLinea(it.producto, 200),
+      cantidad: unaLinea(it.cantidad, 40),
+    };
+    if (!item.producto) continue;
+    if (item.marca && !MARCAS.includes(item.marca)) return { ok: false };
+    if (item.tecnica && !TECNICAS.includes(item.tecnica)) return { ok: false };
+    lista.push(item);
+  }
+  return { ok: true, lista };
+}
+
+const equipoDe = (it) => [it.marca, it.modelo, it.tecnica].filter(Boolean).join(' · ') || '—';
+
+function tablaItemsHtml(lista) {
+  const th = 'padding:7px 10px;text-align:left;font-size:12px;color:#667085;font-weight:normal;border-bottom:1px solid #d8dfe8';
+  const td = 'padding:7px 10px;border-bottom:1px solid #eef1f5;vertical-align:top';
+  return (
+    '<table style="border-collapse:collapse;width:100%;margin-bottom:14px;font-size:14px">' +
+    '<tr><th style="' + th + '">#</th><th style="' + th + '">Producto</th><th style="' + th + '">Equipo</th><th style="' + th + '">Cant.</th></tr>' +
+    lista.map((it, i) =>
+      '<tr><td style="' + td + ';color:#667085">' + (i + 1) + '</td><td style="' + td + '">' + esc(it.producto) +
+      '</td><td style="' + td + ';color:#475467">' + esc(equipoDe(it)) + '</td><td style="' + td + ';white-space:nowrap">' +
+      esc(it.cantidad || '—') + '</td></tr>').join('') +
+    '</table>'
+  );
+}
+
+function listaItemsTexto(lista) {
+  return lista.map((it, i) =>
+    (i + 1) + '. ' + it.producto + (it.cantidad ? ' × ' + it.cantidad : '') + '  [' + equipoDe(it) + ']').join('\n');
 }
 
 async function enviarBrevo(apiKey, payload) {
@@ -153,19 +196,16 @@ module.exports = async function handler(req, res) {
   const empresa = unaLinea(b.empresa, 150);
   const email = unaLinea(b.email, 150);
   const celular = unaLinea(b.celular, 40);
-  const marca = unaLinea(b.marca, 40);
-  const modelo = unaLinea(b.modelo, 100);
-  const tecnica = unaLinea(b.tecnica, 20);
   const detalle = limpiar(b.detalle, 3000);
+  const its = validarItems(b.items);
 
   const errores = [];
   if (!nombre) errores.push('nombre');
   if (!apellido) errores.push('apellido');
   if (!empresa) errores.push('empresa');
   if (!/^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(email)) errores.push('email');
-  if (!detalle) errores.push('detalle');
-  if (marca && !MARCAS.includes(marca)) errores.push('marca');
-  if (tecnica && !TECNICAS.includes(tecnica)) errores.push('tecnica');
+  if (!its.ok) errores.push('items');
+  else if (!its.lista.length && !detalle) errores.push('detalle');
 
   const arch = validarArchivos(b.archivos);
   if (!arch.ok) errores.push('archivos');
@@ -200,12 +240,14 @@ module.exports = async function handler(req, res) {
     filaHtml('Empresa', empresa) +
     filaHtml('Email', email) +
     filaHtml('Celular / WhatsApp', celular || '—') +
-    filaHtml('Marca', marca || '—') +
-    filaHtml('Modelo', modelo || '—') +
-    filaHtml('Técnica', tecnica || '—') +
     '</table>' +
-    '<div style="color:#667085;margin-bottom:4px">Detalle del pedido</div>' +
-    '<div style="background:#f1f5f9;border-radius:8px;padding:12px 14px;white-space:pre-wrap;margin-bottom:14px">' + esc(detalle) + '</div>' +
+    (its.lista.length
+      ? '<div style="color:#667085;margin-bottom:4px">Ítems del pedido (' + its.lista.length + ')</div>' + tablaItemsHtml(its.lista)
+      : '') +
+    (detalle
+      ? '<div style="color:#667085;margin-bottom:4px">Comentarios</div>' +
+        '<div style="background:#f1f5f9;border-radius:8px;padding:12px 14px;white-space:pre-wrap;margin-bottom:14px">' + esc(detalle) + '</div>'
+      : '') +
     '<p style="margin:0 0 6px">' +
     (arch.lista.length ? 'Adjuntos: ' + esc(arch.lista.map((a) => a.name).join(', ')) : 'Sin adjuntos.') + '</p>' +
     '<p style="margin:0;color:#667085;font-size:13px">Si es su primer pedido, el cliente recibió el link al alta (' + esc(altaUrl) + ').</p>' +
@@ -220,12 +262,8 @@ module.exports = async function handler(req, res) {
     'Empresa: ' + empresa + '\n' +
     'Email: ' + email + '\n' +
     'Celular / WhatsApp: ' + (celular || '—') + '\n\n' +
-    'EQUIPO\n' +
-    'Marca: ' + (marca || '—') + '\n' +
-    'Modelo: ' + (modelo || '—') + '\n' +
-    'Técnica: ' + (tecnica || '—') + '\n\n' +
-    'DETALLE DEL PEDIDO\n' +
-    detalle + '\n\n' +
+    (its.lista.length ? 'ÍTEMS DEL PEDIDO\n' + listaItemsTexto(its.lista) + '\n\n' : '') +
+    (detalle ? 'COMENTARIOS\n' + detalle + '\n\n' : '') +
     (arch.lista.length
       ? 'Adjuntos: ' + arch.lista.map((a) => a.name).join(', ') + '\n\n'
       : 'Sin adjuntos.\n\n') +
@@ -248,6 +286,7 @@ module.exports = async function handler(req, res) {
   const textoCliente =
     'Hola ' + nombre + ':\n\n' +
     'Recibimos tu pedido y lo estamos revisando. Te respondemos con la cotización a la brevedad.\n\n' +
+    (its.lista.length ? 'Tu pedido:\n' + listaItemsTexto(its.lista) + '\n\n' : '') +
     'Si es tu primer pedido a AGS Analítica, te pedimos que completes el siguiente formulario para poder trabajar en él:\n' +
     altaUrl + '\n\n' +
     'Si ya sos cliente, no hace falta que hagas nada.\n\n' +
@@ -259,6 +298,7 @@ module.exports = async function handler(req, res) {
     '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#0d1b35">' +
     '<p>Hola ' + esc(nombre) + ':</p>' +
     '<p>Recibimos tu pedido y lo estamos revisando. Te respondemos con la cotización a la brevedad.</p>' +
+    (its.lista.length ? '<p style="margin-bottom:6px">Tu pedido:</p>' + tablaItemsHtml(its.lista) : '') +
     '<p><strong>Si es tu primer pedido a AGS Analítica</strong>, te pedimos que completes el siguiente formulario para poder trabajar en él:<br>' +
     // El texto del enlace NO repite la URL: Brevo reescribe el href con su redirector y un texto con
     // otro dominio a la vista es una señal típica de phishing. El texto plano conserva la URL directa.

@@ -211,6 +211,22 @@
     .pf-error { display:none; font-size:12px; color:#b4432b; margin-top:6px; }
     .pf-group.invalid input, .pf-group.invalid select, .pf-group.invalid textarea { border-color:#b4432b; }
     .pf-group.invalid .pf-error { display:block; }
+    .pf-items { border:0.5px solid var(--border-mid); border-radius:12px; padding:16px 16px 4px; margin:4px 0 18px; background:var(--white); min-width:0; }
+    .pf-items legend { font-size:12px; font-weight:600; letter-spacing:0.02em; color:var(--navy); padding:0 6px; }
+    .pf-row-item { grid-template-columns:1fr 110px auto; align-items:start; }
+    .pf-add-wrap { padding-top:21px; }
+    .pf-add { font-family:inherit; font-size:13px; font-weight:500; color:var(--navy); background:#EEF2FF; border:1px solid #C7D2FE; border-radius:100px; padding:10px 16px; cursor:pointer; white-space:nowrap; transition:background 0.15s, border-color 0.15s; }
+    .pf-add:hover { background:#E0E7FF; border-color:#818CF8; }
+    .pf-list { list-style:none; margin:0 0 12px; padding:0; }
+    .pf-list:empty { display:none; }
+    .pf-list li { display:flex; align-items:flex-start; gap:10px; padding:9px 10px; border-top:0.5px solid var(--border); font-size:13px; line-height:1.45; }
+    .pf-list li:first-child { border-top:none; }
+    .pf-list .pf-n { color:var(--ink-muted); min-width:18px; }
+    .pf-list .pf-it { flex:1; min-width:0; color:var(--navy); }
+    .pf-list .pf-eq { display:block; font-size:12px; color:var(--ink-muted); }
+    .pf-list .pf-qty { color:var(--ink-soft); white-space:nowrap; }
+    .pf-list .pf-del { background:none; border:none; color:var(--ink-muted); font-size:18px; line-height:1; cursor:pointer; padding:0 4px; }
+    .pf-list .pf-del:hover { color:#b4432b; }
     .pf-hp { position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden; }
     .pf-submit { width:100%; font-family:inherit; font-size:14px; font-weight:500; color:var(--white); background:var(--navy); border:none; padding:13px 26px; border-radius:100px; cursor:pointer; transition:background 0.2s; }
     .pf-submit:hover { background:#1a3a5c; }
@@ -290,7 +306,9 @@
       .guide-section { grid-template-columns:1fr; padding:64px 20px; gap:48px; }
       .contact-section { grid-template-columns:1fr; padding:64px 20px; gap:40px; }
       .contact-form { padding:28px 20px; }
-      .pf-row, .pf-row-3 { grid-template-columns:1fr; gap:0; }
+      .pf-row, .pf-row-3, .pf-row-item { grid-template-columns:1fr; gap:0; }
+      .pf-add-wrap { padding-top:0; }
+      .pf-add { width:100%; }
       .links-section { padding:48px 20px; }
       .links-grid { grid-template-columns:1fr; }
       .footer-inner { padding:32px 20px; }
@@ -545,39 +563,59 @@
             </div>
           </div>
 
-          <div class="pf-row pf-row-3">
-            <div class="pf-group">
-              <label for="pf-marca">Marca del equipo</label>
-              <select id="pf-marca" name="marca">
-                <option value="">Seleccionar…</option>
-                <option>Agilent</option>
-                <option>Shimadzu</option>
-                <option>Thermo</option>
-                <option>Waters</option>
-                <option>Knauer</option>
-                <option>PerkinElmer</option>
-                <option>Otra</option>
-              </select>
+          <fieldset class="pf-items">
+            <legend>Ítems del pedido</legend>
+            <p class="pf-help" style="margin:0 0 14px;">Cargá un renglón por producto. Si no sabés el modelo, dejalo vacío.</p>
+            <div class="pf-row pf-row-3">
+              <div class="pf-group">
+                <label for="pf-marca">Marca del equipo</label>
+                <select id="pf-marca">
+                  <option value="">Seleccionar…</option>
+                  <option>Agilent</option>
+                  <option>Shimadzu</option>
+                  <option>Thermo</option>
+                  <option>Waters</option>
+                  <option>Knauer</option>
+                  <option>PerkinElmer</option>
+                  <option>Otra</option>
+                </select>
+              </div>
+              <div class="pf-group">
+                <label for="pf-modelo">Modelo</label>
+                <input type="text" id="pf-modelo" maxlength="100" placeholder="Ej: 1260, 8890, Nexera">
+              </div>
+              <div class="pf-group">
+                <label for="pf-tecnica">Técnica</label>
+                <select id="pf-tecnica">
+                  <option value="">Seleccionar…</option>
+                  <option>GC</option>
+                  <option>GC-MS</option>
+                  <option>HPLC</option>
+                  <option>LC-MS</option>
+                </select>
+              </div>
             </div>
-            <div class="pf-group">
-              <label for="pf-modelo">Modelo</label>
-              <input type="text" id="pf-modelo" name="modelo" maxlength="100" placeholder="Ej: 1260, 8890, Nexera">
+            <div class="pf-row pf-row-item">
+              <div class="pf-group">
+                <label for="pf-producto">Producto <span class="pf-opt">(código o descripción)</span></label>
+                <input type="text" id="pf-producto" maxlength="200" placeholder="Ej: válvula de purga · viales ámbar 2 ml rosca">
+                <div class="pf-error">Escribí el producto antes de cargarlo.</div>
+              </div>
+              <div class="pf-group">
+                <label for="pf-cantidad">Cantidad</label>
+                <input type="text" id="pf-cantidad" maxlength="40" placeholder="Ej: 2 · 1000">
+              </div>
+              <div class="pf-group pf-add-wrap">
+                <button type="button" class="pf-add" id="pf-add">+ Cargar ítem</button>
+              </div>
             </div>
-            <div class="pf-group">
-              <label for="pf-tecnica">Técnica</label>
-              <select id="pf-tecnica" name="tecnica">
-                <option value="">Seleccionar…</option>
-                <option>GC</option>
-                <option>GC-MS</option>
-                <option>HPLC</option>
-                <option>LC-MS</option>
-              </select>
-            </div>
-          </div>
+            <ul class="pf-list" id="pf-list" aria-live="polite"></ul>
+          </fieldset>
 
           <div class="pf-group">
-            <label for="pf-detalle">Detalle del pedido <span class="pf-req">*</span></label>
-            <textarea id="pf-detalle" name="detalle" rows="5" maxlength="3000" placeholder="Qué necesitás: código o descripción del consumible, cantidad estimada, aplicación…" required></textarea>
+            <label for="pf-detalle">Comentarios <span class="pf-opt">(opcional si cargaste ítems)</span></label>
+            <textarea id="pf-detalle" name="detalle" rows="4" maxlength="3000" placeholder="Aplicación, urgencia, número de serie del equipo, lo que quieras agregar…"></textarea>
+            <div class="pf-error">Cargá al menos un ítem o contanos qué necesitás.</div>
           </div>
 
           <div class="pf-group">
@@ -739,8 +777,55 @@
       }
       fileInput.addEventListener('change', checkFiles);
 
+      // ── Ítems ──
+      const items = [];
+      const list = document.getElementById('pf-list');
+      const fMarca = document.getElementById('pf-marca');
+      const fModelo = document.getElementById('pf-modelo');
+      const fTecnica = document.getElementById('pf-tecnica');
+      const fProducto = document.getElementById('pf-producto');
+      const fCantidad = document.getElementById('pf-cantidad');
+      const fDetalle = document.getElementById('pf-detalle');
+      const MAX_ITEMS = 30;
+
+      function esc(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+      function renderItems() {
+        list.innerHTML = items.map(function (it, i) {
+          const eq = [it.marca, it.modelo, it.tecnica].filter(Boolean).join(' · ');
+          return '<li><span class="pf-n">' + (i + 1) + '.</span><span class="pf-it">' + esc(it.producto) +
+            (eq ? '<span class="pf-eq">' + esc(eq) + '</span>' : '') + '</span>' +
+            (it.cantidad ? '<span class="pf-qty">× ' + esc(it.cantidad) + '</span>' : '') +
+            '<button type="button" class="pf-del" data-i="' + i + '" aria-label="Quitar ítem">×</button></li>';
+        }).join('');
+      }
+      function addItem(silent) {
+        const producto = fProducto.value.trim();
+        const grp = fProducto.closest('.pf-group');
+        if (!producto) { if (!silent) { grp.classList.add('invalid'); fProducto.focus(); } return false; }
+        if (items.length >= MAX_ITEMS) { showMsg('err', 'Podés cargar hasta ' + MAX_ITEMS + ' ítems. Para más, adjuntá una planilla.'); return false; }
+        grp.classList.remove('invalid');
+        items.push({ marca: fMarca.value, modelo: fModelo.value.trim(), tecnica: fTecnica.value, producto: producto, cantidad: fCantidad.value.trim() });
+        fProducto.value = ''; fCantidad.value = '';
+        fDetalle.closest('.pf-group').classList.remove('invalid');
+        renderItems();
+        if (!silent) fProducto.focus();
+        return true;
+      }
+      document.getElementById('pf-add').addEventListener('click', function () { addItem(false); });
+      [fProducto, fCantidad].forEach(function (el) {
+        el.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); addItem(false); } });
+      });
+      fProducto.addEventListener('input', function () { fProducto.closest('.pf-group').classList.remove('invalid'); });
+      list.addEventListener('click', function (e) {
+        const b = e.target.closest('.pf-del'); if (!b) return;
+        items.splice(Number(b.dataset.i), 1); renderItems();
+      });
+
       function validate() {
         let first = null;
+        const noItems = items.length === 0 && fDetalle.value.trim() === '';
+        fDetalle.closest('.pf-group').classList.toggle('invalid', noItems);
+        if (noItems) first = fProducto;
         form.querySelectorAll('[required]').forEach(function (el) {
           let ok = el.value.trim() !== '';
           if (ok && el.type === 'email') ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
@@ -765,6 +850,7 @@
         if (btn.disabled) return;
         msg.className = '';
 
+        addItem(true); // producto escrito pero sin "Cargar": se agrega solo
         const bad = validate();
         if (bad) {
           showMsg('err', 'Revisá los campos marcados en rojo.');
@@ -781,7 +867,7 @@
           const body = {
             nombre: fd.get('nombre'), apellido: fd.get('apellido'), empresa: fd.get('empresa'),
             email: fd.get('email'), celular: fd.get('celular'),
-            marca: fd.get('marca'), modelo: fd.get('modelo'), tecnica: fd.get('tecnica'),
+            items: items,
             detalle: fd.get('detalle'), sitio_web: fd.get('sitio_web'),
             t: Date.now() - loadedAt,
             archivos: await Promise.all(Array.from(fileInput.files || []).map(async function (f) {
@@ -798,6 +884,7 @@
             showMsg('ok', 'Gracias. Recibimos tu pedido y te respondemos a la brevedad. Te enviamos una confirmación por mail.');
             if (typeof gtag === 'function') gtag('event', 'generate_lead', { event_category: 'pedido_presupuesto' });
             form.reset();
+            items.length = 0; renderItems();
             form.style.display = 'none';
           } else {
             showMsg('err', 'No pudimos enviar tu pedido. Probá de nuevo o escribinos a consumibles@agsanalitica.com.');
